@@ -1,11 +1,9 @@
 
-
-
-
-function Home() {
-    return(
+export default function Home (){
+    return (
         <div>
-            <h1>Hello!!!</h1>;
+            <span>hola</span>
         </div>
-    ) 
-  }
+    )
+}
+
