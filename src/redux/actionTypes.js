@@ -5,7 +5,6 @@ const GET_ALL_SHIPPING = 'GET_ALL_SHIPPING';
 const GET_ALL_ACCOUNTS = 'GET_ALL_ACCOUNTS';
 const GET_ALL_ORDERS = 'GET_ALL_ORDERS';
 const GET_ALL_USERS = 'GET_ALL_USERS';
-const nada = 'nada'
 
 
 export {
