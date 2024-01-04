@@ -10,8 +10,6 @@ export default function Card({id, name, image, price, stock}) {
                     <h3>{name}</h3>
                     <img className={styles.image} src={image} alt={name} width={'200px'} height={'400px'}/>
                 </Link>
-                <h2>Precio: {price}</h2>
-                <h2>Stock: {stock}</h2>
             </div>
         )
     }
