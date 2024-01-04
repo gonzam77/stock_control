@@ -2,7 +2,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import Home from './views/home/Home';
+import GridExample from './views/home/Home';
 import Nav from './components/nav/nav';
 import Clients from './views/clients/clients';
 import Suppliers from './views/suppliers/suppliers';
@@ -12,6 +12,8 @@ import ProductDetail from './views/productDetail/productDetail';
 import Users from './views/users/users';
 import About from './views/about/about';
 import Footer from './components/footer/footer';
+import Sales from './views/sales/sales';
+import SaleInvoice from './views/salesInvoice/salesInvoice';
 
 export const urlDev = 'http://localhost:3000';
 
@@ -26,7 +28,7 @@ function App() {
     <div className="App">
       <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<GridExample />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/suppliers" element={<Suppliers />} />
           <Route path="/users" element={<Users />} />
@@ -34,6 +36,8 @@ function App() {
           <Route path="/productList" element={<ProductList />} />
           <Route path="/productDetail" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/saleInvoice" element={<SaleInvoice />} />
         </Routes>
       <Footer />  
       </div>
