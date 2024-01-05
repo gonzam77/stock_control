@@ -34,7 +34,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/dispatchers" element={<Dispatchers />} />
           <Route path="/productList" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
+          <Route path="/productDetail/:id" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/saleInvoice" element={<SaleInvoice />} />

@@ -1,4 +1,5 @@
-import styles from './home.module.css'
+import styles from './home.module.css';
+import { Link } from 'react-router-dom';
 //import Card from '../../components/card/card'
 
 import { productos } from '../../assets/hardcodeo'
@@ -11,23 +12,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function GridExample() {
   return (
-    <Row xs={1} md={2} className="g-4">
-      {Array.from(productos).map((product, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>{product.name}</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    <div className={styles.container}>
+      <Row xs={1} md={2} className="g-4">
+        {Array.from(productos).map((product, idx) => (
+          <Col key={idx}>
+            <Link to={`/productDetail/${product.id}`} className={styles.link}>
+              <Card>
+                <Card.Img variant="top" src={product.image} alt={productos.name} width={'50px'} height={'100px'} />
+                <Card.Body>
+                  <Card.Title>{product.name}</Card.Title>
+                  <Card.Text>
+                    This is a longer card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 }
 
