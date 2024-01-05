@@ -7,6 +7,7 @@ import { productos } from '../../assets/hardcodeo'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function GridExample() {
   return (
