@@ -8,7 +8,7 @@ import { productos } from '../../assets/hardcodeo'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function GridExample() {
   return (
@@ -18,13 +18,11 @@ function GridExample() {
           <Col key={idx}>
             <Link to={`/productDetail/${product.id}`} className={styles.link}>
               <Card>
-                <Card.Img variant="top" src={product.image} alt={productos.name} width={'50px'} height={'100px'} />
+                { <Card.Img variant="top" /*src={product.image} alt={productos.name} width={'50px'} height={'100px'}*/ /> }
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    {product.description}
                   </Card.Text>
                 </Card.Body>
               </Card>
