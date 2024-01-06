@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+
 function GridExample() {
   return (
     <Row xs={1} md={2} className="g-4">
@@ -18,9 +19,7 @@ function GridExample() {
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
               <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                {product.descrition}
               </Card.Text>
             </Card.Body>
           </Card>
