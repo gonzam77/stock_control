@@ -3,7 +3,7 @@ import styles from './productForm.module.css';
 import { productos } from "../../assets/hardcodeo";
 
 
-export default function ProductForm() {
+export default function ProductForm({id}) {
     const [product, setProduct] = useState({
         name: "",
         marca: "",
@@ -11,13 +11,18 @@ export default function ProductForm() {
         price: [],
         description: "",
     });
+    
+    console.log(productos);
 
     function handleSubmit(event) {
         event.preventDefault();
-        productos = {
-            ...productos,
-            product
-        }
+        
+
+        
+        // productos = {
+        //     ...productos,
+        //     product
+        // }
         setProduct({
             name: "",
             marca: "",
