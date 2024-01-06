@@ -18,8 +18,8 @@ import Grid from './views/grid/grid';
 
 export const urlDev = 'http://localhost:3000';
 
-//export const urlProduction = 'https://videogames-server-ypgw.onrender.com';
-//export const URL = urlProduction;
+export const urlProduction = 'https://videogames-server-ypgw.onrender.com';
+export const URL = urlProduction;
 
 
 function App() {

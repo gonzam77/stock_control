@@ -7,8 +7,19 @@ import { GET_ALL_PRODUCTS,
     GET_ALL_SHIPPING,
     GET_ALL_ORDERS,
     GET_ALL_ACCOUNTS, 
-    GET_ALL_USERS
+    GET_ALL_USERS,
+    CHANEGE_PRODUCT_MODAL
 } from './actionTypes'
+
+
+
+export const changeProductModal = () => {
+    return async function (dispatch) {
+        return dispatch({
+            type: CHANEGE_PRODUCT_MODAL
+        })
+    }
+};
 
 export const getAllProducts = () => {
     return async function (dispatch) {
