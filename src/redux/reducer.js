@@ -4,10 +4,9 @@ import { GET_ALL_PRODUCTS,
     GET_ALL_SHIPPING,
     GET_ALL_ORDERS,
     GET_ALL_ACCOUNTS, 
-    GET_ALL_USERS,
-    CHANEGE_PRODUCT_MODAL
+    GET_ALL_USERS
 } from './actionTypes'
-import { changeProductModal } from './actions'
+
 
 
 
@@ -19,23 +18,22 @@ const initialState = {
     shipping:[],
     accounts:[],
     orders:[],
-    productModal:false
+    showModal: false
 }
 
 export default function reducer(state = initialState, { type, payload }) {
     switch (type) {
-        case changeProductModal:
-            if(state.productModal === true) {
-                return {
-                    ...state,
-                    productModal: false
-                }
-            } else {
-                return {
-                    ...state,
-                    productModal: false
-                }
-            }
+        case 'SHOW_MODAL':
+        return {
+            ...state,
+            showModal: true,
+        };
+        case 'HIDE_MODAL':
+        return {
+            ...state,
+            showModal: false,
+            modalContent: null,
+        };
         case GET_ALL_USERS:
             return {
                 ...state,
