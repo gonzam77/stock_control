@@ -24,6 +24,9 @@ export default function NavMenu() {
                         {
                             location.pathname ==='/' ? <Link to="/grid" className={styles.link}>Tabla</Link> : null
                         }
+                        {
+                            location.pathname ==='/grid' ? <Link to="/" className={styles.link}>Cartas</Link> : null
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
