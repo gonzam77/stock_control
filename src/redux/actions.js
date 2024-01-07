@@ -12,13 +12,28 @@ import { GET_ALL_PRODUCTS,
 
 
 
+export const getProductId = (id) => {
+    return {
+        type: 'GET_PRODUCT_ID',
+        payload: id
+    }
+}
+
+export const editProduct = (data) => {
+    return {    
+        type: 'EDIT_PRODUCT',
+        payload: data
+    }
+}
+
+
 export const showModal = () => ({
     type: 'SHOW_MODAL',
   });
   
-  export const hideModal = () => ({
-    type: 'HIDE_MODAL',
-  });
+export const hideModal = () => ({
+type: 'HIDE_MODAL',
+});
 
 export const getAllProducts = () => {
     return async function (dispatch) {
@@ -88,7 +103,7 @@ export const getAllAccounts = () => {
 
 export const getAllUsers = () => {
     return async function (dispatch) {
-        const response = await axios(`${URL}/products`);
+        const response = await axios(`${URL}/users`);
         const data = response.data;
         return dispatch({
             type: GET_ALL_USERS,

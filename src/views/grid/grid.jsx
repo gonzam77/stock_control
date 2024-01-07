@@ -9,10 +9,13 @@ import * as actions from '../../redux/actions';
 export default function Grid () {
     
     const showModalState = useSelector(state => state.showModal);
+    const products = useSelector(state => state.products)
     const dispatch = useDispatch();
 
-    const openModal = () => {
+    const openModal = (id) => {
         dispatch(actions.showModal());
+        dispatch(actions.getProductId(id));
+
     };
 
     const closeModal = () => {    
@@ -34,7 +37,7 @@ export default function Grid () {
                 </thead>
                 <tbody>
                 {
-                    productos.map((producto,index) => {
+                    products.map((producto,index) => {
                         return(
                             <tr key={index}>
                             <td>{producto.id}</td>
@@ -43,7 +46,7 @@ export default function Grid () {
                             <td>{producto.stock}</td>
                             <td>{producto.price}</td>
                             <td>
-                                <button onClick={openModal} id={producto.id}>Modificar</button>
+                                <button onClick={() => openModal(producto.id)} >Modificar</button>
                             </td>
                             </tr>                        
                         )

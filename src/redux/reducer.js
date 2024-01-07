@@ -7,22 +7,38 @@ import { GET_ALL_PRODUCTS,
     GET_ALL_USERS
 } from './actionTypes'
 
-
+import { productos, clientes } from '../assets/hardcodeo';
 
 
 const initialState = {
-    products: [],
-    clients: [],
+    products: productos,
+    clients: clientes,
     suppliers: [],
     users:[],
     shipping:[],
     accounts:[],
     orders:[],
-    showModal: false
+    showModal: false,
+    productId:''
 }
 
 export default function reducer(state = initialState, { type, payload }) {
     switch (type) {
+        case 'INSERT_PRODUCTS':
+        return {
+            ...state,
+            products: payload
+        };
+        case 'GET_PRODUCT_ID':
+        return {
+            ...state,
+            productId: payload
+        };
+        case 'EDIT_PRODUCT':
+        return {
+            ...state,
+            products: [ ...state.products, ]
+        };
         case 'SHOW_MODAL':
         return {
             ...state,

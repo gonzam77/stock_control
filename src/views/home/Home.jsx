@@ -1,21 +1,19 @@
 import styles from './home.module.css'
 import Card from '../../components/card/card'
-//import { useState } from 'react';
-
-
-import { productos } from '../../assets/hardcodeo'
+import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import Paginate from "../../components/pagination/pagination";
 
 
 export default function Home() {
+
+    const products = useSelector(state => state.products)
 
     return (
         <div className={styles.container}>  
             <div className={styles.cards}>
                 {
-                    productos.length ? (
-                      productos.map((product, index) => {
+                    products.length ? (
+                      products.map((product, index) => {
                             return (
                                 <Card
                                     key={index}

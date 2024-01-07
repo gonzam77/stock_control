@@ -1,48 +1,46 @@
 import { useState } from "react";
 import styles from './productForm.module.css';
 import { productos } from "../../assets/hardcodeo";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from '../../redux/actions'
 
 
-export default function ProductForm({id}) {
-    const [product, setProduct] = useState({
-        name: "",
-        marca: "",
-        stock: "",
-        price: [],
-        description: "",
-    });
+export default function ProductForm() {
     
-    console.log(productos);
 
+    
+    const products = useSelector(state => state.products);
+    const productId = useSelector(state => state.productId);
+    const dispatch = useDispatch();
+    
+    const [product, setProduct] = useState({products});
+    
     function handleSubmit(event) {
         event.preventDefault();
-        
-
-        
-        // productos = {
-        //     ...productos,
-        //     product
-        // }
-        setProduct({
-            name: "",
-            marca: "",
-            stock: "",
-            price: [],
-            description: "",
-        })
+       dispatch(actions.editProduct(product))
     };
-
-
-   
+    
+    
     function handleChange(event) {
-            setProduct({
-                ...product,
-                [event.target.name]: event.target.value
-            })
+        
+        const target = event.target.name;
+        //console.log('target: ',target);
+        const value = event.target.value;
+        //console.log('value: ',value);
+        
+        const editedProduct = products.map((element) => {
+            
+            if(element.id === productId) {
+                element[target] = value  
+            }
+            return element
+        })
+               
+        setProduct({editedProduct})
     };
-
-    return (
-        <div className={styles.container}>
+        
+        return (
+            <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
                 
                 <label>Nombre</label><br></br>

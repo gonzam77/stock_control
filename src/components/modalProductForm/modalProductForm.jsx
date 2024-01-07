@@ -14,7 +14,7 @@ function ModalProductForm({closeModal, id}) {
         >
         <Modal.Dialog>
             <Modal.Header closeButton onClick={closeModal}>
-            <Modal.Title>Editar Producto</Modal.Title>
+            <Modal.Title >Editar Producto</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
@@ -22,8 +22,7 @@ function ModalProductForm({closeModal, id}) {
             </Modal.Body>
 
             <Modal.Footer>
-            <Button variant="secondary" onClick={closeModal}>Close</Button>
-            <Button variant="primary" onClick={closeModal}>Save changes</Button>
+            <Button variant="info" onClick={closeModal}>Close</Button>
             </Modal.Footer>
         </Modal.Dialog>
         </div>

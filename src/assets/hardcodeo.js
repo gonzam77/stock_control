@@ -1,5 +1,3 @@
-import { ListGroupItem } from "react-bootstrap";
-
 export const productos = [
     {
         id: 1,
