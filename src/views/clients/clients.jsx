@@ -12,7 +12,7 @@ export default function Clients(){
 
     const openModal = (id) => {
         dispatch(actions.showModal());
-        dispatch(actions.getProductId(id));
+        dispatch(actions.getClientId(id));
 
     };
 

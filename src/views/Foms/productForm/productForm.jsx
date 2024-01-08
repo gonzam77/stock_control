@@ -11,6 +11,8 @@ export default function ProductForm() {
     const products = useSelector(state => state.products);
     const productId = useSelector(state => state.productId);
     const dispatch = useDispatch();
+
+    const selectedProduct = products.find((element) => element.id === productId);
     
     const [product, setProduct] = useState({products});
     
@@ -43,19 +45,19 @@ export default function ProductForm() {
             <form onSubmit={handleSubmit} className={styles.form}>
                 
                 <label>Nombre</label><br></br>
-                <input autoComplete="off" name="name" value={product.name} onChange={handleChange} placeholder="nombre..." type="text" />
+                <input autoComplete="off" name="name" value={product.name} onChange={handleChange} placeholder={selectedProduct.name} type="text" />
                 <br></br>
 
                 <label>Marca</label><br></br>
-                <input autoComplete="off" name="marca" value={product.marca} onChange={handleChange} placeholder="marca..." type="text" />
+                <input autoComplete="off" name="marca" value={product.marca} onChange={handleChange} placeholder={selectedProduct.marca} type="text" />
                 <br></br>
 
                 <label>Stock</label><br></br>
-                <input autoComplete="off" name="stock" value={product.stock} onChange={handleChange} placeholder="stock..." type="text" />
+                <input autoComplete="off" name="stock" value={product.stock} onChange={handleChange} placeholder={selectedProduct.stock} type="text" />
                 <br></br>
 
                 <label>Precio</label><br></br>
-                <input autoComplete="off" name="price" placeholder="precio..." type="text" />
+                <input autoComplete="off" name="price" value={product.price} onChange={handleChange} placeholder={selectedProduct.price} type="text"  />
                 <br></br>
                 <br></br>
 

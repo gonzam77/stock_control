@@ -12,6 +12,34 @@ import { GET_ALL_PRODUCTS,
 
 
 
+export const getSupplierId = (id) => {
+    return {
+        type: 'GET_SUPPLIER_ID',
+        payload: id
+    }
+}
+
+export const editSupplier = (data) => {
+    return {    
+        type: 'EDIT_SUPPLIER',
+        payload: data
+    }
+}
+
+export const getClientId = (id) => {
+    return {
+        type: 'GET_CLIENT_ID',
+        payload: id
+    }
+}
+
+export const editClient = (data) => {
+    return {    
+        type: 'EDIT_CLIENT',
+        payload: data
+    }
+}
+
 export const getProductId = (id) => {
     return {
         type: 'GET_PRODUCT_ID',
