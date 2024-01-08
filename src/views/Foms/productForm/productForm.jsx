@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styles from './productForm.module.css';
-import { productos } from "../../assets/hardcodeo";
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from '../../redux/actions'
+import * as actions from '../../../redux/actions'
 
 
 export default function ProductForm() {

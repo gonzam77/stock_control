@@ -1,7 +1,7 @@
 import styles from './grid.module.css';
 import Table from 'react-bootstrap/Table';
 import { productos } from '../../assets/hardcodeo';
-import ModalProductForm from '../../components/modalProductForm/modalProductForm';
+import ModalProductForm from '../../components/modals/modalProductForm/modalProductForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 
@@ -24,6 +24,9 @@ export default function Grid () {
 
     return (
         <div className={styles.container}>
+
+            <h1 className={styles.title}>Productos</h1>
+
             <Table striped bordered hover>
                 <thead>
                     <tr>

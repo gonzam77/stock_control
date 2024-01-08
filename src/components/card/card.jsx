@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import styles from './card.module.css';
 import { useSelector,useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
-import ModalProductForm from '../../components/modalProductForm/modalProductForm';
+import ModalProductForm from '../modals/modalProductForm/modalProductForm';
 
 function BasicExample({ id, name, marca, price, stock, description}) {
   

@@ -2,7 +2,7 @@ import styles from './clients.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { Table } from 'react-bootstrap';
-import ModalProductForm from '../../components/modalProductForm/modalProductForm';
+import ModalClientForm from '../../components/modals/modalClientForm/modalClientForm';
 
 export default function Clients(){
 
@@ -22,6 +22,9 @@ export default function Clients(){
 
     return (
         <div className={styles.container}>
+            
+            <h1 className={styles.title}>Clientes</h1>
+            
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -62,7 +65,7 @@ export default function Clients(){
                 }
                 </tbody>
             </Table>
-            {showModalState && <ModalProductForm closeModal={closeModal} />}
+            {showModalState && <ModalClientForm closeModal={closeModal} />}
         </div>
   );
 }

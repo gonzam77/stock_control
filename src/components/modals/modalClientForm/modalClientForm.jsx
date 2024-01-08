@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ProductForm from '../../../views/Foms/productForm/productForm';
+import ClientForm from '../../../views/Foms/clientForm/clientForm';
 
 
 function ModalProductForm({closeModal, id}) {
@@ -16,7 +16,7 @@ function ModalProductForm({closeModal, id}) {
             </Modal.Header>
 
             <Modal.Body>
-                <ProductForm id={id} />
+                <ClientForm id={id} />
             </Modal.Body>
 
             <Modal.Footer>
