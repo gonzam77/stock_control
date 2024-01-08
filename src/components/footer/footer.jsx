@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className={styles.container}>
       <img src={img} alt="copyRight" width={"10px"} />
-      <span>Created by Gonzalo Medina & Co.</span>
+      <span>Created by GMedina & Co.</span>
     </div>
   );
 }

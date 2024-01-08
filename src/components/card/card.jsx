@@ -19,7 +19,7 @@ function BasicExample({ id, name, marca, price, stock, description }) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Card className={styles.card} style={{ width: "18rem" }}>
         <Card.Body>
           <Card.Title>

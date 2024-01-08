@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
 import ModalClientForm from "../modals/modalClientForm/modalClientForm";
+import { Button } from "react-bootstrap";
 
 export default function Clients() {
   const showModalState = useSelector((state) => state.showModal);
@@ -57,9 +58,9 @@ export default function Clients() {
                 <td>{client.fecha_creacion}</td>
                 <td>{client.fecha_actualizacion}</td>
                 <td>
-                  <button onClick={() => openModal(client.id)}>
+                  <Button variant="info" onClick={() => openModal(client.id)}>
                     Modificar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             );

@@ -12,12 +12,11 @@
 .link {
   font-size: 1.1em;
   color: rgb(3, 121, 125);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-decoration: none;
   margin: 5px;
   margin-left: 10px;
 }
 
 .link:hover {
-  font-size: 1.2em;
+  color: white;
 }

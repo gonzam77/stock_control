@@ -16,8 +16,7 @@
 .title {
   display: flex;
   color: darkslategray;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  padding-top: 8vh;
+  padding-top: 10vh;
   margin-bottom: 20px;
   padding-left: 20vh;
 }
