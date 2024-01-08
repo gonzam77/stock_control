@@ -1,6 +1,6 @@
 import styles from './products.module.css';
 import Table from 'react-bootstrap/Table';
-import ModalProductForm from '../../components/modals/modalProductForm/modalProductForm';
+import ModalProductForm from '../../views/modals/modalProductForm/modalProductForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { Link } from 'react-router-dom';
@@ -27,7 +27,7 @@ export default function Grid () {
         <div className={styles.container}>
 
             <div className={styles.titleContainer}>
-                <Link to="/products" className={styles.link}>
+                <Link to="/createProduct" className={styles.link}>
                     <Button variant="info">Cargar nuevo</Button>
                 </Link>
                 <Link to="/" className={styles.link}>

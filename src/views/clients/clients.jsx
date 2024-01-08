@@ -2,7 +2,7 @@ import styles from './clients.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { Table } from 'react-bootstrap';
-import ModalClientForm from '../../components/modals/modalClientForm/modalClientForm';
+import ModalClientForm from '../modals/modalClientForm/modalClientForm';
 
 export default function Clients(){
 

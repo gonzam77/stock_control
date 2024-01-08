@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <div className={styles.container}>  
             <div className={styles.titleContainer}>
-                <Link to="/products" className={styles.link}>
+                <Link to="/createProduct" className={styles.link}>
                     <Button variant="info">Cargar nuevo</Button>
                 </Link>
                 <Link to="/products" className={styles.link}>
@@ -22,32 +22,23 @@ export default function Home() {
             </div>
             <div>
                 <h1 className={styles.title}>Productos</h1>
-            </div>
-            
-            
+            </div>            
             <div className={styles.cards}>
-
-
                 {
-                    products.length ? (
-                      products.map((product, index) => {
-                            return (
-                                <Card
-                                    key={index}
-                                    id={product.id}
-                                    name={product.name}
-                                    image={product.image}
-                                    price={product.price}
-                                    stock={product.stock}
-                                    marca={product.marca}
-                                    description={product.description}
-                                />
-                            )
-                        })
-                    ) :
-                        <div className={styles.loading}>
-                            <h1 className={styles.loading}>LOADING...</h1>
-                        </div>
+                    products.map((product, index) => {
+                        return (
+                            <Card
+                                key={index}
+                                id={product.id}
+                                name={product.name}
+                                image={product.image}
+                                price={product.price}
+                                stock={product.stock}
+                                marca={product.marca}
+                                description={product.description}
+                            />
+                        )
+                    })
                 }
             </div>
         </div>
