@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from './productForm.module.css';
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from '../../../redux/actions'
+import { Button } from "react-bootstrap";
 
 
 export default function ProductForm() {
@@ -61,7 +62,8 @@ export default function ProductForm() {
                 <br></br>
                 <br></br>
 
-                <button className={styles.createButton} type="submit">Editar</button>
+                <Button variant="info" type="submit">Guardar</Button>
+                
             </form>
         </div>
     )
