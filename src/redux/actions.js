@@ -68,6 +68,14 @@ export const hideModal = () => ({
 type: 'HIDE_MODAL',
 });
 
+export const showCreateModal = () => ({
+    type: 'SHOW_CREATE_MODAL',
+  });
+  
+export const hideCreateModal = () => ({
+type: 'HIDE_CREATE_MODAL',
+});
+
 // export const getAllProducts = () => {
 //     return async function (dispatch) {
 //         const response = await axios(`${URL}/products`);

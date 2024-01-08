@@ -19,6 +19,7 @@ const initialState = {
     accounts:[],
     orders:[],
     showModal: false,
+    showCreateModal: false,
     productId:'',
     clientId:'',
     supplierId:''
@@ -70,6 +71,17 @@ export default function reducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 showModal: false,
+                modalContent: null,
+            };
+        case 'SHOW_CREATE_MODAL':
+            return {
+                ...state,
+                showCreateModal: true,
+            };
+        case 'HIDE_CREATE_MODAL':
+            return {
+                ...state,
+                showCreateModal: false,
                 modalContent: null,
             };
         case GET_ALL_USERS:

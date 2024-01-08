@@ -32,9 +32,9 @@ export default function Clients(){
                     <tr>
                     <th>id</th>
                     <th>Nombre</th>
-                    <th>Genero</th>
-                    <th>Direccion</th>
+                    <th>Email</th>
                     <th>Telefono</th>
+                    <th>Direccion</th>
                     <th>Provincia</th>
                     <th>Localidad</th>
                     <th>Fecha Nacimiento</th>
@@ -50,9 +50,9 @@ export default function Clients(){
                             <tr key={index}>
                             <td>{client.id}</td>
                             <td>{client.first_name} {client.lastName}</td>
-                            <td>{client.genero}</td>
-                            <td>{client.adress}</td>
+                            <td>{client.email}</td>
                             <td>{client.phone}</td>
+                            <td>{client.adress}</td>
                             <td>{client.province}</td>
                             <td>{client.state}</td>
                             <td>{client.fecha_nac}</td>
