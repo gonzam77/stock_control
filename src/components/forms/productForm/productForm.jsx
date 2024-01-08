@@ -14,10 +14,10 @@ export default function ProductForm() {
     const selectedProduct = products.find((element) => element.id === productId);
     
     const [product, setProduct] = useState(products);
+    console.log(product);
     
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(product);
         dispatch(actions.editProduct(products))
     };
     
@@ -35,8 +35,8 @@ export default function ProductForm() {
                 element[target] = value  
             }
             return element
-        })
-               
+        })        
+        
         setProduct({editedProduct})
     };
         

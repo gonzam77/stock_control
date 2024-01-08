@@ -8,17 +8,17 @@ import ModalProductForm from '../../views/modals/modalProductForm/modalProductFo
 function BasicExample({ id, name, marca, price, stock, description}) {
   
   const showModalState = useSelector(state => state.showModal);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
 
-};
+  };
 
-const closeModal = () => {    
-    dispatch(actions.hideModal());
-};
+  const closeModal = () => {    
+      dispatch(actions.hideModal());
+  };
   
   return (
     <div>

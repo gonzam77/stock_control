@@ -1,16 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ProductForm from '../../../components/forms/productForm/productForm';
+import CreateProductForm from '../../../components/createForms/createProductForm/createProductForm';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../../redux/actions'
+import * as actions from '../../../redux/actions';
 
 
-function ModalProductForm({id}) {
+function ModalProductForm() {
 
     const dispatch = useDispatch();
 
-    const closeModal = () => {
-        dispatch(actions.hideModal());
+    const closeCreateModal = () => { 
+        console.log('cerrando');   
+        dispatch(actions.hideCreateModal());
     };
 
     return (
@@ -19,16 +20,16 @@ function ModalProductForm({id}) {
             style={{ display: 'block', position: '' }}
         >
             <Modal.Dialog>
-                <Modal.Header closeButton onClick={closeModal}>
-                    <Modal.Title >Editar Producto</Modal.Title>
+                <Modal.Header closeButton onClick={closeCreateModal}>
+                    <Modal.Title >Cargar Producto</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <ProductForm id={id} />
+                    <CreateProductForm />
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="info" onClick={closeModal}>Confirmar</Button>
+                    <Button variant="info" onClick={closeCreateModal}>Confirmar</Button>
                 </Modal.Footer>
             </Modal.Dialog>
         </div>

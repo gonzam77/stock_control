@@ -5,31 +5,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Edit from '../../components/buttons/edit/edit';
+import Create from '../../components/buttons/create/create';
+import ModalCreateProductForm from '../../views/modals/modalCreateProductForm/modalCreateProductForm';
 
 
 export default function Grid () {
     
     const showModalState = useSelector(state => state.showModal);
+    const showCreateModal = useSelector(state => state.showCreateModal);
     const products = useSelector(state => state.products)
     const dispatch = useDispatch();
 
-    const openModal = (id) => {
-        dispatch(actions.showModal());
-        dispatch(actions.getProductId(id));
-
-    };
-
-    const closeModal = () => {    
-        dispatch(actions.hideModal());
+    const openCreateModal = () => {
+        dispatch(actions.showCreateModal());
     };
 
     return (
         <div className={styles.container}>
 
             <div className={styles.titleContainer}>
-                <Link to="/createProduct" className={styles.link}>
-                    <Button variant="info">Cargar nuevo</Button>
-                </Link>
+
+                <Create openCreateModal={openCreateModal} ></Create>
+                
                 <Link to="/" className={styles.link}>
                     <Button variant="info">Carta</Button>
                 </Link>
@@ -60,7 +58,7 @@ export default function Grid () {
                                 <td>{producto.stock}</td>
                                 <td>{producto.price}</td>
                                 <td>
-                                    <button onClick={() => openModal(producto.id)} >Modificar</button>
+                                    <Edit id={producto.id}></Edit>
                                 </td>
                                 </tr>                        
                             )
@@ -69,7 +67,8 @@ export default function Grid () {
                     </tbody>
                 </Table>
             </div>
-            {showModalState && <ModalProductForm closeModal={closeModal} />}
+            {showModalState && <ModalProductForm />}
+            {showCreateModal && <ModalCreateProductForm />}
         </div>
   );
 }
