@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ClientForm from '../../../components/Foms/clientForm/clientForm';
+import ClientForm from '../../../components/forms/clientForm/clientForm';
 
 
 function ModalProductForm({closeModal, id}) {

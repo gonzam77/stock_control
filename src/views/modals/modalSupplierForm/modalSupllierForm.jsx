@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import SupplierForm from '../../../components/Foms/supplierForm/supplierForm';
+import SupplierForm from '../../../components/forms/supplierForm/supplierForm';
 
 
 function ModalProductForm({closeModal, id}) {

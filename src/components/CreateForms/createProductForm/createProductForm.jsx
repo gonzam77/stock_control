@@ -32,8 +32,6 @@ export default function CreateProductForm() {
         dispatch(actions.createProduct(newProduct))
     };
     
-    
-        
         return (
             <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
