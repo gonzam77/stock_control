@@ -12,7 +12,7 @@ import Footer from "./components/footer/footer";
 import Sales from "./views/sales/sales";
 import SaleInvoice from "./views/salesInvoice/salesInvoice";
 import Products from "./views/products/products";
-import CreateProductForm from "./components/CreateForms/createProductForm/createProductForm";
+import CreateProductForm from './components/createFormsComponents/createProductForm/createProductForm'
 
 export const urlDev = "http://localhost:3000";
 

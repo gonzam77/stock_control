@@ -1,25 +1,25 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import styles from './card.module.css';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import ModalProductForm from '../../views/modals/modalProductForm/modalProductForm';
 
-function BasicExample({ id, name, marca, price, stock, description}) {
-  
+function BasicExample({ id, name, marca, price, stock, code, description }) {
+
   const showModalState = useSelector(state => state.showModal);
   const dispatch = useDispatch();
-  
+
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
 
   };
 
-  const closeModal = () => {    
-      dispatch(actions.hideModal());
+  const closeModal = () => {
+    dispatch(actions.hideModal());
   };
-  
+
   return (
     <div>
       <Card className={styles.card} style={{ width: '18rem' }}>
@@ -27,7 +27,8 @@ function BasicExample({ id, name, marca, price, stock, description}) {
           <Card.Title>{name} {marca}</Card.Title>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: {price}</Card.Text>
-              <Button variant="info" onClick={() => openModal(id)} >Modificar</Button>
+          <Button className={styles.detailButton} variant="info" >Detalle</Button>
+          <Button variant="info" onClick={() => openModal(id)} >Modificar</Button>
         </Card.Body>
       </Card>
       {showModalState && <ModalProductForm closeModal={closeModal} />}

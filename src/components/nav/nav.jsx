@@ -22,6 +22,9 @@ export default function NavMenu() {
             <Link to="/dispatchers" className={styles.link}>
               Tramportistas
             </Link>
+            <Link to="/deposits" className={styles.link}>
+              Depositos
+            </Link>
             <Link to="/movements" className={styles.link}>
               Movimiento
             </Link>

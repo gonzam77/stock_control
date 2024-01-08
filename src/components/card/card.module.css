@@ -1,8 +1,13 @@
 .card {
   border-radius: 20px !important;
   opacity: 90%;
+  gap: 5px;
 }
 
 .card:hover {
     opacity: 100%;
+}
+
+.detailButton {
+  margin-right: 5px;;
 }

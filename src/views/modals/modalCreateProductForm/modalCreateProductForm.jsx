@@ -2,8 +2,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../redux/actions";
-import CreateProductForm from "../../../components/CreateForms/createProductForm/createProductForm";
 import styles from "./modalCreateProductForm.module.css";
+import CreateProductForm from '../../../components/createFormsComponents/createProductForm/createProductForm'
 
 function ModalProductForm() {
   const dispatch = useDispatch();
