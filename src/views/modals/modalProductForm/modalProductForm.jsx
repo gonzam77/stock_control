@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ProductForm from '../../../components/Foms/productForm/productForm';
+import ProductForm from '../../../components/forms/productForm/productForm';
 
 
 function ModalProductForm({closeModal, id}) {
