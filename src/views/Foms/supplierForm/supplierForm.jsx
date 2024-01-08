@@ -7,9 +7,10 @@ import { Button } from "react-bootstrap";
 
 export default function SupplierForm() {
     
-    const suppliers = useSelector(state => state.suppiers);
+    const suppliers = useSelector(state => state.suppliers);
     const supplierId = useSelector(state => state.supplierId);
     const dispatch = useDispatch();
+    const selectedSupplier = suppliers.find((element) => element.id === supplierId);
     
     const [supplier, setSupplier] = useState({suppliers});
     
@@ -41,35 +42,35 @@ export default function SupplierForm() {
             <form onSubmit={handleSubmit} className={styles.form}>
                 
                 <label>Nombre</label><br></br>
-                <input autoComplete="off" name="name" value={supplier.first_name} onChange={handleChange} placeholder={supplier.first_name} type="text" />
+                <input autoComplete="off" name="name" value={supplier.first_name} onChange={handleChange} placeholder={selectedSupplier.first_name} type="text" />
                 <br></br>
                 
                 <label>Apellido</label><br></br>
-                <input autoComplete="off" name="lastName" value={supplier.lastName} onChange={handleChange} placeholder="apellido..." type="text" />
+                <input autoComplete="off" name="lastName" value={supplier.lastName} onChange={handleChange} placeholder={selectedSupplier.lastName} type="text" />
                 <br></br>
 
                 <label>Genero</label><br></br>
-                <input autoComplete="off" name="marca" value={supplier.genero} onChange={handleChange} placeholder="genero..." type="text" />
+                <input autoComplete="off" name="marca" value={supplier.genero} onChange={handleChange} placeholder={selectedSupplier.genero} type="text" />
                 <br></br>
 
                 <label>Direccion</label><br></br>
-                <input autoComplete="off" name="adress" value={supplier.adress} onChange={handleChange} placeholder="direccion..." type="text" />
+                <input autoComplete="off" name="adress" value={supplier.adress} onChange={handleChange} placeholder={selectedSupplier.adress} type="text" />
                 <br></br>
 
                 <label>Telefono</label><br></br>
-                <input autoComplete="off" name="phone" value={supplier.adress} placeholder="phone..." onChange={handleChange} type="text" />
+                <input autoComplete="off" name="phone" value={supplier.adress} onChange={handleChange} placeholder={selectedSupplier.phone} type="text" />
                 <br></br>
                 <br></br>
                 <label>Provincia</label><br></br>
-                <input autoComplete="off" name="province" value={supplier.province} placeholder="province..." onChange={handleChange} type="text" />
+                <input autoComplete="off" name="province" value={supplier.province} onChange={handleChange} placeholder={selectedSupplier.province} type="text" />
                 <br></br>
                 <br></br>
                 <label>Localidad</label><br></br>
-                <input autoComplete="off" name="state" value={supplier.adress} placeholder='state...' onChange={handleChange} type="text" />
+                <input autoComplete="off" name="state" value={supplier.adress} onChange={handleChange} placeholder={selectedSupplier.state} type="text" />
                 <br></br>
                 <br></br>
                 <label>Fecha de Nacimiento</label><br></br>
-                <input autoComplete="off" name="fecha_nac" value={supplier.adress} placeholder="fecha_nac..." onChange={handleChange} type="date" />
+                <input autoComplete="off" name="fecha_nac" value={supplier.adress} onChange={handleChange} type="date" />
                 <br></br>
                 <br></br>
 
