@@ -1,47 +1,56 @@
 import React from "react";
-import styles from "./pagination.module.css"
+import styles from "./pagination.module.css";
 
-export default function Paginate({ productsPerPage, videogames, paginate, currentPage }) {
+export default function Paginate({
+  productsPerPage,
+  videogames,
+  paginate,
+  currentPage,
+}) {
+  const pageNumbers = [];
 
-    const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(videogames / productsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
-    for (let i = 1; i <= Math.ceil(videogames / productsPerPage); i++) {
-        pageNumbers.push(i);
+  function handlePrev(event) {
+    if (currentPage > 1) {
+      paginate(currentPage - 1);
     }
-
-    function handlePrev(event) {
-        if (currentPage > 1) {
-            paginate(currentPage - 1)
-        }
+  }
+  function handleNext(event) {
+    if (currentPage < pageNumbers.length) {
+      paginate(currentPage + 1);
     }
-    function handleNext(event) {
-        if (currentPage < pageNumbers.length) {
-            paginate(currentPage + 1)
-        }
-    }
+  }
 
-    return (
-        <div className={styles.container}>
-            {
-                pageNumbers.length ?
-                    <button className={styles.prevPageButton} onClick={handlePrev}>prev</button> :
-                    null
-            }
-            {pageNumbers &&
-                pageNumbers.map((number, index) => {
-                    return (
-                        <button key={index} className={styles.paginate} onClick={() => paginate(number)}>{number}</button>
-                        // <li key={index} className={styles.pagination}>
-                        //     <a className={styles.page} href onClick={() => paginate(number)}>{number}</a>
-                        // </li>
-
-                    )
-                })}
-            {
-                pageNumbers.length ?
-                    <button className={styles.nextPageButton} onClick={handleNext}>next</button> :
-                    null
-            }
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      {pageNumbers.length ? (
+        <button className={styles.prevPageButton} onClick={handlePrev}>
+          prev
+        </button>
+      ) : null}
+      {pageNumbers &&
+        pageNumbers.map((number, index) => {
+          return (
+            <button
+              key={index}
+              className={styles.paginate}
+              onClick={() => paginate(number)}
+            >
+              {number}
+            </button>
+            // <li key={index} className={styles.pagination}>
+            //     <a className={styles.page} href onClick={() => paginate(number)}>{number}</a>
+            // </li>
+          );
+        })}
+      {pageNumbers.length ? (
+        <button className={styles.nextPageButton} onClick={handleNext}>
+          next
+        </button>
+      ) : null}
+    </div>
+  );
 }

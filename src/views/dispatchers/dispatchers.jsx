@@ -1,9 +1,5 @@
-import styles from './dispatchers.module.css'
+import styles from "./dispatchers.module.css";
 
-export default function Dispatchers(){
-    return (
-        <div className={styles.container}>
-            
-        </div>
-    )
+export default function Dispatchers() {
+  return <div className={styles.container}></div>;
 }
