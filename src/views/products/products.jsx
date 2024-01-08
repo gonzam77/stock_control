@@ -1,8 +1,10 @@
-import styles from './grid.module.css';
+import styles from './products.module.css';
 import Table from 'react-bootstrap/Table';
 import ModalProductForm from '../../components/modals/modalProductForm/modalProductForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 export default function Grid () {
@@ -24,6 +26,16 @@ export default function Grid () {
     return (
         <div className={styles.container}>
 
+            <div className={styles.titleContainer}>
+                <Link to="/products" className={styles.link}>
+                    <Button variant="info">Cargar nuevo</Button>
+                </Link>
+                <Link to="/" className={styles.link}>
+                    <Button variant="info">Carta</Button>
+                </Link>
+            </div>
+
+
             <h1 className={styles.title}>Productos</h1>
 
             <Table striped bordered hover>
@@ -34,7 +46,7 @@ export default function Grid () {
                     <th>MARCA</th>
                     <th>STOCK</th>
                     <th>PRECIO</th>
-                    <th>DETALLE</th>
+                    <th>MODIFICAR</th>
                     </tr>
                 </thead>
                 <tbody>

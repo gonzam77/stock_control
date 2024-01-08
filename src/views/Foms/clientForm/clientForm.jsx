@@ -12,7 +12,7 @@ export default function ClientForm() {
     const dispatch = useDispatch();
     const selectedlClient = clients.find((element) => element.id === clientId);
     
-    const [client, setClient] = useState({clients});
+    const [client, setClient] = useState(clients);
     
     function handleSubmit(event) {
        event.preventDefault();

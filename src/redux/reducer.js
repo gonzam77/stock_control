@@ -26,10 +26,10 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
     switch (type) {
-        case 'INSERT_SUPPLIERS':
+        case 'CREATE_PRODUCT':
             return {
                 ...state,
-                suppliers: payload
+                products: [ ...state.products, payload ]
             };
         case 'GET_SUPPLIER_ID':
             return {
@@ -39,12 +39,7 @@ export default function reducer(state = initialState, { type, payload }) {
         case 'EDIT_SUPPLIER':
             return {
                 ...state,
-                suppliers: [ ...state.suppliers, ]
-            };
-        case 'INSERT_CLIENTS':
-            return {
-                ...state,
-                clients: payload
+                suppliers: payload
             };
         case 'GET_CLIENT_ID':
             return {
@@ -54,12 +49,7 @@ export default function reducer(state = initialState, { type, payload }) {
         case 'EDIT_CLIENT':
             return {
                 ...state,
-                clients: [ ...state.clients, ]
-            };
-        case 'INSERT_PRODUCTS':
-            return {
-                ...state,
-                products: payload
+                clients: payload
             };
         case 'GET_PRODUCT_ID':
             return {
@@ -69,7 +59,7 @@ export default function reducer(state = initialState, { type, payload }) {
         case 'EDIT_PRODUCT':
             return {
                 ...state,
-                products: [ ...state.products, ]
+                products: payload
             };
         case 'SHOW_MODAL':
             return {
