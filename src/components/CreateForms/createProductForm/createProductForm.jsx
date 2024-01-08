@@ -1,13 +1,12 @@
 import { useState } from "react";
 import styles from './createProductForm.module.css';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from '../../../redux/actions'
 import { Button } from "react-bootstrap";
 
 
 export default function CreateProductForm() {
     
-    const products = useSelector(state => state.products);
     const dispatch = useDispatch();
 
     
@@ -30,7 +29,7 @@ export default function CreateProductForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        dispatch(actions.createProduct(products))
+        dispatch(actions.createProduct(newProduct))
     };
     
     

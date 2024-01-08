@@ -1,6 +1,6 @@
 import styles from './suppliers.module.css';
 import Table from 'react-bootstrap/Table';
-import ModalSuppliersForm from '../../components/modals/modalSupplierForm/modalSupllierForm';
+import ModalSuppliersForm from '../../views/modals/modalSupplierForm/modalSupllierForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 
