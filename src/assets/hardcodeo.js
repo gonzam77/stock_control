@@ -1,5 +1,3 @@
-import { ListGroupItem } from "react-bootstrap";
-
 export const productos = [
     {
         id: 1,
@@ -59,7 +57,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 1,
+        id: 7,
         name: 'Cloro',
         price: 2800,
         image: 'https://http2.mlstatic.com/D_NQ_NP_2X_650357-MLA51119544220_082022-F.webp',
@@ -68,7 +66,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 2,
+        id: 8,
         name: 'Alguicida',
         price: 1800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_629966-MLA51719244569_092022-F.webp',
@@ -77,7 +75,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 3,
+        id: 9,
         name: 'Clarificante',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_743214-MLA69589121231_052023-F.webp',
@@ -86,7 +84,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 4,
+        id: 10,
         name: 'Pastillas triple accion',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_946741-MLA71754576106_092023-F.webp',
@@ -95,7 +93,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 5,
+        id: 11,
         name: 'ph+',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_982007-MLA41524186815_042020-F.webp',
@@ -104,7 +102,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 6,
+        id: 12,
         name: 'ph-',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_715644-MLA69803444656_062023-F.webp',
@@ -113,7 +111,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 1,
+        id: 13,
         name: 'Cloro',
         price: 2800,
         image: 'https://http2.mlstatic.com/D_NQ_NP_2X_650357-MLA51119544220_082022-F.webp',
@@ -122,7 +120,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 2,
+        id: 14,
         name: 'Alguicida',
         price: 1800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_629966-MLA51719244569_092022-F.webp',
@@ -131,7 +129,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 3,
+        id: 15,
         name: 'Clarificante',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_743214-MLA69589121231_052023-F.webp',
@@ -140,7 +138,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 4,
+        id: 16,
         name: 'Pastillas triple accion',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_946741-MLA71754576106_092023-F.webp',
@@ -149,7 +147,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 5,
+        id: 17,
         name: 'ph+',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_982007-MLA41524186815_042020-F.webp',
@@ -158,7 +156,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 6,
+        id: 18,
         name: 'ph-',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_715644-MLA69803444656_062023-F.webp',
@@ -167,7 +165,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 1,
+        id: 19,
         name: 'Cloro',
         price: 2800,
         image: 'https://http2.mlstatic.com/D_NQ_NP_2X_650357-MLA51119544220_082022-F.webp',
@@ -176,7 +174,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 2,
+        id: 20,
         name: 'Alguicida',
         price: 1800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_629966-MLA51719244569_092022-F.webp',
@@ -185,7 +183,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 3,
+        id: 21,
         name: 'Clarificante',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_743214-MLA69589121231_052023-F.webp',
@@ -194,7 +192,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 4,
+        id: 22,
         name: 'Pastillas triple accion',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_946741-MLA71754576106_092023-F.webp',
@@ -203,7 +201,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 5,
+        id: 23,
         name: 'ph+',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_982007-MLA41524186815_042020-F.webp',
@@ -212,7 +210,7 @@ export const productos = [
         description:'Esta es la desccripcion'
     },
     {
-        id: 6,
+        id: 24,
         name: 'ph-',
         price: 2800,
         image:'https://http2.mlstatic.com/D_NQ_NP_2X_715644-MLA69803444656_062023-F.webp',
@@ -238,7 +236,7 @@ export const clientes = [
         fecha_actualizacion:''
     },
     {
-        id:1,
+        id:2,
         first_name:'Juan',
         lastName:'Perez',
         genero: 'M',
@@ -252,7 +250,7 @@ export const clientes = [
         fecha_actualizacion:''
     },
     {
-        id:1,
+        id:3,
         first_name:'Juan',
         lastName:'Perez',
         genero: 'M',
@@ -266,7 +264,7 @@ export const clientes = [
         fecha_actualizacion:''
     },
     {
-        id:1,
+        id:4,
         first_name:'Juan',
         lastName:'Perez',
         genero: 'M',
@@ -280,7 +278,7 @@ export const clientes = [
         fecha_actualizacion:''
     },
     {
-        id:1,
+        id:5,
         first_name:'Juan',
         lastName:'Perez',
         genero: 'M',
@@ -292,5 +290,67 @@ export const clientes = [
         fecha_nac:'26/04/1989',
         fecha_creacion:'',
         fecha_actualizacion:''
+    }
+]
+
+export const suppliers = [
+    {    
+        id:1,
+        first_name:'Juan',
+        lastName:'Perez',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:''    
+    },
+    {     
+        id:2,
+        first_name:'Juan',
+        lastName:'Perez',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:''        
+    }
+]
+
+export const users = [
+    {
+        id:1,
+        first_name:'Juan',
+        lastName:'Perez',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:''   
+    },
+    {   
+        id:2,
+        first_name:'Juan',
+        lastName:'Perez',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:''   
     }
 ]

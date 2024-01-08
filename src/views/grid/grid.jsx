@@ -1,7 +1,6 @@
 import styles from './grid.module.css';
 import Table from 'react-bootstrap/Table';
-import { productos } from '../../assets/hardcodeo';
-import ModalProductForm from '../../components/modalProductForm/modalProductForm';
+import ModalProductForm from '../../components/modals/modalProductForm/modalProductForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 
@@ -9,10 +8,13 @@ import * as actions from '../../redux/actions';
 export default function Grid () {
     
     const showModalState = useSelector(state => state.showModal);
+    const products = useSelector(state => state.products)
     const dispatch = useDispatch();
 
-    const openModal = () => {
+    const openModal = (id) => {
         dispatch(actions.showModal());
+        dispatch(actions.getProductId(id));
+
     };
 
     const closeModal = () => {    
@@ -21,6 +23,9 @@ export default function Grid () {
 
     return (
         <div className={styles.container}>
+
+            <h1 className={styles.title}>Productos</h1>
+
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -34,7 +39,7 @@ export default function Grid () {
                 </thead>
                 <tbody>
                 {
-                    productos.map((producto,index) => {
+                    products.map((producto,index) => {
                         return(
                             <tr key={index}>
                             <td>{producto.id}</td>
@@ -43,7 +48,7 @@ export default function Grid () {
                             <td>{producto.stock}</td>
                             <td>{producto.price}</td>
                             <td>
-                                <button onClick={openModal} id={producto.id}>Modificar</button>
+                                <button onClick={() => openModal(producto.id)} >Modificar</button>
                             </td>
                             </tr>                        
                         )

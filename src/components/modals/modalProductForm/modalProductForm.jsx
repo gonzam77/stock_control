@@ -20,7 +20,7 @@ function ModalProductForm({closeModal, id}) {
             </Modal.Body>
 
             <Modal.Footer>
-            <Button variant="info" onClick={closeModal}>Close</Button>
+            <Button variant="info" onClick={closeModal}>Confirmar</Button>
             </Modal.Footer>
         </Modal.Dialog>
         </div>

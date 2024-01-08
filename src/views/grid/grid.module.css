@@ -1,7 +1,6 @@
 .container {
     background: rgb(10,108,124);
     background: linear-gradient(90deg, rgba(10,108,124,1) 0%, rgba(0,245,253,1) 63%, rgba(0,212,255,1) 100%);
-    display: flex;
     width: 100vw;
     min-height: 100vh;
     justify-content: center;
@@ -9,37 +8,7 @@
     
 }
 
-.p{
-    color: white;
-    font-size: 2em;
-}
-
-
-.cards {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    height: 100%;
-}
-
-.loading {
-    background-image: none;
-    min-height: 100vh;
-    min-width: 100vw;
-    color: white;
-}
-
-select {
-    background: rgb(28, 0, 36);
-    background: linear-gradient(90deg, rgba(28, 0, 36, 1) 0%, rgba(88, 9, 121, 1) 19%, rgba(255, 253, 253, 1) 100%);
-    color: rgb(3, 0, 3);
-    border: 2px solid violet;
-    border-radius: 10px;
-    font-family: Comic Sans MS;
-    font-size: 1em;
-    margin: 5px;
-    margin-top: 10px;
+.title {
+    color: darkslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
