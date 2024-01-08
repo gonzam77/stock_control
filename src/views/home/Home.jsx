@@ -20,8 +20,8 @@ export default function Home() {
                     <Button variant="info">Tabla</Button>
                 </Link>
             </div>
-            <div>
-                <h1 className={styles.title}>Productos</h1>
+            <div className={styles.title}>
+                <h1>Productos</h1>
             </div>            
             <div className={styles.cards}>
                 {

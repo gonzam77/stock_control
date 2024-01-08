@@ -17,7 +17,6 @@ import CreateProductForm from './components/createForms/createProductForm/create
 export const urlDev = 'http://localhost:3000';
 
 function App() {
-  //const location = useLocation()
   
   return (
     <div className="App">

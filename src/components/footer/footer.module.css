@@ -1,4 +1,12 @@
 .container {
-    border:2px solid red;
+    min-width: 100vw;
+    min-height: 7vh;
+    background-color: rgba(216, 215, 215, 0.897);
+    display: flex;
+    justify-content: left;
     position: relative;
+    z-index: 2;
+    padding-left: 20px;
+    justify-content: center;
+    align-items: center;
 }
