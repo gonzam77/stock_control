@@ -7,19 +7,18 @@ import { Button } from "react-bootstrap";
 
 export default function ProductForm() {
     
-
-    
     const products = useSelector(state => state.products);
     const productId = useSelector(state => state.productId);
     const dispatch = useDispatch();
 
     const selectedProduct = products.find((element) => element.id === productId);
     
-    const [product, setProduct] = useState({products});
+    const [product, setProduct] = useState(products);
     
     function handleSubmit(event) {
         event.preventDefault();
-       dispatch(actions.editProduct(product))
+        console.log(product);
+        dispatch(actions.editProduct(products))
     };
     
     
@@ -63,7 +62,7 @@ export default function ProductForm() {
                 <br></br>
 
                 <Button variant="info" type="submit">Guardar</Button>
-                
+
             </form>
         </div>
     )

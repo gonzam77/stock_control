@@ -1,5 +1,3 @@
-//import logo from './logo.svg';
-//import { useLocation } from 'react-router-dom';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './views/home/Home';
@@ -7,14 +5,14 @@ import Nav from './components/nav/nav';
 import Clients from './views/clients/clients';
 import Suppliers from './views/suppliers/suppliers';
 import Dispatchers from './views/dispatchers/dispatchers';
-import ProductList from './views/productsList/productList';
 import ProductDetail from './views/productDetail/productDetail';
 import Users from './views/users/users';
 import About from './views/about/about';
 import Footer from './components/footer/footer';
 import Sales from './views/sales/sales';
 import SaleInvoice from './views/salesInvoice/salesInvoice';
-import Grid from './views/grid/grid';
+import Products from './views/products/products';
+import CreateProductForm from './views/CreateForms/createProductForm/createProductForm';
 
 export const urlDev = 'http://localhost:3000';
 
@@ -34,12 +32,12 @@ function App() {
           <Route path="/suppliers" element={<Suppliers />} />
           <Route path="/users" element={<Users />} />
           <Route path="/dispatchers" element={<Dispatchers />} />
-          <Route path="/productList" element={<ProductList />} />
           <Route path="/productDetail" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/sales" element={<Sales />} />
+          <Route path="/createProduct" element={<CreateProductForm />} />
           <Route path="/saleInvoice" element={<SaleInvoice />} />
-          <Route path="/grid" element={<Grid />} />
+          <Route path="/products" element={<Products />} />
         </Routes>
       <Footer />  
       </div>

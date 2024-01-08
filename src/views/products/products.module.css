@@ -9,6 +9,21 @@
 }
 
 .title {
+    display: inline-block;
     color: darkslategray;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8%;
+    gap: 10px;
+}
+
+.link {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
 }

@@ -10,15 +10,15 @@ export default function ClientForm() {
     const clients = useSelector(state => state.clients);
     const clientId = useSelector(state => state.clientId);
     const dispatch = useDispatch();
+    const selectedlClient = clients.find((element) => element.id === clientId);
     
-    const [client, setClient] = useState({clients});
+    const [client, setClient] = useState(clients);
     
     function handleSubmit(event) {
        event.preventDefault();
        dispatch(actions.editProduct(client))
     };
 
-    const selectedlClient = clients.find((element) => element.id === clientId);
     
     function handleChange(event) {
         
@@ -74,7 +74,7 @@ export default function ClientForm() {
                 <br></br>
 
                 <Button variant="info" type="submit">Guardar</Button>
-                
+
             </form>
         </div>
     )

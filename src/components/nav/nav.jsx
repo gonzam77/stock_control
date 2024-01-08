@@ -22,10 +22,10 @@ export default function NavMenu() {
                         <Link to="/dispatchers" className={styles.link}>Tramportistas</Link>
                         <Link to="/movements" className={styles.link}>Movimiento</Link>
                         {
-                            location.pathname ==='/' ? <Link to="/grid" className={styles.link}>Tabla</Link> : null
+                            location.pathname ==='/' ? <Link to="/products" className={styles.link}>Tabla</Link> : null
                         }
                         {
-                            location.pathname ==='/grid' ? <Link to="/" className={styles.link}>Cartas</Link> : null
+                            location.pathname ==='/products' ? <Link to="/" className={styles.link}>Cartas</Link> : null
                         }
                     </Nav>
                 </Navbar.Collapse>

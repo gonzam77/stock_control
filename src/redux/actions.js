@@ -11,6 +11,12 @@ import { GET_ALL_PRODUCTS,
 } from './actionTypes'
 
 
+export const createProduct = (data) => {
+    return {
+        type: 'CREATE_PRODUCT',
+        payload: data
+    }
+}
 
 export const getSupplierId = (id) => {
     return {
