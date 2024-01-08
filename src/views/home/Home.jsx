@@ -37,6 +37,7 @@ export default function Home() {
             <Card
               key={index}
               id={product.id}
+              code={product.code}
               name={product.name}
               image={product.image}
               price={product.price}

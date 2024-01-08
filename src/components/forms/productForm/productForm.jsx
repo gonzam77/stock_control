@@ -35,6 +35,7 @@ export default function ProductForm() {
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.divs}>
+          <label>Nombre</label>
           <input
             autoComplete="off"
             name="name"
@@ -45,6 +46,7 @@ export default function ProductForm() {
           />
         </div>
         <div className={styles.divs}>
+          <label>Marca</label>
           <input
             autoComplete="off"
             name="marca"
@@ -55,6 +57,7 @@ export default function ProductForm() {
           />
         </div>
         <div className={styles.divs}>
+          <label>Stock</label>
           <input
             autoComplete="off"
             name="stock"
@@ -65,6 +68,7 @@ export default function ProductForm() {
           />
         </div>
         <div className={styles.divs}>
+          <label>Precio</label>
           <input
             autoComplete="off"
             name="price"

@@ -35,11 +35,17 @@ export default function Grid() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
+              <th>COD</th>
               <th>PRODUCTO</th>
               <th>MARCA</th>
-              <th>STOCK</th>
+              <th>PROVEEDOR</th>
               <th>PRECIO</th>
+              <th>STOCK</th>
+              <th>UNIDAD MEDIDA</th>
+              <th>CANTIDAD MIN</th>
+              <th>CANTIDAD MAX</th>
+              <th>FECHA ALTA</th>
+              <th>FECHA VTO</th>
               <th>MODIFICAR</th>
             </tr>
           </thead>
@@ -47,11 +53,17 @@ export default function Grid() {
             {products.map((producto, index) => {
               return (
                 <tr key={index}>
-                  <td>{producto.id}</td>
+                  <td>{producto.code}</td>
                   <td>{producto.name}</td>
                   <td>{producto.marca}</td>
-                  <td>{producto.stock}</td>
+                  <td>{producto.id_proveedor}</td>
                   <td>{producto.price}</td>
+                  <td>{producto.stock}</td>
+                  <td>{producto.unidad_medida}</td>
+                  <td>{producto.cant_min}</td>
+                  <td>{producto.cant_max}</td>
+                  <td>{producto.fecha_alta}</td>
+                  <td>{producto.fecha_vto}</td>
                   <td>
                     <Edit id={producto.id}></Edit>
                   </td>
