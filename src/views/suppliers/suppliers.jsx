@@ -34,9 +34,9 @@ export default function Suppliers () {
                         <tr>
                         <th>id</th>
                         <th>Nombre</th>
-                        <th>Genero</th>
-                        <th>Direccion</th>
+                        <th>Email</th>
                         <th>Telefono</th>
+                        <th>Direccion</th>
                         <th>Provincia</th>
                         <th>Localidad</th>
                         <th>Fecha Nacimiento</th>
@@ -52,9 +52,9 @@ export default function Suppliers () {
                                 <tr key={index}>
                                 <td>{supplier.id}</td>
                                 <td>{supplier.first_name} {supplier.lastName}</td>
-                                <td>{supplier.genero}</td>
-                                <td>{supplier.adress}</td>
+                                <td>{supplier.email}</td>
                                 <td>{supplier.phone}</td>
+                                <td>{supplier.adress}</td>
                                 <td>{supplier.province}</td>
                                 <td>{supplier.state}</td>
                                 <td>{supplier.fecha_nac}</td>
