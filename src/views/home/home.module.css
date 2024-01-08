@@ -1,26 +1,15 @@
 .container {
-    background-color: rgb(34, 34, 35);
-    display: flex;
+    background: rgb(10,108,124);
+    background: linear-gradient(90deg, rgba(10,108,124,1) 0%, rgba(0,245,253,1) 63%, rgba(0,212,255,1) 100%);
     width: 100vw;
-    height: 100;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    
+    padding-bottom: 15px;
 }
-
-.link {
-    text-decoration: none;
-}
-
-.p{
-    color: white;
-    font-size: 2em;
-}
-
 
 .cards {
-    margin-top: 15px;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,21 +18,25 @@
     height: 100%;
 }
 
-.loading {
-    background-image: none;
-    min-height: 100vh;
-    min-width: 100vw;
-    color: white;
+.title {
+    display: flex;
+    color: darkslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-width: 90vw;
+    justify-content: left;
+    padding-left: 20vh;
 }
 
-select {
-    background: rgb(28, 0, 36);
-    background: linear-gradient(90deg, rgba(28, 0, 36, 1) 0%, rgba(88, 9, 121, 1) 19%, rgba(255, 253, 253, 1) 100%);
-    color: rgb(3, 0, 3);
-    border: 2px solid violet;
-    border-radius: 10px;
-    font-family: Comic Sans MS;
-    font-size: 1em;
-    margin: 5px;
-    margin-top: 10px;
+.link {
+    margin-top: 10vh;
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8%;
+    gap: 10px;
 }

@@ -1,0 +1,23 @@
+.container {
+    background: rgb(10,108,124);
+    background: linear-gradient(90deg, rgba(10,108,124,1) 0%, rgba(0,245,253,1) 63%, rgba(0,212,255,1) 100%);
+    width: 99vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.title {
+    display: flex;
+    color: darkslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 8vh;
+    margin-bottom: 20px;
+    padding-left: 20vh;
+}
+
+.tableContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+}
