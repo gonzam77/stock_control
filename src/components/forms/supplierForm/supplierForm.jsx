@@ -12,11 +12,11 @@ export default function SupplierForm() {
     (element) => element.id === supplierId
   );
 
-  const [supplier, setSupplier] = useState({ suppliers });
+  const [supplier, setSupplier] = useState(suppliers);
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(actions.editSupplier(supplier));
+    dispatch(actions.editSupplier(suppliers));
   }
 
   function handleChange(event) {
@@ -40,7 +40,7 @@ export default function SupplierForm() {
         <br></br>
         <input
           autoComplete="off"
-          name="name"
+          name="first_name"
           value={supplier.first_name}
           onChange={handleChange}
           placeholder={selectedSupplier.first_name}

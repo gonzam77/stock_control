@@ -8,11 +8,9 @@ export default function ProductForm() {
   const products = useSelector((state) => state.products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
-
   const selectedProduct = products.find((element) => element.id === productId);
 
   const [product, setProduct] = useState(products);
-  console.log(product);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,9 +19,7 @@ export default function ProductForm() {
 
   function handleChange(event) {
     const target = event.target.name;
-    //console.log('target: ',target);
     const value = event.target.value;
-    //console.log('value: ',value);
 
     const editedProduct = products.map((element) => {
       if (element.id === productId) {
