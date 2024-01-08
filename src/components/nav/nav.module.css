@@ -1,23 +1,22 @@
 .container {
-    min-width: 100vw;
-    background-color: rgba(245, 242, 242, 0.892);
-    display: flex;
-    justify-content: left;
-    position: fixed;
-    z-index: 2;
-    max-height: 7vh;
-    padding-left: 20px;
+  min-width: 100vw;
+  background-color: rgba(245, 242, 242, 0.892);
+  display: flex;
+  justify-content: left;
+  position: fixed;
+  z-index: 2;
+  max-height: 7vh;
+  padding-left: 20px;
 }
 
-.link{
-    font-size: 1.1em;
-    color: rgb(3, 121, 125);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: none;
-    margin: 5px;
-    margin-left: 10px;
+.link {
+  font-size: 1.1em;
+  color: rgb(3, 121, 125);
+  text-decoration: none;
+  margin: 5px;
+  margin-left: 10px;
 }
 
 .link:hover {
-    font-size: 1.2em;
+  color: white;
 }

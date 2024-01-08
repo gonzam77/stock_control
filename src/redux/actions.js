@@ -1,79 +1,77 @@
-
 import axios from "axios";
-import { GET_ALL_PRODUCTS,
-    GET_ALL_CLIENTS,
-    GET_ALL_SUPPLIERS,
-    GET_ALL_SHIPPING,
-    GET_ALL_ORDERS,
-    GET_ALL_ACCOUNTS, 
-    GET_ALL_USERS
-} from './actionTypes'
-
+import {
+  GET_ALL_PRODUCTS,
+  GET_ALL_CLIENTS,
+  GET_ALL_SUPPLIERS,
+  GET_ALL_SHIPPING,
+  GET_ALL_ORDERS,
+  GET_ALL_ACCOUNTS,
+  GET_ALL_USERS,
+} from "./actionTypes";
 
 export const createProduct = (data) => {
-    return {
-        type: 'CREATE_PRODUCT',
-        payload: data
-    }
-}
+  return {
+    type: "CREATE_PRODUCT",
+    payload: data,
+  };
+};
 
 export const getSupplierId = (id) => {
-    return {
-        type: 'GET_SUPPLIER_ID',
-        payload: id
-    }
-}
+  return {
+    type: "GET_SUPPLIER_ID",
+    payload: id,
+  };
+};
 
 export const editSupplier = (data) => {
-    return {    
-        type: 'EDIT_SUPPLIER',
-        payload: data
-    }
-}
+  return {
+    type: "EDIT_SUPPLIER",
+    payload: data,
+  };
+};
 
 export const getClientId = (id) => {
-    return {
-        type: 'GET_CLIENT_ID',
-        payload: id
-    }
-}
+  return {
+    type: "GET_CLIENT_ID",
+    payload: id,
+  };
+};
 
 export const editClient = (data) => {
-    return {    
-        type: 'EDIT_CLIENT',
-        payload: data
-    }
-}
+  return {
+    type: "EDIT_CLIENT",
+    payload: data,
+  };
+};
 
 export const getProductId = (id) => {
-    return {
-        type: 'GET_PRODUCT_ID',
-        payload: id
-    }
-}
+  return {
+    type: "GET_PRODUCT_ID",
+    payload: id,
+  };
+};
 
 export const editProduct = (data) => {
-    return {    
-        type: 'EDIT_PRODUCT',
-        payload: data
-    }
-}
-
+  return {
+    type: "EDIT_PRODUCT",
+    payload: data,
+  };
+};
 
 export const showModal = () => ({
-    type: 'SHOW_MODAL',
-  });
-  
+  type: "SHOW_MODAL",
+});
+
 export const hideModal = () => ({
-type: 'HIDE_MODAL',
+  type: "HIDE_MODAL",
 });
 
 export const showCreateModal = () => ({
-    type: 'SHOW_CREATE_MODAL',
-  });
-  
+  type: "SHOW_CREATE_MODAL",
+});
+
 export const hideCreateModal = () => ({
-type: 'HIDE_CREATE_MODAL',
+  type: "HIDE_CREATE_MODAL",
 });
 
 // export const getAllProducts = () => {

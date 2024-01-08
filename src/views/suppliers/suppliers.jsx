@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import ModalSuppliersForm from '../../views/modals/modalSupplierForm/modalSupllierForm';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
+import { Button } from "react-bootstrap";
 
 
 export default function Suppliers () {
@@ -61,7 +62,7 @@ export default function Suppliers () {
                                 <td>{supplier.fecha_creacion}</td>
                                 <td>{supplier.fecha_actualizacion}</td>
                                 <td>
-                                    <button onClick={() => openModal(supplier.id)} >Modificar</button>
+                                    <Button variant='info' onClick={() => openModal(supplier.id)} >Modificar</Button>
                                 </td>
                                 </tr>                        
                             )
