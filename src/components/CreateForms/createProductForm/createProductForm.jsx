@@ -58,7 +58,7 @@ export default function CreateProductForm() {
             name="stock"
             value={newProduct.stock}
             onChange={handleChange}
-            placeholder="Stck..."
+            placeholder="Stock..."
             type="text"
           />
         </div>
