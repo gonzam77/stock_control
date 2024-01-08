@@ -24,48 +24,52 @@ export default function Suppliers () {
     return (
         <div className={styles.container}>
 
-            <h1 className={styles.title}>Proveedores</h1>
+            <div className={styles.title}>
+                <h1>Proveedores</h1>
+            </div>
 
-            <Table striped bordered hover>
-            <thead>
-                    <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Genero</th>
-                    <th>Direccion</th>
-                    <th>Telefono</th>
-                    <th>Provincia</th>
-                    <th>Localidad</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Fecha Creacion</th>
-                    <th>Fecha Actualizacion</th>
-                    <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    suppliers.map((supplier,index) => {
-                        return(
-                            <tr key={index}>
-                            <td>{supplier.id}</td>
-                            <td>{supplier.first_name} {supplier.lastName}</td>
-                            <td>{supplier.genero}</td>
-                            <td>{supplier.adress}</td>
-                            <td>{supplier.phone}</td>
-                            <td>{supplier.province}</td>
-                            <td>{supplier.state}</td>
-                            <td>{supplier.fecha_nac}</td>
-                            <td>{supplier.fecha_creacion}</td>
-                            <td>{supplier.fecha_actualizacion}</td>
-                            <td>
-                                <button onClick={() => openModal(supplier.id)} >Modificar</button>
-                            </td>
-                            </tr>                        
-                        )
-                    })
-                }
-                </tbody>
-            </Table>
+            <div className={styles.tableContainer}>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Genero</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Provincia</th>
+                        <th>Localidad</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Fecha Creacion</th>
+                        <th>Fecha Actualizacion</th>
+                        <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        suppliers.map((supplier,index) => {
+                            return(
+                                <tr key={index}>
+                                <td>{supplier.id}</td>
+                                <td>{supplier.first_name} {supplier.lastName}</td>
+                                <td>{supplier.genero}</td>
+                                <td>{supplier.adress}</td>
+                                <td>{supplier.phone}</td>
+                                <td>{supplier.province}</td>
+                                <td>{supplier.state}</td>
+                                <td>{supplier.fecha_nac}</td>
+                                <td>{supplier.fecha_creacion}</td>
+                                <td>{supplier.fecha_actualizacion}</td>
+                                <td>
+                                    <button onClick={() => openModal(supplier.id)} >Modificar</button>
+                                </td>
+                                </tr>                        
+                            )
+                        })
+                    }
+                    </tbody>
+                </Table>
+            </div>    
             {showModalState && <ModalSuppliersForm closeModal={closeModal} />}
         </div>
   );

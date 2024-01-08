@@ -23,7 +23,9 @@ export default function Clients(){
     return (
         <div className={styles.container}>
             
-            <h1 className={styles.title}>Clientes</h1>
+            <div className={styles.title}>
+                <h1>Clientes</h1>
+            </div>
             
             <Table striped bordered hover>
                 <thead>

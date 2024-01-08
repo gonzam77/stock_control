@@ -35,39 +35,40 @@ export default function Grid () {
                 </Link>
             </div>
 
-
             <h1 className={styles.title}>Productos</h1>
-
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                    <th>id</th>
-                    <th>PRODUCTO</th>
-                    <th>MARCA</th>
-                    <th>STOCK</th>
-                    <th>PRECIO</th>
-                    <th>MODIFICAR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    products.map((producto,index) => {
-                        return(
-                            <tr key={index}>
-                            <td>{producto.id}</td>
-                            <td>{producto.name}</td>
-                            <td>{producto.marca}</td>
-                            <td>{producto.stock}</td>
-                            <td>{producto.price}</td>
-                            <td>
-                                <button onClick={() => openModal(producto.id)} >Modificar</button>
-                            </td>
-                            </tr>                        
-                        )
-                    })
-                }
-                </tbody>
-            </Table>
+            
+            <div className={styles.tableContainer}>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>id</th>
+                        <th>PRODUCTO</th>
+                        <th>MARCA</th>
+                        <th>STOCK</th>
+                        <th>PRECIO</th>
+                        <th>MODIFICAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        products.map((producto,index) => {
+                            return(
+                                <tr key={index}>
+                                <td>{producto.id}</td>
+                                <td>{producto.name}</td>
+                                <td>{producto.marca}</td>
+                                <td>{producto.stock}</td>
+                                <td>{producto.price}</td>
+                                <td>
+                                    <button onClick={() => openModal(producto.id)} >Modificar</button>
+                                </td>
+                                </tr>                        
+                            )
+                        })
+                    }
+                    </tbody>
+                </Table>
+            </div>
             {showModalState && <ModalProductForm closeModal={closeModal} />}
         </div>
   );
