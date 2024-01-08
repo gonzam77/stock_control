@@ -25,7 +25,6 @@ function BasicExample({ id, name, marca, price, stock, description}) {
       <Card className={styles.card} style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title>{name} {marca}</Card.Title>
-          <Card.Text>{description}</Card.Text>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: {price}</Card.Text>
               <Button variant="info" onClick={() => openModal(id)} >Modificar</Button>
