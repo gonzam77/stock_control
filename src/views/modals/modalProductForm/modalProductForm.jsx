@@ -4,7 +4,10 @@ import ProductForm from "../../../components/forms/productForm/productForm";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../redux/actions";
 
+
+
 function ModalProductForm({ id }) {
+
   const dispatch = useDispatch();
 
   const closeModal = () => {
@@ -22,11 +25,11 @@ function ModalProductForm({ id }) {
           <ProductForm id={id} />
         </Modal.Body>
 
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="dark" onClick={closeModal}>
             Confirmar
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal.Dialog>
     </div>
   );

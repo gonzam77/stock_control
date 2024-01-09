@@ -11,3 +11,7 @@
 .detailButton {
   margin-right: 10px;
 }
+
+.name {
+  color: rgb(4, 100, 100) !important;
+}

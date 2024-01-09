@@ -21,13 +21,13 @@ export default function Home() {
       <div className={styles.titleContainer}>
         <Button
           className={styles.createButton}
-          variant="dark"
+          variant="success"
           onClick={openCreateModal}>
           Cargar Nuevo
         </Button>
 
         <Link to="/products" className={styles.link}>
-          <Button variant="dark">Tabla</Button>
+          <Button variant="danger">Tabla</Button>
         </Link>
       </div>
 

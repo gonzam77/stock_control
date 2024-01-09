@@ -12,10 +12,11 @@ export default function ProductForm() {
 
   const [product, setProduct] = useState(products);
 
-  function handleSubmit(event) {
+  const closeModal = (event) => {
     event.preventDefault();
     dispatch(actions.editProduct(products));
-  }
+    dispatch(actions.hideModal());
+  };
 
   function handleChange(event) {
     const target = event.target.name;
@@ -33,15 +34,24 @@ export default function ProductForm() {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form}>
+        <div className={styles.divs}>
+          <label>Code</label>
+          <input
+            autoComplete="off"
+            name="code"
+            value={selectedProduct.code}
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
         <div className={styles.divs}>
           <label>Nombre</label>
           <input
             autoComplete="off"
             name="name"
-            value={product.name}
+            value={selectedProduct.name}
             onChange={handleChange}
-            placeholder={selectedProduct.name}
             type="text"
           />
         </div>
@@ -50,9 +60,18 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="marca"
-            value={product.marca}
+            value={selectedProduct.marca}
             onChange={handleChange}
-            placeholder={selectedProduct.marca}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Proveedor</label>
+          <input
+            autoComplete="off"
+            name="id_proveedor"
+            value={selectedProduct.id_proveedor}
+            onChange={handleChange}
             type="text"
           />
         </div>
@@ -61,9 +80,8 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="stock"
-            value={product.stock}
+            value={selectedProduct.stock}
             onChange={handleChange}
-            placeholder={selectedProduct.stock}
             type="text"
           />
         </div>
@@ -72,16 +90,49 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="price"
-            value={product.price}
+            value={selectedProduct.price}
             onChange={handleChange}
-            placeholder={selectedProduct.price}
             type="text"
           />
         </div>
-
-        <Button variant="dark" type="submit">
-          Guardar
-        </Button>
+        <div className={styles.divs}>
+          <label>Unidad Medida</label>
+          <input
+            autoComplete="off"
+            name="unidad_medida"
+            value={selectedProduct.unidad_medida}
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Cant Min</label>
+          <input
+            autoComplete="off"
+            name="cant_min"
+            value={selectedProduct.cant_min}
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Cant Max</label>
+          <input
+            autoComplete="off"
+            name="cant_max"
+            value={selectedProduct.cant_max}
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
+        <div class="modal-footer">
+          <Button variant="danger" onClick={closeModal}>
+            Cancelar
+          </Button>
+          <Button variant="success" onClick={closeModal} >
+            Confirmar
+          </Button>
+        </div>
       </form>
     </div>
   );

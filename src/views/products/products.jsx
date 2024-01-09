@@ -28,13 +28,13 @@ export default function Grid() {
       <div className={styles.titleContainer}>
         <Button
           className={styles.createButton}
-          variant="dark"
+          variant="success"
           onClick={openCreateModal}>
           Cargar Nuevo
         </Button>
 
         <Link to="/" className={styles.link}>
-          <Button variant="dark">Carta</Button>
+          <Button variant="danger">Carta</Button>
         </Link>
       </div>
 
@@ -75,7 +75,7 @@ export default function Grid() {
                   <td>{producto.fecha_vto}</td>
                   <td>
                     <Button
-                      variant="dark"
+                      variant="primary"
                       onClick={() => openModal(producto.id)}
                     >
                       Modificar
