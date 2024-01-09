@@ -1,0 +1,40 @@
+export const users = [
+    {
+        id:1,
+        cuil:'',
+        first_name:'Juan',
+        lastName:'Perez',
+        password:'1234',
+        dni:'12345678',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:'',
+        cargo:'Administrador',
+        estado:'Activo'   
+    },
+    {   
+        id:2,
+        cuil:'',
+        password:'1234',
+        first_name:'Juan',
+        lastName:'Perez',
+        dni:'12345678',
+        genero: 'M',
+        adress:'Calle 1',
+        email:'jueanperez@gmail.com',
+        phone:'2664489645',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        fecha_creacion:'',
+        fecha_actualizacion:'',
+        cargo:'Vendedor',
+        estado:'Activo'
+    }
+]
