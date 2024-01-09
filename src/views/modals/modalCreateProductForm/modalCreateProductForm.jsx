@@ -24,11 +24,11 @@ function ModalProductForm() {
           <CreateProductForm />
         </Modal.Body>
 
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="dark" onClick={closeCreateModal}>
             Confirmar
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal.Dialog>
     </div>
   );

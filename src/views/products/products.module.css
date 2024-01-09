@@ -15,7 +15,7 @@
 
 .title {
   display: flex;
-  color: darkslategray;
+  color: rgb(4, 70, 70);
   margin-bottom: 30px;
   padding-left: 20vh;
 }
