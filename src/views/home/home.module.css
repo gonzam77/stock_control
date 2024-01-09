@@ -43,3 +43,8 @@
   margin-right: 8%;
   gap: 10px;
 }
+
+.createButton {
+  margin-top: 10vh;
+  font-size: 1rem;
+}

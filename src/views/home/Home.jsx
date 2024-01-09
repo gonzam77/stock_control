@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ModalCreateProductForm from "../../views/modals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
-import Create from "../../components/buttons/create/create";
 
 export default function Home() {
   const products = useSelector((state) => state.products);
@@ -20,10 +19,15 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Create openCreateModal={openCreateModal}></Create>
+        <Button
+          className={styles.createButton}
+          variant="dark"
+          onClick={openCreateModal}>
+          Cargar Nuevo
+        </Button>
 
         <Link to="/products" className={styles.link}>
-          <Button variant="info">Tabla</Button>
+          <Button variant="dark">Tabla</Button>
         </Link>
       </div>
 

@@ -12,6 +12,8 @@ import Footer from "./components/footer/footer";
 import Sales from "./views/sales/sales";
 import SaleInvoice from "./views/salesInvoice/salesInvoice";
 import Products from "./views/products/products";
+import Deposits from './views/deposits/deposits';
+import Movements from './views/movements/movements';
 import CreateProductForm from './components/createFormsComponents/createProductForm/createProductForm'
 
 export const urlDev = "http://localhost:3000";
@@ -26,9 +28,11 @@ function App() {
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/users" element={<Users />} />
         <Route path="/dispatchers" element={<Dispatchers />} />
-        <Route path="/productDetail" element={<ProductDetail />} />
+        <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/sales" element={<Sales />} />
+        <Route path="/deposits" element={<Deposits />} />
+        <Route path="/movements" element={<Movements />} />
         <Route path="/createProduct" element={<CreateProductForm />} />
         <Route path="/saleInvoice" element={<SaleInvoice />} />
         <Route path="/products" element={<Products />} />

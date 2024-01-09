@@ -1,13 +1,11 @@
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import styles from "./products.module.css";
 import Table from "react-bootstrap/Table";
 import ModalProductForm from "../../views/modals/modalProductForm/modalProductForm";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../redux/actions";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import Edit from "../../components/buttons/edit/edit";
-import Create from "../../components/buttons/create/create";
 import ModalCreateProductForm from "../../views/modals/modalCreateProductForm/modalCreateProductForm";
+import * as actions from "../../redux/actions";
 
 export default function Grid() {
   const showModalState = useSelector((state) => state.showModal);
@@ -19,13 +17,24 @@ export default function Grid() {
     dispatch(actions.showCreateModal());
   };
 
+  const openModal = (id) => {
+    dispatch(actions.showModal());
+    dispatch(actions.getProductId(id));
+
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Create openCreateModal={openCreateModal}></Create>
+        <Button
+          className={styles.createButton}
+          variant="dark"
+          onClick={openCreateModal}>
+          Cargar Nuevo
+        </Button>
 
         <Link to="/" className={styles.link}>
-          <Button variant="info">Carta</Button>
+          <Button variant="dark">Carta</Button>
         </Link>
       </div>
 
@@ -65,7 +74,12 @@ export default function Grid() {
                   <td>{producto.fecha_alta}</td>
                   <td>{producto.fecha_vto}</td>
                   <td>
-                    <Edit id={producto.id}></Edit>
+                    <Button
+                      variant="dark"
+                      onClick={() => openModal(producto.id)}
+                    >
+                      Modificar
+                    </Button>
                   </td>
                 </tr>
               );

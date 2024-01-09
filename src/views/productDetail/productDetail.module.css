@@ -1,0 +1,19 @@
+.container {
+    /* background: rgb(10, 108, 124);
+    background: linear-gradient(
+      90deg,
+      rgba(10, 108, 124, 1) 0%,
+      rgba(0, 245, 253, 1) 63%,
+      rgba(0, 212, 255, 1) 100%
+    ); */
+    width: 99vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-top: 10vh;
+  }
+
+ button {
+    color: white !important;
+ }
