@@ -73,7 +73,7 @@ export default function CreateProductForm() {
           />
         </div>
 
-        <Button variant="info" type="submit">
+        <Button variant="dark" type="submit">
           Guardar
         </Button>
       </form>

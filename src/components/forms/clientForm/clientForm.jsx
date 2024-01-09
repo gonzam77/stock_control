@@ -130,7 +130,7 @@ export default function ClientForm() {
         <br></br>
         <br></br>
 
-        <Button variant="info" type="submit">
+        <Button variant="dark" type="submit">
           Guardar
         </Button>
       </form>

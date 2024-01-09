@@ -25,7 +25,7 @@ function ModalProductForm() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="info" onClick={closeCreateModal}>
+          <Button variant="dark" onClick={closeCreateModal}>
             Confirmar
           </Button>
         </Modal.Footer>

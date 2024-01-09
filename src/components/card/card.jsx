@@ -1,11 +1,12 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import styles from './card.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../redux/actions';
 import ModalProductForm from '../../views/modals/modalProductForm/modalProductForm';
+import * as actions from '../../redux/actions';
 
-function BasicExample({ id, name, marca, price, stock, code, description }) {
+function BasicExample({ id, name, marca, price, stock }) {
 
   const showModalState = useSelector(state => state.showModal);
   const dispatch = useDispatch();
@@ -27,8 +28,15 @@ function BasicExample({ id, name, marca, price, stock, code, description }) {
           <Card.Title>{name} {marca}</Card.Title>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: {price}</Card.Text>
-          <Button className={styles.detailButton} variant="info" >Detalle</Button>
-          <Button variant="info" onClick={() => openModal(id)} >Modificar</Button>
+          <Link to={`/productDetail/${id}`} className={styles.detailButton} >
+            <Button variant="dark" >Detalle</Button>
+          </Link>
+          <Button
+            variant="dark"
+            onClick={() => openModal(id)}
+          >
+            Modificar
+          </Button>
         </Card.Body>
       </Card>
       {showModalState && <ModalProductForm closeModal={closeModal} />}
