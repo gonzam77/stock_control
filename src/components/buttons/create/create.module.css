@@ -1,4 +1,6 @@
 .createButton {
+  color: white;
+  background-color: rgb(3, 124, 133);
   margin-top: 10vh;
   font-size: 1rem;
 }
