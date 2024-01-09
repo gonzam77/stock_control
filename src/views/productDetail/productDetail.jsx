@@ -14,7 +14,6 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const showModalState = useSelector((state) => state.showCreateModal);
   const product = products.find((element) => element.id === productId);
-  console.log('producto', product);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
