@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./createProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions";
@@ -79,7 +78,6 @@ export default function CreateProductForm() {
 
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
       <form className={styles.form}>
         <div className={styles.divs}>
           <label>Codigo</label>

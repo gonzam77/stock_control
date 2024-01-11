@@ -5,7 +5,7 @@ function ModalCreateProductForm() {
  
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
-      <Modal.Dialog className={styles.modalDialog}>
+      <Modal.Dialog >
         <Modal.Header>
           <Modal.Title>Cargar Producto</Modal.Title>
         </Modal.Header>

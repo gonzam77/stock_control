@@ -48,10 +48,18 @@ export default function reducer(state = initialState, { type, payload }) {
         supplierId: payload,
       };
     case "EDIT_SUPPLIER":
-      return {
-        ...state,
-        suppliers: payload,
-      };
+      const updatedSupplier = payload;
+        const updatedSuppliers = state.suppliers.map((supplier) => {
+          if (supplier.id === updatedSupplier.id) {
+            return updatedSupplier;
+          }
+          return supplier;
+        });
+      
+        return {
+          ...state,
+          suppliers: updatedSuppliers,
+        };
     case "GET_USER_ID":
       return {
         ...state,
@@ -72,11 +80,19 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         productId: payload,
       };
-    case "EDIT_PRODUCT":
-      return {
-        ...state,
-        products: payload,
-      };
+      case "EDIT_PRODUCT":
+        const updatedProduct = payload;
+        const updatedProducts = state.products.map((product) => {
+          if (product.id === updatedProduct.id) {
+            return updatedProduct;
+          }
+          return product;
+        });
+      
+        return {
+          ...state,
+          products: updatedProducts,
+        };
     case "SHOW_MODAL":
       return {
         ...state,

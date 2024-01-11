@@ -12,10 +12,15 @@ export default function ClientForm() {
 
   const [client, setClient] = useState(clients);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    dispatch(actions.editProduct(client));
+  const cancelModal = () => {
+    dispatch(actions.hideModal());
   }
+  
+  const closeModal = (event) => {
+    event.preventDefault();
+    dispatch(actions.editClient(products));
+    dispatch(actions.hideModal());
+  };
 
   function handleChange(event) {
     const target = event.target.name;
@@ -33,7 +38,7 @@ export default function ClientForm() {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <label>Nombre</label>
         <br></br>
         <input
@@ -130,9 +135,14 @@ export default function ClientForm() {
         <br></br>
         <br></br>
 
-        <Button variant="dark" type="submit">
-          Guardar
-        </Button>
+        <div class="modal-footer">
+          <Button variant="danger" onClick={cancelModal}>
+            Cancelar
+          </Button>
+          <Button variant="success" onClick={closeModal} >
+            Confirmar
+          </Button>
+        </div>  
       </form>
     </div>
   );
