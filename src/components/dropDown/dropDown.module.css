@@ -1,0 +1,7 @@
+.container {
+    display: inline-flex;
+}
+
+.title {
+    margin-right: 10px;
+}

@@ -1,45 +1,40 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import styles from './dropDown.module.css'
+import styles from './dropDown.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import * as actions from '../../redux/actions';
 
-function DropDown() {
-  return (
-    <div className={styles.container}>
-        <Stack direction="horizontal" gap={3}>
-        <DropdownButton
-            id="dropdown-button-dark-example2"
-            variant="secondary"
-            title="Light dropdown"
-            className="mt-2"
-            data-bs-theme="light"
-        >
-            <Dropdown.Item href="#/action-1" active>
-            Action
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-        </DropdownButton>
+function DropdownComponent() {
+    const dispatch = useDispatch();
+    const suppliers = useSelector(state => state.suppliers);
+    const [selectedSupplier, setSelectedSupplier] = useState(null);
 
-        <DropdownButton
-            id="dropdown-button-dark-example2"
-            variant="secondary"
-            title="Dark dropdown"
-            className="mt-2"
-            data-bs-theme="dark"
-        >
-            <Dropdown.Item href="#/action-1" active>
-            Action
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-        </DropdownButton>
-        </Stack>
-    </div>
-  );
+    const handleSelect = (event) => {
+        const cuil = event.value.toString()
+        const selected = suppliers.find(supplier => supplier.cuil === cuil);
+        setSelectedSupplier(selected);
+        dispatch(actions.setSelectedSupplier(selected)); 
+    };
+
+    return (
+        <div className={styles.container}>
+            <span className={styles.title}>Proveedor</span>
+            <Dropdown onSelect={handleSelect}>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    {selectedSupplier ? selectedSupplier.cuil : 'Seleccionar Proveedor'}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {
+                        suppliers.map((element, index) => (
+                            <Dropdown.Item key={index} eventKey={element.cuil}>
+                                {element.cuil}
+                            </Dropdown.Item>
+                        ))
+                    }
+                </Dropdown.Menu>
+            </Dropdown>
+        </div>
+    );
 }
 
-export default DropDown;
+export default DropdownComponent;
