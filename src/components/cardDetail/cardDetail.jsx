@@ -1,6 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import styles from './cardDetail.module.css'
+import styles from './cardDetail.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from '../../redux/actions';
+import ModalProductForm from '../../views/modals/modalProductForm/modalProductForm';
 
 function CardDetail({
   name,
@@ -16,7 +19,19 @@ function CardDetail({
   marca,
 }) 
 {
-    console.log(id);
+  const showModalState = useSelector(state => state.showModal);
+  const dispatch = useDispatch();
+  
+  const closeModal = () => {
+    dispatch(actions.hideModal());
+  };
+
+  const openModal = (id) => {
+    dispatch(actions.showModal());
+    dispatch(actions.getProductId(id));
+
+  };
+
   return (
     <div className={styles.container}>
       <Card className="text-center">
@@ -34,8 +49,16 @@ function CardDetail({
           <Card.Text>unidad_medida: {unidad_medida}</Card.Text>
           <Card.Text>{description}</Card.Text>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
+        <Card.Footer>
+          <Button
+              variant="primary"
+              onClick={() => openModal(id)}
+            >
+              Modificar
+            </Button>
+        </Card.Footer>
       </Card>
+      {showModalState && <ModalProductForm closeModal={closeModal} />}
     </div>
   );
 }

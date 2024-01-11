@@ -25,11 +25,18 @@ const initialState = {
   showCreateModal: false,
   productId: "",
   clientId: "",
+  userId: "",
   supplierId: "",
+  selectedSupplier:''
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "SELECTED_SUPPLIER":
+      return {
+        ...state,
+        selectedSupplier: payload,
+      };
     case "CREATE_PRODUCT":
       return {
         ...state,
@@ -41,9 +48,22 @@ export default function reducer(state = initialState, { type, payload }) {
         supplierId: payload,
       };
     case "EDIT_SUPPLIER":
+      const updatedSupplier = payload;
+        const updatedSuppliers = state.suppliers.map((supplier) => {
+          if (supplier.id === updatedSupplier.id) {
+            return updatedSupplier;
+          }
+          return supplier;
+        });
+      
+        return {
+          ...state,
+          suppliers: updatedSuppliers,
+        };
+    case "GET_USER_ID":
       return {
         ...state,
-        suppliers: payload,
+        userId: payload,
       };
     case "GET_CLIENT_ID":
       return {
@@ -60,11 +80,19 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         productId: payload,
       };
-    case "EDIT_PRODUCT":
-      return {
-        ...state,
-        products: payload,
-      };
+      case "EDIT_PRODUCT":
+        const updatedProduct = payload;
+        const updatedProducts = state.products.map((product) => {
+          if (product.id === updatedProduct.id) {
+            return updatedProduct;
+          }
+          return product;
+        });
+      
+        return {
+          ...state,
+          products: updatedProducts,
+        };
     case "SHOW_MODAL":
       return {
         ...state,

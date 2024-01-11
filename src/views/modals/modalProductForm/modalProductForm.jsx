@@ -17,7 +17,7 @@ function ModalProductForm({ id }) {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
-        <Modal.Header closeButton onClick={closeModal}>
+        <Modal.Header >
           <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
 

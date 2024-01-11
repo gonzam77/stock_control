@@ -6,31 +6,32 @@ import { Button } from "react-bootstrap";
 
 export default function ProductForm() {
   const products = useSelector((state) => state.products);
+  console.log(products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
   const selectedProduct = products.find((element) => element.id === productId);
-
-  const [product, setProduct] = useState(products);
-
+  const backupProduct = products
+  const [product, setProduct] = useState(selectedProduct || {} );
+  
+  
+  const cancelModal =()=> {
+    dispatch(actions.hideModal());
+  }
+  
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editProduct(products));
+    dispatch(actions.editProduct(product))
     dispatch(actions.hideModal());
   };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-
-    const editedProduct = products.map((element) => {
-      if (element.id === productId) {
-        element[target] = value;
-      }
-      return element;
+    setProduct({
+      ...product,
+      [target]: value
     });
-
-    setProduct({ editedProduct });
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -40,7 +41,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="code"
-            value={selectedProduct.code}
+            value={product.code}
             onChange={handleChange}
             type="text"
           />
@@ -50,7 +51,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="name"
-            value={selectedProduct.name}
+            value={product.name}
             onChange={handleChange}
             type="text"
           />
@@ -70,7 +71,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="id_proveedor"
-            value={selectedProduct.id_proveedor}
+            value={product.id_proveedor}
             onChange={handleChange}
             type="text"
           />
@@ -80,7 +81,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="stock"
-            value={selectedProduct.stock}
+            value={product.stock}
             onChange={handleChange}
             type="text"
           />
@@ -90,7 +91,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="price"
-            value={selectedProduct.price}
+            value={product.price}
             onChange={handleChange}
             type="text"
           />
@@ -100,7 +101,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="unidad_medida"
-            value={selectedProduct.unidad_medida}
+            value={product.unidad_medida}
             onChange={handleChange}
             type="text"
           />
@@ -110,7 +111,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="cant_min"
-            value={selectedProduct.cant_min}
+            value={product.cant_min}
             onChange={handleChange}
             type="text"
           />
@@ -120,13 +121,13 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="cant_max"
-            value={selectedProduct.cant_max}
+            value={product.cant_max}
             onChange={handleChange}
             type="text"
           />
         </div>
         <div class="modal-footer">
-          <Button variant="danger" onClick={closeModal}>
+          <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>
           <Button variant="success" onClick={closeModal} >

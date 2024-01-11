@@ -12,30 +12,31 @@ export default function SupplierForm() {
     (element) => element.id === supplierId
   );
 
-  const [supplier, setSupplier] = useState(suppliers);
+  const [supplier, setSupplier] = useState(selectedSupplier);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    dispatch(actions.editSupplier(suppliers));
+  const cancelModal =()=> {
+    dispatch(actions.hideModal());
   }
+  
+  const closeModal = (event) => {
+    event.preventDefault();
+    dispatch(actions.editProduct(product))
+    dispatch(actions.hideModal());
+  };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
+    setSupplier({
+      ...supplier,
+      [target]: event
+    })
 
-    const editedSuppliers = suppliers.map((element) => {
-      if (element.id === supplierId) {
-        element[target] = value;
-      }
-      return element;
-    });
-
-    setSupplier({ editedSuppliers });
   }
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <label>Nombre</label>
         <br></br>
         <input
@@ -132,9 +133,14 @@ export default function SupplierForm() {
         <br></br>
         <br></br>
 
-        <Button variant="dark" type="submit">
-          Guardar
-        </Button>
+        <div class="modal-footer">
+          <Button variant="danger" onClick={cancelModal}>
+            Cancelar
+          </Button>
+          <Button variant="success" onClick={closeModal} >
+            Confirmar
+          </Button>
+        </div>
       </form>
     </div>
   );

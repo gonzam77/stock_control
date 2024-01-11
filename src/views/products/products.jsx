@@ -11,6 +11,7 @@ export default function Grid() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
+  const suppliers = useSelector((state) => state.suppliers);
   const dispatch = useDispatch();
 
   const openCreateModal = () => {
@@ -20,7 +21,6 @@ export default function Grid() {
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
-
   };
 
   return (
@@ -29,7 +29,8 @@ export default function Grid() {
         <Button
           className={styles.createButton}
           variant="success"
-          onClick={openCreateModal}>
+          onClick={openCreateModal}
+        >
           Cargar Nuevo
         </Button>
 
@@ -45,6 +46,7 @@ export default function Grid() {
           <thead>
             <tr>
               <th>COD</th>
+              <th>CATEGORIA</th>
               <th>PRODUCTO</th>
               <th>MARCA</th>
               <th>PROVEEDOR</th>
@@ -53,26 +55,28 @@ export default function Grid() {
               <th>UNIDAD MEDIDA</th>
               <th>CANTIDAD MIN</th>
               <th>CANTIDAD MAX</th>
-              <th>FECHA ALTA</th>
-              <th>FECHA VTO</th>
               <th>MODIFICAR</th>
             </tr>
           </thead>
           <tbody>
             {products.map((producto, index) => {
+              const supplier = suppliers.find(
+                (supplier) => (supplier.cuil = producto.proveedor)
+              );
               return (
                 <tr key={index}>
                   <td>{producto.code}</td>
+                  <td>{producto.categoria}</td>
                   <td>{producto.name}</td>
                   <td>{producto.marca}</td>
-                  <td>{producto.id_proveedor}</td>
+                  <td>
+                    {supplier.razon_social}
+                  </td>
                   <td>{producto.price}</td>
                   <td>{producto.stock}</td>
                   <td>{producto.unidad_medida}</td>
                   <td>{producto.cant_min}</td>
                   <td>{producto.cant_max}</td>
-                  <td>{producto.fecha_alta}</td>
-                  <td>{producto.fecha_vto}</td>
                   <td>
                     <Button
                       variant="primary"
