@@ -22,11 +22,18 @@ const initialState = {
   showCreateModal: false,
   productId: "",
   clientId: "",
+  userId: "",
   supplierId: "",
+  selectedSupplier:''
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "SELECTED_SUPPLIER":
+      return {
+        ...state,
+        selectedSupplier: payload,
+      };
     case "CREATE_PRODUCT":
       return {
         ...state,
@@ -41,6 +48,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         suppliers: payload,
+      };
+    case "GET_USER_ID":
+      return {
+        ...state,
+        userId: payload,
       };
     case "GET_CLIENT_ID":
       return {

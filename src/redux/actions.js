@@ -9,6 +9,13 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
+export const selectSupplier = (eventKey)=>{
+  return {
+    type: 'SELECTED_SUPPLIER',
+    payload: eventKey
+  }
+}
+
 export const createProduct = (data) => {
   return {
     type: "CREATE_PRODUCT",
@@ -33,6 +40,12 @@ export const editSupplier = (data) => {
 export const getClientId = (id) => {
   return {
     type: "GET_CLIENT_ID",
+    payload: id,
+  };
+};
+export const getUserId = (id) => {
+  return {
+    type: "GET_USER_ID",
     payload: id,
   };
 };
