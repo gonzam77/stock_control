@@ -8,7 +8,10 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-import { productos, clientes, suppliers, users } from "../assets/hardcodeo";
+import { productos } from "../assets/dataHardcodeoProducts";
+import { clientes } from "../assets/dataHardcodeoClients";
+import { suppliers } from "../assets/dataHardcodeoSuppliers";
+import { users } from "../assets/dataHardcodeoUsers";
 
 const initialState = {
   products: productos,

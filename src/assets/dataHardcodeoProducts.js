@@ -407,6 +407,7 @@ export const productos = [
         marca:'MAK',
         description:'Esta es la desccripcion'
     }
+<<<<<<< HEAD:src/assets/hardcodeo.js
 ]
 
 export const clientes = [
@@ -584,3 +585,6 @@ export const users = [
     }
 ]
 
+=======
+];
+>>>>>>> 4b99b2adae04b8abdfc595e83368284c812e6c02:src/assets/dataHardcodeoProducts.js

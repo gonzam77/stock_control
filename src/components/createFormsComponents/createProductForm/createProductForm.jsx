@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./createProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions";
@@ -32,7 +33,7 @@ export default function CreateProductForm() {
     unidad_medida: "",
     cant_min: "",
     cant_max: "",
-    proveedor: "",
+    id_proveedor: "",
     marca: "",
     stock: "",
     price: "",
@@ -66,8 +67,19 @@ export default function CreateProductForm() {
     }
   }
 
+  const handleSelect = (eventKey) => {
+    const cuil = eventKey.toString()
+    const selected = suppliers.find(supplier => supplier.cuil === cuil);
+    setNewProduct({
+      ...newProduct,
+      id_proveedor: selected
+    })
+  };
+
+
   return (
     <div className={styles.container}>
+      <form className={styles.form}>
       <form className={styles.form}>
         <div className={styles.divs}>
           <label>Codigo</label>
