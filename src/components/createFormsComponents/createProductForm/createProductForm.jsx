@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./createProductForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions";
 import { Button } from "react-bootstrap";
+//import DropdownComponent from '../../dropdown/dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-
+  const suppliers = useSelector(state => state.suppliers);
   const [newProduct, setNewProduct] = useState({
     name: "",
     code: "",
@@ -15,7 +17,7 @@ export default function CreateProductForm() {
     unidad_medida: "",
     cant_min: "",
     cant_max: "",
-    proveedor: "",
+    id_proveedor: "",
     marca: "",
     stock: "",
     price: "",
@@ -38,12 +40,19 @@ export default function CreateProductForm() {
     }
   }
 
-  function handleSubmit(event) {
-  }
+  const handleSelect = (eventKey) => {
+    const cuil = eventKey.toString()
+    const selected = suppliers.find(supplier => supplier.cuil === cuil);
+    setNewProduct({
+      ...newProduct,
+      id_proveedor: selected
+    })
+  };
+
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <div className={styles.divs}>
           <label>Codigo</label>
           <input
@@ -121,7 +130,7 @@ export default function CreateProductForm() {
             type="text"
           />
         </div>
-        <div className={styles.divs}>
+        {/* <div className={styles.divs}>
           <label>Cuil Proveedor</label>
           <input
             autoComplete="off"
@@ -131,7 +140,7 @@ export default function CreateProductForm() {
             placeholder="cuil..."
             type="text"
           />
-        </div>
+        </div> */}
         <div className={styles.divs}>
           <label>Precio</label>
           <input
@@ -153,6 +162,20 @@ export default function CreateProductForm() {
             type="date"
           />
         </div>
+        <Dropdown onSelect={handleSelect}>
+          <Dropdown.Toggle variant="light" id="dropdown-basic">
+          </Dropdown.Toggle>
+          {newProduct.id_proveedor ? newProduct.proveedor : 'Seleccionar Proveedor'}
+          <Dropdown.Menu>
+            {
+              suppliers.map((element, index) => (
+                <Dropdown.Item key={index} eventKey={element.cuil}>
+                  {element.cuil}
+                </Dropdown.Item>
+              ))
+            }
+          </Dropdown.Menu>
+        </Dropdown>
 
         <div className="modal-footer">
           <Button variant="danger" onClick={closeCreateModal}>
