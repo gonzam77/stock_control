@@ -8,6 +8,7 @@ import * as actions from "../../redux/actions";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  console.log('id',id);
   const productId = parseInt(id)
 
   const products = useSelector((state) => state.products);

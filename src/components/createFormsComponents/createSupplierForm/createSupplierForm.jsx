@@ -1,61 +1,42 @@
-import { useEffect, useState } from "react";
-import styles from "./createProductForm.module.css";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions";
 import { Button } from "react-bootstrap";
 import Dropdown from '../../../components/dropDown/dropDown'
 
-function encontrarObjetoConMayorID(arregloDeObjetos) {
-  if (arregloDeObjetos.length === 0) {
-    return null; // Retorna null si el arreglo está vacío
-  }
-
-  // Utiliza reduce para encontrar el objeto con el ID más alto
-  const objetoConMayorID = arregloDeObjetos.reduce((objetoMax, objetoActual) => {
-    return objetoActual.id > objetoMax.id ? objetoActual : objetoMax;
-  }, arregloDeObjetos[0]);
-
-  return objetoConMayorID;
-}
-
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const suppliers = useSelector(state => state.suppliers)
   const selectedSupplier = useSelector(state => state.selectedSupplier)
-  const products = useSelector(state => state.products);
-  const [newProduct, setNewProduct] = useState({
-    id:'',
-    name: "",
-    code: "",
-    fecha_vto: "",
-    fecha_creacion: "",
-    unidad_medida: "",
-    cant_min: "",
-    cant_max: "",
-    proveedor: "",
-    marca: "",
-    stock: "",
-    price: "",
+  const [newSupplier, setNewSupplier] = useState({
+    id:1,
+        cuenta:'',
+        razon_social:'',
+        cuil:'',
+        adress:'',
+        email:'',
+        phone:'',
+        province:'',
+        state:'',
+        fecha_creacion:'',
+        fecha_actualizacion:''  
   });
-
   
-  
-  const handleSupplierSelect = (selectedSupplier) => {
+  const handleSupplierSelect = (selectedCuil) => {
+    console.log(selectedCuil);
     setNewProduct({
       ...newProduct,
-      proveedor: selectedSupplier,
+      proveedor: selectedCuil,
     });
   };
-  
+
   const closeCreateModal = (event) => {
-    const maxId = encontrarObjetoConMayorID(products)
     event.preventDefault();
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };
-  
+
   function handleChange(event) {
-    
     const target = event.target.name;
     const value = event.target.value;
     if (target !== "unidad_medida") {
