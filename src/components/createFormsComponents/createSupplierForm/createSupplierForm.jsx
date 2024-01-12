@@ -6,20 +6,19 @@ import Dropdown from '../../../components/dropDown/dropDown'
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-  const suppliers = useSelector(state => state.suppliers)
-  const selectedSupplier = useSelector(state => state.selectedSupplier)
+  const suppliers = useSelector(state => state.suppliers);
   const [newSupplier, setNewSupplier] = useState({
     id:1,
-        cuenta:'',
-        razon_social:'',
-        cuil:'',
-        adress:'',
-        email:'',
-        phone:'',
-        province:'',
-        state:'',
-        fecha_creacion:'',
-        fecha_actualizacion:''  
+      cuenta:'',
+      razon_social:'',
+      cuil:'',
+      adress:'',
+      email:'',
+      phone:'',
+      province:'',
+      state:'',
+      fecha_creacion:'',
+      fecha_actualizacion:''  
   });
   
   const handleSupplierSelect = (selectedCuil) => {
@@ -35,6 +34,10 @@ export default function CreateProductForm() {
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };
+  
+  const cancelCreateModal = () => {
+    dispatch(actions.hideCreateModal());
+  }
 
   function handleChange(event) {
     const target = event.target.name;
@@ -153,7 +156,7 @@ export default function CreateProductForm() {
         </div>
 
         <div className="modal-footer">
-          <Button variant="danger" onClick={closeCreateModal}>
+          <Button variant="danger" onClick={cancelCreateModal}>
             Cancelar
           </Button>
           <Button variant="success" onClick={closeCreateModal}>

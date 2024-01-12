@@ -21,7 +21,6 @@ function encontrarObjetoConMayorID(arregloDeObjetos) {
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const suppliers = useSelector(state => state.suppliers)
-  const selectedSupplier = useSelector(state => state.selectedSupplier)
   const products = useSelector(state => state.products);
   const [newProduct, setNewProduct] = useState({
     id:'',
@@ -48,11 +47,14 @@ export default function CreateProductForm() {
   };
   
   const closeCreateModal = (event) => {
-    const maxId = encontrarObjetoConMayorID(products)
     event.preventDefault();
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };
+  
+  const cancelCreateModal = () => {
+    dispatch(actions.hideCreateModal());
+  }
   
   function handleChange(event) {
     
@@ -66,17 +68,7 @@ export default function CreateProductForm() {
     }
   }
 
-  const handleSelect = (eventKey) => {
-    const cuil = eventKey.toString()
-    const selected = suppliers.find(supplier => supplier.cuil === cuil);
-    setNewProduct({
-      ...newProduct,
-      id_proveedor: selected
-    })
-  };
-
-
-  return (
+    return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
@@ -182,7 +174,7 @@ export default function CreateProductForm() {
         </div>
 
         <div className="modal-footer">
-          <Button variant="danger" onClick={closeCreateModal}>
+          <Button variant="danger" onClick={cancelCreateModal}>
             Cancelar
           </Button>
           <Button variant="success" onClick={closeCreateModal}>

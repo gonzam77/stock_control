@@ -4,7 +4,7 @@ export const suppliers = [
         first_name:'Juan',
         lastName:'Perez',
         cuenta:'',
-        razon_social:'',
+        razon_social:'Juan Perez',
         cuil:'20444456786',
         dni:'12345678',
         genero: 'M',
@@ -20,7 +20,7 @@ export const suppliers = [
     {     
         id:2,
         cuenta:'',
-        razon_social:'',
+        razon_social:'Marco Polo',
         cuil:'20132456786',
         first_name:'Juan',
         lastName:'Perez',
