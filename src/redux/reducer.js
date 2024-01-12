@@ -26,17 +26,11 @@ const initialState = {
   productId: "",
   clientId: "",
   userId: "",
-  supplierId: "",
-  selectedSupplier:''
+  supplierId: ""
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-    case "SELECTED_SUPPLIER":
-      return {
-        ...state,
-        selectedSupplier: payload,
-      };
     case "CREATE_PRODUCT":
       return {
         ...state,

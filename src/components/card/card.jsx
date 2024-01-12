@@ -6,7 +6,7 @@ import styles from './card.module.css';
 import ModalProductForm from '../../views/modals/modalProductForm/modalProductForm';
 import * as actions from '../../redux/actions';
 
-function ProductCard({ id, name, marca, price, stock }) {
+function ProductCard({ id, name, marca, price, stock, proveedor }) {
 
   const showModalState = useSelector(state => state.showModal);
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ function ProductCard({ id, name, marca, price, stock }) {
           <Card.Title className={styles.name}>{name} {marca}</Card.Title>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: {price}</Card.Text>
+          <Card.Text>Proveedor: {proveedor}</Card.Text>
           <Link to={`/productDetail/${id}`} className={styles.detailButton} >
             <Button variant="primary" >Detalle</Button>
           </Link>

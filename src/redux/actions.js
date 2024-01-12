@@ -9,13 +9,6 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-export const selectSupplier = (eventKey)=>{
-  return {
-    type: 'SELECTED_SUPPLIER',
-    payload: eventKey
-  }
-}
-
 export const createProduct = (data) => {
   return {
     type: "CREATE_PRODUCT",

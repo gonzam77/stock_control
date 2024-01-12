@@ -1,18 +1,23 @@
 import Dropdown from "react-bootstrap/Dropdown";
+import { useState } from "react";
 
 function DropdownSupplier({ suppliers, onSelect }) {
   
-    function handleSelect(eventKey) {
+  const [select, setSelect] = useState();
+  
+  function handleSelect(eventKey) {
+    setSelect(eventKey);
     onSelect(eventKey);
   }
 
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="light" id="dropdown-basic">
-        Proveedor
+        {select ? select : "Proveedor"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
+        <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
         {suppliers.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.razon_social}>

@@ -48,6 +48,7 @@ export default function Home() {
               stock={product.stock}
               marca={product.marca}
               description={product.description}
+              proveedor={product.proveedor}
             />
           );
         })}
