@@ -20,11 +20,17 @@ export default function CreateClientForm() {
     phone: "",
     email: "",
     adress: "",
-    razon_social: ""
+    razon_social: "",
+    create_date:''
   });
   
   const closeCreateModal = (event) => {
     event.preventDefault();
+    const date = new Date();
+    setNewClient({
+      ...newClient,
+      create_date: date
+    })
     dispatch(actions.createClient(newClient));
     dispatch(actions.hideCreateModal());
   };

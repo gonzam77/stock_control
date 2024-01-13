@@ -13,10 +13,10 @@ export const users = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:'',
-        cargo:'Administrador',
-        estado:'Activo'   
+        rol:'Administrador',
+        status:'Activo'   
     },
     {   
         id:2,
@@ -32,9 +32,28 @@ export const users = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:'',
-        cargo:'Vendedor',
-        estado:'Activo'
+        rol:'Vendedor',
+        status:'Activo'
+    },
+    {   
+        id:3,
+        cuil:'',
+        password:'1234',
+        first_name:'Esteban',
+        lastName:'Quito',
+        dni:'125446578',
+        genero: 'M',
+        adress:'Calle 2',
+        email:'estebanquito@gmail.com',
+        phone:'2664484565',
+        province:'San Luis',
+        state:'San Luis',
+        fecha_nac:'26/04/1989',
+        create_date:'',
+        fecha_actualizacion:'',
+        rol:'Vendedor',
+        status:'Suspendido'
     }
 ]

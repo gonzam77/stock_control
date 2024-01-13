@@ -4,7 +4,7 @@ export const productos = [
         name: 'Cloro',
         code:'0001',
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -21,7 +21,7 @@ export const productos = [
         name: 'Alguicida',
         code:'0002',
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -37,7 +37,7 @@ export const productos = [
         id: 3,
         code:'0001',
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -53,7 +53,7 @@ export const productos = [
     {
         id: 4,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -70,7 +70,7 @@ export const productos = [
     {
         id: 5,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -87,7 +87,7 @@ export const productos = [
     {
         id: 6,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -104,7 +104,7 @@ export const productos = [
     {
         id: 7,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -121,7 +121,7 @@ export const productos = [
     {
         id: 8,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -138,7 +138,7 @@ export const productos = [
     {
         id: 9,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -155,7 +155,7 @@ export const productos = [
     {
         id: 10,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -172,7 +172,7 @@ export const productos = [
     {
         id: 11,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -189,7 +189,7 @@ export const productos = [
     {
         id: 12,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -206,7 +206,7 @@ export const productos = [
     {
         id: 13,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -223,7 +223,7 @@ export const productos = [
     {
         id: 14,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -240,7 +240,7 @@ export const productos = [
     {
         id: 15,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -257,7 +257,7 @@ export const productos = [
     {
         id: 16,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -274,7 +274,7 @@ export const productos = [
     {
         id: 17,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -291,7 +291,7 @@ export const productos = [
     {
         id: 18,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -308,7 +308,7 @@ export const productos = [
     {
         id: 19,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -325,7 +325,7 @@ export const productos = [
     {
         id: 20,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -342,7 +342,7 @@ export const productos = [
     {
         id: 21,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -359,7 +359,7 @@ export const productos = [
     {
         id: 22,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -376,7 +376,7 @@ export const productos = [
     {
         id: 23,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',
@@ -393,7 +393,7 @@ export const productos = [
     {
         id: 24,
         iva:'',
-        fecha_alta:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_vto:'01/01/2024',
         unidad_medida:'Unidad',
         proveedor:'Marco Polo',

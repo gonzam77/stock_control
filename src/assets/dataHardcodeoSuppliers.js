@@ -9,7 +9,7 @@ export const suppliers = [
         phone:'2664489645',
         province:'San Luis',
         state:'San Luis',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:''    
     },
     {     
@@ -27,7 +27,7 @@ export const suppliers = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:''        
     }
 ]

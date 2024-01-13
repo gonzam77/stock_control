@@ -10,13 +10,12 @@ import Dropdown from '../../../components/dropdown/dropDown'
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const suppliers = useSelector(state => state.suppliers)
-  const products = useSelector(state => state.products);
   const [newProduct, setNewProduct] = useState({
-    id:'',
+    id: '',
     name: "",
     code: "",
     fecha_vto: "",
-    fecha_creacion: "",
+    create_date: "",
     unidad_medida: "",
     cant_min: "",
     cant_max: "",
@@ -25,7 +24,7 @@ export default function CreateProductForm() {
     stock: "",
     price: "",
   });
-
+  
   
   
   const handleSupplierSelect = (selectedSupplier) => {
@@ -36,17 +35,22 @@ export default function CreateProductForm() {
   };
   
   const closeCreateModal = (event) => {
+    const date = new Date()
     event.preventDefault();
+    setNewProduct({
+      ...newProduct,
+      create_date: date
+    })
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };
-  
+
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
   }
-  
+
   function handleChange(event) {
-    
+
     const target = event.target.name;
     const value = event.target.value;
     if (target !== "unidad_medida") {
@@ -57,7 +61,7 @@ export default function CreateProductForm() {
     }
   }
 
-    return (
+  return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>

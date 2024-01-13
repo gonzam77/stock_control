@@ -16,13 +16,18 @@ export default function CreateProductForm() {
       phone:'',
       province:'',
       state:'',
-      fecha_creacion:'',
+      create_date:'',
       fecha_actualizacion:''  
   });
   
 
   const closeCreateModal = (event) => {
     event.preventDefault();
+    const date = new Date();
+    setNewSupplier({
+      ...newSupplier,
+      create_date: date
+    })
     dispatch(actions.createSupplier(newSupplier));
     dispatch(actions.hideCreateModal());
   };
