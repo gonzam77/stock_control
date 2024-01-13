@@ -11,6 +11,9 @@ export default function NavMenu() {
         <Navbar.Collapse>
           <Nav>
             <Link to="/" className={styles.link}>
+              Inicio
+            </Link>
+            <Link to="/cards" className={styles.link}>
               Productos
             </Link>
             <Link to="/suppliers" className={styles.link}>

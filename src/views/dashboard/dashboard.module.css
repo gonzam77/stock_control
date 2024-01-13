@@ -1,0 +1,26 @@
+.aside {
+    background-color: rgb(108, 109, 110);
+    max-width: 20vw;
+    min-height: 100vh;
+    padding-top: 5vh;
+}
+
+.container {
+    padding-top: 7vh;
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.body {
+    min-width: 82vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin-top: 2vh;
+}

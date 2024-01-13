@@ -34,7 +34,7 @@ export default function Grid() {
           Cargar Nuevo
         </Button>
 
-        <Link to="/" className={styles.link}>
+        <Link to="/cards" className={styles.link}>
           <Button variant="danger">Carta</Button>
         </Link>
       </div>
