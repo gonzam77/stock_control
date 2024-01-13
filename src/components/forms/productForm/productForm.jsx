@@ -6,11 +6,9 @@ import { Button } from "react-bootstrap";
 
 export default function ProductForm() {
   const products = useSelector((state) => state.products);
-  console.log(products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
   const selectedProduct = products.find((element) => element.id === productId);
-  const backupProduct = products
   const [product, setProduct] = useState(selectedProduct || {} );
   
   

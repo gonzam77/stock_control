@@ -5,22 +5,24 @@ import * as actions from "../../../redux/actions";
 import { Button } from "react-bootstrap";
 
 export default function SupplierForm() {
+
+  const dispatch = useDispatch();
   const suppliers = useSelector((state) => state.suppliers);
   const supplierId = useSelector((state) => state.supplierId);
-  const dispatch = useDispatch();
+
   const selectedSupplier = suppliers.find(
     (element) => element.id === supplierId
   );
 
   const [supplier, setSupplier] = useState(selectedSupplier);
 
-  const cancelModal =()=> {
+  const cancelModal = () => {
     dispatch(actions.hideModal());
   }
-  
+
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editProduct(product))
+    dispatch(actions.editProduct(supplier))
     dispatch(actions.hideModal());
   };
 
@@ -29,7 +31,7 @@ export default function SupplierForm() {
     const value = event.target.value;
     setSupplier({
       ...supplier,
-      [target]: event
+      [target]: value
     })
 
   }
@@ -37,102 +39,83 @@ export default function SupplierForm() {
   return (
     <div className={styles.container}>
       <form className={styles.form}>
-        <label>Nombre</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="first_name"
-          value={supplier.first_name}
-          onChange={handleChange}
-          placeholder={selectedSupplier.first_name}
-          type="text"
-        />
-        <br></br>
-
-        <label>Apellido</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="lastName"
-          value={supplier.lastName}
-          onChange={handleChange}
-          placeholder={selectedSupplier.lastName}
-          type="text"
-        />
-        <br></br>
-
-        <label>Genero</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="marca"
-          value={supplier.genero}
-          onChange={handleChange}
-          placeholder={selectedSupplier.genero}
-          type="text"
-        />
-        <br></br>
-
-        <label>Direccion</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="adress"
-          value={supplier.adress}
-          onChange={handleChange}
-          placeholder={selectedSupplier.adress}
-          type="text"
-        />
-        <br></br>
-
-        <label>Telefono</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="phone"
-          value={supplier.adress}
-          onChange={handleChange}
-          placeholder={selectedSupplier.phone}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Provincia</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="province"
-          value={supplier.province}
-          onChange={handleChange}
-          placeholder={selectedSupplier.province}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Localidad</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="state"
-          value={supplier.adress}
-          onChange={handleChange}
-          placeholder={selectedSupplier.state}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Fecha de Nacimiento</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="fecha_nac"
-          value={supplier.adress}
-          onChange={handleChange}
-          type="date"
-        />
-        <br></br>
-        <br></br>
-
+        <div className={styles.divs}>
+          <label>Razon Social</label>
+          <input
+            autoComplete="off"
+            name="razon_social"
+            value={supplier.razon_social}
+            onChange={handleChange}
+            placeholder={selectedSupplier.razon_social}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Cuil</label>
+          <input
+            autoComplete="off"
+            name="cuil"
+            value={supplier.cuil}
+            onChange={handleChange}
+            placeholder={selectedSupplier.cuil}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Email</label>
+          <input
+            autoComplete="off"
+            name="email"
+            value={supplier.email}
+            onChange={handleChange}
+            placeholder={selectedSupplier.email}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Telefono</label>
+          <input
+            autoComplete="off"
+            name="phone"
+            value={supplier.phone}
+            onChange={handleChange}
+            placeholder={selectedSupplier.phone}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Direccion</label>
+          <input
+            autoComplete="off"
+            name="adress"
+            value={supplier.adress}
+            onChange={handleChange}
+            placeholder={selectedSupplier.adress}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Provincia</label>
+          <input
+            autoComplete="off"
+            name="province"
+            value={supplier.province}
+            onChange={handleChange}
+            placeholder={selectedSupplier.province}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Localidad</label>
+          <input
+            autoComplete="off"
+            name="state"
+            value={supplier.adress}
+            onChange={handleChange}
+            placeholder={selectedSupplier.state}
+            type="text"
+          />
+        </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar

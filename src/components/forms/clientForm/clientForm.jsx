@@ -10,7 +10,7 @@ export default function ClientForm() {
   const dispatch = useDispatch();
   const selectedlClient = clients.find((element) => element.id === clientId);
 
-  const [client, setClient] = useState(clients);
+  const [client, setClient] = useState(selectedlClient);
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
@@ -18,7 +18,7 @@ export default function ClientForm() {
   
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editClient(products));
+    dispatch(actions.editClient(client));
     dispatch(actions.hideModal());
   };
 
@@ -39,102 +39,83 @@ export default function ClientForm() {
   return (
     <div className={styles.container}>
       <form className={styles.form}>
-        <label>Nombre</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="first_name"
-          value={client.first_name}
-          onChange={handleChange}
-          placeholder={selectedlClient.first_name}
-          type="text"
-        />
-        <br></br>
-
-        <label>Apellido</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="lastName"
-          value={client.lastName}
-          onChange={handleChange}
-          placeholder={selectedlClient.lastName}
-          type="text"
-        />
-        <br></br>
-
-        <label>Genero</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="genero"
-          value={client.genero}
-          onChange={handleChange}
-          placeholder={selectedlClient.genero}
-          type="text"
-        />
-        <br></br>
-
-        <label>Direccion</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="adress"
-          value={client.adress}
-          onChange={handleChange}
-          placeholder={selectedlClient.adress}
-          type="text"
-        />
-        <br></br>
-
-        <label>Telefono</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="phone"
-          value={client.adress}
-          onChange={handleChange}
-          placeholder={selectedlClient.phone}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Provincia</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="province"
-          value={client.province}
-          onChange={handleChange}
-          placeholder={selectedlClient.province}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Localidad</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="state"
-          value={client.adress}
-          onChange={handleChange}
-          placeholder={selectedlClient.state}
-          type="text"
-        />
-        <br></br>
-        <br></br>
-        <label>Fecha de Nacimiento</label>
-        <br></br>
-        <input
-          autoComplete="off"
-          name="fecha_nac"
-          value={client.adress}
-          onChange={handleChange}
-          type="date"
-        />
-        <br></br>
-        <br></br>
-
+        <div className={styles.divs}>
+          <label>Nombre</label>
+          <input
+            autoComplete="off"
+            name="first_name"
+            value={client.first_name}
+            onChange={handleChange}
+            placeholder={selectedlClient.first_name}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Apellido</label>
+          <input
+            autoComplete="off"
+            name="lastName"
+            value={client.lastName}
+            onChange={handleChange}
+            placeholder={selectedlClient.lastName}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Cuil</label>
+          <input
+            autoComplete="off"
+            name="cuil"
+            value={client.cuil}
+            onChange={handleChange}
+            placeholder={selectedlClient.cuil}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Direccion</label>
+          <input
+            autoComplete="off"
+            name="adress"
+            value={client.adress}
+            onChange={handleChange}
+            placeholder={selectedlClient.adress}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Telefono</label>
+          <input
+            autoComplete="off"
+            name="phone"
+            value={client.adress}
+            onChange={handleChange}
+            placeholder={selectedlClient.phone}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Provincia</label>
+          <input
+            autoComplete="off"
+            name="province"
+            value={client.province}
+            onChange={handleChange}
+            placeholder={selectedlClient.province}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Localidad</label>
+          <input
+            autoComplete="off"
+            name="state"
+            value={client.adress}
+            onChange={handleChange}
+            placeholder={selectedlClient.state}
+            type="text"
+          />
+        </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar

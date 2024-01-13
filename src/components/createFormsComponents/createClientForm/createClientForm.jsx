@@ -3,34 +3,35 @@ import styles from "./createClientForm.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../redux/actions";
 import { Button } from "react-bootstrap";
-//import Dropdown from '../../../components/dropDown/dropDown'
 
 
 
 export default function CreateClientForm() {
+  
   const dispatch = useDispatch();
   
   const [newClient, setNewClient] = useState({
     id:'',
     first_name: "",
     lastName: "",
-    dni:'',
     cuil: "",
-    fecha_nac: "",
     state: "",
     province: "",
     phone: "",
     email: "",
     adress: "",
-    razon_social: "",
-    genero: ""
+    razon_social: ""
   });
   
   const closeCreateModal = (event) => {
     event.preventDefault();
     dispatch(actions.createClient(newClient));
-    dispatch(actions.hideCreateClientModal());
+    dispatch(actions.hideCreateModal());
   };
+  
+  const cancelCreateModal = () => {
+    dispatch(actions.hideCreateModal());
+  }
   
   function handleChange(event) {
     const target = event.target.name;
@@ -61,20 +62,9 @@ export default function CreateClientForm() {
           <input
             autoComplete="off"
             name="lastName"
-            value={newCleint.lastName}
+            value={newClient.lastName}
             onChange={handleChange}
             placeholder="Apellido..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>DNI</label>
-          <input
-            autoComplete="off"
-            name="dni"
-            value={newClient.dni}
-            onChange={handleChange}
-            placeholder="DNI..."
             type="text"
           />
         </div>
@@ -154,12 +144,8 @@ export default function CreateClientForm() {
             placeholder="San Luis..."
           />
         </div>
-        {/* <div>
-          <Dropdown suppliers={suppliers} onSelect={handleSupplierSelect}></Dropdown>
-        </div> */}
-
         <div className="modal-footer">
-          <Button variant="danger" onClick={closeCreateModal}>
+          <Button variant="danger" onClick={cancelCreateModal}>
             Cancelar
           </Button>
           <Button variant="success" onClick={closeCreateModal}>
