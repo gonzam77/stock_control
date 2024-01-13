@@ -1,9 +1,19 @@
-import styles from './modalCreateClientForm.module.css';
+import Modal from "react-bootstrap/Modal";
+import CreateClientForm from '../../../components/createFormsComponents/createClientForm/createClientForm';
 
-export default function CreateClientForm() {
-    return (
-        <div className={styles.container}>
-
-        </div>
-    )
+export default function ModalCreateClientForm() {
+ 
+  return (
+    <div className="modal show" style={{ display: "block", position: "" }}>
+      <Modal.Dialog >
+        <Modal.Header>
+          <Modal.Title>Cargar Cliente</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <CreateClientForm />
+        </Modal.Body>
+      </Modal.Dialog>
+    </div>
+  );
 }
+

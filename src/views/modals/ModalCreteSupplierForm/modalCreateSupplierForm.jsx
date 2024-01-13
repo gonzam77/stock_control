@@ -1,21 +1,20 @@
 import Modal from "react-bootstrap/Modal";
-import CreateProductForm from '../../../components/createFormsComponents/createProductForm/createProductForm'
+import CreateSupplierForm from '../../../components/createFormsComponents/createSupplierForm/createSupplierForm';
 
-function ModalCreateProductForm() {
+function ModalCreateSupplierForm() {
  
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog >
         <Modal.Header>
-          <Modal.Title>Cargar Producto</Modal.Title>
+          <Modal.Title>Cargar Proveedor</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          <CreateProductForm />
+          <CreateSupplierForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>
   );
 }
 
-export default ModalCreateProductForm;
+export default ModalCreateSupplierForm;

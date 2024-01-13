@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
 import ModalClientForm from "../modals/modalClientForm/modalClientForm";
+import ModalCreateClientForm from "../modals/modalCreateClientForm/modaleCreateClientForm";
 import { Button } from "react-bootstrap";
 
 export default function Clients() {
   const showModalState = useSelector((state) => state.showModal);
+  const showCreateModal = useSelector(state => state.showCreateModal)
   const clients = useSelector((state) => state.clients);
   const dispatch = useDispatch();
 
@@ -15,6 +17,10 @@ export default function Clients() {
     dispatch(actions.getClientId(id));
   };
 
+  const openCreateModal = () => {
+    dispatch(actions.showCreateModal())
+  }
+
   const closeModal = () => {
     dispatch(actions.hideModal());
   };
@@ -22,7 +28,7 @@ export default function Clients() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Button className={styles.createButton} variant="success" onClick="">
+        <Button className={styles.createButton} variant="success" onClick={openCreateModal}>
           Cargar Nuevo
         </Button>
       </div>
@@ -75,6 +81,7 @@ export default function Clients() {
         </Table>
       </div>
       {showModalState && <ModalClientForm closeModal={closeModal} />}
+      {showCreateModal && <ModalCreateClientForm />}
     </div>
   );
 }

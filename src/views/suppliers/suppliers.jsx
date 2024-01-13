@@ -4,16 +4,23 @@ import styles from "./suppliers.module.css";
 import Table from "react-bootstrap/Table";
 import ModalSuppliersForm from "../../views/modals/modalSupplierForm/modalSupllierForm";
 import * as actions from "../../redux/actions";
+import ModalCreateSuppliersForm from '../../views/modals/ModalCreteSupplierForm/modalCreateSupplierForm';
 
 export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);
+  const showCreateModalState = useSelector((state) => state.showCreateModal);
   const suppliers = useSelector((state) => state.suppliers);
+  const supplierId = useSelector((state) => state.supplierId);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getSupplierId(id));
   };
+
+  const openCreateSupplierModal = () => {
+    dispatch(actions.showCreateModal());
+  }
 
   const closeModal = () => {
     dispatch(actions.hideModal());
@@ -22,7 +29,7 @@ export default function Suppliers() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Button className={styles.createButton} variant="success" onClick="">
+        <Button className={styles.createButton} variant="success" onClick={openCreateSupplierModal}>
           Cargar Nuevo
         </Button>
       </div>
@@ -35,13 +42,13 @@ export default function Suppliers() {
           <thead>
             <tr>
               <th>id</th>
-              <th>Nombre</th>
+              <th>Razon Social</th>
+              <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Direccion</th>
               <th>Provincia</th>
               <th>Localidad</th>
-              <th>Fecha Nacimiento</th>
               <th>Fecha Creacion</th>
               <th>Fecha Actualizacion</th>
               <th>Modificar</th>
@@ -52,15 +59,13 @@ export default function Suppliers() {
               return (
                 <tr key={index}>
                   <td>{supplier.id}</td>
-                  <td>
-                    {supplier.first_name} {supplier.lastName}
-                  </td>
+                  <td>{supplier.razon_social}</td>
+                  <td>{supplier.cuil}</td>
                   <td>{supplier.email}</td>
                   <td>{supplier.phone}</td>
                   <td>{supplier.adress}</td>
                   <td>{supplier.province}</td>
                   <td>{supplier.state}</td>
-                  <td>{supplier.fecha_nac}</td>
                   <td>{supplier.fecha_creacion}</td>
                   <td>{supplier.fecha_actualizacion}</td>
                   <td>
@@ -77,7 +82,8 @@ export default function Suppliers() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalSuppliersForm closeModal={closeModal} />}
+      {showModalState && <ModalSuppliersForm id={supplierId} closeModal={closeModal} />}
+      {showCreateModalState && <ModalCreateSuppliersForm closeModal={closeModal} />}
     </div>
   );
 }

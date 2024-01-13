@@ -1,3 +1,7 @@
+import { productos } from "../assets/dataHardcodeoProducts";
+import { clientes } from "../assets/dataHardcodeoClients";
+import { suppliers } from "../assets/dataHardcodeoSuppliers";
+import { users } from "../assets/dataHardcodeoUsers";
 import {
   GET_ALL_PRODUCTS,
   GET_ALL_CLIENTS,
@@ -8,10 +12,6 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-import { productos } from "../assets/dataHardcodeoProducts";
-import { clientes } from "../assets/dataHardcodeoClients";
-import { suppliers } from "../assets/dataHardcodeoSuppliers";
-import { users } from "../assets/dataHardcodeoUsers";
 
 const initialState = {
   products: productos,
@@ -31,6 +31,16 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "CREATE_CLIENT":
+      return {
+        ...state,
+        clients: [...state.clients, payload],
+      };
+    case "CREATE_SUPPLIER":
+      return {
+        ...state,
+        suppliers: [...state.suppliers, payload],
+      };
     case "CREATE_PRODUCT":
       return {
         ...state,

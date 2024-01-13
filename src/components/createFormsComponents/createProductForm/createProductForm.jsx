@@ -3,20 +3,9 @@ import styles from "./createProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../components/dropDown/dropDown'
+import Dropdown from '../../../components/dropdown/dropDown'
 
-function encontrarObjetoConMayorID(arregloDeObjetos) {
-  if (arregloDeObjetos.length === 0) {
-    return null; // Retorna null si el arreglo está vacío
-  }
 
-  // Utiliza reduce para encontrar el objeto con el ID más alto
-  const objetoConMayorID = arregloDeObjetos.reduce((objetoMax, objetoActual) => {
-    return objetoActual.id > objetoMax.id ? objetoActual : objetoMax;
-  }, arregloDeObjetos[0]);
-
-  return objetoConMayorID;
-}
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();

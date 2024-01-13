@@ -1,19 +1,7 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProductForm from "../../../components/forms/productForm/productForm";
-import { useDispatch } from "react-redux";
-import * as actions from "../../../redux/actions";
-
-
 
 function ModalProductForm({ id }) {
-
-  const dispatch = useDispatch();
-
-  const closeModal = () => {
-    dispatch(actions.hideModal());
-  };
-
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
@@ -24,12 +12,6 @@ function ModalProductForm({ id }) {
         <Modal.Body>
           <ProductForm id={id} />
         </Modal.Body>
-
-        {/* <Modal.Footer>
-          <Button variant="dark" onClick={closeModal}>
-            Confirmar
-          </Button>
-        </Modal.Footer> */}
       </Modal.Dialog>
     </div>
   );

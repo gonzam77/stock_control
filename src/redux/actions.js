@@ -1,17 +1,29 @@
-import axios from "axios";
-import {
-  GET_ALL_PRODUCTS,
-  GET_ALL_CLIENTS,
-  GET_ALL_SUPPLIERS,
-  GET_ALL_SHIPPING,
-  GET_ALL_ORDERS,
-  GET_ALL_ACCOUNTS,
-  GET_ALL_USERS,
-} from "./actionTypes";
+// import axios from "axios";
+// import {
+//   GET_ALL_PRODUCTS,
+//   GET_ALL_CLIENTS,
+//   GET_ALL_SUPPLIERS,
+//   GET_ALL_SHIPPING,
+//   GET_ALL_ORDERS,
+//   GET_ALL_ACCOUNTS,
+//   GET_ALL_USERS,
+// } from "./actionTypes";
 
+export const createClient = (data) => {
+  return {
+    type: "CREATE_CLIENT",
+    payload: data,
+  };
+};
 export const createProduct = (data) => {
   return {
     type: "CREATE_PRODUCT",
+    payload: data,
+  };
+};
+export const createSupplier = (data) => {
+  return {
+    type: "CREATE_SUPPLIER",
     payload: data,
   };
 };

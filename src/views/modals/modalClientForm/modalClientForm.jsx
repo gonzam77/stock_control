@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ClientForm from "../../../components/forms/clientForm/clientForm";
 
@@ -9,16 +8,9 @@ function ModalProductForm({ closeModal, id }) {
         <Modal.Header closeButton onClick={closeModal}>
           <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <ClientForm id={id} />
         </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="dark" onClick={closeModal}>
-            Confirmar
-          </Button>
-        </Modal.Footer>
       </Modal.Dialog>
     </div>
   );
