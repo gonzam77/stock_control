@@ -2,7 +2,7 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalClientForm from "../modals/modalClientForm/modalClientForm";
+import ModalClientForm from "../modals/editModals/modalClientForm/modalClientForm";
 import { Button } from "react-bootstrap";
 
 export default function Users() {

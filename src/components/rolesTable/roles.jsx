@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import NomenclatorsModal from "../../views/modals/nomenclatorsModal/nomenclatorsModal";
 import styles from '../../views/clients/clients.module.css';
-import CreateUserRol from "../nomenclatorsForms/createUserRol";
+import CreateUserRol from "../forms/createForms/createUserRol/createUserRol";
 // import * as actions from "../../redux/actions";
 
 export default function Roles() {

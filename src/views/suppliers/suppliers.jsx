@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "./suppliers.module.css";
 import Table from "react-bootstrap/Table";
-import ModalSuppliersForm from "../../views/modals/modalSupplierForm/modalSupllierForm";
+import ModalSuppliersForm from "../modals/editModals/modalSupplierForm/modalSupllierForm";
 import * as actions from "../../redux/actions";
-import ModalCreateSuppliersForm from '../../views/modals/ModalCreteSupplierForm/modalCreateSupplierForm';
+import ModalCreateSuppliersForm from '../modals/createModals/ModalCreteSupplierForm/modalCreateSupplierForm';
 
 export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);

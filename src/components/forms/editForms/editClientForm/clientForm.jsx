@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./clientForm.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../redux/actions";
+import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 
 export default function ClientForm() {

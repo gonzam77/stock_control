@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import styles from "./products.module.css";
 import Table from "react-bootstrap/Table";
 import ModalProductForm from "../../views/modals/modalProductForm/modalProductForm";
-import ModalCreateProductForm from "../../views/modals/modalCreateProductForm/modalCreateProductForm";
+import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
 
 export default function Grid() {

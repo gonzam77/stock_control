@@ -15,7 +15,6 @@ import Products from "./views/products/products";
 import Deposits from './views/deposits/deposits';
 import Dashboard from "./views/dashboard/dashboard";
 import Movements from './views/movements/movements';
-import CreateProductForm from './components/createFormsComponents/createProductForm/createProductForm';
 import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
 
 export const urlDev = "http://localhost:3000";
@@ -37,7 +36,6 @@ function App() {
         <Route path="/sales" element={<Sales />} />
         <Route path="/deposits" element={<Deposits />} />
         <Route path="/movements" element={<Movements />} />
-        <Route path="/createProduct" element={<CreateProductForm />} />
         <Route path="/saleInvoice" element={<SaleInvoice />} />
         <Route path="/products" element={<Products />} />
       </Routes>

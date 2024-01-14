@@ -1,126 +1,118 @@
 import { useState } from "react";
-import styles from "./productForm.module.css";
+import styles from "./supplierForm.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../redux/actions";
+import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 
-export default function ProductForm() {
-  const products = useSelector((state) => state.products);
-  const productId = useSelector((state) => state.productId);
+export default function SupplierForm() {
+
   const dispatch = useDispatch();
-  const selectedProduct = products.find((element) => element.id === productId);
-  const [product, setProduct] = useState(selectedProduct || {} );
-  
-  
-  const cancelModal =()=> {
+  const suppliers = useSelector((state) => state.suppliers);
+  const supplierId = useSelector((state) => state.supplierId);
+
+  const selectedSupplier = suppliers.find(
+    (element) => element.id === supplierId
+  );
+
+  const [supplier, setSupplier] = useState(selectedSupplier);
+
+  const cancelModal = () => {
     dispatch(actions.hideModal());
   }
-  
+
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editProduct(product))
+    dispatch(actions.editProduct(supplier))
     dispatch(actions.hideModal());
   };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    setProduct({
-      ...product,
+    setSupplier({
+      ...supplier,
       [target]: value
-    });
-  };
+    })
+
+  }
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Code</label>
+          <label>Razon Social</label>
           <input
             autoComplete="off"
-            name="code"
-            value={product.code}
+            name="razon_social"
+            value={supplier.razon_social}
             onChange={handleChange}
+            placeholder={selectedSupplier.razon_social}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Nombre</label>
+          <label>Cuil</label>
           <input
             autoComplete="off"
-            name="name"
-            value={product.name}
+            name="cuil"
+            value={supplier.cuil}
             onChange={handleChange}
+            placeholder={selectedSupplier.cuil}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Marca</label>
+          <label>Email</label>
           <input
             autoComplete="off"
-            name="marca"
-            value={selectedProduct.marca}
+            name="email"
+            value={supplier.email}
             onChange={handleChange}
+            placeholder={selectedSupplier.email}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Proveedor</label>
+          <label>Telefono</label>
           <input
             autoComplete="off"
-            name="id_proveedor"
-            value={product.id_proveedor}
+            name="phone"
+            value={supplier.phone}
             onChange={handleChange}
+            placeholder={selectedSupplier.phone}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Stock</label>
+          <label>Direccion</label>
           <input
             autoComplete="off"
-            name="stock"
-            value={product.stock}
+            name="adress"
+            value={supplier.adress}
             onChange={handleChange}
+            placeholder={selectedSupplier.adress}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Precio</label>
+          <label>Provincia</label>
           <input
             autoComplete="off"
-            name="price"
-            value={product.price}
+            name="province"
+            value={supplier.province}
             onChange={handleChange}
+            placeholder={selectedSupplier.province}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Unidad Medida</label>
+          <label>Localidad</label>
           <input
             autoComplete="off"
-            name="unidad_medida"
-            value={product.unidad_medida}
+            name="state"
+            value={supplier.adress}
             onChange={handleChange}
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Cant Min</label>
-          <input
-            autoComplete="off"
-            name="cant_min"
-            value={product.cant_min}
-            onChange={handleChange}
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Cant Max</label>
-          <input
-            autoComplete="off"
-            name="cant_max"
-            value={product.cant_max}
-            onChange={handleChange}
+            placeholder={selectedSupplier.state}
             type="text"
           />
         </div>

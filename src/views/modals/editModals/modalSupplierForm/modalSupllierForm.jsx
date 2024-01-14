@@ -1,16 +1,15 @@
 import Modal from "react-bootstrap/Modal";
-import ProductForm from "../../../components/forms/productForm/productForm";
+import SupplierForm from "../../../../components/forms/editForms/editSupplierForm/supplierForm";
 
-function ModalProductForm({ id }) {
+function ModalProductForm({ closeModal, id }) {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
-        <Modal.Header >
-          <Modal.Title>Editar Producto</Modal.Title>
+        <Modal.Header closeButton onClick={closeModal}>
+          <Modal.Title>Editar Proveedor</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          <ProductForm id={id} />
+          <SupplierForm id={id} />
         </Modal.Body>
       </Modal.Dialog>
     </div>

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import ModalCreateProductForm from "../../views/modals/modalCreateProductForm/modalCreateProductForm";
+import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
 
 export default function Home() {
