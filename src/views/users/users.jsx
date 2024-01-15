@@ -2,7 +2,8 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalCreateUserForm from '../modals/createModals/madalCreateUserForm/modalCreateUserForm';
+import ModalCreateUserForm from "../modals/createModals/madalCreateUserForm/modalCreateUserForm";
+import ModalEditUserForm from "../modals/editModals/modalEditUserForm/modalEditUserForm";
 import { Button } from "react-bootstrap";
 
 export default function Users() {
@@ -13,7 +14,7 @@ export default function Users() {
 
   const openModal = (id) => {
     dispatch(actions.showModal());
-    dispatch(actions.getClientId(id));
+    dispatch(actions.getUserId(id));
   };
 
   const closeModal = () => {
@@ -21,13 +22,17 @@ export default function Users() {
   };
 
   const openCreateModal = () => {
-    dispatch(actions.showCreateModal())
+    dispatch(actions.showCreateModal());
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Button className={styles.createButton} variant="success" onClick={openCreateModal}>
+        <Button
+          className={styles.createButton}
+          variant="success"
+          onClick={openCreateModal}
+        >
           Cargar Nuevo
         </Button>
       </div>
@@ -41,12 +46,11 @@ export default function Users() {
             <tr>
               <th>id</th>
               <th>Nombre</th>
+              <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Direccion</th>
-              <th>Provincia</th>
               <th>Localidad</th>
-              <th>Fecha Nacimiento</th>
               <th>Fecha Creacion</th>
               <th>Fecha Actualizacion</th>
               <th>Cargo</th>
@@ -55,27 +59,30 @@ export default function Users() {
             </tr>
           </thead>
           <tbody>
-            {users.map((client, index) => {
+            {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{client.id}</td>
+                  <td>{user.id}</td>
                   <td>
-                    {client.first_name} {client.lastName}
+                    {user.first_name} {user.lastName}
                   </td>
-                  <td>{client.email}</td>
-                  <td>{client.phone}</td>
-                  <td>{client.adress}</td>
-                  <td>{client.province}</td>
-                  <td>{client.state}</td>
-                  <td>{client.fecha_nac}</td>
-                  <td>{client.fecha_creacion}</td>
-                  <td>{client.fecha_actualizacion}</td>
-                  <td>{client.rol}</td>
-                  <td>{client.status}</td>
+                  <td>{user.cuil}</td>
+                  <td>{user.email}</td>
+                  <td>{user.phone}</td>
+                  <td>{user.adress}</td>
+                  <td>
+                    {user.province}
+                    {", "}
+                    {user.state}
+                  </td>
+                  <td>{user.fecha_creacion}</td>
+                  <td>{user.fecha_actualizacion}</td>
+                  <td>{user.rol}</td>
+                  <td>{user.status}</td>
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(client.id)}
+                      onClick={() => openModal(user.id)}
                     >
                       Modificar
                     </Button>
@@ -86,7 +93,7 @@ export default function Users() {
           </tbody>
         </Table>
       </div>
-      {/* {showModalState && <ModalClientForm closeModal={closeModal} />} */}
+      {showModalState && <ModalEditUserForm closeModal={closeModal} />}
       {showCreateModal && <ModalCreateUserForm closeModal={closeModal} />}
     </div>
   );

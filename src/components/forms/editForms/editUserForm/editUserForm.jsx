@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import styles from './editUserForm.module.css'
 
-export default function ClientForm() {
+export default function EditUserForm() {
   const users = useSelector((state) => state.users);
   const userId = useSelector((state) => state.userId);
   const dispatch = useDispatch();
@@ -38,9 +39,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="first_name"
-            value={client.first_name}
+            value={user.first_name}
             onChange={handleChange}
-            placeholder={selectedlClient.first_name}
+            placeholder={selectedUser.first_name}
             type="text"
           />
         </div>
@@ -49,9 +50,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="lastName"
-            value={client.lastName}
+            value={user.lastName}
             onChange={handleChange}
-            placeholder={selectedlClient.lastName}
+            placeholder={selectedUser.lastName}
             type="text"
           />
         </div>
@@ -60,9 +61,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="cuil"
-            value={client.cuil}
+            value={user.cuil}
             onChange={handleChange}
-            placeholder={selectedlClient.cuil}
+            placeholder={selectedUser.cuil}
             type="text"
           />
         </div>
@@ -71,9 +72,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="adress"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.adress}
+            placeholder={selectedUser.adress}
             type="text"
           />
         </div>
@@ -82,9 +83,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="phone"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.phone}
+            placeholder={selectedUser.phone}
             type="text"
           />
         </div>
@@ -93,9 +94,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="province"
-            value={client.province}
+            value={user.province}
             onChange={handleChange}
-            placeholder={selectedlClient.province}
+            placeholder={selectedUser.province}
             type="text"
           />
         </div>
@@ -104,9 +105,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="state"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.state}
+            placeholder={selectedUser.state}
             type="text"
           />
         </div>
