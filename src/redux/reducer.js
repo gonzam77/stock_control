@@ -4,6 +4,7 @@ import { suppliers } from "../assets/dataHardcodeoSuppliers";
 import { users } from "../assets/dataHardcodeoUsers";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
+import { deposito } from "../assets/dataHardcodeoDeposito";
 import {
   GET_ALL_PRODUCTS,
   GET_ALL_CLIENTS,
@@ -20,6 +21,7 @@ const initialState = {
   suppliers: suppliers,
   users: users,
   dispatchers:transportistas,
+  deposits: deposito,
   shipping: [],
   accounts: [],
   orders: [],
@@ -38,6 +40,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         dispatchers: [...state.dispatchers, payload],
+      };
+    case "CREATE_DEPOSIT":
+      return {
+        ...state,
+        deposits: [...state.deposits, payload],
       };
     case "CREATE_USER":
       return {
@@ -64,6 +71,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         products: [...state.products, payload],
       };
+    case "GET_DEPOSIT_ID":
+      return {
+        ...state,
+        depositId: payload,
+      };
     case "GET_DISPATCHER_ID":
       return {
         ...state,
@@ -73,6 +85,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_DEPOSIT":
+      const updatedDeposit = payload;
+      const updatedDeposits = state.deposits.map((deposit) => {
+        if (deposit.id === updatedDeposit.id) {
+          return updatedDeposit;
+        }
+        return deposit;
+      });
+
+      return {
+        ...state,
+        deposits: updatedDeposits,
       };
     case "EDIT_DISPATCHER":
       const updatedDispatcher = payload;
