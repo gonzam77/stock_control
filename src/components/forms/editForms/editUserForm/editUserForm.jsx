@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import styles from './editUserForm.module.css'
+import styles from './editUserForm.module.css';
+import DropdownRoles from "../../../dropdown/dropdownRol";
+import DropdownStatus from "../../../dropdown/dropdownStatus";
 
 export default function EditUserForm() {
   const users = useSelector((state) => state.users);
@@ -29,7 +31,21 @@ export default function EditUserForm() {
       ...user,
       [target]:value
     });
-  }
+  };
+
+  const handleRolesSelect = (selectedRol) => {
+    setUser({
+      ...user,
+      rol: selectedRol,
+    });
+  };
+
+  const handleStatusSelect = (selectedStatus) => {
+    setUser({
+      ...user,
+      status: selectedStatus,
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -110,6 +126,12 @@ export default function EditUserForm() {
             placeholder={selectedUser.state}
             type="text"
           />
+        </div>
+        <div>
+          <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
+        </div>
+        <div>
+          <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

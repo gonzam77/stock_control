@@ -8,12 +8,14 @@
 //   GET_ALL_ACCOUNTS,
 //   GET_ALL_USERS,
 // } from "./actionTypes";
+
 export const createRol = (data) => {
   return {
     type: "CREATE_ROL",
     payload: data,
   };
 };
+
 export const createUser = (data) => {
   return {
     type: "CREATE_USER",
@@ -21,6 +23,12 @@ export const createUser = (data) => {
   };
 };
 
+export const createDispatcher = (data) => {
+  return {
+    type: "CREATE_DISPATCHER",
+    payload: data,
+  };
+};
 
 export const createClient = (data) => {
   return {
@@ -43,6 +51,13 @@ export const createSupplier = (data) => {
   };
 };
 
+export const getDispatcherId = (id) => {
+  return {
+    type: "GET_DISPATCHER_ID",
+    payload: id,
+  };
+};
+
 export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
@@ -56,6 +71,14 @@ export const editUser = (data) => {
     payload: data,
   };
 };
+
+export const editDispatcher = (data) => {
+  return {
+    type: "EDIT_DISPATCHER",
+    payload: data,
+  };
+};
+
 export const editSupplier = (data) => {
   return {
     type: "EDIT_SUPPLIER",

@@ -3,6 +3,7 @@ import { clientes } from "../assets/dataHardcodeoClients";
 import { suppliers } from "../assets/dataHardcodeoSuppliers";
 import { users } from "../assets/dataHardcodeoUsers";
 import { roles } from "../assets/dataHardcodeoRoles";
+import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import {
   GET_ALL_PRODUCTS,
   GET_ALL_CLIENTS,
@@ -18,6 +19,7 @@ const initialState = {
   clients: clientes,
   suppliers: suppliers,
   users: users,
+  dispatchers:transportistas,
   shipping: [],
   accounts: [],
   orders: [],
@@ -32,6 +34,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "CREATE_DISPATCHER":
+      return {
+        ...state,
+        dispatchers: [...state.dispatchers, payload],
+      };
     case "CREATE_USER":
       return {
         ...state,
@@ -57,10 +64,28 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         products: [...state.products, payload],
       };
+    case "GET_DISPATCHER_ID":
+      return {
+        ...state,
+        dispatcherId: payload,
+      };
     case "GET_SUPPLIER_ID":
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_DISPATCHER":
+      const updatedDispatcher = payload;
+      const updatedDispatchers = state.dispatchers.map((dispatcher) => {
+        if (dispatcher.id === updatedDispatcher.id) {
+          return updatedDispatcher;
+        }
+        return dispatcher;
+      });
+
+      return {
+        ...state,
+        dispatchers: updatedDispatchers,
       };
     case "EDIT_CLIENT":
       const updatedClient = payload;
