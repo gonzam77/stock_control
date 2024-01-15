@@ -2,7 +2,7 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalCreateUserForm from "../modals/createModals/madalCreateUserForm/modalCreateUserForm";
+import ModalCreateUserForm from "../modals/createModals/modalCreateUserForm/modalCreateUserForm";
 import ModalEditUserForm from "../modals/editModals/modalEditUserForm/modalEditUserForm";
 import { Button } from "react-bootstrap";
 

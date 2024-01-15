@@ -14,7 +14,7 @@ export default function CreateDepositForm() {
     id:'',
     type:'',
     name:'',
-    descripction:'',
+    description:'',
     phone:'',
     adress:'',
     admin:'',
@@ -86,7 +86,7 @@ export default function CreateDepositForm() {
           <input
             autoComplete="off"
             name="description"
-            value={newDeposit.descripction}
+            value={newDeposit.description}
             onChange={handleChange}
             placeholder="Descripcion..."
             type="text"
