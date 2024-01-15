@@ -1,14 +1,13 @@
 import Modal from "react-bootstrap/Modal";
 import ProductForm from "../../../../components/forms/editForms/editProductForm/editProductForm";
 
-function ModalProductForm() {
+function ModalEditProductForm() {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
         <Modal.Header >
           <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <ProductForm />
         </Modal.Body>
@@ -17,4 +16,4 @@ function ModalProductForm() {
   );
 }
 
-export default ModalProductForm;
+export default ModalEditProductForm;

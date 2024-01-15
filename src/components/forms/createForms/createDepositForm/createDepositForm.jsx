@@ -1,37 +1,33 @@
 import { useState } from "react";
-import styles from "./createClientForm.module.css";
+import styles from "./createDepositForm.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 
 
 
-export default function CreateClientForm() {
+export default function CreateDepositForm() {
   
   const dispatch = useDispatch();
   
-  const [newClient, setNewClient] = useState({
+  const [newDeposit, setNewDeposit] = useState({
     id:'',
-    first_name: "",
-    lastName: "",
-    cuil: "",
-    state: "",
-    province: "",
-    phone: "",
-    email: "",
-    adress: "",
-    razon_social: "",
-    create_date:''
+    type:'',
+    name:'',
+    descripction:'',
+    phone:'',
+    adress:'',
+    admin:'',
   });
   
   const closeCreateModal = (event) => {
     event.preventDefault();
     const date = new Date();
-    setNewClient({
-      ...newClient,
+    setNewDeposit({
+      ...newDeposit,
       create_date: date
     })
-    dispatch(actions.createClient(newClient));
+    dispatch(actions.createDeposit(newDeposit));
     dispatch(actions.hideCreateModal());
   };
   
@@ -42,8 +38,8 @@ export default function CreateClientForm() {
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-      setNewClient({
-        ...newClient,
+      setNewDeposit({
+        ...newDeposit,
         [target]: value,
       });
     }
@@ -53,68 +49,46 @@ export default function CreateClientForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
+          <label>Tipo</label>
+          <input
+            autoComplete="off"
+            name="type"
+            value={newDeposit.type}
+            onChange={handleChange}
+            placeholder="Tipo de deposito"
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="first_name"
-            value={newClient.first_name}
+            name="name"
+            value={newDeposit.name}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Apellido</label>
+          <label>Administrador</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={newClient.lastName}
+            name="admin"
+            value={newDeposit.admin}
             onChange={handleChange}
-            placeholder="Apellido..."
+            placeholder="Administrador..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>CUIL</label>
+          <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="cuil"
-            value={newClient.cuil}
+            name="description"
+            value={newDeposit.descripction}
             onChange={handleChange}
-            placeholder="cuil..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Razon Social</label>
-          <input
-            autoComplete="off"
-            name="razon_social"
-            value={newClient.razon_social}
-            onChange={handleChange}
-            placeholder="Razon Social..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Direccion</label>
-          <input
-            autoComplete="off"
-            name="adress"
-            value={newClient.adress}
-            onChange={handleChange}
-            placeholder="Barrio..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Email</label>
-          <input
-            autoComplete="off"
-            name="email"
-            value={newClient.email}
-            onChange={handleChange}
-            placeholder="example@ejem.com.ar"
+            placeholder="Descripcion..."
             type="text"
           />
         </div>
@@ -123,31 +97,21 @@ export default function CreateClientForm() {
           <input
             autoComplete="off"
             name="phone"
-            value={newClient.phone}
+            value={newDeposit.phone}
             onChange={handleChange}
             placeholder="266..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Provincia</label>
+          <label>Direccion</label>
           <input
             autoComplete="off"
-            name="province"
-            value={newClient.province}
+            name="adress"
+            value={newDeposit.adress}
             onChange={handleChange}
-            placeholder="San Luis..."
-            type="date"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Localidad</label>
-          <input
-            autoComplete="off"
-            name="state"
-            value={newClient.state}
-            onChange={handleChange}
-            placeholder="San Luis..."
+            placeholder="Barrio..."
+            type="text"
           />
         </div>
         <div className="modal-footer">

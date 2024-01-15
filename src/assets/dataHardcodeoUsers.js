@@ -4,15 +4,14 @@ export const users = [
         cuil:'',
         first_name:'Juan',
         lastName:'Perez',
+        cuil:'20341828806',
         password:'1234',
         dni:'12345678',
-        genero: 'M',
         adress:'Calle 1',
         email:'jueanperez@gmail.com',
         phone:'2664489645',
         province:'San Luis',
         state:'San Luis',
-        fecha_nac:'26/04/1989',
         create_date:'',
         fecha_actualizacion:'',
         rol:'Administrador',
@@ -23,6 +22,7 @@ export const users = [
         cuil:'',
         password:'1234',
         first_name:'Juan',
+        cuil:'20341828806',
         lastName:'Perez',
         dni:'12345678',
         genero: 'M',
@@ -42,6 +42,7 @@ export const users = [
         cuil:'',
         password:'1234',
         first_name:'Esteban',
+        cuil:'20341828806',
         lastName:'Quito',
         dni:'125446578',
         genero: 'M',
@@ -54,6 +55,6 @@ export const users = [
         create_date:'',
         fecha_actualizacion:'',
         rol:'Vendedor',
-        status:'Suspendido'
+        status:'Inactivo'
     }
 ]

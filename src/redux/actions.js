@@ -9,9 +9,30 @@
 //   GET_ALL_USERS,
 // } from "./actionTypes";
 
+export const createDeposit = (data) => {
+  return {
+    type: "CREATE_DEPOSIT",
+    payload: data,
+  };
+};
+
 export const createRol = (data) => {
   return {
     type: "CREATE_ROL",
+    payload: data,
+  };
+};
+
+export const createUser = (data) => {
+  return {
+    type: "CREATE_USER",
+    payload: data,
+  };
+};
+
+export const createDispatcher = (data) => {
+  return {
+    type: "CREATE_DISPATCHER",
     payload: data,
   };
 };
@@ -37,10 +58,45 @@ export const createSupplier = (data) => {
   };
 };
 
+export const getDepositId = (id) => {
+  return {
+    type: "GET_DEPOSIT_ID",
+    payload: id,
+  };
+};
+
+export const getDispatcherId = (id) => {
+  return {
+    type: "GET_DISPATCHER_ID",
+    payload: id,
+  };
+};
+
 export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
     payload: id,
+  };
+};
+
+export const editDeposit = (data) => {
+  return {
+    type: "EDIT_DEPOSIT",
+    payload: data,
+  };
+};
+
+export const editUser = (data) => {
+  return {
+    type: "EDIT_USER",
+    payload: data,
+  };
+};
+
+export const editDispatcher = (data) => {
+  return {
+    type: "EDIT_DISPATCHER",
+    payload: data,
   };
 };
 

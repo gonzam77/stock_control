@@ -1,19 +1,19 @@
 import Modal from "react-bootstrap/Modal";
-import ClientForm from "../../../../components/forms/editForms/editClientForm/editClientForm";
+import EditDispatcherForm from "../../../../components/forms/editForms/editDispatcherForm/editDispatcherForm";
 
-function ModalEditClientForm() {
+function ModalEditDispatcherForm() {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
         <Modal.Header >
-          <Modal.Title>Editar Producto</Modal.Title>
+          <Modal.Title>Editar Transportista</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ClientForm />
+          <EditDispatcherForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>
   );
 }
 
-export default ModalEditClientForm;
+export default ModalEditDispatcherForm;

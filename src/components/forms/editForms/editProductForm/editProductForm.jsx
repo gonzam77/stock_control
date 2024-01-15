@@ -3,9 +3,11 @@ import styles from "./productForm.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import Dropdown from '../../../dropdown/dropdownSupplier';
 
 export default function ProductForm() {
   const products = useSelector((state) => state.products);
+  const suppliers = useSelector(state => state.suppliers);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
   const selectedProduct = products.find((element) => element.id === productId);
@@ -28,6 +30,13 @@ export default function ProductForm() {
     setProduct({
       ...product,
       [target]: value
+    });
+  };
+
+  const handleSupplierSelect = (selectedSupplier) => {
+    setProduct({
+      ...product,
+      proveedor: selectedSupplier,
     });
   };
 
@@ -123,6 +132,9 @@ export default function ProductForm() {
             onChange={handleChange}
             type="text"
           />
+        </div>
+        <div>
+          <Dropdown suppliers={suppliers} onSelect={handleSupplierSelect}></Dropdown>
         </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

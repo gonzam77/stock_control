@@ -1,169 +1,155 @@
 import { useState } from "react";
-import styles from "./createProductForm.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import styles from "./createDispatcherForm.module.css";
+import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../dropdown/dropdownSupplier';
 
-export default function CreateProductForm() {
+
+
+export default function CreateDispatcherForm() {
+  
   const dispatch = useDispatch();
-  const suppliers = useSelector(state => state.suppliers);
-  const [newProduct, setNewProduct] = useState({
-    id: '',
-    name: "",
-    code: "",
-    fecha_vto: "",
-    create_date: "",
-    unidad_medida: "",
-    cant_min: "",
-    cant_max: "",
-    supplier: "",
-    marca: "",
-    stock: "",
-    price: "",
+  
+  const [newDispatcher, setnewDispatcher] = useState({
+    id:'',
+    first_name: "",
+    lastName: "",
+    cuil: "",
+    state: "",
+    province: "",
+    phone: "",
+    email: "",
+    adress: "",
+    razon_social: "",
+    create_date:''
   });
   
-  
-  const handleSupplierSelect = (selectedSupplier) => {
-    setNewProduct({
-      ...newProduct,
-      supplier: selectedSupplier,
-    });
-  };
-  
   const closeCreateModal = (event) => {
-    const date = new Date()
     event.preventDefault();
-    setNewProduct({
-      ...newProduct,
+    const date = new Date();
+    setnewDispatcher({
+      ...newDispatcher,
       create_date: date
     })
-    console.log('producto terminado',newProduct);
-    dispatch(actions.createProduct(newProduct));
+    dispatch(actions.createDispatcher(newDispatcher));
     dispatch(actions.hideCreateModal());
   };
-
+  
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
   }
-
+  
   function handleChange(event) {
-
     const target = event.target.name;
     const value = event.target.value;
-    if (target !== "unidad_medida") {
-      setNewProduct({
-        ...newProduct,
+      setnewDispatcher({
+        ...newDispatcher,
         [target]: value,
       });
     }
-  }
+  
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Codigo</label>
-          <input
-            autoComplete="off"
-            name="code"
-            value={newProduct.code}
-            onChange={handleChange}
-            placeholder="(0001)"
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={newProduct.name}
+            name="first_name"
+            value={newDispatcher.first_name}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Marca</label>
+          <label>Apellido</label>
           <input
             autoComplete="off"
-            name="marca"
-            value={newProduct.marca}
+            name="lastName"
+            value={newDispatcher.lastName}
             onChange={handleChange}
-            placeholder="Marca..."
+            placeholder="Apellido..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Unidad medida</label>
+          <label>CUIL</label>
           <input
             autoComplete="off"
-            name="unidad_medida"
-            value={newProduct.unidad_medida}
+            name="cuil"
+            value={newDispatcher.cuil}
             onChange={handleChange}
-            placeholder="Unidad/Litros..."
+            placeholder="cuil..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Stock</label>
+          <label>Razon Social</label>
           <input
             autoComplete="off"
-            name="stock"
-            value={newProduct.stock}
+            name="razon_social"
+            value={newDispatcher.razon_social}
             onChange={handleChange}
-            placeholder="Stock..."
+            placeholder="Razon Social..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Cant min</label>
+          <label>Direccion</label>
           <input
             autoComplete="off"
-            name="cant_min"
-            value={newProduct.cant_min}
+            name="adress"
+            value={newDispatcher.adress}
             onChange={handleChange}
-            placeholder="Cant min necesaria"
+            placeholder="Barrio..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Cant Max</label>
+          <label>Email</label>
           <input
             autoComplete="off"
-            name="cant_max"
-            value={newProduct.cant_max}
+            name="email"
+            value={newDispatcher.email}
             onChange={handleChange}
-            placeholder="Cant max deseable"
+            placeholder="example@ejem.com.ar"
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Precio</label>
+          <label>Telefono</label>
           <input
             autoComplete="off"
-            name="price"
-            value={newProduct.price}
+            name="phone"
+            value={newDispatcher.phone}
             onChange={handleChange}
-            placeholder="Precio..."
+            placeholder="266..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Facha de vencimiento</label>
+          <label>Provincia</label>
           <input
             autoComplete="off"
-            name="fecha_vto"
-            value={newProduct.fecha_vto}
+            name="province"
+            value={newDispatcher.province}
             onChange={handleChange}
+            placeholder="San Luis..."
             type="date"
           />
         </div>
-        <div>
-          <Dropdown onSelect={handleSupplierSelect}></Dropdown>
+        <div className={styles.divs}>
+          <label>Localidad</label>
+          <input
+            autoComplete="off"
+            name="state"
+            value={newDispatcher.state}
+            onChange={handleChange}
+            placeholder="San Luis..."
+          />
         </div>
-
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>
             Cancelar

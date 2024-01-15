@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "./suppliers.module.css";
 import Table from "react-bootstrap/Table";
-import ModalSuppliersForm from "../modals/editModals/modalSupplierForm/modalSupllierForm";
+import ModalEditSuppliersForm from "../modals/editModals/modalSupplierForm/modalSupllierForm";
 import * as actions from "../../redux/actions";
 import ModalCreateSuppliersForm from '../modals/createModals/ModalCreteSupplierForm/modalCreateSupplierForm';
 
@@ -82,7 +82,7 @@ export default function Suppliers() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalSuppliersForm id={supplierId} closeModal={closeModal} />}
+      {showModalState && <ModalEditSuppliersForm id={supplierId} closeModal={closeModal} />}
       {showCreateModalState && <ModalCreateSuppliersForm closeModal={closeModal} />}
     </div>
   );

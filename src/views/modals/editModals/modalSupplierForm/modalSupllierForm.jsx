@@ -1,19 +1,19 @@
 import Modal from "react-bootstrap/Modal";
 import SupplierForm from "../../../../components/forms/editForms/editSupplierForm/editSupplierForm";
 
-function ModalProductForm({ closeModal, id }) {
+function ModalEditSupplierForm() {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
-        <Modal.Header closeButton onClick={closeModal}>
+        <Modal.Header >
           <Modal.Title>Editar Proveedor</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SupplierForm id={id} />
+          <SupplierForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>
   );
 }
 
-export default ModalProductForm;
+export default ModalEditSupplierForm;

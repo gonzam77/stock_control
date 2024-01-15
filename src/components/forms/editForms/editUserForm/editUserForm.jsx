@@ -1,16 +1,18 @@
 import { useState } from "react";
-import styles from "./clientForm.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import styles from './editUserForm.module.css';
+import DropdownRoles from "../../../dropdown/dropdownRol";
+import DropdownStatus from "../../../dropdown/dropdownStatus";
 
-export default function ClientForm() {
-  const clients = useSelector((state) => state.clients);
-  const clientId = useSelector((state) => state.clientId);
+export default function EditUserForm() {
+  const users = useSelector((state) => state.users);
+  const userId = useSelector((state) => state.userId);
   const dispatch = useDispatch();
-  const selectedlClient = clients.find((element) => element.id === clientId);
+  const selectedUser = users.find((element) => element.id === userId);
 
-  const [client, setClient] = useState(selectedlClient);
+  const [user, setUser] = useState(selectedUser);
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
@@ -18,18 +20,32 @@ export default function ClientForm() {
   
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editClient(client));
+    dispatch(actions.editUser(user));
     dispatch(actions.hideModal());
   };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    setClient({
-      ...client,
+    setUser({ 
+      ...user,
       [target]:value
-    })
-  }
+    });
+  };
+
+  const handleRolesSelect = (selectedRol) => {
+    setUser({
+      ...user,
+      rol: selectedRol,
+    });
+  };
+
+  const handleStatusSelect = (selectedStatus) => {
+    setUser({
+      ...user,
+      status: selectedStatus,
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -39,9 +55,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="first_name"
-            value={client.first_name}
+            value={user.first_name}
             onChange={handleChange}
-            placeholder={selectedlClient.first_name}
+            placeholder={selectedUser.first_name}
             type="text"
           />
         </div>
@@ -50,9 +66,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="lastName"
-            value={client.lastName}
+            value={user.lastName}
             onChange={handleChange}
-            placeholder={selectedlClient.lastName}
+            placeholder={selectedUser.lastName}
             type="text"
           />
         </div>
@@ -61,9 +77,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="cuil"
-            value={client.cuil}
+            value={user.cuil}
             onChange={handleChange}
-            placeholder={selectedlClient.cuil}
+            placeholder={selectedUser.cuil}
             type="text"
           />
         </div>
@@ -72,9 +88,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="adress"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.adress}
+            placeholder={selectedUser.adress}
             type="text"
           />
         </div>
@@ -83,9 +99,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="phone"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.phone}
+            placeholder={selectedUser.phone}
             type="text"
           />
         </div>
@@ -94,9 +110,9 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="province"
-            value={client.province}
+            value={user.province}
             onChange={handleChange}
-            placeholder={selectedlClient.province}
+            placeholder={selectedUser.province}
             type="text"
           />
         </div>
@@ -105,11 +121,17 @@ export default function ClientForm() {
           <input
             autoComplete="off"
             name="state"
-            value={client.adress}
+            value={user.adress}
             onChange={handleChange}
-            placeholder={selectedlClient.state}
+            placeholder={selectedUser.state}
             type="text"
           />
+        </div>
+        <div>
+          <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
+        </div>
+        <div>
+          <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
