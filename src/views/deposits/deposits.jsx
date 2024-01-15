@@ -2,8 +2,8 @@ import styles from "./deposits.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-// import ModalCreatedepositForm from "../modals/createModals/madalCreatedepositForm/modalCreatedepositForm";
-// import ModalEditdepositForm from "../modals/editModals/modalEditdepositForm/modalEditdepositForm";
+import ModalCreatedepositForm from "../modals/createModals/modalCreateDepositForm/modalCreateDepositForm";
+import ModalEditdepositForm from "../modals/editModals/modalEditDepositForm/modalEditDepositForm";
 import { Button } from "react-bootstrap";
 
 export default function deposits() {
@@ -79,8 +79,8 @@ export default function deposits() {
           </tbody>
         </Table>
       </div>
-      {/* {showModalState && <ModalEditdepositForm closeModal={closeModal} />}
-      {showCreateModal && <ModalCreatedepositForm closeModal={closeModal} />} */}
+      {showModalState && <ModalEditdepositForm closeModal={closeModal} />}
+      {showCreateModal && <ModalCreatedepositForm closeModal={closeModal} />}
     </div>
   );
 }
