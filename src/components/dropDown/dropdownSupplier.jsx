@@ -1,9 +1,12 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function DropdownSupplier({ suppliers, onSelect }) {
+
+function DropdownSupplier({ onSelect }) {
   
   const [select, setSelect] = useState();
+  const suppliers = useSelector(state => state.suppliers);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -15,7 +18,6 @@ function DropdownSupplier({ suppliers, onSelect }) {
       <Dropdown.Toggle variant="light" id="dropdown-basic">
         {select ? select : "Proveedor"}
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
         {suppliers.map((element, index) => {

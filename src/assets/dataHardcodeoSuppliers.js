@@ -16,7 +16,7 @@ export const suppliers = [
         id:2,
         cuenta:'',
         razon_social:'Marco Polo',
-        cuil:'20132456786',
+        cuil:'201344456786',
         first_name:'Juan',
         lastName:'Perez',
         dni:'12345678',

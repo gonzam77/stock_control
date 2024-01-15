@@ -7,7 +7,7 @@ import ModalEditProductForm from "../modals/editModals/modalEditProductForm/moda
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
 
-export default function Grid() {
+export default function Products() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
@@ -39,7 +39,7 @@ export default function Grid() {
         </Link>
       </div>
 
-      <h1 className={styles.title}>Productos</h1>
+      <h1 className={styles.title}>products</h1>
 
       <div className={styles.tableContainer}>
         <Table striped bordered hover>
@@ -47,7 +47,7 @@ export default function Grid() {
             <tr>
               <th>COD</th>
               <th>CATEGORIA</th>
-              <th>PRODUCTO</th>
+              <th>product</th>
               <th>MARCA</th>
               <th>PROVEEDOR</th>
               <th>PRECIO</th>
@@ -59,28 +59,28 @@ export default function Grid() {
             </tr>
           </thead>
           <tbody>
-            {products.map((producto, index) => {
+            {products.map((product, index) => {
               const supplier = suppliers.find(
-                (supplier) => (supplier.cuil = producto.proveedor)
+                (supplier) => (supplier.razon_social = product.supplier)
               );
               return (
                 <tr key={index}>
-                  <td>{producto.code}</td>
-                  <td>{producto.categoria}</td>
-                  <td>{producto.name}</td>
-                  <td>{producto.marca}</td>
+                  <td>{product.code}</td>
+                  <td>{product.categoria}</td>
+                  <td>{product.name}</td>
+                  <td>{product.marca}</td>
                   <td>
-                    {supplier.razon_social}
+                    {product.supplier}
                   </td>
-                  <td>{producto.price}</td>
-                  <td>{producto.stock}</td>
-                  <td>{producto.unidad_medida}</td>
-                  <td>{producto.cant_min}</td>
-                  <td>{producto.cant_max}</td>
+                  <td>{product.price}</td>
+                  <td>{product.stock}</td>
+                  <td>{product.unidad_medida}</td>
+                  <td>{product.cant_min}</td>
+                  <td>{product.cant_max}</td>
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(producto.id)}
+                      onClick={() => openModal(product.id)}
                     >
                       Modificar
                     </Button>

@@ -3,11 +3,11 @@ import styles from "./createProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../dropdown/dropdownSupplier'
+import Dropdown from '../../../dropdown/dropdownSupplier';
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-  const suppliers = useSelector(state => state.suppliers)
+  const suppliers = useSelector(state => state.suppliers);
   const [newProduct, setNewProduct] = useState({
     id: '',
     name: "",
@@ -17,18 +17,17 @@ export default function CreateProductForm() {
     unidad_medida: "",
     cant_min: "",
     cant_max: "",
-    id_proveedor: "",
+    supplier: "",
     marca: "",
     stock: "",
     price: "",
   });
   
   
-  
   const handleSupplierSelect = (selectedSupplier) => {
     setNewProduct({
       ...newProduct,
-      proveedor: selectedSupplier,
+      supplier: selectedSupplier,
     });
   };
   
@@ -39,6 +38,7 @@ export default function CreateProductForm() {
       ...newProduct,
       create_date: date
     })
+    console.log('producto terminado',newProduct);
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };
@@ -161,7 +161,7 @@ export default function CreateProductForm() {
           />
         </div>
         <div>
-          <Dropdown suppliers={suppliers} onSelect={handleSupplierSelect}></Dropdown>
+          <Dropdown onSelect={handleSupplierSelect}></Dropdown>
         </div>
 
         <div className="modal-footer">
