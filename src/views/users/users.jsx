@@ -2,11 +2,12 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalClientForm from "../modals/editModals/modalEditClientForm/modalEditClientForm";
+import ModalCreateUserForm from '../modals/createModals/madalCreateUserForm/modalCreateUserForm';
 import { Button } from "react-bootstrap";
 
 export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
+  const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
@@ -19,10 +20,14 @@ export default function Users() {
     dispatch(actions.hideModal());
   };
 
+  const openCreateModal = () => {
+    dispatch(actions.showCreateModal())
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Button className={styles.createButton} variant="success" onClick="">
+        <Button className={styles.createButton} variant="success" onClick={openCreateModal}>
           Cargar Nuevo
         </Button>
       </div>
@@ -68,7 +73,10 @@ export default function Users() {
                   <td>{client.rol}</td>
                   <td>{client.status}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(client.id)}>
+                    <Button
+                      variant="primary"
+                      onClick={() => openModal(client.id)}
+                    >
                       Modificar
                     </Button>
                   </td>
@@ -78,7 +86,8 @@ export default function Users() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalClientForm closeModal={closeModal} />}
+      {/* {showModalState && <ModalClientForm closeModal={closeModal} />} */}
+      {showCreateModal && <ModalCreateUserForm closeModal={closeModal} />}
     </div>
   );
 }

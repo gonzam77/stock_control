@@ -13,7 +13,6 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-
 const initialState = {
   products: productos,
   clients: clientes,
@@ -28,11 +27,16 @@ const initialState = {
   clientId: "",
   userId: "",
   supplierId: "",
-  roles:roles,
+  roles: roles,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "CREATE_USER":
+      return {
+        ...state,
+        users: [...state.users, payload],
+      };
     case "CREATE_ROL":
       return {
         ...state,
@@ -58,19 +62,45 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         supplierId: payload,
       };
+    case "EDIT_CLIENT":
+      const updatedClient = payload;
+      const updatedClients = state.clients.map((client) => {
+        if (client.id === updatedClient.id) {
+          return updatedClient;
+        }
+        return client;
+      });
+
+      return {
+        ...state,
+        clients: updatedClients,
+      };
+    case "EDIT_USER":
+      const updatedUser = payload;
+      const updatedUsers = state.users.map((user) => {
+        if (user.id === updatedUser.id) {
+          return updatedUser;
+        }
+        return user;
+      });
+
+      return {
+        ...state,
+        users: updatedUsers,
+      };
     case "EDIT_SUPPLIER":
       const updatedSupplier = payload;
-        const updatedSuppliers = state.suppliers.map((supplier) => {
-          if (supplier.id === updatedSupplier.id) {
-            return updatedSupplier;
-          }
-          return supplier;
-        });
-      
-        return {
-          ...state,
-          suppliers: updatedSuppliers,
-        };
+      const updatedSuppliers = state.suppliers.map((supplier) => {
+        if (supplier.id === updatedSupplier.id) {
+          return updatedSupplier;
+        }
+        return supplier;
+      });
+
+      return {
+        ...state,
+        suppliers: updatedSuppliers,
+      };
     case "GET_USER_ID":
       return {
         ...state,
@@ -91,19 +121,19 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         productId: payload,
       };
-      case "EDIT_PRODUCT":
-        const updatedProduct = payload;
-        const updatedProducts = state.products.map((product) => {
-          if (product.id === updatedProduct.id) {
-            return updatedProduct;
-          }
-          return product;
-        });
-      
-        return {
-          ...state,
-          products: updatedProducts,
-        };
+    case "EDIT_PRODUCT":
+      const updatedProduct = payload;
+      const updatedProducts = state.products.map((product) => {
+        if (product.id === updatedProduct.id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+
+      return {
+        ...state,
+        products: updatedProducts,
+      };
     case "SHOW_MODAL":
       return {
         ...state,

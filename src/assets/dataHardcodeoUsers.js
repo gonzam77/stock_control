@@ -6,13 +6,11 @@ export const users = [
         lastName:'Perez',
         password:'1234',
         dni:'12345678',
-        genero: 'M',
         adress:'Calle 1',
         email:'jueanperez@gmail.com',
         phone:'2664489645',
         province:'San Luis',
         state:'San Luis',
-        fecha_nac:'26/04/1989',
         create_date:'',
         fecha_actualizacion:'',
         rol:'Administrador',
@@ -54,6 +52,6 @@ export const users = [
         create_date:'',
         fecha_actualizacion:'',
         rol:'Vendedor',
-        status:'Suspendido'
+        status:'Inactivo'
     }
 ]

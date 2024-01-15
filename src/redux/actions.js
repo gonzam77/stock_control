@@ -8,13 +8,19 @@
 //   GET_ALL_ACCOUNTS,
 //   GET_ALL_USERS,
 // } from "./actionTypes";
-
 export const createRol = (data) => {
   return {
     type: "CREATE_ROL",
     payload: data,
   };
 };
+export const createUser = (data) => {
+  return {
+    type: "CREATE_USER",
+    payload: data,
+  };
+};
+
 
 export const createClient = (data) => {
   return {
@@ -44,6 +50,12 @@ export const getSupplierId = (id) => {
   };
 };
 
+export const editUser = (data) => {
+  return {
+    type: "EDIT_USER",
+    payload: data,
+  };
+};
 export const editSupplier = (data) => {
   return {
     type: "EDIT_SUPPLIER",
