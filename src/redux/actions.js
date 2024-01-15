@@ -9,18 +9,27 @@
 //   GET_ALL_USERS,
 // } from "./actionTypes";
 
+export const createRol = (data) => {
+  return {
+    type: "CREATE_ROL",
+    payload: data,
+  };
+};
+
 export const createClient = (data) => {
   return {
     type: "CREATE_CLIENT",
     payload: data,
   };
 };
+
 export const createProduct = (data) => {
   return {
     type: "CREATE_PRODUCT",
     payload: data,
   };
 };
+
 export const createSupplier = (data) => {
   return {
     type: "CREATE_SUPPLIER",

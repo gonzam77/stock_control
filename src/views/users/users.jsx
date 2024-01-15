@@ -2,7 +2,7 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalClientForm from "../modals/modalClientForm/modalClientForm";
+import ModalClientForm from "../modals/editModals/modalEditClientForm/modalEditClientForm";
 import { Button } from "react-bootstrap";
 
 export default function Users() {
@@ -44,6 +44,8 @@ export default function Users() {
               <th>Fecha Nacimiento</th>
               <th>Fecha Creacion</th>
               <th>Fecha Actualizacion</th>
+              <th>Cargo</th>
+              <th>Estado</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -63,6 +65,8 @@ export default function Users() {
                   <td>{client.fecha_nac}</td>
                   <td>{client.fecha_creacion}</td>
                   <td>{client.fecha_actualizacion}</td>
+                  <td>{client.rol}</td>
+                  <td>{client.status}</td>
                   <td>
                     <Button variant="primary" onClick={() => openModal(client.id)}>
                       Modificar

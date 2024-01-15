@@ -2,6 +2,7 @@ import { productos } from "../assets/dataHardcodeoProducts";
 import { clientes } from "../assets/dataHardcodeoClients";
 import { suppliers } from "../assets/dataHardcodeoSuppliers";
 import { users } from "../assets/dataHardcodeoUsers";
+import { roles } from "../assets/dataHardcodeoRoles";
 import {
   GET_ALL_PRODUCTS,
   GET_ALL_CLIENTS,
@@ -26,11 +27,17 @@ const initialState = {
   productId: "",
   clientId: "",
   userId: "",
-  supplierId: ""
+  supplierId: "",
+  roles:roles,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "CREATE_ROL":
+      return {
+        ...state,
+        roles: [...state.roles, payload],
+      };
     case "CREATE_CLIENT":
       return {
         ...state,

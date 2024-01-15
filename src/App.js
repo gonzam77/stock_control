@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./views/home/Home";
+import Home from "./views/home/home";
 import Nav from "./components/nav/nav";
 import Clients from "./views/clients/clients";
 import Suppliers from "./views/suppliers/suppliers";
@@ -13,8 +13,9 @@ import Sales from "./views/sales/sales";
 import SaleInvoice from "./views/salesInvoice/salesInvoice";
 import Products from "./views/products/products";
 import Deposits from './views/deposits/deposits';
+import Dashboard from "./views/dashboard/dashboard";
 import Movements from './views/movements/movements';
-import CreateProductForm from './components/createFormsComponents/createProductForm/createProductForm'
+import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
 
 export const urlDev = "http://localhost:3000";
 
@@ -23,7 +24,9 @@ function App() {
     <div className="App">
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/nomenclators" element={<NomenclatorsPanel />} />
+        <Route path="/cards" element={<Home />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/users" element={<Users />} />
@@ -33,7 +36,6 @@ function App() {
         <Route path="/sales" element={<Sales />} />
         <Route path="/deposits" element={<Deposits />} />
         <Route path="/movements" element={<Movements />} />
-        <Route path="/createProduct" element={<CreateProductForm />} />
         <Route path="/saleInvoice" element={<SaleInvoice />} />
         <Route path="/products" element={<Products />} />
       </Routes>

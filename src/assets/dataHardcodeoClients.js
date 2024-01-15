@@ -14,7 +14,7 @@ export const clientes = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:'',
         created_by_user:'user',
         updated_by_user:'user'
@@ -34,7 +34,7 @@ export const clientes = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'',
+        create_date:'',
         fecha_actualizacion:'',
         created_by_user:'user',
         updated_by_user:'user'
@@ -54,7 +54,7 @@ export const clientes = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_actualizacion:'01/01/2024',
         created_by_user:'user',
         updated_by_user:'user'
@@ -74,7 +74,7 @@ export const clientes = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_actualizacion:'01/01/2024',
         created_by_user:'user',
         updated_by_user:'user'
@@ -94,7 +94,7 @@ export const clientes = [
         province:'San Luis',
         state:'San Luis',
         fecha_nac:'26/04/1989',
-        fecha_creacion:'01/01/2024',
+        create_date:'01/01/2024',
         fecha_actualizacion:'01/01/2024',
         created_by_user:'user',
         updated_by_user:'user'
