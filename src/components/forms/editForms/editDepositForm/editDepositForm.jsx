@@ -76,7 +76,7 @@ export default function EditDepositForm() {
           <input
             autoComplete="off"
             name="description"
-            value={deposit.descripction}
+            value={deposit.description}
             onChange={handleChange}
             placeholder={selectedDeposit.description}
             type="text"
