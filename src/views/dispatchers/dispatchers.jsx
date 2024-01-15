@@ -2,8 +2,8 @@ import styles from "./dispatchers.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-// import ModalEditdispatcherForm from "../modals/editModals/modalEditdispatcherForm/modalEditdispatcherForm";
-// import ModalCreatedispatcherForm from "../modals/createModals/modalCreatedispatcherForm/modaleCreatedispatcherForm";
+import ModalEditDispatcherForm from "../modals/editModals/modalEditDispatcherForm/modalEditDispatcherForm";
+import ModalCreateDispatcherForm from '../modals/createModals/modalCreateDispatcherForm/modalCreateDispatcherForm';
 import { Button } from "react-bootstrap";
 
 export default function Dispatchers() {
