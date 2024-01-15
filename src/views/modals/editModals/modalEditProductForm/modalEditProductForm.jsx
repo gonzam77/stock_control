@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import ProductForm from "../../../components/forms/editForms/editProductForm/productForm";
+import ProductForm from "../../../../components/forms/editForms/editProductForm/editProductForm";
 
 function ModalProductForm() {
   return (

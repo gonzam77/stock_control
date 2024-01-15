@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import ClientForm from "../../../../components/forms/editForms/editClientForm/clientForm";
+import ClientForm from "../../../../components/forms/editForms/editClientForm/editClientForm";
 
 function ModalProductForm({ closeModal, id }) {
   return (

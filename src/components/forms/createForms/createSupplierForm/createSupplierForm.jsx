@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import * as actions from "../../../redux/actions";
+import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import styles from './createSupplierForm.module.css';
 

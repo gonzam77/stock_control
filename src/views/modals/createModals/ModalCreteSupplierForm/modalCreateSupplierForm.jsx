@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import CreateSupplierForm from '../../../components/createFormsComponents/createSupplierForm/createSupplierForm';
+import CreateSupplierForm from '../../../../components/forms/createForms/createSupplierForm/createSupplierForm';
 
 function ModalCreateSupplierForm() {
  

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
-import CardDetail from "../../components/cardDetail/cardDetail";
+import CardDetail from "../../components/cards/cardDetail/cardDetail";
 import styles from "./productDetail.module.css";
 import * as actions from "../../redux/actions";
 

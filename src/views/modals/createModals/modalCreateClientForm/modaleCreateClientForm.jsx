@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import CreateClientForm from '../../../components/createFormsComponents/createClientForm/createClientForm';
+import CreateClientForm from '../../../../components/forms/createForms/createClientForm/createClientForm';
 
 export default function ModalCreateClientForm() {
  

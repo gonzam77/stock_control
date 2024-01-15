@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./createClientForm.module.css";
 import { useDispatch } from "react-redux";
-import * as actions from "../../../redux/actions";
+import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 
 

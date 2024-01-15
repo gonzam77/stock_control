@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import SupplierForm from "../../../../components/forms/editForms/editSupplierForm/supplierForm";
+import SupplierForm from "../../../../components/forms/editForms/editSupplierForm/editSupplierForm";
 
 function ModalProductForm({ closeModal, id }) {
   return (

@@ -3,7 +3,7 @@ import styles from "./createProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../dropdown/dropDown';
+import Dropdown from '../../../dropdown/dropdown';
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
