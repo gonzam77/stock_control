@@ -2,7 +2,7 @@ import styles from "./clients.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalClientForm from "../modals/editModals/modalEditClientForm/modalEditClientForm";
+import ModalEditClientForm from "../modals/editModals/modalEditClientForm/modalEditClientForm";
 import ModalCreateClientForm from "../modals/createModals/modalCreateClientForm/modaleCreateClientForm";
 import { Button } from "react-bootstrap";
 
@@ -80,7 +80,7 @@ export default function Clients() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalClientForm closeModal={closeModal} />}
+      {showModalState && <ModalEditClientForm closeModal={closeModal} />}
       {showCreateModal && <ModalCreateClientForm />}
     </div>
   );

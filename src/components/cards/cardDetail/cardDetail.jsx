@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import styles from './cardDetail.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from '../../../redux/actions';
-import ModalProductForm from '../../../views/modals/editModals/modalEditProductForm/modalEditProductForm'
+import ModalEditProductForm from '../../../views/modals/editModals/modalEditProductForm/modalEditProductForm'
 
 function CardDetail({
   name,
@@ -58,7 +58,7 @@ function CardDetail({
             </Button>
         </Card.Footer>
       </Card>
-      {showModalState && <ModalProductForm closeModal={closeModal} />}
+      {showModalState && <ModalEditProductForm closeModal={closeModal} />}
     </div>
   );
 }

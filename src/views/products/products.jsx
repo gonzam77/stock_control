@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import styles from "./products.module.css";
 import Table from "react-bootstrap/Table";
-import ModalProductForm from "../modals/editModals/modalEditProductForm/modalEditProductForm";
+import ModalEditProductForm from "../modals/editModals/modalEditProductForm/modalEditProductForm";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
 
@@ -91,7 +91,7 @@ export default function Grid() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalProductForm />}
+      {showModalState && <ModalEditProductForm />}
       {showCreateModal && <ModalCreateProductForm />}
     </div>
   );

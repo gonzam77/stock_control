@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import styles from './card.module.css';
-import ModalProductForm from '../../../views/modals/editModals/modalEditProductForm/modalEditProductForm';
+import ModalEditProductForm from '../../../views/modals/editModals/modalEditProductForm/modalEditProductForm';
 import * as actions from '../../../redux/actions';
 
 function ProductCard({ id, name, marca, price, stock, proveedor }) {
@@ -40,7 +40,7 @@ function ProductCard({ id, name, marca, price, stock, proveedor }) {
           </Button>
         </Card.Body>
       </Card>
-      {showModalState && <ModalProductForm closeModal={closeModal} />}
+      {showModalState && <ModalEditProductForm closeModal={closeModal} />}
     </div>
   );
 }
