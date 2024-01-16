@@ -51,8 +51,6 @@ export default function Users() {
               <th>Telefono</th>
               <th>Direccion</th>
               <th>Localidad</th>
-              <th>Fecha Creacion</th>
-              <th>Fecha Actualizacion</th>
               <th>Cargo</th>
               <th>Estado</th>
               <th>Modificar</th>
@@ -75,8 +73,6 @@ export default function Users() {
                     {", "}
                     {user.state}
                   </td>
-                  <td>{user.fecha_creacion}</td>
-                  <td>{user.fecha_actualizacion}</td>
                   <td>{user.rol}</td>
                   <td>{user.status}</td>
                   <td>
