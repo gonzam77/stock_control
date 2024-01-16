@@ -17,7 +17,7 @@
 
 .nav_text{
     text-transform: capitalize;
-    color:white;
+    color:white !important;
     font-weight: 400;
     text-wrap:wrap;
 }

@@ -17,12 +17,12 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={`col ${styles.aside}`}>
+    <div className={`conatiner-fluid ${styles.container}`}>
+      <div className={styles.aside}>
         <Aside></Aside>
       </div>
       <div>
-        <div className={`col-9 ${styles.titleContainer}`}>
+        <div className={styles.titleContainer}>
           <Button
             className={styles.createButton}
             variant="success"

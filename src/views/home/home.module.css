@@ -1,23 +1,17 @@
 .container {
-  /* background: rgb(10, 108, 124);
-  background: linear-gradient(
-    90deg,
-    rgba(10, 108, 124, 1) 0%,
-    rgba(0, 245, 253, 1) 63%,
-    rgba(0, 212, 255, 1) 100%
-  ); */
+  padding-top: 7vh;
   display: flex;
-  width: 100vw;
-  min-height: 100vh;
-  justify-content: center;
+  min-height: 100%;
+  height: auto;
   padding-bottom: 15px;
 }
 
 .aside {
-  margin-top: 80px;
-  width: 100%;
-  border: 2px solid red;
-  text-wrap: wrap;
+  background-color: rgba(173, 165, 165, 0.892);
+  max-width: 20vw;
+  min-width: 200px;
+  min-height: 100vh;
+  padding-top: 5vh;
 }
 
 .cards {
@@ -27,31 +21,31 @@
   justify-content: center;
   gap: 50px;
   flex-wrap: wrap;
-  height: 100%;
+  height: auto;
 }
 
 .title {
   display: flex;
   color: rgb(0, 5, 1);
-  min-width: 90vw;
   justify-content: left;
   padding-left: 20vh;
 }
 
 .link {
-  margin-top: 10vh;
   font-size: 1.5rem;
   text-decoration: none;
 }
 
 .titleContainer {
+  margin-top: 15px;
   display: flex;
   justify-content: flex-end;
-  margin-right: 3%;
+  width: auto;
+  align-items: start;
+  height: auto;
   gap: 10px;
 }
 
 .createButton {
-  margin-top: 10vh;
   font-size: 1rem;
 }
