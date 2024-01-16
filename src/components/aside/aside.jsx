@@ -1,33 +1,31 @@
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
+import styles from "./aside.module.css";
 
 function Aside() {
   return (
     <>
-      <Navbar className="bg-body-tertiary" >
-        <Container >
-          <Navbar.Brand href="/nomenclators">Nomencladores</Navbar.Brand>
+      <Navbar className={`bg-primary ${styles.nav}`}>
+        <Container>
+          <Link to="/nomenclators" className={`text-primary ${styles.link}`}>
+            <Navbar.Brand className={styles.nav_text}>Nomencladores</Navbar.Brand>
+          </Link>
         </Container>
       </Navbar>
-      <br />
-      <Navbar className="bg-body-tertiary">
+      <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Navbar.Brand  href='/products' >Brand text</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="/products">Brand text</Navbar.Brand>
         </Container>
       </Navbar>
-      <br />
-      <Navbar className="bg-body-tertiary">
+      <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Navbar.Brand href="#home">Otro Menu</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="#home">Otro Menu</Navbar.Brand>
         </Container>
       </Navbar>
-      <br />
-      <Navbar className="bg-body-tertiary">
+      <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Navbar.Brand href="#home">
-            
-            React Bootstrap
-          </Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="#home">React Bootstrap</Navbar.Brand>
         </Container>
       </Navbar>
     </>

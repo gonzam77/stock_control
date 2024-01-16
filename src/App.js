@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Home from "./views/home/home";
 import Nav from "./components/nav/nav";
 import Clients from "./views/clients/clients";
@@ -12,18 +12,46 @@ import Footer from "./components/footer/footer";
 import Sales from "./views/sales/sales";
 import SaleInvoice from "./views/salesInvoice/salesInvoice";
 import Products from "./views/products/products";
-import Deposits from './views/deposits/deposits';
+import Deposits from "./views/deposits/deposits";
 import Dashboard from "./views/dashboard/dashboard";
-import Movements from './views/movements/movements';
+import Movements from "./views/movements/movements";
 import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
+import Login from "./views/login/login";
+import { useState } from "react";
+import Aside from "./components/aside/aside";
+
 
 export const urlDev = "http://localhost:3000";
 
 function App() {
+  const location = useLocation();
+  const [access, setAccess] = useState(false);
+  const username = "gonzam77@gmail.com";
+  const password = "Medina2023";
+
+  function login(userData) {
+    if (userData.password === password && userData.email === username) {
+      setAccess(true);
+      navigate("/");
+    }
+  }
+
+  // const logout = () => {
+  //   setAccess(false);
+  // };
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   console.log(access);
+  //   !access && navigate("/login");
+  // }, [access]);
+
   return (
-    <div className="App">
-      <Nav />
+    <div className="App bg-body-secondary">
+      {location.path !== "/login" && <Nav />}
       <Routes>
+        <Route path="/login" element={<Login login={login} />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/nomenclators" element={<NomenclatorsPanel />} />
         <Route path="/cards" element={<Home />} />

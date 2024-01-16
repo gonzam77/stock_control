@@ -2,20 +2,20 @@ export const users = [
     {
         id:1,
         cuil:'',
-        first_name:'Juan',
-        lastName:'Perez',
+        first_name:'Gonzalo',
+        password:'Medina2023',
+        lastName:'Medina',
         cuil:'20341828806',
-        password:'1234',
-        dni:'12345678',
+        dni:'34182880',
         adress:'Calle 1',
-        email:'jueanperez@gmail.com',
+        email:'gonzam77@gmail.com',
         phone:'2664489645',
         province:'San Luis',
         state:'San Luis',
         create_date:'',
         fecha_actualizacion:'',
         rol:'Administrador',
-        status:'Activo'   
+        status:'Activo'
     },
     {   
         id:2,

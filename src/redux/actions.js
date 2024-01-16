@@ -9,6 +9,7 @@
 //   GET_ALL_USERS,
 // } from "./actionTypes";
 
+
 export const createDeposit = (data) => {
   return {
     type: "CREATE_DEPOSIT",

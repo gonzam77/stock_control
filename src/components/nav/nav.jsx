@@ -5,10 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function NavMenu() {
   return (
-    <div className={styles.container}>
-      <Navbar collapseOnSelect expand="lg" bg="" variant="">
+    <div className={`bg-body ${styles.container}`}>
+      <Navbar collapseOnSelect expand="lg" bg="" variant=''>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse>
+        <Navbar.Collapse className="bg-body">
           <Nav>
             <Link to="/" className={styles.link}>
               Inicio

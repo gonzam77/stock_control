@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 export default function Dashboard (){
     return (
-        <div className={styles.container}>
+        <div className={`conatiner-fluid ${styles.container}`}>
             <div className={styles.aside}>
                 <Aside></Aside>
             </div>
