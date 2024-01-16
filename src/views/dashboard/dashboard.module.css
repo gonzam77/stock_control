@@ -1,6 +1,7 @@
 .aside {
-    background-color: rgb(108, 109, 110);
+    background-color: rgba(173, 165, 165, 0.892);
     max-width: 20vw;
+    min-width: 200px;
     min-height: 100vh;
     padding-top: 5vh;
 }
@@ -8,14 +9,14 @@
 .container {
     padding-top: 7vh;
     display: flex;
-    width: 100vw;
     min-height: 100vh;
     align-items: center;
     padding-bottom: 15px;
 }
 
 .body {
-    min-width: 82vw;
+    margin:auto;
+    display: flex;
     min-height: 100vh;
     display: flex;
     justify-content: center;

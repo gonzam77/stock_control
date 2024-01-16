@@ -6,11 +6,18 @@
     rgba(0, 245, 253, 1) 63%,
     rgba(0, 212, 255, 1) 100%
   ); */
+  display: flex;
   width: 100vw;
   min-height: 100vh;
   justify-content: center;
-  align-items: center;
   padding-bottom: 15px;
+}
+
+.aside {
+  margin-top: 80px;
+  width: 100%;
+  border: 2px solid red;
+  text-wrap: wrap;
 }
 
 .cards {

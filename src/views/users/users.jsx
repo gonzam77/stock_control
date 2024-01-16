@@ -2,15 +2,19 @@ import styles from "./users.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
-import ModalCreateUserForm from "../modals/createModals/madalCreateUserForm/modalCreateUserForm";
+import ModalCreateUserForm from "../modals/createModals/modalCreateUserForm/modalCreateUserForm";
 import ModalEditUserForm from "../modals/editModals/modalEditUserForm/modalEditUserForm";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import { useState } from "react";
 
 export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
+  const selectedUser = useSelector((state) => state.selectedUser);
   const dispatch = useDispatch();
+
+  const [user, setUser] = useState(selectedUser);
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -23,6 +27,22 @@ export default function Users() {
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
+  };
+
+  const checkedHandler = (event) => {
+    console.log(event);
+    if (event === true) {
+      setUser({
+        ...user,
+        status: "Activo",
+      });
+    } else {
+      setUser({
+        ...user,
+        status: "Inactivo",
+      });
+    }
+    dispatch(actions.editUser());
   };
 
   return (
@@ -51,8 +71,6 @@ export default function Users() {
               <th>Telefono</th>
               <th>Direccion</th>
               <th>Localidad</th>
-              <th>Fecha Creacion</th>
-              <th>Fecha Actualizacion</th>
               <th>Cargo</th>
               <th>Estado</th>
               <th>Modificar</th>
@@ -75,8 +93,6 @@ export default function Users() {
                     {", "}
                     {user.state}
                   </td>
-                  <td>{user.fecha_creacion}</td>
-                  <td>{user.fecha_actualizacion}</td>
                   <td>{user.rol}</td>
                   <td>{user.status}</td>
                   <td>
