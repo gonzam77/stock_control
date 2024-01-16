@@ -6,7 +6,7 @@ import ModalCreatedepositForm from "../modals/createModals/modalCreateDepositFor
 import ModalEditdepositForm from "../modals/editModals/modalEditDepositForm/modalEditDepositForm";
 import { Button } from "react-bootstrap";
 
-export default function deposits() {
+export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const deposits = useSelector((state) => state.deposits);
