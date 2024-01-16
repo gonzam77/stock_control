@@ -4,10 +4,8 @@ import { Button } from 'react-bootstrap';
 
 export default function Dashboard (){
     return (
-        <div className={`conatiner-fluid ${styles.container}`}>
-            <div className={styles.aside}>
-                <Aside></Aside>
-            </div>
+        <div className=''>
+            
             <div className={styles.body}>
                 <div className={styles.button}>
                     <Button variant='success'>Nueva Venta</Button>
