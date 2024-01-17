@@ -1,15 +1,11 @@
-import styles from './dashboard.module.css';
-import Aside from '../../components/aside/aside'
+import styles from './inicio.module.css';
 import { Button } from 'react-bootstrap';
 
-export default function Dashboard (){
+export default function inicio() {
     return (
-        <div className=''>
-            
-            <div className={styles.body}>
-                <div className={styles.button}>
-                    <Button variant='success'>Nueva Venta</Button>
-                </div>
+        <div className={styles.container}>
+            <div className={styles.button}>
+                <Button variant='success'>Nueva Venta</Button>
             </div>
         </div>
     )

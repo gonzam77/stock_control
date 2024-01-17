@@ -1,27 +1,16 @@
 .container {
   padding-top: 7vh;
   display: flex;
-  min-height: 100%;
-  height: auto;
+  flex-direction: column;
   padding-bottom: 15px;
-}
-
-.aside {
-  background-color: rgba(173, 165, 165, 0.892);
-  max-width: 20vw;
-  min-width: 200px;
-  min-height: 100vh;
-  padding-top: 5vh;
 }
 
 .cards {
   margin-top: 50px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 50px;
+  gap: 20px;
   flex-wrap: wrap;
-  height: auto;
 }
 
 .title {
@@ -38,6 +27,7 @@
 
 .titleContainer {
   margin-top: 15px;
+  margin-right: 20px;
   display: flex;
   justify-content: flex-end;
   width: auto;
