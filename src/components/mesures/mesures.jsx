@@ -2,12 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import NomenclatorsModal from "../../views/modals/nomenclatorsModal/nomenclatorsModal";
-import styles from "../../views/clients/clients.module.css";
-import CreateUsermesure from "../forms/createForms/createUsermesure/createUsermesure";
+import styles from './mesures.module.css';
 
 export default function Mesures() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModalState = useSelector((state) => state.showModalState);
+  const showModal = useSelector((state) => state.showModal);
   const mesures = useSelector((state) => state.mesures);
 
   const openModal = (id) => {};
@@ -23,7 +22,7 @@ export default function Mesures() {
           variant="success"
           onClick={openCreateModal}
         >
-          Cargar Nuevo
+          Cargar Nueva Unidad de Medida
         </Button>
       </div>
 
@@ -56,7 +55,7 @@ export default function Mesures() {
           </tbody>
         </Table>
       </div>
-      {/* {showModalState && <ModalClientForm closeModal={closeModal} />} */}
+      {/* {showModal && <ModalClientForm closeModal={closeModal} />} */}
       {showCreateModal && <NomenclatorsModal form={CreateUsermesure} />}
     </div>
   );
