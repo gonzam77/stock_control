@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./createDepositForm.module.css";
+import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";

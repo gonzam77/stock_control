@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import styles from "./editUserRolForm.module.css";
+import styles from "../editForms.module.css";
 
 export default function EditUserRolForm() {
   const roles = useSelector((state) => state.roles);
