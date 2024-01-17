@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import ModalCreateRolForm from '../../views/modals/createModals/modalCreateUserRolForm/modalCreateUserRolForm';
 import ModalEditUserRolForm from '../../views/modals/editModals/modalEditUserRolForm/modalEditUserRolForm';
-import styles from "../../views/clients/clients.module.css";
+import styles from './roles.module.css';
 import * as actions from '../../redux/actions';
 
 export default function Roles() {
