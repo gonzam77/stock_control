@@ -58,7 +58,7 @@ export default function Roles() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalClientForm closeModal={closeModal} />}
+      {/* {showModalState && <ModalClientForm closeModal={closeModal} />} */}
       {showCreateModal && <NomenclatorsModal form={CreateUserRol} />}
     </div>
   );

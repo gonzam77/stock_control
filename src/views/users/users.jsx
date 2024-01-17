@@ -64,7 +64,6 @@ export default function Users() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
               <th>Nombre</th>
               <th>Cuil</th>
               <th>Email</th>
@@ -80,7 +79,6 @@ export default function Users() {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.id}</td>
                   <td>
                     {user.first_name} {user.lastName}
                   </td>

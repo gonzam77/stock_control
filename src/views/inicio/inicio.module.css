@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+}
+
+.button {
+    margin-top: 20px;
+}

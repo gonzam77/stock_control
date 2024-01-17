@@ -40,16 +40,11 @@ export default function Dispatchers() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
               <th>Nombre</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Direccion</th>
-              <th>Provincia</th>
               <th>Localidad</th>
-              <th>Fecha Nacimiento</th>
-              <th>Fecha Creacion</th>
-              <th>Fecha Actualizacion</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -57,18 +52,13 @@ export default function Dispatchers() {
             {dispatchers.map((dispatcher, index) => {
               return (
                 <tr key={index}>
-                  <td>{dispatcher.id}</td>
                   <td>
                     {dispatcher.first_name} {dispatcher.lastName}
                   </td>
                   <td>{dispatcher.email}</td>
                   <td>{dispatcher.phone}</td>
                   <td>{dispatcher.adress}</td>
-                  <td>{dispatcher.province}</td>
-                  <td>{dispatcher.state}</td>
-                  <td>{dispatcher.fecha_nac}</td>
-                  <td>{dispatcher.fecha_creacion}</td>
-                  <td>{dispatcher.fecha_actualizacion}</td>
+                  <td>{dispatcher.province}{', '}{dispatcher.state}</td>
                   <td>
                     <Button variant="primary" onClick={() => openModal(dispatcher.id)}>
                       Modificar

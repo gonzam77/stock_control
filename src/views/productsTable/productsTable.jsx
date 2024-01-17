@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import styles from "./products.module.css";
+import styles from "./productsTable.module.css";
 import Table from "react-bootstrap/Table";
 import ModalEditProductForm from "../modals/editModals/modalEditProductForm/modalEditProductForm";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";

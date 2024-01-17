@@ -1,19 +1,10 @@
 .container {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  z-index: 2;
-  max-height: 55px;
-  min-height: 55px;
-  padding-left: 20px;
-  align-items: center;
 }
 
 .link {
   padding: 3px;
   font-size: 1.1em;
-  color: rgb(4, 70, 70);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   margin: 5px;
   margin-left: 10px;

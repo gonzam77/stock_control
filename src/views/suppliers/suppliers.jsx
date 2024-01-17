@@ -41,16 +41,12 @@ export default function Suppliers() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
               <th>Razon Social</th>
               <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Direccion</th>
-              <th>Provincia</th>
               <th>Localidad</th>
-              <th>Fecha Creacion</th>
-              <th>Fecha Actualizacion</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -58,16 +54,12 @@ export default function Suppliers() {
             {suppliers.map((supplier, index) => {
               return (
                 <tr key={index}>
-                  <td>{supplier.id}</td>
                   <td>{supplier.razon_social}</td>
                   <td>{supplier.cuil}</td>
                   <td>{supplier.email}</td>
                   <td>{supplier.phone}</td>
                   <td>{supplier.adress}</td>
-                  <td>{supplier.province}</td>
-                  <td>{supplier.state}</td>
-                  <td>{supplier.fecha_creacion}</td>
-                  <td>{supplier.fecha_actualizacion}</td>
+                  <td>{supplier.state}{', '}{supplier.province}</td>
                   <td>
                     <Button
                       variant="primary"

@@ -5,7 +5,7 @@ import styles from "./aside.module.css";
 
 function Aside() {
   return (
-    <>
+    <div className={styles.container}>
       <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
           <Link to="/nomenclators" className={`text-primary ${styles.link}`}>
@@ -20,15 +20,15 @@ function Aside() {
       </Navbar>
       <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Navbar.Brand className={styles.nav_text} href="#home">Otro Menu</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="#inicio">Otro Menu</Navbar.Brand>
         </Container>
       </Navbar>
       <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Navbar.Brand className={styles.nav_text} href="#home">React Bootstrap</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="#inicio">React Bootstrap</Navbar.Brand>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 }
 
