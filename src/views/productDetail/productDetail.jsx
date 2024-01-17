@@ -30,7 +30,7 @@ export default function ProductDetail() {
         >
           Cargar Nuevo
         </Button >
-        <Link to="/" className={styles.link}>
+        <Link to="/cards" className={styles.link}>
           <Button className={styles.backButton} variant="danger">Volver</Button>
         </Link>
       </div>
