@@ -40,16 +40,11 @@ export default function Clients() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
               <th>Nombre</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Direccion</th>
-              <th>Provincia</th>
               <th>Localidad</th>
-              <th>Fecha Nacimiento</th>
-              <th>Fecha Creacion</th>
-              <th>Fecha Actualizacion</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -57,18 +52,13 @@ export default function Clients() {
             {clients.map((client, index) => {
               return (
                 <tr key={index}>
-                  <td>{client.id}</td>
                   <td>
                     {client.first_name} {client.lastName}
                   </td>
                   <td>{client.email}</td>
                   <td>{client.phone}</td>
                   <td>{client.adress}</td>
-                  <td>{client.province}</td>
-                  <td>{client.state}</td>
-                  <td>{client.fecha_nac}</td>
-                  <td>{client.fecha_creacion}</td>
-                  <td>{client.fecha_actualizacion}</td>
+                  <td>{client.state}{', '}{client.province}</td>
                   <td>
                     <Button variant="primary" onClick={() => openModal(client.id)}>
                       Modificar

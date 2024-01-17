@@ -61,6 +61,11 @@ function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/cards" element={<ProductsCard />} />
             <Route path="/productsTable" element={<ProductsTable />} />
+            <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/dispatchers" element={<Dispatchers />} />
+            <Route path="/deposits" element={<Deposits />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </div>
       </div>
