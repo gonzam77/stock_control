@@ -59,7 +59,7 @@ export default function Clients() {
                   <td>{client.phone}</td>
                   <td>{client.adress}</td>
                   <td>{client.state}{', '}{client.province}</td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(client.id)}>
                       Modificar
                     </Button>

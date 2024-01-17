@@ -59,7 +59,7 @@ export default function Dispatchers() {
                   <td>{dispatcher.phone}</td>
                   <td>{dispatcher.adress}</td>
                   <td>{dispatcher.province}{', '}{dispatcher.state}</td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(dispatcher.id)}>
                       Modificar
                     </Button>
