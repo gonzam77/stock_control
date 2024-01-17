@@ -1,10 +1,10 @@
-import styles from './createUserRol.module.css';
+import styles from './createUserRolForm.module.css';
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from '../../../../redux/actions'
 
-export default function CreateUserRol() {
+export default function CreateUserRolForm() {
 
     const dispatch = useDispatch();
     const [newRol, setNewRol] = useState({

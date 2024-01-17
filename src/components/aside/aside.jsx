@@ -8,7 +8,7 @@ function Aside() {
     <div className={styles.container}>
       <Navbar className={`bg-primary ${styles.nav}`}>
         <Container>
-          <Link to="/nomenclators" className={`text-primary ${styles.link}`}>
+          <Link to="/nomenclatorsPanel" className={`text-primary ${styles.link}`}>
             <Navbar.Brand className={styles.nav_text}>Nomencladores</Navbar.Brand>
           </Link>
         </Container>

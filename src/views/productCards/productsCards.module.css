@@ -4,6 +4,11 @@
   flex-direction: column;
   padding-bottom: 15px;
 }
+.paginate {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .cards {
   margin-top: 50px;
@@ -31,7 +36,7 @@
   display: flex;
   justify-content: flex-end;
   width: auto;
-  align-items: start;
+  align-items: flex-start;
   height: auto;
   gap: 10px;
 }

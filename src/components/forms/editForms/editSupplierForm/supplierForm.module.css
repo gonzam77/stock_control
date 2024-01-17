@@ -1,18 +1,14 @@
-.createButton {
-  cursor: pointer;
-  height: 30px;
-  width: 80px;
-  color: rgb(235, 243, 235);
-  background: rgb(3, 224, 239);
-  background: radial-gradient(
-    circle,
-    rgb(4, 226, 242) 0%,
-    rrgba(7, 240, 167, 0.169) 100%
-  );
-  border-radius: 0.5em;
-  transition: background-color 0.2s;
+
+
+label {
+  padding-right: 5px;
 }
 
 .divs {
+  display: flex;
   padding-bottom: 10px;
-}
+  justify-content: center;}
+
+/* input{
+  min-width: 25vw;
+} */

@@ -1,27 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import ModalCreateRolForm from '../../views/modals/createModals/modalCreateUserRolForm/modalCreateUserRolForm';
-import ModalEditUserRolForm from '../../views/modals/editModals/modalEditUserRolForm/modalEditUserRolForm';
+import NomenclatorsModal from "../../views/modals/nomenclatorsModal/nomenclatorsModal";
 import styles from "../../views/clients/clients.module.css";
-import * as actions from '../../redux/actions';
+import CreateUsermesure from "../forms/createForms/createUsermesure/createUsermesure";
 
-export default function Roles() {
+export default function Mesures() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModal = useSelector((state) => state.showModal);
-  console.log('estado inicial', showModal);
-  const roles = useSelector((state) => state.roles);
-  const dispatch = useDispatch();
+  const showModalState = useSelector((state) => state.showModalState);
+  const mesures = useSelector((state) => state.mesures);
 
-  const openModal = (id) => {
-    console.log('abriendo');
-    dispatch(actions.getRolId(id));
-    dispatch(actions.showModal());
-    console.log('cambio a: ', showModal);
-  };
-  
+  const openModal = (id) => {};
+
   const openCreateModal = () => {
-    dispatch(actions.showCreateModal());
   }
 
   return (
@@ -32,30 +23,30 @@ export default function Roles() {
           variant="success"
           onClick={openCreateModal}
         >
-          Cargar Nuevo Rol
+          Cargar Nuevo
         </Button>
       </div>
 
       <div className={styles.title}>
-        <h1>Roles</h1>
+        <h1>Unidad de Medida</h1>
       </div>
       <div className={styles.tableContainer}>
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Descripcion</th>
+              <th>Abrebiatura</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
-            {roles.map((rol, index) => {
+            {mesures.map((mesure, index) => {
               return (
                 <tr key={index}>
-                  <td>{rol.name}</td>
-                  <td>{rol.description}</td>
+                  <td>{mesure.name}</td>
+                  <td>{mesure.abbreviation}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(rol.id)}>
+                    <Button variant="primary" onClick={() => openModal(mesure.id)}>
                       Modificar
                     </Button>
                   </td>
@@ -65,8 +56,8 @@ export default function Roles() {
           </tbody>
         </Table>
       </div>
-      {showModal && <ModalEditUserRolForm />}
-      {showCreateModal && <ModalCreateRolForm />}
+      {/* {showModalState && <ModalClientForm closeModal={closeModal} />} */}
+      {showCreateModal && <NomenclatorsModal form={CreateUsermesure} />}
     </div>
   );
 }

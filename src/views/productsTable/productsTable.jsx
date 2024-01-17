@@ -39,7 +39,7 @@ export default function Products() {
         </Link>
       </div>
 
-      <h1 className={styles.title}>products</h1>
+      <h1 className={styles.title}>Productos</h1>
 
       <div className={styles.tableContainer}>
         <Table striped bordered hover>
@@ -77,7 +77,7 @@ export default function Products() {
                   <td>{product.unidad_medida}</td>
                   <td>{product.cant_min}</td>
                   <td>{product.cant_max}</td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <Button
                       variant="primary"
                       onClick={() => openModal(product.id)}

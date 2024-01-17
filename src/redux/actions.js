@@ -87,6 +87,12 @@ export const editDeposit = (data) => {
   };
 };
 
+export const editUserRol = (data) => {
+  return {
+    type: "EDIT_USER_ROL",
+    payload: data,
+  };
+};
 export const editUser = (data) => {
   return {
     type: "EDIT_USER",
@@ -105,6 +111,13 @@ export const editSupplier = (data) => {
   return {
     type: "EDIT_SUPPLIER",
     payload: data,
+  };
+};
+
+export const getRolId = (id) => {
+  return {
+    type: "GET_ROL_ID",
+    payload: id,
   };
 };
 

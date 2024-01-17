@@ -65,7 +65,7 @@ export default function Deposits() {
                   <td>{deposit.description}</td>
                   <td>{deposit.phone}</td>
                   <td>{deposit.adress}</td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <Button
                       variant="primary"
                       onClick={() => openModal(deposit.id)}

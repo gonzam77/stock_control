@@ -4,5 +4,7 @@ label {
 }
 
 .divs {
+    display: flex;
     padding-bottom: 10px;
+    justify-content: center;
 }

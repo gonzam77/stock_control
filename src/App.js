@@ -66,6 +66,8 @@ function App() {
             <Route path="/dispatchers" element={<Dispatchers />} />
             <Route path="/deposits" element={<Deposits />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/nomenclatorsPanel" element={<NomenclatorsPanel />} />
+            <Route path="/productDetail/:id" element={<ProductDetail />} />
           </Routes>
         </div>
       </div>
