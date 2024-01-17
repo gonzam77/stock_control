@@ -2,6 +2,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Roles from '../../components/rolesTable/roles';
 import Mesures from '../../components/mesures/mesures';
+import Categories from '../../components/categories/categories'
 
 export default function NomenclatorsPanel() {
   return (
@@ -16,8 +17,8 @@ export default function NomenclatorsPanel() {
       <Tab eventKey="mesures" title="Medidas">
         <Mesures></Mesures>
       </Tab>
-      <Tab eventKey="contact" title="Contact">
-        Tab content for Contact
+      <Tab eventKey="categories" title="Categorias">
+        <Categories />
       </Tab>
     </Tabs>
   );
