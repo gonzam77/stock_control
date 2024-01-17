@@ -10,6 +10,13 @@
 // } from "./actionTypes";
 
 
+export const createMesure = (data) => {
+  return {
+    type: "CREATE_MESURE",
+    payload: data,
+  };
+};
+
 export const createDeposit = (data) => {
   return {
     type: "CREATE_DEPOSIT",
@@ -59,6 +66,13 @@ export const createSupplier = (data) => {
   };
 };
 
+export const getMesureId = (id) => {
+  return {
+    type: "GET_MESURE_ID",
+    payload: id,
+  };
+};
+
 export const getDepositId = (id) => {
   return {
     type: "GET_DEPOSIT_ID",
@@ -77,6 +91,13 @@ export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
     payload: id,
+  };
+};
+
+export const editMesure = (data) => {
+  return {
+    type: "EDIT_MESURE",
+    payload: data,
   };
 };
 
@@ -155,10 +176,17 @@ export const editProduct = (data) => {
   };
 };
 
+export const showModalMesure = () => ({
+  type: "SHOW_MODAL_MESURE",
+});
+
 export const showModal = () => ({
   type: "SHOW_MODAL",
 });
 
+export const hideModalMesure = () => ({
+  type: "HIDE_MODAL_MESURE",
+});
 export const hideModal = () => ({
   type: "HIDE_MODAL",
 });

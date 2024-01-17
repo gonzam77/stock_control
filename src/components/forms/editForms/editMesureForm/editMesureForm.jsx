@@ -5,29 +5,29 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 
-export default function EditUserRolForm() {
-  const roles = useSelector((state) => state.roles);
-  const rolId = useSelector((state) => state.rolId);
+export default function EditMesureForm() {
+  const mesures = useSelector((state) => state.mesures);
+  const mesureId = useSelector((state) => state.mesureId);
   const dispatch = useDispatch();
-  const selectedRol = roles.find((element) => element.id === rolId);
+  const selectedMesure = mesures.find((element) => element.id === mesureId);
 
-  const [rol, setRol] = useState(selectedRol);
+  const [mesure, setMesure] = useState(selectedMesure);
 
   const cancelModal = () => {
-    dispatch(actions.hideModal());
+    dispatch(actions.hideModalMesure());
   };
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editUserRol(rol));
-    dispatch(actions.hideModal());
+    dispatch(actions.editMesure(mesure));
+    dispatch(actions.hideModalMesure());
   };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    setRol({
-      ...rol,
+    setMesure({
+      ...mesure,
       [target]: value,
     });
   }
@@ -40,20 +40,20 @@ export default function EditUserRolForm() {
           <input
             autoComplete="off"
             name="name"
-            value={rol.name}
+            value={mesure.name}
             onChange={handleChange}
-            placeholder={selectedRol.name}
+            placeholder={selectedMesure.name}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Descripcion</label>
+          <label>Abreviacion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={rol.description}
+            name="abbreviation"
+            value={mesure.abbreviation}
             onChange={handleChange}
-            placeholder={selectedRol.description}
+            placeholder={selectedMesure.description}
             type="text"
           />
         </div>

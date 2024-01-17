@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./createUserForm.module.css";
+import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
@@ -151,10 +151,10 @@ export default function CreateUserForm() {
             placeholder="San Luis..."
           />
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
         <div className="modal-footer">

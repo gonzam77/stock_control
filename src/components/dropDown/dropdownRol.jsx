@@ -15,7 +15,7 @@ function DropdownRoles({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="light" id="dropdown-basic">
-        {select ? select : "Rol"}
+        {select ? select : "Cargo"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

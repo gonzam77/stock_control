@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import styles from './editUserForm.module.css';
+import styles from "../editForms.module.css";
 import DropdownRoles from "../../../dropdown/dropdownRol";
 import DropdownStatus from "../../../dropdown/dropdownStatus";
 
@@ -127,10 +127,10 @@ export default function EditUserForm() {
             type="text"
           />
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
         <div class="modal-footer">

@@ -34,11 +34,17 @@ const initialState = {
   userId: "",
   supplierId: "",
   showModal: false,
+  showModalMesure: false,
   showCreateModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "CREATE_MESURE":
+      return {
+        ...state,
+        mesures: [...state.mesures, payload],
+      };
     case "CREATE_DISPATCHER":
       return {
         ...state,
@@ -84,6 +90,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         productId: payload,
       };
+    case "GET_MESURE_ID":
+      return {
+        ...state,
+        mesureId: payload,
+      };
     case "GET_USER_ID":
       return {
         ...state,
@@ -108,6 +119,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_MESURE":
+      const updatedMesure = payload;
+      const updatedMesures = state.mesures.map((mesure) => {
+        if (mesure.id === updatedMesure.id) {
+          return updatedMesure;
+        }
+        return mesure;
+      });
+
+      return {
+        ...state,
+        mesures: updatedMesures,
       };
     case "EDIT_DEPOSIT":
       const updatedDeposit = payload;
@@ -199,10 +223,21 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         suppliers: updatedSuppliers,
       };
+    case "SHOW_MODAL_MESURE":
+      return {
+        ...state,
+        showModalMesure: true,
+      };
     case "SHOW_MODAL":
       return {
         ...state,
         showModal: true,
+      };
+    case "HIDE_MODAL_MESURE":
+      return {
+        ...state,
+        showModalMesure: false,
+        modalContent: null,
       };
     case "HIDE_MODAL":
       return {

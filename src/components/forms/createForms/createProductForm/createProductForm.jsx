@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./createProductForm.module.css";
+import styles from "../createFomrs.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
@@ -38,7 +38,6 @@ export default function CreateProductForm() {
       ...newProduct,
       create_date: date
     })
-    console.log('producto terminado',newProduct);
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };

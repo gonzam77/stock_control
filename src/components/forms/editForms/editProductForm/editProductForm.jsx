@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./productForm.module.css";
+import styles from "../editForms.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";

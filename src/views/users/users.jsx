@@ -29,22 +29,6 @@ export default function Users() {
     dispatch(actions.showCreateModal());
   };
 
-  const checkedHandler = (event) => {
-    console.log(event);
-    if (event === true) {
-      setUser({
-        ...user,
-        status: "Activo",
-      });
-    } else {
-      setUser({
-        ...user,
-        status: "Inactivo",
-      });
-    }
-    dispatch(actions.editUser());
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
