@@ -5,6 +5,7 @@ import { users } from "../assets/dataHardcodeoUsers";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
+import { medidas } from "../assets/dataHardcodeoMesures";
 import {
   GET_ALL_PRODUCTS,
   GET_ALL_CLIENTS,
@@ -19,19 +20,21 @@ const initialState = {
   products: productos,
   clients: clientes,
   suppliers: suppliers,
-  users: users,
-  dispatchers:transportistas,
+  dispatchers: transportistas,
   deposits: deposito,
+  users: users,
+  roles: roles,
+  mesures: medidas,
   shipping: [],
   accounts: [],
   orders: [],
-  showModal: false,
-  showCreateModal: false,
   productId: "",
   clientId: "",
+  rolId: "",
   userId: "",
   supplierId: "",
-  roles: roles,
+  showModal: false,
+  showCreateModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -76,6 +79,26 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         depositId: payload,
       };
+    case "GET_PRODUCT_ID":
+      return {
+        ...state,
+        productId: payload,
+      };
+    case "GET_USER_ID":
+      return {
+        ...state,
+        userId: payload,
+      };
+    case "GET_CLIENT_ID":
+      return {
+        ...state,
+        clientId: payload,
+      };
+    case "GET_ROL_ID":
+      return {
+        ...state,
+        rolId: payload,
+      };
     case "GET_DISPATCHER_ID":
       return {
         ...state,
@@ -98,6 +121,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         deposits: updatedDeposits,
+      };
+    case "EDIT_USER_ROL":
+      const updatedUserRol = payload;
+      const updatedUserRoles = state.roles.map((rol) => {
+        if (rol.id === updatedUserRol.id) {
+          return updatedUserRol;
+        }
+        return rol;
+      });
+
+      return {
+        ...state,
+        roles: updatedUserRoles,
       };
     case "EDIT_DISPATCHER":
       const updatedDispatcher = payload;
@@ -138,6 +174,18 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         users: updatedUsers,
       };
+    case "EDIT_PRODUCT":
+      const updatedProduct = payload;
+      const updatedProducts = state.products.map((product) => {
+        if (product.id === updatedProduct.id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+      return {
+        ...state,
+        products: updatedProducts,
+      };
     case "EDIT_SUPPLIER":
       const updatedSupplier = payload;
       const updatedSuppliers = state.suppliers.map((supplier) => {
@@ -150,39 +198,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         suppliers: updatedSuppliers,
-      };
-    case "GET_USER_ID":
-      return {
-        ...state,
-        userId: payload,
-      };
-    case "GET_CLIENT_ID":
-      return {
-        ...state,
-        clientId: payload,
-      };
-    case "EDIT_CLIENT":
-      return {
-        ...state,
-        clients: payload,
-      };
-    case "GET_PRODUCT_ID":
-      return {
-        ...state,
-        productId: payload,
-      };
-    case "EDIT_PRODUCT":
-      const updatedProduct = payload;
-      const updatedProducts = state.products.map((product) => {
-        if (product.id === updatedProduct.id) {
-          return updatedProduct;
-        }
-        return product;
-      });
-
-      return {
-        ...state,
-        products: updatedProducts,
       };
     case "SHOW_MODAL":
       return {
@@ -206,41 +221,41 @@ export default function reducer(state = initialState, { type, payload }) {
         showCreateModal: false,
         modalContent: null,
       };
-    case GET_ALL_USERS:
-      return {
-        ...state,
-        users: payload,
-      };
-    case GET_ALL_ACCOUNTS:
-      return {
-        ...state,
-        accounts: payload,
-      };
-    case GET_ALL_CLIENTS:
-      return {
-        ...state,
-        clients: payload,
-      };
-    case GET_ALL_ORDERS:
-      return {
-        ...state,
-        orders: payload,
-      };
-    case GET_ALL_SHIPPING:
-      return {
-        ...state,
-        shipping: payload,
-      };
-    case GET_ALL_SUPPLIERS:
-      return {
-        ...state,
-        suppliers: payload,
-      };
-    case GET_ALL_PRODUCTS:
-      return {
-        ...state,
-        products: payload,
-      };
+    // case GET_ALL_USERS:
+    //   return {
+    //     ...state,
+    //     users: payload,
+    //   };
+    // case GET_ALL_ACCOUNTS:
+    //   return {
+    //     ...state,
+    //     accounts: payload,
+    //   };
+    // case GET_ALL_CLIENTS:
+    //   return {
+    //     ...state,
+    //     clients: payload,
+    //   };
+    // case GET_ALL_ORDERS:
+    //   return {
+    //     ...state,
+    //     orders: payload,
+    //   };
+    // case GET_ALL_SHIPPING:
+    //   return {
+    //     ...state,
+    //     shipping: payload,
+    //   };
+    // case GET_ALL_SUPPLIERS:
+    //   return {
+    //     ...state,
+    //     suppliers: payload,
+    //   };
+    // case GET_ALL_PRODUCTS:
+    //   return {
+    //     ...state,
+    //     products: payload,
+    //   };
     default:
       return { ...state };
   }

@@ -6,9 +6,9 @@
     padding-top: 10vh;
   }
 
-  .createButton {
-    font-size: 1rem;
-  }
+ .createButton {
+  font-size: 1rem;
+}
 
  .card {
   padding-top: 20px;
@@ -20,7 +20,7 @@
   display: flex;
   justify-content: flex-end;
   width: auto;
-  align-items: start;
+  align-items: flex-start;
   height: auto;
   gap: 10px;
 }

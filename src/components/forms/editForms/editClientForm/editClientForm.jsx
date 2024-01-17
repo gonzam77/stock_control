@@ -29,7 +29,7 @@ export default function ClientForm() {
       ...client,
       [target]:value
     })
-  }
+  };
 
   return (
     <div className={styles.container}>

@@ -1,3 +1,5 @@
+
+
 label {
     padding-right: 5px;
 }
@@ -5,5 +7,5 @@ label {
 .divs {
     display: flex;
     padding-bottom: 10px;
-    justify-content: center;
-}
+    justify-content: center;}
+
