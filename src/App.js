@@ -7,40 +7,40 @@ import Suppliers from "./views/suppliers/suppliers";
 import Dispatchers from "./views/dispatchers/dispatchers";
 import ProductDetail from "./views/productDetail/productDetail";
 import Users from "./views/users/users";
-import About from "./views/about/about";
 import Footer from "./components/footer/footer";
-import Sales from "./views/sales/sales";
-import SaleInvoice from "./views/salesInvoice/salesInvoice";
 import ProductsTable from "./views/productsTable/productsTable";
 import Deposits from "./views/deposits/deposits";
 import ProductsCard from "./views/productCards/productsCards";
-import Movements from "./views/movements/movements";
 import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
-import Login from "./views/login/login";
-import { useState } from "react";
 import Aside from "./components/aside/aside";
+// import Sales from "./views/sales/sales";
+// import SaleInvoice from "./views/salesInvoice/salesInvoice";
+// import Movements from "./views/movements/movements";
+// import About from "./views/about/about";
+// import Login from "./views/login/login";
+//import { useState } from "react";
 
 
 export const urlDev = "http://localhost:3000";
 
 function App() {
   const location = useLocation();
-  const [access, setAccess] = useState(false);
-  const username = "gonzam77@gmail.com";
-  const password = "Medina2023";
+  //const [access, setAccess] = useState(false);
+  // const username = "gonzam77@gmail.com";
+  // const password = "Medina2023";
+  //const navigate = useNavigate();
 
-  function login(userData) {
-    if (userData.password === password && userData.email === username) {
-      setAccess(true);
-      navigate("/");
-    }
-  }
+  // function login(userData) {
+  //   if (userData.password === password && userData.email === username) {
+  //     setAccess(true);
+  //     navigate("/");
+  //   }
+  // }
 
   // const logout = () => {
   //   setAccess(false);
   // };
 
-  const navigate = useNavigate();
 
   // useEffect(() => {
   //   !access && navigate("/login");
@@ -53,7 +53,7 @@ function App() {
       </div>
       <div className="main-container">
         <div className="aside">
-          <Aside></Aside>
+          <Aside />
         </div>
         <div className="body">
           <Routes>
@@ -71,7 +71,7 @@ function App() {
         </div>
       </div>
       <div className="footer">
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );

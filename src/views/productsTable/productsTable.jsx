@@ -60,7 +60,7 @@ export default function Products() {
           </thead>
           <tbody>
             {products.map((product, index) => {
-              const supplier = suppliers.find(
+              suppliers.find(
                 (supplier) => (supplier.razon_social = product.supplier)
               );
               return (

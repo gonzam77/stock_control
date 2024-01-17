@@ -4,17 +4,14 @@ import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
 import ModalCreateUserForm from "../modals/createModals/modalCreateUserForm/modalCreateUserForm";
 import ModalEditUserForm from "../modals/editModals/modalEditUserForm/modalEditUserForm";
-import { Button, Form } from "react-bootstrap";
-import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
-  const selectedUser = useSelector((state) => state.selectedUser);
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState(selectedUser);
 
   const openModal = (id) => {
     dispatch(actions.showModal());
