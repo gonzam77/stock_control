@@ -34,7 +34,6 @@ export default function Roles() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
               <th>Nombre</th>
               <th>Descripcion</th>
               <th>Modificar</th>
@@ -44,10 +43,9 @@ export default function Roles() {
             {roles.map((rol, index) => {
               return (
                 <tr key={index}>
-                  <td>{rol.id}</td>
                   <td>{rol.name}</td>
                   <td>{rol.description}</td>
-                  <td>
+                  <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(rol.id)}>
                       Modificar
                     </Button>
