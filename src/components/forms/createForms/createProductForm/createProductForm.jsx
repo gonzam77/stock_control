@@ -38,7 +38,6 @@ export default function CreateProductForm() {
       ...newProduct,
       create_date: date
     })
-    console.log('producto terminado',newProduct);
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
   };

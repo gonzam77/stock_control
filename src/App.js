@@ -43,7 +43,6 @@ function App() {
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //   console.log(access);
   //   !access && navigate("/login");
   // }, [access]);
 

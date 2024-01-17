@@ -9,15 +9,13 @@ import * as actions from '../../redux/actions';
 export default function Roles() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const showModal = useSelector((state) => state.showModal);
-  console.log('estado inicial', showModal);
+
   const roles = useSelector((state) => state.roles);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    console.log('abriendo');
-    dispatch(actions.getRolId(id));
     dispatch(actions.showModal());
-    console.log('cambio a: ', showModal);
+    dispatch(actions.getRolId(id));
   };
   
   const openCreateModal = () => {

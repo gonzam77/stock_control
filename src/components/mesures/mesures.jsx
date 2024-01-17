@@ -1,17 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import NomenclatorsModal from "../../views/modals/nomenclatorsModal/nomenclatorsModal";
+import ModalCreateMesureForm from '../../views/modals/createModals/modalCreateMesureForm/ModalCreateMesureForm';
+import ModalEditMesureForm from '../../views/modals/editModals/modalEditMesureForm/modalEditMesureForm';
 import styles from './mesures.module.css';
+import * as actions from '../../redux/actions';
+
 
 export default function Mesures() {
-  const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModal = useSelector((state) => state.showModal);
+  const showCreateModalMesures = useSelector((state) => state.showCreateModal);
+  const showModalMesures = useSelector((state) => state.showModalMesure);
   const mesures = useSelector((state) => state.mesures);
+  const dispatch = useDispatch();
 
-  const openModal = (id) => {};
+  const openModal = (id) => {
+    console.log(id);
+    dispatch(actions.showModalMesure())
+    dispatch(actions.getMesureId(id))
+  };
 
   const openCreateModal = () => {
+    dispatch(actions.showCreateModal())
   }
 
   return (
@@ -55,8 +64,8 @@ export default function Mesures() {
           </tbody>
         </Table>
       </div>
-      {/* {showModal && <ModalClientForm closeModal={closeModal} />} */}
-      {showCreateModal && <NomenclatorsModal form={CreateUsermesure} />}
+      {showModalMesures && <ModalEditMesureForm />}
+      {showCreateModalMesures && <ModalCreateMesureForm />}
     </div>
   );
 }
