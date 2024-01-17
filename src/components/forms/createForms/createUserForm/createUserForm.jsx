@@ -151,10 +151,10 @@ export default function CreateUserForm() {
             placeholder="San Luis..."
           />
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
         </div>
-        <div>
+        <div className={styles.divs}>
           <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
         <div className="modal-footer">
