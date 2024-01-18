@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
-import Aside from "../../components/aside/aside";
 import PaginateNative from "../../components/pagination/paginationNative";
 
 export default function ProductsCard() {

@@ -1,13 +1,12 @@
 import { useState } from "react";
 import styles from "../createFomrs.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import Dropdown from '../../../dropdown/dropdownSupplier';
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-  const suppliers = useSelector(state => state.suppliers);
   const [newProduct, setNewProduct] = useState({
     id: '',
     name: "",
@@ -50,7 +49,7 @@ export default function CreateProductForm() {
 
     const target = event.target.name;
     const value = event.target.value;
-    if (target !== "unidad_medida") {
+    if (target !== "unidad_medida" && target !== 'category') {
       setNewProduct({
         ...newProduct,
         [target]: value,

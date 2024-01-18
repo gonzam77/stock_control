@@ -10,6 +10,13 @@
 // } from "./actionTypes";
 
 
+export const createCategory = (data) => {
+  return {
+    type: "CREATE_CATEGORY",
+    payload: data,
+  };
+};
+
 export const createMesure = (data) => {
   return {
     type: "CREATE_MESURE",
@@ -101,6 +108,13 @@ export const editMesure = (data) => {
   };
 };
 
+export const editCategory = (data) => {
+  return {
+    type: "EDIT_CATEGORY",
+    payload: data,
+  };
+};
+
 export const editDeposit = (data) => {
   return {
     type: "EDIT_DEPOSIT",
@@ -142,6 +156,12 @@ export const getRolId = (id) => {
   };
 };
 
+export const getCategoryId = (id) => {
+  return {
+    type: "GET_CATEGORY_ID",
+    payload: id,
+  };
+};
 export const getClientId = (id) => {
   return {
     type: "GET_CLIENT_ID",
@@ -180,13 +200,22 @@ export const showModalMesure = () => ({
   type: "SHOW_MODAL_MESURE",
 });
 
+export const showModalCategories = () => ({
+  type: "SHOW_MODAL_CATEGORIES",
+});
+
 export const showModal = () => ({
   type: "SHOW_MODAL",
+});
+
+export const hideModalCategories = () => ({
+  type: "HIDE_MODAL_CATEGORIES",
 });
 
 export const hideModalMesure = () => ({
   type: "HIDE_MODAL_MESURE",
 });
+
 export const hideModal = () => ({
   type: "HIDE_MODAL",
 });

@@ -6,15 +6,16 @@ import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
 import { medidas } from "../assets/dataHardcodeoMesures";
-import {
-  GET_ALL_PRODUCTS,
-  GET_ALL_CLIENTS,
-  GET_ALL_SUPPLIERS,
-  GET_ALL_SHIPPING,
-  GET_ALL_ORDERS,
-  GET_ALL_ACCOUNTS,
-  GET_ALL_USERS,
-} from "./actionTypes";
+import { categorias } from "../assets/dataHardcodeoCategorias";
+// import {
+//   GET_ALL_PRODUCTS,
+//   GET_ALL_CLIENTS,
+//   GET_ALL_SUPPLIERS,
+//   GET_ALL_SHIPPING,
+//   GET_ALL_ORDERS,
+//   GET_ALL_ACCOUNTS,
+//   GET_ALL_USERS,
+// } from "./actionTypes";
 
 const initialState = {
   products: productos,
@@ -25,6 +26,7 @@ const initialState = {
   users: users,
   roles: roles,
   mesures: medidas,
+  categories: categorias,
   shipping: [],
   accounts: [],
   orders: [],
@@ -35,6 +37,7 @@ const initialState = {
   supplierId: "",
   showModal: false,
   showModalMesure: false,
+  showModalCategories: false,
   showCreateModal: false,
 };
 
@@ -64,6 +67,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         roles: [...state.roles, payload],
+      };
+    case "CREATE_CATEGORY":
+      return {
+        ...state,
+        categories: [...state.categories, payload],
       };
     case "CREATE_CLIENT":
       return {
@@ -100,6 +108,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         userId: payload,
       };
+    case "GET_CATEGORY_ID":
+      return {
+        ...state,
+        categoryId: payload,
+      };
     case "GET_CLIENT_ID":
       return {
         ...state,
@@ -119,6 +132,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_CATEGORY":
+      const updatedCategory = payload;
+      const updatedCategories = state.categories.map((category) => {
+        if (category.id === updatedCategory.id) {
+          return updatedCategory;
+        }
+        return category;
+      });
+
+      return {
+        ...state,
+        categories: updatedCategories,
       };
     case "EDIT_MESURE":
       const updatedMesure = payload;
@@ -223,6 +249,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         suppliers: updatedSuppliers,
       };
+    case "SHOW_MODAL_CATEGORIES":
+      return {
+        ...state,
+        showModalCategories: true,
+      };
     case "SHOW_MODAL_MESURE":
       return {
         ...state,
@@ -233,17 +264,20 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModal: true,
       };
+    case "HIDE_MODAL_CATEGORIES":
+      return {
+        ...state,
+        showModalCategories: false,
+      };
     case "HIDE_MODAL_MESURE":
       return {
         ...state,
         showModalMesure: false,
-        modalContent: null,
       };
     case "HIDE_MODAL":
       return {
         ...state,
         showModal: false,
-        modalContent: null,
       };
     case "SHOW_CREATE_MODAL":
       return {
@@ -254,7 +288,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showCreateModal: false,
-        modalContent: null,
       };
     // case GET_ALL_USERS:
     //   return {
