@@ -21,7 +21,8 @@
 }
 
 .aside {
-  background-color: slategrey;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(355deg, rgba(0, 0, 0, 1) 0%, rgba(134, 136, 138, 1) 54%, rgba(133, 133, 133, 1) 100%);
   padding-top: 20px;
   min-width: 14vw;
 }
@@ -29,4 +30,8 @@
 .body {
   max-width: 86vw;
   min-width: 85vw;
+  background-image: url('./assets/inline_image_preview.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

@@ -47,7 +47,7 @@ export default function Products() {
             <tr>
               <th>COD</th>
               <th>CATEGORIA</th>
-              <th>product</th>
+              <th>NOMBRE</th>
               <th>MARCA</th>
               <th>PROVEEDOR</th>
               <th>PRECIO</th>
