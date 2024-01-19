@@ -53,7 +53,7 @@ export default function Dispatchers() {
               return (
                 <tr key={index}>
                   <td>
-                    {dispatcher.first_name} {dispatcher.lastName}
+                    {dispatcher.first_name} {dispatcher.last_name}
                   </td>
                   <td>{dispatcher.email}</td>
                   <td>{dispatcher.phone}</td>

@@ -49,10 +49,10 @@ export default function ClientForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={client.lastName}
+            name="last_name"
+            value={client.last_name}
             onChange={handleChange}
-            placeholder={selectedlClient.lastName}
+            placeholder={selectedlClient.last_name}
             type="text"
           />
         </div>

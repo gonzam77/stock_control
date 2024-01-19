@@ -2,7 +2,7 @@ export const transportistas = [
   {
     id: 1,
     first_name: "Juan",
-    lastName: "Perez",
+    last_name: "Perez",
     dni: "12345678",
     cuenta: "",
     razon_social: "",
@@ -22,7 +22,7 @@ export const transportistas = [
   {
     id: 2,
     first_name: "Juan",
-    lastName: "Perez",
+    last_name: "Perez",
     dni: "12345678",
     cuenta: "",
     razon_social: "",

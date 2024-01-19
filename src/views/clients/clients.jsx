@@ -21,10 +21,6 @@ export default function Clients() {
     dispatch(actions.showCreateModal())
   }
 
-  const closeModal = () => {
-    dispatch(actions.hideModal());
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -40,6 +36,7 @@ export default function Clients() {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>Cuil</th>
               <th>Nombre</th>
               <th>Email</th>
               <th>Telefono</th>
@@ -52,8 +49,9 @@ export default function Clients() {
             {clients.map((client, index) => {
               return (
                 <tr key={index}>
+                  <td>{client.cuil}</td>
                   <td>
-                    {client.first_name} {client.lastName}
+                    {client.first_name} {client.last_name}
                   </td>
                   <td>{client.email}</td>
                   <td>{client.phone}</td>
@@ -70,7 +68,7 @@ export default function Clients() {
           </tbody>
         </Table>
       </div>
-      {showModalState && <ModalEditClientForm closeModal={closeModal} />}
+      {showModalState && <ModalEditClientForm />}
       {showCreateModal && <ModalCreateClientForm />}
     </div>
   );

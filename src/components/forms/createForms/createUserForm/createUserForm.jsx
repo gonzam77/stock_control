@@ -12,7 +12,7 @@ export default function CreateUserForm() {
   const [newUser, setNewUser] = useState({
     id: "",
     first_name: "",
-    lastName: "",
+    last_name: "",
     cuil: "",
     state: "",
     province: "",
@@ -79,8 +79,8 @@ export default function CreateUserForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={newUser.lastName}
+            name="last_name"
+            value={newUser.last_name}
             onChange={handleChange}
             placeholder="Apellido..."
             type="text"
