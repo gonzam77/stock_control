@@ -65,10 +65,10 @@ export default function EditUserForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={user.lastName}
+            name="last_name"
+            value={user.last_name}
             onChange={handleChange}
-            placeholder={selectedUser.lastName}
+            placeholder={selectedUser.last_name}
             type="text"
           />
         </div>

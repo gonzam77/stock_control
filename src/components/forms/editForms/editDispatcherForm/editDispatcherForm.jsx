@@ -51,10 +51,10 @@ export default function EditDispatcherForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={dispatcher.lastName}
+            name="last_name"
+            value={dispatcher.last_name}
             onChange={handleChange}
-            placeholder={selectedlDispatcher.lastName}
+            placeholder={selectedlDispatcher.last_name}
             type="text"
           />
         </div>

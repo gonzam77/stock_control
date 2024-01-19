@@ -13,7 +13,7 @@ export default function CreateClientForm() {
   const [newClient, setNewClient] = useState({
     id:'',
     first_name: "",
-    lastName: "",
+    last_name: "",
     cuil: "",
     state: "",
     province: "",
@@ -67,8 +67,8 @@ export default function CreateClientForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={newClient.lastName}
+            name="last_name"
+            value={newClient.last_name}
             onChange={handleChange}
             placeholder="Apellido..."
             type="text"

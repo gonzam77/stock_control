@@ -9,7 +9,19 @@
 //   GET_ALL_USERS,
 // } from "./actionTypes";
 
+export const addToCart = (data) => {
+  return {
+    type: 'ADD_TO_CART',
+    payload: data
+  };
+};
 
+export const newSale = (data) => {
+  return {
+    type: "NEW_SALE",
+    payload: data,
+  };
+};
 export const createCategory = (data) => {
   return {
     type: "CREATE_CATEGORY",
@@ -220,8 +232,16 @@ export const hideModal = () => ({
   type: "HIDE_MODAL",
 });
 
+export const showNewSaleModal = () => ({
+  type: "SHOW_NEW_SALE_MODAL",
+});
+
 export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
+});
+
+export const hideNewSaleModal = () => ({
+  type: "HIDE_NEW_SALE_MODAL",
 });
 
 export const hideCreateModal = () => ({

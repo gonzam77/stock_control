@@ -7,6 +7,7 @@ import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
 import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
+import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -27,9 +28,12 @@ const initialState = {
   roles: roles,
   mesures: medidas,
   categories: categorias,
+  payTypes: metodo_de_pago,
+  cart:[],
   shipping: [],
   accounts: [],
   orders: [],
+  sales:[],
   productId: "",
   clientId: "",
   rolId: "",
@@ -39,10 +43,21 @@ const initialState = {
   showModalMesure: false,
   showModalCategories: false,
   showCreateModal: false,
+  showNewSaleModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: [...state.cart, payload]
+      }
+    case "NEW_SALE":
+      return {
+        ...state,
+        sales: [...state.sales, payload],
+      };
     case "CREATE_MESURE":
       return {
         ...state,
@@ -279,10 +294,20 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModal: false,
       };
+    case "SHOW_NEW_SALE_MODAL":
+      return {
+        ...state,
+        showNewSaleModal: true,
+      };
     case "SHOW_CREATE_MODAL":
       return {
         ...state,
         showCreateModal: true,
+      };
+    case "HIDE_NEW_SALE_MODAL":
+      return {
+        ...state,
+        showNewSaleModal: false,
       };
     case "HIDE_CREATE_MODAL":
       return {

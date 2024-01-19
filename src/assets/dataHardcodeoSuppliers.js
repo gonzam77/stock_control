@@ -18,7 +18,7 @@ export const suppliers = [
         razon_social:'Marco Polo',
         cuil:'201344456786',
         first_name:'Juan',
-        lastName:'Perez',
+        last_name:'Perez',
         dni:'12345678',
         genero: 'M',
         adress:'Calle 1',

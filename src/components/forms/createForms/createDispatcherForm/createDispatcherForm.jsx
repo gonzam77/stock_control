@@ -13,7 +13,7 @@ export default function CreateDispatcherForm() {
   const [newDispatcher, setnewDispatcher] = useState({
     id:'',
     first_name: "",
-    lastName: "",
+    last_name: "",
     cuil: "",
     state: "",
     province: "",
@@ -67,8 +67,8 @@ export default function CreateDispatcherForm() {
           <label>Apellido</label>
           <input
             autoComplete="off"
-            name="lastName"
-            value={newDispatcher.lastName}
+            name="last_name"
+            value={newDispatcher.last_name}
             onChange={handleChange}
             placeholder="Apellido..."
             type="text"
