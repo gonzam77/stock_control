@@ -10,6 +10,8 @@ export default function Sales() {
     //const showModalState = useSelector((state) => state.showModal);
     // const showCreateModal = useSelector(state => state.showCreateModal)
     const sales = useSelector((state) => state.sales);
+    const orderSales = sales.sort((a,b) => b.date - a.date )
+    const lastTenSales = orderSales.slice(0,10);
     //const dispatch = useDispatch();
 
     const openModal = (id) => {
@@ -17,11 +19,10 @@ export default function Sales() {
         //dispatch(actions.getClientId(id));
     };
 
-
     return (
         <div className={styles.container}>
             <div className={styles.title}>
-                <h1>Ventas</h1>
+                <h1>Ultimas Ventas</h1>
             </div>
             <div className={styles.tableContainer}>
                 <Table striped bordered hover>
@@ -38,15 +39,16 @@ export default function Sales() {
                         </tr>
                     </thead>
                     <tbody>
-                        {sales.map((element, index) => {
+                        {lastTenSales.map((element, index) => {
+                            const total = element.mount?.reduce((a, b) => a + b, 0);
                             return (
                                 <tr key={index}>
                                     <td>{element.number}</td>
                                     <td>
                                         {element.date}
                                     </td>
-                                    <td>{element.items?.length}</td>
-                                    <td>{element.mount}</td>
+                                    <td>{element.quantity}</td>
+                                    <td>{total}</td>
                                     <td>{element.payType}</td>
                                     <td>{element.client}</td>
                                     <td>{element.deposit}</td>

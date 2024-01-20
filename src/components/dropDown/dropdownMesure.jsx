@@ -1,9 +1,12 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function DropdownStatus({ onSelect }) {
+export default function DropdownMesures({ onSelect }) {
+  
   const [select, setSelect] = useState();
-
+  const mesures = useSelector(state => state.mesures);
+  
   function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
@@ -12,14 +15,18 @@ function DropdownStatus({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="light" id="dropdown-basic">
-        {select ? select : "Estado"}
+        {select ? select : "Unidad de Medida"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item eventKey={"Activo"}>Activo</Dropdown.Item>
-        <Dropdown.Item eventKey={"Inactivo"}>Inactivo</Dropdown.Item>
+        {mesures.map((element, index) => {
+          return (
+            <Dropdown.Item key={index} eventKey={element.name}>
+              {element.name}
+            </Dropdown.Item>
+          );
+        })}
       </Dropdown.Menu>
     </Dropdown>
   );
 }
 
-export default DropdownStatus;

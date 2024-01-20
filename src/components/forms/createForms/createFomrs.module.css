@@ -22,6 +22,8 @@ label {
 }
 
 .dropdown {
+    margin-top: 30px;
+    margin-bottom: 30px;
     width: 70%;
     align-items: center;
     display: flex;

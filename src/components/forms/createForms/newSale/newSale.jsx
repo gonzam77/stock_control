@@ -21,7 +21,9 @@ export default function NewSaleForm() {
     number: "",
     date: "",
     items: [],
+    quantity: 0,
     deposit: "",
+    mount: [],
     payType: "",
     total: "",
     client: "",
@@ -62,12 +64,17 @@ export default function NewSaleForm() {
         product['quantity'] = newItem.quantity
         setCart([...cart, product]);
       }
+      setNewSale({
+        ...newSale,
+        mount: [...newSale.mount, product.price * product.quantity],
+        quantity: newSale.quantity += product.quantity
+      })
+      setNewItem({
+        code: "",
+        name: "",
+        quantity: ""
+      })
     }
-    setNewItem({
-      code: "",
-      name: "",
-      quantity: ""
-    })
   };
 
   const handleKeyDown = (event) => {
@@ -76,9 +83,9 @@ export default function NewSaleForm() {
     }
   };
 
-  const deleteProduct = (id) => {
-    if (id) {
-      const index = cart.findIndex(e => e.id === id);
+  const deleteProduct = (code) => {
+    if (code) {
+      const index = cart.findIndex(e => e.code === code);
       cart.splice(index, 1);
       if (update === 1) setUpdate(0);
       else setUpdate(1);
@@ -95,7 +102,7 @@ export default function NewSaleForm() {
   const handleClientSelect = (selectedClient) => {
     setNewSale({
       ...newSale,
-      deposit: selectedClient,
+      client: selectedClient,
     });
   };
 
@@ -109,6 +116,7 @@ export default function NewSaleForm() {
   const confirmSale = (event) => {
     event.preventDefault();
     dispatch(actions.newSale(newSale));
+    navigate('/');
   };
 
   const cancelSale = () => {
@@ -188,7 +196,7 @@ export default function NewSaleForm() {
                         <Button variant="primary">Modificar</Button>
                       </td>
                       <td>
-                        <Button variant="danger" onClick={() => { deleteProduct(item.id) }}>Eliminar</Button>
+                        <Button variant="danger" onClick={() => { deleteProduct(item.code) }}>Eliminar</Button>
                       </td>
                     </tr>)
                 })}
@@ -204,10 +212,6 @@ export default function NewSaleForm() {
             <label htmlFor="">Deposito</label>
             <DropdownDeposit onSelect={handleDepositSelect} />
           </div>
-        </div>
-        <div className={styles.divs}>
-        </div>
-        <div className={styles.divs}>
         </div>
         <div className="modal-footer">
           <div className={styles.buttons}>
