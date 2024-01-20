@@ -64,7 +64,7 @@ export default function Products() {
                 (supplier) => (supplier.razon_social = product.supplier)
               );
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{product.code}</td>
                   <td>{product.categoria}</td>
                   <td>{product.name}</td>

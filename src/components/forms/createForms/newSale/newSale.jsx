@@ -11,7 +11,6 @@ import * as actions from "../../../../redux/actions";
 
 export default function NewSaleForm() {
   let product = null;
-  let total = 0;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
@@ -52,7 +51,7 @@ export default function NewSaleForm() {
 
 
   const handleAdd = () => {
-    if (newItem.quantity === null || newItem.quantity === '') newItem.quantity = 1
+    if (!newItem.quantity  || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
     newItem.quantity *= 1;
 
     if (newItem.code.length > 0) {
@@ -66,8 +65,7 @@ export default function NewSaleForm() {
         product['quantity'] += newItem.quantity
         product['totalMount'] = product.quantity * product.price
         console.log('producto Modificado', product);
-        if (update === 1) setUpdate(0);
-        else setUpdate(1);
+        setUpdate(!update);
       } else {
         product['quantity'] = newItem.quantity
         product['totalMount'] = product.quantity * product.price
@@ -88,6 +86,18 @@ export default function NewSaleForm() {
     }
   };
 
+  const handleCantidadChange = (event, index) => {
+    const nuevaCantidad = parseInt(event.target.value, 10);
+    if (!isNaN(nuevaCantidad) && nuevaCantidad >= 0) {
+      const carroActualizado = [...cart];
+      carroActualizado[index].quantity = nuevaCantidad;
+      carroActualizado[index].totalMount = nuevaCantidad * carroActualizado[index].price;
+  
+      setCart(carroActualizado);
+      setUpdate(!update);
+    }
+  };
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleAdd();
@@ -98,8 +108,7 @@ export default function NewSaleForm() {
     if (code) {
       const index = cart.findIndex(e => e.code === code);
       cart.splice(index, 1);
-      if (update === 1) setUpdate(0);
-      else setUpdate(1);
+      setUpdate(!update);
     }
   };
 
@@ -184,9 +193,10 @@ export default function NewSaleForm() {
                 <th>Cantidad</th>
                 <th>Codigo</th>
                 <th>Producto</th>
+                <th>Marca</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Total</th>
+                <th>Subtotales</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -197,15 +207,23 @@ export default function NewSaleForm() {
                 newSale.items.map((item, index) => {
                   return (
                     <tr key={index} style={{ textAlign: 'center' }}>
-                      <td>{item.quantity}</td>
+                      <td>
+                        <div>
+                          <input
+                            autoComplete="off"
+                            name="quantity"
+                            value={item.quantity}
+                            onChange={(e) => handleCantidadChange(e, index)}
+                            type="number"
+                          />
+                        </div>
+                      </td>
                       <td>{item.code}</td>
                       <td>{item.name}</td>
+                      <td>{item.marca}</td>
                       <td>{'$ '}{item.price}</td>
                       <td>{item.stock}</td>
                       <td>{'$ '}{item.totalMount}</td>
-                      <td>
-                        <Button variant="primary">Modificar</Button>
-                      </td>
                       <td>
                         <Button variant="danger" onClick={() => { deleteProduct(item.code) }}>Eliminar</Button>
                       </td>
@@ -213,12 +231,17 @@ export default function NewSaleForm() {
                 })}
             </tbody>
           </Table>
+
           <Table striped bordered hover>
             <thead>
+              <tr>
+                <th>TOTAL</th>
+              </tr>
             </thead>
             <tbody>
-              <td>TOTAL</td>
-              <td>{newSale.mount}</td>
+              <tr style={{ textAlign: 'center' }}>
+                <td>{'$ '}{newSale.mount}</td>
+              </tr>
             </tbody>
           </Table>
         </div>

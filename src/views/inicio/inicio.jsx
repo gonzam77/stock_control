@@ -7,14 +7,7 @@ export default function Inicio() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Link to='/newSale'>
-          <Button
-            className={styles.createButton}
-            variant="success"
-          >
-            Nueva Venta
-          </Button>
-        </Link>
+       
       </div>
       <div>
         <Sales />

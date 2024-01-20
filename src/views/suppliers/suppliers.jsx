@@ -53,7 +53,7 @@ export default function Suppliers() {
           <tbody>
             {suppliers.map((supplier, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{supplier.razon_social}</td>
                   <td>{supplier.cuil}</td>
                   <td>{supplier.email}</td>

@@ -51,7 +51,7 @@ export default function Dispatchers() {
           <tbody>
             {dispatchers.map((dispatcher, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>
                     {dispatcher.first_name} {dispatcher.last_name}
                   </td>
