@@ -9,6 +9,7 @@ import ProductDetail from "./views/productDetail/productDetail";
 import Users from "./views/users/users";
 import Footer from "./components/footer/footer";
 import ProductsTable from "./views/productsTable/productsTable";
+import SaleDetail from './views/saleDetail/saleDeteail';
 import Deposits from "./views/deposits/deposits";
 import ProductsCard from "./views/productCards/productsCards";
 import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
@@ -68,6 +69,7 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/nomenclatorsPanel" element={<NomenclatorsPanel />} />
             <Route path="/productDetail/:id" element={<ProductDetail />} />
+            <Route path="/saleDetail/:id" element={<SaleDetail />} />
             <Route path='/newSale' element={<NewSale />}/>
           </Routes>
         </div>
