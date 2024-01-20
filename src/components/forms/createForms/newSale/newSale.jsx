@@ -52,7 +52,9 @@ export default function NewSaleForm() {
 
   const handleAdd = () => {
     if (!newItem.quantity  || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
-    newItem.quantity *= 1;
+    const quantity = parseInt(newItem.quantity);
+    newItem.quantity = quantity;
+    console.log(newItem.quantity);
 
     if (newItem.code.length > 0) {
       product = products.find((element) => element.code === newItem.code);
