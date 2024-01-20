@@ -3,11 +3,10 @@ import styles from "../editForms.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../dropdown/dropdownSupplier';
+import DropdownSupplier from '../../../dropdown/dropdownSupplier';
 
 export default function ProductForm() {
   const products = useSelector((state) => state.products);
-  const suppliers = useSelector(state => state.suppliers);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
   const selectedProduct = products.find((element) => element.id === productId);
@@ -36,7 +35,7 @@ export default function ProductForm() {
   const handleSupplierSelect = (selectedSupplier) => {
     setProduct({
       ...product,
-      proveedor: selectedSupplier,
+      supplier: selectedSupplier
     });
   };
 
@@ -73,16 +72,7 @@ export default function ProductForm() {
             type="text"
           />
         </div>
-        <div className={styles.divs}>
-          <label>Proveedor</label>
-          <input
-            autoComplete="off"
-            name="id_proveedor"
-            value={product.id_proveedor}
-            onChange={handleChange}
-            type="text"
-          />
-        </div>
+        
         <div className={styles.divs}>
           <label>Stock</label>
           <input
@@ -133,8 +123,8 @@ export default function ProductForm() {
             type="text"
           />
         </div>
-        <div>
-          <Dropdown suppliers={suppliers} onSelect={handleSupplierSelect}></Dropdown>
+        <div className={styles.container}>
+          <DropdownSupplier onSelect={handleSupplierSelect} />
         </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

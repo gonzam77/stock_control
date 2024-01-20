@@ -14,7 +14,7 @@ export default function DropdownMesures({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="light" id="dropdown-basic">
+      <Dropdown.Toggle variant="primary" id="dropdown-basic">
         {select ? select : "Unidad de Medida"}
       </Dropdown.Toggle>
       <Dropdown.Menu>

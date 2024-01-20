@@ -34,7 +34,7 @@ export default function Sales() {
                             <th>Monto</th>
                             <th>Metodo de Pago</th>
                             <th>Cliente</th>
-                            <th>Deposito</th>
+                            <th>Local</th>
                             <th>Detalle</th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@ export default function Sales() {
                                         {element.date}
                                     </td>
                                     <td>{element.quantity}</td>
-                                    <td>{element.mount}</td>
+                                    <td>{'$ '}{element.mount}</td>
                                     <td>{element.payType}</td>
                                     <td>{element.client}</td>
                                     <td>{element.deposit}</td>
