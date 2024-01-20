@@ -57,7 +57,7 @@ export default function Deposits() {
           <tbody>
             {deposits.map((deposit, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{deposit.id}</td>
                   <td>{deposit.type}</td>
                   <td>{deposit.name}</td>

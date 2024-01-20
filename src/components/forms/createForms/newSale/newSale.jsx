@@ -186,7 +186,7 @@ export default function NewSaleForm() {
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Total</th>
+                <th>Subtotales</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -213,12 +213,17 @@ export default function NewSaleForm() {
                 })}
             </tbody>
           </Table>
+          
           <Table striped bordered hover>
             <thead>
+              <tr>
+                <th>TOTAL</th>
+              </tr>
             </thead>
             <tbody>
-              <td>TOTAL</td>
-              <td>{newSale.mount}</td>
+              <tr style={{ textAlign: 'center' }}>
+                <td>{'$ '}{newSale.mount}</td>
+              </tr>
             </tbody>
           </Table>
         </div>

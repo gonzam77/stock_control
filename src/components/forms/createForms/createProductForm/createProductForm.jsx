@@ -160,7 +160,7 @@ export default function CreateProductForm() {
             type="date"
           />
         </div>
-        <div>
+        <div style={{textAlign: 'center', verticalAlign: 'middle'}}>
           <Dropdown onSelect={handleSupplierSelect}></Dropdown>
         </div>
 

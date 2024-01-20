@@ -59,7 +59,7 @@ export default function Users() {
           <tbody>
             {users.map((user, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>
                     {user.first_name} {user.last_name}
                   </td>

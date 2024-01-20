@@ -41,7 +41,7 @@ export default function Sales() {
                     <tbody>
                         {lastTenSales.map((element, index) => {
                             return (
-                                <tr key={index}>
+                                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                                     <td>{element.number}</td>
                                     <td>
                                         {element.date}

@@ -48,7 +48,7 @@ export default function Clients() {
           <tbody>
             {clients.map((client, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{client.cuil}</td>
                   <td>
                     {client.first_name} {client.last_name}
