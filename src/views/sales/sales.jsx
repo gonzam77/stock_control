@@ -40,7 +40,6 @@ export default function Sales() {
                     </thead>
                     <tbody>
                         {lastTenSales.map((element, index) => {
-                            const total = element.mount?.reduce((a, b) => a + b, 0);
                             return (
                                 <tr key={index}>
                                     <td>{element.number}</td>
@@ -48,7 +47,7 @@ export default function Sales() {
                                         {element.date}
                                     </td>
                                     <td>{element.quantity}</td>
-                                    <td>{total}</td>
+                                    <td>{element.mount}</td>
                                     <td>{element.payType}</td>
                                     <td>{element.client}</td>
                                     <td>{element.deposit}</td>

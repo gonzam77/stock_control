@@ -11,11 +11,12 @@ import * as actions from "../../../../redux/actions";
 
 export default function NewSaleForm() {
   let product = null;
+  let total = 0;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const date = new Date();
-  const formattedDate = date.toLocaleString()
+  const formattedDate = date.toLocaleString();
   const [newSale, setNewSale] = useState({
     id: "",
     number: "",
@@ -40,12 +41,14 @@ export default function NewSaleForm() {
   });
 
   useEffect(() => {
+    console.log('cart2', cart);
     setNewSale({
       ...newSale,
       items: cart,
-      date: formattedDate
-    })
-  }, [cart]);
+      date: formattedDate,
+      mount: cart.reduce((acc, current) => acc + current.totalMount, 0)
+    });
+  }, [cart, update]);
 
 
   const handleAdd = () => {
@@ -57,18 +60,26 @@ export default function NewSaleForm() {
     }
 
     if (product) {
+
       const selectedProduct = cart.find(element => element.code === product.code)
       if (selectedProduct) {
         product['quantity'] += newItem.quantity
+        product['totalMount'] = product.quantity * product.price
+        console.log('producto Modificado', product);
+        if (update === 1) setUpdate(0);
+        else setUpdate(1);
       } else {
         product['quantity'] = newItem.quantity
+        product['totalMount'] = product.quantity * product.price
         setCart([...cart, product]);
+        console.log('producto', product);
       }
+
       setNewSale({
         ...newSale,
-        mount: [...newSale.mount, product.price * product.quantity],
         quantity: newSale.quantity += product.quantity
-      })
+      });
+
       setNewItem({
         code: "",
         name: "",
@@ -191,7 +202,7 @@ export default function NewSaleForm() {
                       <td>{item.name}</td>
                       <td>{'$ '}{item.price}</td>
                       <td>{item.stock}</td>
-                      <td>{'$ '}{item.price * item.quantity}</td>
+                      <td>{'$ '}{item.totalMount}</td>
                       <td>
                         <Button variant="primary">Modificar</Button>
                       </td>
@@ -200,6 +211,14 @@ export default function NewSaleForm() {
                       </td>
                     </tr>)
                 })}
+            </tbody>
+          </Table>
+          <Table striped bordered hover>
+            <thead>
+            </thead>
+            <tbody>
+              <td>TOTAL</td>
+              <td>{newSale.mount}</td>
             </tbody>
           </Table>
         </div>
