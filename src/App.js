@@ -13,6 +13,7 @@ import Deposits from "./views/deposits/deposits";
 import ProductsCard from "./views/productCards/productsCards";
 import NomenclatorsPanel from "./views/nomenclatorsPanel/nomenclatorsPanel";
 import Aside from "./components/aside/aside";
+import NewSale from './views/newSale/newSale';
 // import Sales from "./views/sales/sales";
 // import SaleInvoice from "./views/salesInvoice/salesInvoice";
 // import Movements from "./views/movements/movements";
@@ -67,6 +68,7 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/nomenclatorsPanel" element={<NomenclatorsPanel />} />
             <Route path="/productDetail/:id" element={<ProductDetail />} />
+            <Route path='/newSale' element={<NewSale />}/>
           </Routes>
         </div>
       </div>

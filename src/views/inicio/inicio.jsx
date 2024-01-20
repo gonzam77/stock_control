@@ -1,29 +1,24 @@
 import styles from "./inicio.module.css";
 import { Button } from "react-bootstrap";
-import ModalNewSale from "../modals/newSale/newSale";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../redux/actions";
+import Sales from '../sales/sales';
+import { Link } from "react-router-dom";
 
-export default function inicio() {
-  const showNewSaleModal = useSelector((state) => state.showNewSaleModal);
-  const dispatch = useDispatch();
-
-  const openNewSaleModal = () => {
-    dispatch(actions.showNewSaleModal());
-  };
-
+export default function Inicio() {
   return (
     <div className={styles.container}>
-      <div className={styles.button}>
-        <Button
-          className={styles.createButton}
-          variant="success"
-          onClick={openNewSaleModal}
-        >
-          Nueva Venta
-        </Button>
+      <div className={styles.titleContainer}>
+        <Link to='/newSale'>
+          <Button
+            className={styles.createButton}
+            variant="success"
+          >
+            Nueva Venta
+          </Button>
+        </Link>
       </div>
-      {showNewSaleModal && <ModalNewSale />}
+      <div>
+        <Sales />
+      </div>
     </div>
   );
 }
