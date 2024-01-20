@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import Dropdown from '../../../dropdown/dropdownSupplier';
+import DropdownMesures from "../../../dropdown/dropdownMesure";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -21,15 +22,15 @@ export default function CreateProductForm() {
     stock: "",
     price: "",
   });
-  
-  
+
+
   const handleSupplierSelect = (selectedSupplier) => {
     setNewProduct({
       ...newProduct,
       supplier: selectedSupplier,
     });
   };
-  
+
   const closeCreateModal = (event) => {
     const date = new Date()
     event.preventDefault();
@@ -44,6 +45,14 @@ export default function CreateProductForm() {
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
   }
+
+  const handleMesureSelect = (selectedDeposit) => {
+    setNewProduct({
+      ...newProduct,
+      mesure: selectedDeposit,
+    });
+  };
+
 
   function handleChange(event) {
 
@@ -95,14 +104,7 @@ export default function CreateProductForm() {
         </div>
         <div className={styles.divs}>
           <label>Unidad medida</label>
-          <input
-            autoComplete="off"
-            name="unidad_medida"
-            value={newProduct.unidad_medida}
-            onChange={handleChange}
-            placeholder="Unidad/Litros..."
-            type="text"
-          />
+          <DropdownMesures onSelect={handleMesureSelect}/>
         </div>
         <div className={styles.divs}>
           <label>Stock</label>

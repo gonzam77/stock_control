@@ -2,10 +2,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function DropdownClient({ onSelect }) {
+export default function DropdownMesures({ onSelect }) {
   
   const [select, setSelect] = useState();
-  const clients = useSelector(state => state.clients);
+  const mesures = useSelector(state => state.mesures);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -14,15 +14,14 @@ export default function DropdownClient({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
-        {select ? select : "Cliente"}
+      <Dropdown.Toggle variant="light" id="dropdown-basic">
+        {select ? select : "Unidad de Medida"}
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
-        {clients.map((element, index) => {
+        {mesures.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.cuil}>
-              {element.first_name}{', '}{element.last_name}
+            <Dropdown.Item key={index} eventKey={element.name}>
+              {element.name}
             </Dropdown.Item>
           );
         })}

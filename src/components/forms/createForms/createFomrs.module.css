@@ -7,3 +7,25 @@ label {
     padding-bottom: 10px;
     justify-content: center;
 }
+
+.subDivs {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.buttons {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dropdown {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 70%;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}

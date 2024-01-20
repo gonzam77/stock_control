@@ -8,6 +8,7 @@ import { deposito } from "../assets/dataHardcodeoDeposito";
 import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
+import { ventas } from "../assets/dataHardcodeoSale";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -29,11 +30,11 @@ const initialState = {
   mesures: medidas,
   categories: categorias,
   payTypes: metodo_de_pago,
+  sales:ventas,
   cart:[],
   shipping: [],
   accounts: [],
   orders: [],
-  sales:[],
   productId: "",
   clientId: "",
   rolId: "",

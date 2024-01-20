@@ -1,10 +1,8 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 function DropdownStatus({ onSelect }) {
   const [select, setSelect] = useState();
-  const roles = useSelector((state) => state.roles);
 
   function handleSelect(eventKey) {
     setSelect(eventKey);
