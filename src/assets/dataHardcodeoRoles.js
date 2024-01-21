@@ -2,11 +2,11 @@ export const roles = [
     {
         id:1,
         name:'Administrador',
-        description:'Administra',
+        description:'Administra la cuestion',
     },
     {
         id:2,
         name:'Vendedor',
-        description:'Vende',
+        description:'Vende cositas',
     }
 ]

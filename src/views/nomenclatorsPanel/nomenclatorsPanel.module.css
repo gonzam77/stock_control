@@ -1,3 +1,13 @@
+.container{
+    margin: 30px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: rgb(159, 228, 247);
+    opacity: 90%;
+    background-blend-mode: luminosity;
+}
+
+
 .link {
     text-decoration: none;
 }

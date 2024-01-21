@@ -1,13 +1,11 @@
-import styles from "./sales.module.css";
+import styles from "./allSales.module.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-export default function Sales() {
+export default function AllSales() {
     const sales = useSelector((state) => state.sales);
-    const orderSales = sales.sort((a,b) => b.date - a.date )
-    const lastTenSales = orderSales.slice(0,10);
     const navigate = useNavigate();
 
     function redirect (id) {
@@ -18,7 +16,7 @@ export default function Sales() {
     return (
         <div className={styles.container}>
             <div className={styles.title}>
-                <h2>Ultimas Ventas</h2>
+                <h2>Ventas</h2>
             </div>
             <div className={styles.tableContainer}>
                 <Table striped bordered hover>
@@ -35,7 +33,7 @@ export default function Sales() {
                         </tr>
                     </thead>
                     <tbody>
-                        {lastTenSales.map((element, index) => {
+                        {sales.map((element, index) => {
                             return (
                                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                                     <td>{element.number}</td>
