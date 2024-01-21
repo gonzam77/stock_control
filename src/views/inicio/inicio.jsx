@@ -1,14 +1,13 @@
 import styles from "./inicio.module.css";
-import Sales from '../sales/sales';
+import LastSales from '../lastSales/lastSales';
 
 export default function Inicio() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-       
       </div>
       <div>
-        <Sales />
+        <LastSales />
       </div>
     </div>
   );

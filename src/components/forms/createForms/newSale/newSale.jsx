@@ -7,6 +7,8 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
+import { paste } from "@testing-library/user-event/dist/paste";
+
 
 
 export default function NewSaleForm() {
@@ -14,6 +16,7 @@ export default function NewSaleForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const sales = useSelector(state => state.sales);
   const date = new Date();
   const formattedDate = date.toLocaleString();
   const [newSale, setNewSale] = useState({
@@ -28,6 +31,15 @@ export default function NewSaleForm() {
     total: "",
     client: "",
   });
+
+  function getLastSale() {
+    let lastSale = sales[0].number
+    for (let i = 0; i < sales.length; i++) {
+      if (sales[i].number > lastSale) lastSale = sales[i].number;
+    };
+    lastSale = parseInt(lastSale,10);
+    return lastSale
+  };
 
   const [cart, setCart] = useState([]);
 
@@ -51,11 +63,10 @@ export default function NewSaleForm() {
 
 
   const handleAdd = () => {
-    if (!newItem.quantity  || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
+    if (!newItem.quantity || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
-    console.log(newItem.quantity);
-
+    const lastSale = getLastSale();
     if (newItem.code.length > 0) {
       product = products.find((element) => element.code === newItem.code);
     }
@@ -77,6 +88,7 @@ export default function NewSaleForm() {
 
       setNewSale({
         ...newSale,
+        number: lastSale + 1,
         quantity: newSale.quantity += product.quantity
       });
 
@@ -94,7 +106,7 @@ export default function NewSaleForm() {
       const carroActualizado = [...cart];
       carroActualizado[index].quantity = nuevaCantidad;
       carroActualizado[index].totalMount = nuevaCantidad * carroActualizado[index].price;
-  
+
       setCart(carroActualizado);
       setUpdate(!update);
     }
