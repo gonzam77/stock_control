@@ -208,11 +208,10 @@ export default function NewSaleForm() {
                 <th>Codigo</th>
                 <th>Producto</th>
                 <th>Marca</th>
-                <th>Precio</th>
+                <th>Precio U.</th>
+                <th>Precio T.</th>
+                <th>Eliminar</th>
                 <th>Stock</th>
-                <th>Subtotales</th>
-                <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -236,11 +235,11 @@ export default function NewSaleForm() {
                       <td>{item.name}</td>
                       <td>{item.marca}</td>
                       <td>{'$ '}{item.price}</td>
-                      <td>{item.stock}</td>
                       <td>{'$ '}{item.totalMount}</td>
                       <td>
                         <Button variant="danger" onClick={() => { deleteProduct(item.code) }}>Eliminar</Button>
                       </td>
+                      <td>{item.stock}</td>
                     </tr>)
                 })}
             </tbody>
@@ -249,12 +248,12 @@ export default function NewSaleForm() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>TOTAL</th>
+                <th>SUBTOTAL</th>
               </tr>
             </thead>
             <tbody>
               <tr style={{ textAlign: 'center' }}>
-                <td>{'$ '}{newSale.mount}</td>
+                <td><b>{'$ '}{newSale.mount}</b></td>
               </tr>
             </tbody>
           </Table>

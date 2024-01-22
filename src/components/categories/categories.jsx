@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import ModalCreateCategoryForm from '../../views/modals/createModals/modalCreateCategory/modalCreateCategory';
+import ModalCreateCategoryForm from '../../views/modals/createModals/modalCreateCategoryForm/modalCreateCategoryForm';
 import ModalEditCategoryForm from '../../views/modals/editModals/modalEditCategoryForm/modalEditCategory';
 import styles from './categories.module.css';
 import * as actions from '../../redux/actions';

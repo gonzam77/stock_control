@@ -9,6 +9,7 @@ import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
+import { ofertas } from "../assets/dataHardcodeoOffers";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -30,8 +31,9 @@ const initialState = {
   mesures: medidas,
   categories: categorias,
   payTypes: metodo_de_pago,
-  sales:ventas,
-  cart:[],
+  sales: ventas,
+  offers: ofertas,
+  cart: [],
   shipping: [],
   accounts: [],
   orders: [],
@@ -43,21 +45,27 @@ const initialState = {
   showModal: false,
   showModalMesure: false,
   showModalCategories: false,
+  showOfferModal: false,
   showCreateModal: false,
   showNewSaleModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-    case 'ADD_TO_CART':
+    case "ADD_TO_CART":
       return {
         ...state,
-        cart: [...state.cart, payload]
-      }
+        cart: [...state.cart, payload],
+      };
     case "NEW_SALE":
       return {
         ...state,
         sales: [...state.sales, payload],
+      };
+    case "CREATE_OFFER":
+      return {
+        ...state,
+        offers: [...state.offers, payload],
       };
     case "CREATE_MESURE":
       return {
@@ -129,6 +137,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         categoryId: payload,
       };
+    case "GET_OFFER_ID":
+      return {
+        ...state,
+        offerId: payload,
+      };
     case "GET_CLIENT_ID":
       return {
         ...state,
@@ -148,6 +161,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_OFFER":
+      const updatedOffer = payload;
+      const updatedOffers = state.offers.map((offer) => {
+        if (offer.id === updatedOffer.id) {
+          return updatedOffer;
+        }
+        return offer;
+      });
+
+      return {
+        ...state,
+        offers: updatedOffers,
       };
     case "EDIT_CATEGORY":
       const updatedCategory = payload;
@@ -295,6 +321,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModal: false,
       };
+    case "SHOW_OFFER_MODAL":
+      return {
+        ...state,
+        showOfferModal: true,
+      };
     case "SHOW_NEW_SALE_MODAL":
       return {
         ...state,
@@ -304,6 +335,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showCreateModal: true,
+      };
+    case "HIDE_OFFER_MODAL":
+      return {
+        ...state,
+        showOfferModal: false,
       };
     case "HIDE_NEW_SALE_MODAL":
       return {
