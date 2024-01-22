@@ -7,9 +7,6 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
-import { paste } from "@testing-library/user-event/dist/paste";
-
-
 
 export default function NewSaleForm() {
   let product = null;
