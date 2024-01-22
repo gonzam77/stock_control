@@ -9,12 +9,10 @@
 //   GET_ALL_USERS,
 // } from "./actionTypes";
 
-
-
 export const addToCart = (data) => {
   return {
-    type: 'ADD_TO_CART',
-    payload: data
+    type: "ADD_TO_CART",
+    payload: data,
   };
 };
 
@@ -24,6 +22,14 @@ export const newSale = (data) => {
     payload: data,
   };
 };
+
+export const createOffer = (data) => {
+  return {
+    type: "CREATE_OFFER",
+    payload: data,
+  };
+};
+
 export const createCategory = (data) => {
   return {
     type: "CREATE_CATEGORY",
@@ -101,6 +107,13 @@ export const getDepositId = (id) => {
   };
 };
 
+export const getOfferId = (id) => {
+  return {
+    type: "GET_OFFER_ID",
+    payload: id,
+  };
+};
+
 export const getDispatcherId = (id) => {
   return {
     type: "GET_DISPATCHER_ID",
@@ -136,12 +149,20 @@ export const editDeposit = (data) => {
   };
 };
 
+export const editOffer = (data) => {
+  return {
+    type: "EDIT_OFFER",
+    payload: data,
+  };
+};
+
 export const editUserRol = (data) => {
   return {
     type: "EDIT_USER_ROL",
     payload: data,
   };
 };
+
 export const editUser = (data) => {
   return {
     type: "EDIT_USER",
@@ -176,12 +197,14 @@ export const getCategoryId = (id) => {
     payload: id,
   };
 };
+
 export const getClientId = (id) => {
   return {
     type: "GET_CLIENT_ID",
     payload: id,
   };
 };
+
 export const getUserId = (id) => {
   return {
     type: "GET_USER_ID",
@@ -234,6 +257,10 @@ export const hideModal = () => ({
   type: "HIDE_MODAL",
 });
 
+export const showOfferModal = () => ({
+  type: "SHOW_OFFER_MODAL",
+});
+
 export const showNewSaleModal = () => ({
   type: "SHOW_NEW_SALE_MODAL",
 });
@@ -242,14 +269,18 @@ export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
 });
 
-export const hideNewSaleModal = () => ({
-  type: "HIDE_NEW_SALE_MODAL",
+export const hideOfferModal = () => ({
+  type: "HIDE_OFFER_MODAL",
 });
+
 
 export const hideCreateModal = () => ({
   type: "HIDE_CREATE_MODAL",
 });
 
+export const hideNewSaleModal = () => ({
+  type: "HIDE_NEW_SALE_MODAL",
+});
 // export const getAllProducts = () => {
 //     return async function (dispatch) {
 //         const response = await axios(`${URL}/products`);
