@@ -27,16 +27,17 @@ export default function EditOfferForm() {
   function handleChange(event) {
     const target = event.target.name;
     let value = event.target.value;
-    if (target !== "to_date") {
+    
+    if (target !== "to_date" && target !== "from_date") {
       setOffer({
         ...offer,
         [target]: value,
       });
     } else {
-      value = Date.parse(value);
+      const formattedDate = value ? `${value}T00:00:00` : null;
       setOffer({
         ...offer,
-        to_date: value,
+        [target]: formattedDate ? new Date(formattedDate) : null,
       });
     }
   }
@@ -53,6 +54,16 @@ export default function EditOfferForm() {
             onChange={handleChange}
             placeholder={selectedOffer.discount}
             type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Fecha Desde</label>
+          <input
+            autoComplete="off"
+            name="from_date"
+            value={formatDate(offer.from, "yyyy-mm-dd")}
+            onChange={handleChange}
+            type="date"
           />
         </div>
         <div className={styles.divs}>
