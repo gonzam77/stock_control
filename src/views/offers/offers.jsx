@@ -72,7 +72,7 @@ export default function Offers() {
                   <td>{offer.discount}{'%'}</td>
                   <td>{'$ '}{Math.round((1 - offer.discount / 100) * productInOffer?.price)}</td>
                   <td>{offer.create_date}</td>
-                  <td className={offer.to_date > formattedDate && styles.inactivo}>{offer.to_date}</td>
+                  <td className={offer.to_date < formattedDate && styles.inactivo}>{offer.to_date}</td>
                   <td className={offer.status === 'Activo' ? styles.activo : styles.inactivo}>{offer.status}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
