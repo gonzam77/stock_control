@@ -1,7 +1,7 @@
-const date = new Date(2023, 11, 31, 2);
-const toDate = new Date(2024, 11, 31, 2);
-const formattedDate = date.toLocaleString();
-const formattedToDate = toDate.toLocaleString();
+const date = new Date(2023, 11, 31);
+const toDate = new Date(2024, 11, 31);
+const formattedDate = date.toLocaleString('arg',{year:'numeric',month:'numeric',day:'numeric'});
+const formattedToDate = toDate.toLocaleString('arg',{year:'numeric',month:'numeric',day:'numeric'});
 
 export const ofertas = [
     {
