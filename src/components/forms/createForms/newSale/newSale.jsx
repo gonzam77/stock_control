@@ -10,10 +10,13 @@ import * as actions from "../../../../redux/actions";
 
 export default function NewSaleForm() {
   let product = null;
+  let offerProduct = null;
+  let finalPrice = null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const sales = useSelector(state => state.sales);
+  const offers = useSelector(state => state.offers);
   const [newSale, setNewSale] = useState({
     id: "",
     number: "",
@@ -32,7 +35,7 @@ export default function NewSaleForm() {
     for (let i = 0; i < sales.length; i++) {
       if (sales[i].number > lastSale) lastSale = sales[i].number;
     };
-    lastSale = parseInt(lastSale,10);
+    lastSale = parseInt(lastSale, 10);
     return lastSale
   };
 
@@ -60,20 +63,22 @@ export default function NewSaleForm() {
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
     const lastSale = getLastSale();
-    if (newItem.code.length > 0) {
+    if (newItem.code.length > 3) {
+      offerProduct = offers.find(e => e.code === newItem.code)
       product = products.find((element) => element.code === newItem.code);
+      if (offerProduct) finalPrice = (1 - offerProduct.discount / 100) * product.price
+      else finalPrice = product.price
     }
 
     if (product) {
-
       const selectedProduct = cart.find(element => element.code === product.code)
       if (selectedProduct) {
         product['quantity'] += newItem.quantity
-        product['totalMount'] = product.quantity * product.price
+        product['totalMount'] = product.quantity * finalPrice
         setUpdate(!update);
       } else {
         product['quantity'] = newItem.quantity
-        product['totalMount'] = product.quantity * product.price
+        product['totalMount'] = product.quantity * finalPrice
         setCart([...cart, product]);
       }
 
@@ -95,8 +100,9 @@ export default function NewSaleForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad >= 0) {
       const carroActualizado = [...cart];
+      carroActualizado[index].totalMount = carroActualizado[index].totalMount / carroActualizado[index].quantity;
       carroActualizado[index].quantity = nuevaCantidad;
-      carroActualizado[index].totalMount = nuevaCantidad * carroActualizado[index].price;
+      carroActualizado[index].totalMount *= nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);

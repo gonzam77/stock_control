@@ -35,6 +35,15 @@ export default function CreateProductForm() {
     event.preventDefault();
     dispatch(actions.createOffer(newOffer));
     dispatch(actions.hideCreateModal());
+    setNewOffer({
+      id: "",
+      product_id: "",
+      discount: "",
+      code: "",
+      create_date: null,
+      to_date: null,
+      from_date: null,
+    })
   };
 
   const cancelCreateModal = () => {
@@ -44,7 +53,7 @@ export default function CreateProductForm() {
   function handleChange(event) {
     const target = event.target.name;
     let value = event.target.value;
-  
+
     if (target !== "to_date" && target !== "from_date") {
       setNewOffer({
         ...newOffer,
@@ -58,7 +67,7 @@ export default function CreateProductForm() {
       });
     }
   }
-  
+
 
   return (
     <div className={styles.container}>
