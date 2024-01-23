@@ -5,11 +5,11 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import DropdownActive from '../../../dropdown/dropdownActive';
-import { formattedDate } from "../../../date/date";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const date = new Date()
 
   const [newOffer, setNewOffer] = useState({
     id: "",
@@ -27,7 +27,6 @@ export default function CreateProductForm() {
       setNewOffer({
         ...newOffer,
         product_id: productInOffer.id,
-        create_date: formattedDate
       })
     }
   }, [newOffer.code])

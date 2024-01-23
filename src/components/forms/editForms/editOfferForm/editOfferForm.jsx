@@ -4,7 +4,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
-import DropdownActive from '../../../dropdown/dropdownActive';
+import { formatDate } from "../../../date/date";
 
 export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
@@ -24,20 +24,21 @@ export default function EditOfferForm() {
     dispatch(actions.hideModal());
   };
 
-  const handleStatusSelect = (SelectedStatus) => {
-    setOffer({
-      ...offer,
-      status: SelectedStatus
-    })
-  }
-
   function handleChange(event) {
     const target = event.target.name;
-    const value = event.target.value;
-    setOffer({
-      ...offer,
-      [target]: value,
-    });
+    let value = event.target.value;
+    if (target !== "to_date") {
+      setOffer({
+        ...offer,
+        [target]: value,
+      });
+    } else {
+      value = Date.parse(value);
+      setOffer({
+        ...offer,
+        to_date: value,
+      });
+    }
   }
 
   return (
@@ -58,14 +59,11 @@ export default function EditOfferForm() {
           <label>Fecha Hasta</label>
           <input
             autoComplete="off"
-            name="discount"
-            value={offer.to_date}
+            name="to_date"
+            value={formatDate(offer.to_date, "yyyy-mm-dd")}
             onChange={handleChange}
             type="date"
           />
-        </div>
-        <div className={styles.divs}>
-          <DropdownActive onSelect={handleStatusSelect} />
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
