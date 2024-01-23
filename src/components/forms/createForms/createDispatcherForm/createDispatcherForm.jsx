@@ -3,7 +3,6 @@ import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import { formattedDate } from "../../../date/date";
 
 
 
@@ -29,7 +28,6 @@ export default function CreateDispatcherForm() {
     event.preventDefault();
     setnewDispatcher({
       ...newDispatcher,
-      create_date: formattedDate
     })
     dispatch(actions.createDispatcher(newDispatcher));
     dispatch(actions.hideCreateModal());

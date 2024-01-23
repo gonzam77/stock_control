@@ -3,13 +3,13 @@ import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import { formattedDate } from "../../../date/date";
 
 
 
 export default function CreateClientForm() {
   
   const dispatch = useDispatch();
+  const date = new Date()
   
   const [newClient, setNewClient] = useState({
     id:'',
@@ -29,7 +29,6 @@ export default function CreateClientForm() {
     event.preventDefault();
     setNewClient({
       ...newClient,
-      create_date: formattedDate
     })
     dispatch(actions.createClient(newClient));
     dispatch(actions.hideCreateModal());

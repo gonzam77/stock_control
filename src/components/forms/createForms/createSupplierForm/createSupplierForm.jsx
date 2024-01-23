@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import styles from "../createFomrs.module.css";
-import { formattedDate } from "../../../date/date";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ export default function CreateProductForm() {
     event.preventDefault();
     setNewSupplier({
       ...newSupplier,
-      create_date: formattedDate
     })
     dispatch(actions.createSupplier(newSupplier));
     dispatch(actions.hideCreateModal());

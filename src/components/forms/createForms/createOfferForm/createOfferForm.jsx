@@ -4,22 +4,24 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import DropdownActive from '../../../dropdown/dropdownActive';
-import { formattedDate } from "../../../date/date";
+import DropdownActive from "../../../dropdown/dropdownActive";
+import moment from "moment/moment";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const date = new Date();
+  console.log(date);
 
   const [newOffer, setNewOffer] = useState({
     id: "",
     product_id: "",
     discount: "",
     code: "",
-    date: ''
+    create_date: "",
+    to_date: "",
+    from_date: "",
   });
-
-
 
   useEffect(() => {
     const productInOffer = products.find((e) => e.code === newOffer.code);
@@ -27,17 +29,10 @@ export default function CreateProductForm() {
       setNewOffer({
         ...newOffer,
         product_id: productInOffer.id,
-        create_date: formattedDate
-      })
+        create_date: date,
+      });
     }
-  }, [newOffer.code])
-
-  function handleStatusSelect(selectedStatus) {
-    setNewOffer({
-      ...newOffer,
-      status: selectedStatus
-    })
-  }
+  }, [newOffer.code]);
 
   const closeCreateModal = (event) => {
     event.preventDefault();
@@ -51,11 +46,20 @@ export default function CreateProductForm() {
 
   function handleChange(event) {
     const target = event.target.name;
-    const value = event.target.value;
-    setNewOffer({
-      ...newOffer,
-      [target]: value,
-    });
+    let value = event.target.value;
+    if(target !== 'to_date' && target !== 'from_date'){
+      setNewOffer({
+        ...newOffer,
+        [target]: value,
+      });
+    } else {
+      value = moment(value).format('yyyy-MM-DD');
+      setNewOffer({
+        ...newOffer,
+        [target]: value,
+      });
+
+    }
   }
 
   return (
@@ -84,6 +88,16 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
+          <label>Fecha Desde</label>
+          <input
+            autoComplete="off"
+            name="from_date"
+            value={newOffer.from_date}
+            onChange={handleChange}
+            type="date"
+          />
+        </div>
+        <div className={styles.divs}>
           <label>Fecha Hasta</label>
           <input
             autoComplete="off"
@@ -92,9 +106,6 @@ export default function CreateProductForm() {
             onChange={handleChange}
             type="date"
           />
-        </div>
-        <div className={styles.divs}>
-          <DropdownActive onSelect={handleStatusSelect} />
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

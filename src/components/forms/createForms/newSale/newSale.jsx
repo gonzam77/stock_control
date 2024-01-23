@@ -7,7 +7,6 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
-import { formattedDate } from "../../../date/date";
 
 export default function NewSaleForm() {
   let product = null;
@@ -51,7 +50,6 @@ export default function NewSaleForm() {
     setNewSale({
       ...newSale,
       items: cart,
-      date: formattedDate,
       mount: cart.reduce((acc, current) => acc + current.totalMount, 0)
     });
   }, [cart, update]);

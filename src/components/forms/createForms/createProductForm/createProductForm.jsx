@@ -5,7 +5,6 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import Dropdown from '../../../dropdown/dropdownSupplier';
 import DropdownMesures from "../../../dropdown/dropdownMesure";
-import { formattedDate } from "../../../date/date";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -36,7 +35,6 @@ export default function CreateProductForm() {
     event.preventDefault();
     setNewProduct({
       ...newProduct,
-      create_date: formattedDate
     })
     dispatch(actions.createProduct(newProduct));
     dispatch(actions.hideCreateModal());
