@@ -49,7 +49,6 @@ export default function NewSaleForm() {
   });
 
   useEffect(() => {
-    console.log('cart2', cart);
     setNewSale({
       ...newSale,
       items: cart,
@@ -74,13 +73,11 @@ export default function NewSaleForm() {
       if (selectedProduct) {
         product['quantity'] += newItem.quantity
         product['totalMount'] = product.quantity * product.price
-        console.log('producto Modificado', product);
         setUpdate(!update);
       } else {
         product['quantity'] = newItem.quantity
         product['totalMount'] = product.quantity * product.price
         setCart([...cart, product]);
-        console.log('producto', product);
       }
 
       setNewSale({

@@ -14,7 +14,6 @@ export default function Mesures() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    console.log(id);
     dispatch(actions.showModalMesure())
     dispatch(actions.getMesureId(id))
   };

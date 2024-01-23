@@ -12,7 +12,6 @@ export default function Offers() {
   const offers = useSelector((state) => state.offers);
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  console.log(offers);
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -47,6 +46,7 @@ export default function Offers() {
               <th>Precio Regular</th>
               <th>Descuento</th>
               <th>Precio Final</th>
+              <th>Fecha</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -65,6 +65,7 @@ export default function Offers() {
                   <td>{productInOffer?.price}</td>
                   <td>{offer.discount}</td>
                   <td>{Math.round((1 - offer.discount / 100) * productInOffer?.price)}</td>
+                  <td>{offer.create_date}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
