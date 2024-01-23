@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import DropdownActive from '../../../dropdown/dropdownActive';
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -31,6 +32,13 @@ export default function CreateProductForm() {
       })
     }
   }, [newOffer.code])
+
+  function handleStatusSelect(selectedStatus) {
+    setNewOffer({
+      ...newOffer,
+      status: selectedStatus
+    })
+  }
 
   const closeCreateModal = (event) => {
     event.preventDefault();
@@ -85,6 +93,9 @@ export default function CreateProductForm() {
             onChange={handleChange}
             type="date"
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownActive onSelect={handleStatusSelect} />
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

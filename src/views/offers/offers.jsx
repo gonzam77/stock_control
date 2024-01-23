@@ -12,6 +12,9 @@ export default function Offers() {
   const offers = useSelector((state) => state.offers);
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  let style = 'Inactivo'
+
+
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -47,6 +50,8 @@ export default function Offers() {
               <th>Descuento</th>
               <th>Precio Final</th>
               <th>Fecha</th>
+              <th>Fecha Hasta</th>
+              <th>Estado</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -66,6 +71,8 @@ export default function Offers() {
                   <td>{offer.discount}</td>
                   <td>{Math.round((1 - offer.discount / 100) * productInOffer?.price)}</td>
                   <td>{offer.create_date}</td>
+                  <td>{offer.to_date}</td>
+                  <td className={offer.status === 'Activo' ? styles.activo : styles.inactivo}>{offer.status}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
