@@ -1,7 +1,9 @@
 const date = new Date(2023, 11, 31);
 const toDate = new Date(2024, 11, 31);
-const formattedDate = date.toLocaleString('arg',{year:'numeric',month:'numeric',day:'numeric'});
-const formattedToDate = toDate.toLocaleString('arg',{year:'numeric',month:'numeric',day:'numeric'});
+const toDate2 = new Date(2023, 11, 30);
+const formattedDate = date.toLocaleString('arg', { year: 'numeric', month: 'numeric', day: 'numeric' });
+const formattedToDate = toDate.toLocaleString('arg', { year: 'numeric', month: 'numeric', day: 'numeric' });
+const formattedToDate2 = toDate2.toLocaleString('arg', { year: 'numeric', month: 'numeric', day: 'numeric' });
 
 export const ofertas = [
     {
@@ -20,6 +22,6 @@ export const ofertas = [
         code: '0002',
         create_date: formattedDate,
         status: 'Inactivo',
-        to_date: formattedToDate
+        to_date: formattedToDate2
     }
 ]

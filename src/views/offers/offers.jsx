@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import ModalEditOfferForm from "../modals/editModals/modalEditOfferForm/modalEditOfferForm";
 import ModaleCreateOfferForm from "../modals/createModals/modalCreateOfferForm/modalCreateOfferForm";
 import { Button } from "react-bootstrap";
+import { formattedDate } from "../../components/date/date";
 
 export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
@@ -47,7 +48,7 @@ export default function Offers() {
               <th>Codigo</th>
               <th>Nombre</th>
               <th>Precio Regular</th>
-              <th>Descuento %</th>
+              <th>Descuento</th>
               <th>Precio Final</th>
               <th>Fecha</th>
               <th>Fecha Hasta</th>
@@ -68,10 +69,10 @@ export default function Offers() {
                   <td>{productInOffer?.code}</td>
                   <td>{productInOffer?.name}</td>
                   <td>{'$ '}{productInOffer?.price}</td>
-                  <td>{offer.discount}</td>
+                  <td>{offer.discount}{'%'}</td>
                   <td>{'$ '}{Math.round((1 - offer.discount / 100) * productInOffer?.price)}</td>
                   <td>{offer.create_date}</td>
-                  <td>{offer.to_date}</td>
+                  <td className={offer.to_date > formattedDate && styles.inactivo}>{offer.to_date}</td>
                   <td className={offer.status === 'Activo' ? styles.activo : styles.inactivo}>{offer.status}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button

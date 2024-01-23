@@ -7,3 +7,4 @@ export const toDate = new Date();
  }
 
  export const formattedDate = toDate.toLocaleString('arg',options)
+ console.log(formattedDate);
