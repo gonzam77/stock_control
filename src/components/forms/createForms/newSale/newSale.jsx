@@ -98,7 +98,7 @@ export default function NewSaleForm() {
 
   const handleCantidadChange = (event, index) => {
     const nuevaCantidad = parseInt(event.target.value, 10);
-    if (!isNaN(nuevaCantidad) && nuevaCantidad >= 0) {
+    if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
       carroActualizado[index].totalMount = carroActualizado[index].totalMount / carroActualizado[index].quantity;
       carroActualizado[index].quantity = nuevaCantidad;
