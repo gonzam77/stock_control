@@ -7,6 +7,7 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
+import { formattedDate } from "../../../date/date";
 
 export default function NewSaleForm() {
   let product = null;
@@ -14,8 +15,6 @@ export default function NewSaleForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const sales = useSelector(state => state.sales);
-  const date = new Date();
-  const formattedDate = date.toLocaleString();
   const [newSale, setNewSale] = useState({
     id: "",
     number: "",
