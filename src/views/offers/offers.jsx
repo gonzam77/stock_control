@@ -6,14 +6,16 @@ import ModalEditOfferForm from "../modals/editModals/modalEditOfferForm/modalEdi
 import ModaleCreateOfferForm from "../modals/createModals/modalCreateOfferForm/modalCreateOfferForm";
 import { Button } from "react-bootstrap";
 import { formatDate } from "../../components/date/date";
+import moment from "moment/moment";
 
 export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const offers = useSelector((state) => state.offers);
+  const date = new Date();
+
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const date = new Date();
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -49,6 +51,7 @@ export default function Offers() {
               <th>Descuento</th>
               <th>Precio Final</th>
               <th>Fecha</th>
+              <th>Fecha Desde</th>
               <th>Fecha Hasta</th>
               <th>Estado</th>
               <th>Modificar</th>
@@ -83,15 +86,34 @@ export default function Offers() {
                   <td>{formatDate(offer.create_date)}</td>
                   <td
                     className={
+                      offer.from_date > date || offer.to_date < date
+                        ? styles.inactivo
+                        : undefined
+                    }
+                  >
+                    {moment(offer.from_date).format("DD-MM-yyyy")}
+                  </td>
+                  <td
+                    className={
                       offer.to_date < date ? styles.inactivo : undefined
                     }
                   >
-                    {formatDate(offer.to_date)}
+                    {moment(offer.to_date).format("DD-MM-yyyy")}
                   </td>
-                  {offer.to_date > date ? (
-                    <td className={styles.activo}>Activo</td>
+
+                  {offer.from_date <= date &&
+                  (new Date(new Date(offer.to_date).getFullYear(), 
+                  new Date(offer.to_date).getMonth(), 
+                  new Date(offer.to_date).getDate()+2)) >= date ? (
+                    <> 
+                      {/* <td></td> */}
+                      <td className={styles.activo}>Activo</td>
+                    </>
                   ) : (
-                    <td className={styles.inactivo}>Inactivo</td>
+                    <> 
+                      {/* <td></td> */}
+                      <td className={styles.inactivo}>Inactivo</td>
+                    </>
                   )}
                   <td style={{ textAlign: "center" }}>
                     <Button
