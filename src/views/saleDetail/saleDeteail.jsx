@@ -6,13 +6,10 @@ import styles from "./saleDetail.module.css";
 
 export default function SaleDetailPage() {
     const { id } = useParams();
-    console.log(id);
     //const salesId = parseInt(id)
 
     const sales = useSelector((state) => state.sales);
-    console.log(sales);
     const sale = sales.find((element) => element.id === id);
-    console.log(sale);
 
     return (
         <div classdate={styles.container}>

@@ -9,7 +9,6 @@ export default function AllSales() {
     const navigate = useNavigate();
 
     function redirect (id) {
-        console.log(id);
         navigate(`/saleDetail/${id}`)
     }
 

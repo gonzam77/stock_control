@@ -52,3 +52,13 @@
     text-align: center;
     vertical-align: middle;
   }
+
+  .activo {
+    color: green !important;
+    font-weight: bold;
+  }
+  
+  .inactivo {
+    color:red !important;
+    font-weight: bold;
+  }

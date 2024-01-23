@@ -7,6 +7,7 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
+import { formattedDate } from "../../../date/date";
 
 export default function NewSaleForm() {
   let product = null;
@@ -14,8 +15,6 @@ export default function NewSaleForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const sales = useSelector(state => state.sales);
-  const date = new Date();
-  const formattedDate = date.toLocaleString();
   const [newSale, setNewSale] = useState({
     id: "",
     number: "",
@@ -49,7 +48,6 @@ export default function NewSaleForm() {
   });
 
   useEffect(() => {
-    console.log('cart2', cart);
     setNewSale({
       ...newSale,
       items: cart,
@@ -74,13 +72,11 @@ export default function NewSaleForm() {
       if (selectedProduct) {
         product['quantity'] += newItem.quantity
         product['totalMount'] = product.quantity * product.price
-        console.log('producto Modificado', product);
         setUpdate(!update);
       } else {
         product['quantity'] = newItem.quantity
         product['totalMount'] = product.quantity * product.price
         setCart([...cart, product]);
-        console.log('producto', product);
       }
 
       setNewSale({

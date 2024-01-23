@@ -3,6 +3,7 @@ import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import { formattedDate } from "../../../date/date";
 
 
 
@@ -22,10 +23,9 @@ export default function CreateDepositForm() {
   
   const closeCreateModal = (event) => {
     event.preventDefault();
-    const date = new Date();
     setNewDeposit({
       ...newDeposit,
-      create_date: date
+      create_date: formattedDate
     })
     dispatch(actions.createDeposit(newDeposit));
     dispatch(actions.hideCreateModal());

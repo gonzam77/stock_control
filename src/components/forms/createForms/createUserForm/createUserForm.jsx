@@ -5,6 +5,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownRoles from "../../../dropdown/dropdownRol";
 import DropdownStatus from "../../../dropdown/dropdownStatus";
+import { formattedDate } from "../../../date/date";
 
 export default function CreateUserForm() {
   const dispatch = useDispatch();
@@ -26,10 +27,9 @@ export default function CreateUserForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    const date = new Date();
     setNewUser({
       ...newUser,
-      create_date: date,
+      create_date: formattedDate
     });
     dispatch(actions.createUser(newUser));
     dispatch(actions.hideCreateModal());
