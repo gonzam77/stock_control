@@ -4,23 +4,20 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import DropdownActive from "../../../dropdown/dropdownActive";
-import moment from "moment/moment";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const date = new Date();
-  console.log(date);
 
   const [newOffer, setNewOffer] = useState({
     id: "",
     product_id: "",
     discount: "",
     code: "",
-    create_date: "",
-    to_date: "",
-    from_date: "",
+    create_date: null,
+    to_date: null,
+    from_date: null,
   });
 
   useEffect(() => {
@@ -47,20 +44,21 @@ export default function CreateProductForm() {
   function handleChange(event) {
     const target = event.target.name;
     let value = event.target.value;
-    if(target !== 'to_date' && target !== 'from_date'){
+  
+    if (target !== "to_date" && target !== "from_date") {
       setNewOffer({
         ...newOffer,
         [target]: value,
       });
     } else {
-      value = moment(value).format('yyyy-MM-DD');
+      const formattedDate = value ? `${value}T00:00:00` : null;
       setNewOffer({
         ...newOffer,
-        [target]: value,
+        [target]: formattedDate ? new Date(formattedDate) : null,
       });
-
     }
   }
+  
 
   return (
     <div className={styles.container}>
@@ -92,7 +90,7 @@ export default function CreateProductForm() {
           <input
             autoComplete="off"
             name="from_date"
-            value={newOffer.from_date}
+            value={newOffer.from_date ? newOffer.from_date.toISOString().split('T')[0] : ''}
             onChange={handleChange}
             type="date"
           />
@@ -102,7 +100,7 @@ export default function CreateProductForm() {
           <input
             autoComplete="off"
             name="to_date"
-            value={newOffer.to_date}
+            value={newOffer.to_date ? newOffer.to_date.toISOString().split('T')[0] : ''}
             onChange={handleChange}
             type="date"
           />
