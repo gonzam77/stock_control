@@ -4,6 +4,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import DropdownAccountType from "../../../dropdown/dropdownAccountType";
 
 export default function EditaccountForm() {
   const accounts = useSelector((state) => state.accounts);
@@ -32,19 +33,19 @@ export default function EditaccountForm() {
     });
   }
 
+  const handleAccountTypeSelect = (selectedAccount) => {
+    console.log(selectedAccount);
+    setAccount({
+      ...account,
+      account_type: selectedAccount,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Tipo de Cuenta</label>
-          <input
-            autoComplete="off"
-            name="account_type"
-            value={account.account_type}
-            onChange={handleChange}
-            placeholder={selectedAccount.account_type}
-            type="text"
-          />
+          <DropdownAccountType onSelect={handleAccountTypeSelect}></DropdownAccountType>
         </div>
         <div className={styles.divs}>
           <label>Descripcion</label>

@@ -1,15 +1,15 @@
 import Modal from "react-bootstrap/Modal";
-import EditCategoryForm from "../../../../components/forms/editForms/editCategoryForm/editCategoryForm";
+import EditAccountTypeForm from "../../../../components/forms/editForms/editAccountTypeForm/editAccountTypeForm";
 
-export default function ModalEditCategoryForm() {
+export default function ModalEditAccountTypeForm() {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
         <Modal.Header >
-          <Modal.Title>Editar Categoria</Modal.Title>
+          <Modal.Title>Editar Tipo de Cuenta</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditCategoryForm />
+          <EditAccountTypeForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>

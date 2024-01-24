@@ -1,26 +1,19 @@
-import { useState } from "react";
 import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
-import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import DropdownAccountType from "../../../dropdown/dropdownAccountType";
+import { useState } from "react";
+import * as actions from "../../../../redux/actions";
 
-export default function CreateAccountForm() {
+export default function CreateAccountTypeForm() {
   const dispatch = useDispatch();
-
-  const [newAccount, setNewAccount] = useState({
+  const [newAccountType, setNewAccountType] = useState({
     id: "",
-    account_type: "",
-    description: "",
-    number: "",
+    name: "",
   });
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    setNewAccount({
-      ...newAccount,
-    });
-    dispatch(actions.createAccount(newAccount));
+    dispatch(actions.createAccountType(newAccountType));
     dispatch(actions.hideCreateModal());
   };
 
@@ -31,44 +24,23 @@ export default function CreateAccountForm() {
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    setNewAccount({
-      ...newAccount,
+    setNewAccountType({
+      ...newAccountType,
       [target]: value,
     });
   }
-
-  const handleAccountTypeSelect = (selectedType) => {
-    setNewAccount({
-      ...newAccount,
-      account_Type: selectedType,
-    });
-  };
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <DropdownAccountType onSelect={handleAccountTypeSelect} />
-        </div>
-        <div className={styles.divs}>
           <label>Descripcion</label>
           <input
             autoComplete="off"
             name="description"
-            value={newAccount.description}
+            value={newAccountType.description}
             onChange={handleChange}
             placeholder="Descripcion..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Number</label>
-          <input
-            autoComplete="off"
-            name="number"
-            value={newAccount.number}
-            onChange={handleChange}
-            placeholder="Numero de cuenta..."
             type="text"
           />
         </div>

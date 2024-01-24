@@ -23,6 +23,12 @@ export const newSale = (data) => {
   };
 };
 
+export const createAccountType = (data) => {
+  return {
+    type: "CREATE_ACCOUNT_TYPE",
+    payload: data,
+  };
+};
 export const createOffer = (data) => {
   return {
     type: "CREATE_OFFER",
@@ -100,6 +106,13 @@ export const createSupplier = (data) => {
   };
 };
 
+export const getAccountTypeId = (id) => {
+  console.log('actions', id);
+  return {
+    type: "GET_ACCOUNT_TYPE_ID",
+    payload: id,
+  };
+};
 export const getMesureId = (id) => {
   return {
     type: "GET_MESURE_ID",
@@ -113,6 +126,7 @@ export const getAccountId = (id) => {
     payload: id,
   };
 };
+
 export const getDepositId = (id) => {
   return {
     type: "GET_DEPOSIT_ID",
@@ -127,9 +141,44 @@ export const getOfferId = (id) => {
   };
 };
 
+export const getProductId = (id) => {
+  return {
+    type: "GET_PRODUCT_ID",
+    payload: id,
+  };
+};
+
 export const getDispatcherId = (id) => {
   return {
     type: "GET_DISPATCHER_ID",
+    payload: id,
+  };
+};
+
+export const getRolId = (id) => {
+  return {
+    type: "GET_ROL_ID",
+    payload: id,
+  };
+};
+
+export const getCategoryId = (id) => {
+  return {
+    type: "GET_CATEGORY_ID",
+    payload: id,
+  };
+};
+
+export const getClientId = (id) => {
+  return {
+    type: "GET_CLIENT_ID",
+    payload: id,
+  };
+};
+
+export const getUserId = (id) => {
+  return {
+    type: "GET_USER_ID",
     payload: id,
   };
 };
@@ -138,6 +187,13 @@ export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
     payload: id,
+  };
+};
+
+export const editAccountType = (data) => {
+  return {
+    type: "EDIT_ACCOUNT_TYPE",
+    payload: data,
   };
 };
 
@@ -204,33 +260,6 @@ export const editSupplier = (data) => {
   };
 };
 
-export const getRolId = (id) => {
-  return {
-    type: "GET_ROL_ID",
-    payload: id,
-  };
-};
-
-export const getCategoryId = (id) => {
-  return {
-    type: "GET_CATEGORY_ID",
-    payload: id,
-  };
-};
-
-export const getClientId = (id) => {
-  return {
-    type: "GET_CLIENT_ID",
-    payload: id,
-  };
-};
-
-export const getUserId = (id) => {
-  return {
-    type: "GET_USER_ID",
-    payload: id,
-  };
-};
 
 export const editClient = (data) => {
   return {
@@ -239,12 +268,6 @@ export const editClient = (data) => {
   };
 };
 
-export const getProductId = (id) => {
-  return {
-    type: "GET_PRODUCT_ID",
-    payload: id,
-  };
-};
 
 export const editProduct = (data) => {
   return {
@@ -257,12 +280,20 @@ export const showModalMesure = () => ({
   type: "SHOW_MODAL_MESURE",
 });
 
+export const showModalAccountType = () => ({
+  type: "SHOW_MODAL_ACCOUNT_TYPE",
+});
+
 export const showModalCategories = () => ({
   type: "SHOW_MODAL_CATEGORIES",
 });
 
 export const showModal = () => ({
   type: "SHOW_MODAL",
+});
+
+export const hideModalAccountType = () => ({
+  type: "HIDE_ACCOUNT_TYPE_MODAL",
 });
 
 export const hideModalCategories = () => ({

@@ -50,6 +50,7 @@ const initialState = {
   showModalMesure: false,
   showModalAccount: false,
   showModalCategories: false,
+  showModalAccountType: false,
   showOfferModal: false,
   showCreateModal: false,
   showNewSaleModal: false,
@@ -66,6 +67,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         sales: [...state.sales, payload],
+      };
+    case "CREATE_ACCOUNT_TYPE":
+      return {
+        ...state,
+        accountTypes: [...state.accountTypes, payload],
       };
     case "CREATE_OFFER":
       return {
@@ -127,6 +133,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         depositId: payload,
       };
+    case "GET_ACCOUNT_TYPE_ID":
+      return {
+        ...state,
+        accountTypeId: payload,
+      };
     case "GET_PRODUCT_ID":
       return {
         ...state,
@@ -176,6 +187,19 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_ACCOUNT_TYPE":
+      const updatedAccountType = payload;
+      const updatedAccountTypes = state.accountTypes.map((accountType) => {
+        if (accountType.id === updatedAccountType.id) {
+          return updatedAccountType;
+        }
+        return accountType;
+      });
+
+      return {
+        ...state,
+        accountsTypes: updatedAccountTypes,
       };
     case "EDIT_ACCOUNT":
       const updatedAccount = payload;
@@ -349,10 +373,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModal: false,
       };
-    case "SHOW_ACCOUNT_MODAL":
+    case "SHOW_MODAL_ACCOUNT_TYPE":
       return {
         ...state,
-        showAccountModal: true,
+        showModalAccountType: true,
       };
     case "SHOW_OFFER_MODAL":
       return {
@@ -369,10 +393,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: true,
       };
-    case "HIDE_ACCOUNT_MODAL":
+    case "HIDE_ACCOUNT_TYPE_MODAL":
       return {
         ...state,
-        showAccountModal: false,
+        showModalAccountType: false,
       };
     case "HIDE_OFFER_MODAL":
       return {
