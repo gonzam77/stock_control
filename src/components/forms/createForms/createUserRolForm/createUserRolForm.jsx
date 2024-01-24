@@ -37,17 +37,6 @@ export default function CreateUserRolForm() {
         <div className={styles.container}>
             <form className={styles.form}>
                 <div className={styles.divs}>
-                    <label>Codigo</label>
-                    <input
-                        autoComplete="off"
-                        name="code"
-                        value={newRol.code}
-                        onChange={handleChange}
-                        placeholder="(0001)"
-                        type="text"
-                    />
-                </div>
-                <div className={styles.divs}>
                     <label>Nombre</label>
                     <input
                         autoComplete="off"
