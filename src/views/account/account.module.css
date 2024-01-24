@@ -1,0 +1,55 @@
+.container {
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-top: 20px;
+  }
+  
+  .title {
+    background-color: white;
+    display: flex;
+    color: rgb(0, 5, 1);
+    justify-content: left;
+    padding-left: 20vh;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .titleContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    width: auto;
+    height: auto;
+    gap: 10px;
+  }
+  
+  .link {
+    margin-top: 10vh;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .tableContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .createButton {
+    margin-top: 10vh;
+    font-size: 1rem;
+  }
+  
+  
+  .editButton {
+    color: white !important;
+    background-color: rgb(3, 124, 133) !important;
+  }
+  table th {
+    text-align: center;
+    vertical-align: middle;
+  }

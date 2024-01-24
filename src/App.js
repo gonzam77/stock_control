@@ -17,6 +17,7 @@ import Aside from "./components/aside/aside";
 import AllSales from './views/allSales/allSales';
 import NewSale from './views/newSale/newSale';
 import Offers from './views/offers/offers'
+import Account from './views/account/account'
 // import Sales from "./views/sales/sales";
 // import SaleInvoice from "./views/salesInvoice/salesInvoice";
 // import Movements from "./views/movements/movements";
@@ -75,6 +76,7 @@ function App() {
             <Route path='/newSale' element={<NewSale />}/>
             <Route path='//offers' element={<Offers />}/>
             <Route path='/allSales' element={<AllSales />}/>
+            <Route path='/accounts' element={<Account />}/>
           </Routes>
         </div>
       </div>

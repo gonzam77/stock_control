@@ -3,16 +3,14 @@ import styles from "../createFomrs.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-
-
+import DropdownAccount from "../../../dropdown/dropdownAccount";
 
 export default function CreateClientForm() {
-  
   const dispatch = useDispatch();
-  const date = new Date()
-  
+  const date = new Date();
+
   const [newClient, setNewClient] = useState({
-    id:'',
+    id: "",
     first_name: "",
     last_name: "",
     cuil: "",
@@ -22,31 +20,30 @@ export default function CreateClientForm() {
     email: "",
     adress: "",
     razon_social: "",
-    create_date:''
+    create_date: "",
   });
-  
+
   const closeCreateModal = (event) => {
     event.preventDefault();
     setNewClient({
       ...newClient,
-    })
+    });
     dispatch(actions.createClient(newClient));
     dispatch(actions.hideCreateModal());
   };
-  
+
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
-  }
-  
+  };
+
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-      setNewClient({
-        ...newClient,
-        [target]: value,
-      });
-    }
-  
+    setNewClient({
+      ...newClient,
+      [target]: value,
+    });
+  }
 
   return (
     <div className={styles.container}>
@@ -136,7 +133,7 @@ export default function CreateClientForm() {
             value={newClient.province}
             onChange={handleChange}
             placeholder="San Luis..."
-            type="date"
+            type="text"
           />
         </div>
         <div className={styles.divs}>
@@ -148,6 +145,9 @@ export default function CreateClientForm() {
             onChange={handleChange}
             placeholder="San Luis..."
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownAccount></DropdownAccount>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

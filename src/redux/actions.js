@@ -65,6 +65,13 @@ export const createUser = (data) => {
   };
 };
 
+export const createAccount = (data) => {
+  return {
+    type: "CREATE_ACCOUNT",
+    payload: data,
+  };
+};
+
 export const createDispatcher = (data) => {
   return {
     type: "CREATE_DISPATCHER",
@@ -100,6 +107,12 @@ export const getMesureId = (id) => {
   };
 };
 
+export const getAccountId = (id) => {
+  return {
+    type: "GET_ACCOUNT_ID",
+    payload: id,
+  };
+};
 export const getDepositId = (id) => {
   return {
     type: "GET_DEPOSIT_ID",
@@ -138,6 +151,13 @@ export const editMesure = (data) => {
 export const editCategory = (data) => {
   return {
     type: "EDIT_CATEGORY",
+    payload: data,
+  };
+};
+
+export const editAccount = (data) => {
+  return {
+    type: "EDIT_ACCOUNT",
     payload: data,
   };
 };
@@ -257,6 +277,10 @@ export const hideModal = () => ({
   type: "HIDE_MODAL",
 });
 
+export const showAccountModal = () => ({
+  type: "SHOW_ACCOUNT_MODAL",
+});
+
 export const showOfferModal = () => ({
   type: "SHOW_OFFER_MODAL",
 });
@@ -267,6 +291,10 @@ export const showNewSaleModal = () => ({
 
 export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
+});
+
+export const hideAccountModal = () => ({
+  type: "HIDE_ACCOUNT_MODAL",
 });
 
 export const hideOfferModal = () => ({
