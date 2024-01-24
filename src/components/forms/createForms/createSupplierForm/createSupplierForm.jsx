@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import styles from "../createFomrs.module.css";
+import DropdownAccount from "../../../dropdown/dropdownAccount";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -122,6 +123,9 @@ export default function CreateProductForm() {
             placeholder="San Luis"
             type="text"
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownAccount></DropdownAccount>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>
