@@ -4,6 +4,6 @@ export const compras = [
         number:'1',
         date:'22/11/2023',
         total_mount:220000,
-        user_id:'1',
+        supplier:'1',
     }
 ]
