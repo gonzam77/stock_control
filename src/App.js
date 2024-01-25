@@ -18,6 +18,7 @@ import AllSales from './views/allSales/allSales';
 import NewSale from './views/newSale/newSale';
 import Offers from './views/offers/offers'
 import Account from './views/account/account'
+import DepositDetail from './views/depositDetail/depositDetail';
 // import Sales from "./views/sales/sales";
 // import SaleInvoice from "./views/salesInvoice/salesInvoice";
 // import Movements from "./views/movements/movements";
@@ -73,6 +74,7 @@ function App() {
             <Route path="/nomenclatorsPanel" element={<NomenclatorsPanel />} />
             <Route path="/productDetail/:id" element={<ProductDetail />} />
             <Route path="/saleDetail/:id" element={<SaleDetail />} />
+            <Route path="/depositDetail/:id" element={<DepositDetail />} />
             <Route path='/newSale' element={<NewSale />}/>
             <Route path='//offers' element={<Offers />}/>
             <Route path='/allSales' element={<AllSales />}/>

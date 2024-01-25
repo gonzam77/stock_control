@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import ModalCreatedepositForm from "../modals/createModals/modalCreateDepositForm/modalCreateDepositForm";
 import ModalEditdepositForm from "../modals/editModals/modalEditDepositForm/modalEditDepositForm";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
@@ -25,6 +26,8 @@ export default function Deposits() {
     dispatch(actions.showCreateModal());
   };
 
+ 
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -44,7 +47,7 @@ export default function Deposits() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>id</th>
+              <th>VER</th>
               <th>Tipo</th>
               <th>Nombre</th>
               <th>Administrador</th>
@@ -57,15 +60,22 @@ export default function Deposits() {
           <tbody>
             {deposits.map((deposit, index) => {
               return (
-                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{deposit.id}</td>
+                <tr
+                  key={index}
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
+                  <td style={{ textAlign: "center" }}>
+                    <Link to={`/depositDetail/${deposit.id}`}>
+                      <Button variant="primary">VER</Button>
+                    </Link>
+                  </td>
                   <td>{deposit.type}</td>
                   <td>{deposit.name}</td>
                   <td>{deposit.admin}</td>
                   <td>{deposit.description}</td>
                   <td>{deposit.phone}</td>
                   <td>{deposit.adress}</td>
-                  <td style={{ textAlign: 'center' }}>
+                  <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
                       onClick={() => openModal(deposit.id)}
