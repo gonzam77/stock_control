@@ -1,15 +1,23 @@
-import styles from "./shopping.module.css";
+import styles from "./purchases.module.css";
 import { useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function Shopping() {
-  const shopping = useSelector((state) => state.shopping);
-  const users = useSelector((state) => state.users);
+export default function Purchases() {
+  const purchases = useSelector((state) => state.purchases);
+
+  
 
   return (
     <div className={styles.container}>
+      <div className={styles.titleContainer}>
+        <Link to='/newPurchase'>
+          <Button className={styles.createButton} variant="success" >
+            Nueva Compra
+          </Button>
+        </Link>
+      </div>
       <div className={styles.title}>
         <h1>Compras</h1>
       </div>
@@ -20,26 +28,23 @@ export default function Shopping() {
               <th>N° Compra</th>
               <th>Fecha</th>
               <th>Monto Total</th>
-              <th>Vendedor</th>
+              <th>Proveedor</th>
               <th>Detalle</th>
             </tr>
           </thead>
           <tbody>
-            {shopping?.map((shop, index) => {
-              const user = users.find((e) => shop.user_id == e.id);
+            {purchases?.map((purchase, index) => {
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
-                  <td>{shop?.number}</td>
-                  <td>{shop?.date}</td>
-                  <td>{shop?.total_mount}</td>
-                  <td>
-                    {user.first_name} {user.last_name}
-                  </td>
+                  <td>{purchase?.number}</td>
+                  <td>{purchase?.date}</td>
+                  <td>{'$'}{purchase?.total_mount}</td>
+                  <td>{purchase.supplier}</td>
                   <td style={{ textAlign: "center" }}>
-                    <Link to={`/shoppingDetail${shop.id}`}>
+                    <Link to={`/purchaseDetail/${purchase.id}`}>
                       <Button variant="primary">Detalle</Button>
                     </Link>
                   </td>
