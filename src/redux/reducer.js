@@ -10,6 +10,9 @@ import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
+import { cuentas } from "../assets/dataHardcodeoCuentas";
+import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
+import { compras } from "../assets/dataHarcodeoCompras";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -33,18 +36,23 @@ const initialState = {
   payTypes: metodo_de_pago,
   sales: ventas,
   offers: ofertas,
+  accounts: cuentas,
+  accountTypes: tipoCuenta,
+  shopping: compras,
   cart: [],
-  shipping: [],
-  accounts: [],
   orders: [],
+  accountTypeId:'',
   productId: "",
+  accountId: "",
   clientId: "",
   rolId: "",
   userId: "",
   supplierId: "",
   showModal: false,
   showModalMesure: false,
+  showModalAccount: false,
   showModalCategories: false,
+  showModalAccountType: false,
   showOfferModal: false,
   showCreateModal: false,
   showNewSaleModal: false,
@@ -61,6 +69,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         sales: [...state.sales, payload],
+      };
+    case "CREATE_ACCOUNT_TYPE":
+      return {
+        ...state,
+        accountTypes: [...state.accountTypes, payload],
       };
     case "CREATE_OFFER":
       return {
@@ -102,6 +115,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         clients: [...state.clients, payload],
       };
+    case "CREATE_ACCOUNT":
+      return {
+        ...state,
+        accounts: [...state.accounts, payload],
+      };
     case "CREATE_SUPPLIER":
       return {
         ...state,
@@ -117,6 +135,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         depositId: payload,
       };
+    case "GET_ACCOUNT_TYPE_ID":
+      return {
+        ...state,
+        accountTypeId: payload,
+      };
     case "GET_PRODUCT_ID":
       return {
         ...state,
@@ -126,6 +149,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         mesureId: payload,
+      };
+    case "GET_ACCOUNT_ID":
+      return {
+        ...state,
+        accountId: payload,
       };
     case "GET_USER_ID":
       return {
@@ -161,6 +189,33 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         supplierId: payload,
+      };
+    case "EDIT_ACCOUNT_TYPE":
+      console.log('reducer',payload);
+      const updatedAccountType = payload;
+      const updatedAccountTypes = state.accountTypes.map((accountType) => {
+        if (accountType.id === updatedAccountType.id) {
+          return updatedAccountType;
+        }
+        return accountType;
+      });
+
+      return {
+        ...state,
+        accountTypes: updatedAccountTypes,
+      };
+    case "EDIT_ACCOUNT":
+      const updatedAccount = payload;
+      const updatedAccounts = state.accounts.map((account) => {
+        if (account.id === updatedAccount.id) {
+          return updatedAccount;
+        }
+        return account;
+      });
+      console.log(updatedAccounts);
+      return {
+        ...state,
+        accounts: updatedAccounts,
       };
     case "EDIT_OFFER":
       const updatedOffer = payload;
@@ -321,6 +376,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModal: false,
       };
+    case "SHOW_MODAL_ACCOUNT_TYPE":
+      return {
+        ...state,
+        showModalAccountType: true,
+      };
     case "SHOW_OFFER_MODAL":
       return {
         ...state,
@@ -335,6 +395,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showCreateModal: true,
+      };
+    case "HIDE_ACCOUNT_TYPE_MODAL":
+      return {
+        ...state,
+        showModalAccountType: false,
       };
     case "HIDE_OFFER_MODAL":
       return {

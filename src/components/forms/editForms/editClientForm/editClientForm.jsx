@@ -57,6 +57,17 @@ export default function ClientForm() {
           />
         </div>
         <div className={styles.divs}>
+          <label>Razon Social</label>
+          <input
+            autoComplete="off"
+            name="razon_social"
+            value={client.razon_social}
+            onChange={handleChange}
+            placeholder={selectedlClient.razon_social}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
           <label>Cuil</label>
           <input
             autoComplete="off"
@@ -64,6 +75,17 @@ export default function ClientForm() {
             value={client.cuil}
             onChange={handleChange}
             placeholder={selectedlClient.cuil}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Email</label>
+          <input
+            autoComplete="off"
+            name="email"
+            value={client.email}
+            onChange={handleChange}
+            placeholder={selectedlClient.email}
             type="text"
           />
         </div>

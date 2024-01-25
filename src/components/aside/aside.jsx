@@ -7,12 +7,12 @@ function Aside() {
     <div className={styles.container}>
       <Navbar className={`bg-info ${styles.nav}`}>
         <Container>
-            <Navbar.Brand href="/nomenclatorsPanel" className={styles.nav_text}>Nomencladores</Navbar.Brand>
+            <Navbar.Brand className={styles.nav_text} href="/allSales">Ventas</Navbar.Brand>
         </Container>
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>
         <Container>
-            <Navbar.Brand className={styles.nav_text} href="/allSales">Ventas</Navbar.Brand>
+            <Navbar.Brand className={styles.nav_text} href="/shopping">Compras</Navbar.Brand>
         </Container>
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>
@@ -22,7 +22,12 @@ function Aside() {
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>
         <Container>
-          <Navbar.Brand className={styles.nav_text} href="#inicio">React Bootstrap</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="/accounts">Cuentas</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Navbar className={`bg-info ${styles.nav}`}>
+        <Container>
+            <Navbar.Brand href="/nomenclatorsPanel" className={styles.nav_text}>Nomencladores</Navbar.Brand>
         </Container>
       </Navbar>
     </div>
