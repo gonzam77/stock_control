@@ -12,6 +12,7 @@ import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
+import { compras } from "../assets/dataHarcodeoCompras";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -37,8 +38,8 @@ const initialState = {
   offers: ofertas,
   accounts: cuentas,
   accountTypes: tipoCuenta,
+  shopping: compras,
   cart: [],
-  shipping: [],
   orders: [],
   accountTypeId:'',
   productId: "",

@@ -12,6 +12,11 @@ function Aside() {
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>
         <Container>
+            <Navbar.Brand className={styles.nav_text} href="/shopping">Compras</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Navbar className={`bg-info ${styles.nav}`}>
+        <Container>
           <Navbar.Brand className={styles.nav_text} href="/offers">Ofertas</Navbar.Brand>
         </Container>
       </Navbar>
