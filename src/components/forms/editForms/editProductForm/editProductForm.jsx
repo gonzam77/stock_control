@@ -33,8 +33,8 @@ export default function ProductForm() {
   }
 
   const handleMesureSelect = (selectedDeposit) => {
-    setNewProduct({
-      ...newProduct,
+    setProduct({
+      ...product,
       mesure: selectedDeposit,
     });
   };
