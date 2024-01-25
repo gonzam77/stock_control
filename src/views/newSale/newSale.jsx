@@ -1,5 +1,5 @@
 import styles from "./newSale.module.css";
-import NewSaleForm from '../../components/forms/createForms/newSale/newSale';
+import NewSaleForm from '../../components/forms/createForms/newSaleForm/newSaleForm';
 
 export default function NewSale() {
  

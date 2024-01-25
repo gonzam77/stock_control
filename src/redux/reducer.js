@@ -12,7 +12,7 @@ import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
-import { compras } from "../assets/dataHarcodeoCompras";
+import { compras } from "../assets/dataHardcodeoCompras";
 // import {
 //   GET_ALL_PRODUCTS,
 //   GET_ALL_CLIENTS,
@@ -38,7 +38,7 @@ const initialState = {
   offers: ofertas,
   accounts: cuentas,
   accountTypes: tipoCuenta,
-  shopping: compras,
+  purchases: compras,
   cart: [],
   orders: [],
   accountTypeId:'',
@@ -64,6 +64,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         cart: [...state.cart, payload],
+      };
+    case "NEW_PURCHASE":
+      return {
+        ...state,
+        purchases: [...state.purchases, payload],
       };
     case "NEW_SALE":
       return {
