@@ -14,7 +14,6 @@ export default function AccountTypes() {
 
   const openModal = (id) => {
     dispatch(actions.showModalAccountType());
-    console.log('algo');
     dispatch(actions.getAccountTypeId(id));
   };
   

@@ -34,7 +34,6 @@ export default function EditaccountForm() {
   }
 
   const handleAccountTypeSelect = (selectedAccount) => {
-    console.log(selectedAccount);
     setAccount({
       ...account,
       account_type: selectedAccount,

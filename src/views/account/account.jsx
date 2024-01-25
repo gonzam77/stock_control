@@ -51,7 +51,6 @@ export default function Account() {
           <tbody>
             {accounts.map((account, index) => {
                 const accountType = accountTypes.find(e => e.id === account.account_type)
-                console.log(accountType.description);
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{accountType.description}</td>

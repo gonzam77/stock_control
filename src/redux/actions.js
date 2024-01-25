@@ -107,7 +107,6 @@ export const createSupplier = (data) => {
 };
 
 export const getAccountTypeId = (id) => {
-  console.log('actions', id);
   return {
     type: "GET_ACCOUNT_TYPE_ID",
     payload: id,
@@ -191,6 +190,7 @@ export const getSupplierId = (id) => {
 };
 
 export const editAccountType = (data) => {
+  console.log('action',data);
   return {
     type: "EDIT_ACCOUNT_TYPE",
     payload: data,

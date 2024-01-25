@@ -7,7 +7,6 @@ import styles from "../editForms.module.css";
 
 export default function EditAccountTypeForm() {
   const accountTypes = useSelector((state) => state.accountTypes);
-  console.log('accountTypeID');
   const accountTypeId = useSelector((state) => state.accountTypeId);
   const dispatch = useDispatch();
   const selectedAccountType = accountTypes.find((element) => element.id === accountTypeId);
@@ -20,6 +19,7 @@ export default function EditAccountTypeForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
+    console.log(accountType);
     dispatch(actions.editAccountType(accountType));
     dispatch(actions.hideModalAccountType());
   };

@@ -40,6 +40,7 @@ const initialState = {
   cart: [],
   shipping: [],
   orders: [],
+  accountTypeId:'',
   productId: "",
   accountId: "",
   clientId: "",
@@ -189,6 +190,7 @@ export default function reducer(state = initialState, { type, payload }) {
         supplierId: payload,
       };
     case "EDIT_ACCOUNT_TYPE":
+      console.log('reducer',payload);
       const updatedAccountType = payload;
       const updatedAccountTypes = state.accountTypes.map((accountType) => {
         if (accountType.id === updatedAccountType.id) {
@@ -199,7 +201,7 @@ export default function reducer(state = initialState, { type, payload }) {
 
       return {
         ...state,
-        accountsTypes: updatedAccountTypes,
+        accountTypes: updatedAccountTypes,
       };
     case "EDIT_ACCOUNT":
       const updatedAccount = payload;
@@ -209,7 +211,7 @@ export default function reducer(state = initialState, { type, payload }) {
         }
         return account;
       });
-
+      console.log(updatedAccounts);
       return {
         ...state,
         accounts: updatedAccounts,
