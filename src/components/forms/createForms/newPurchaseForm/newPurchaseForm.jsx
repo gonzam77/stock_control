@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../createFomrs.module.css";
+import styles from "../createForms.module.css";
 import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
@@ -25,6 +25,7 @@ export default function NewPurchaseForm() {
         payType: "",
         total: "",
         supplier: "",
+        totalMount:'',
     });
 
 
@@ -63,6 +64,7 @@ export default function NewPurchaseForm() {
                 productInCart.totalMount = productInCart.quantity * productInCart.price
                 setUpdate(!update);
             } else {
+                newItem.totalMount = newItem.quantity * newItem.price
                 setCart([...cart, newItem]);
             }
 

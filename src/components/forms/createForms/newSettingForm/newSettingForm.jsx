@@ -4,22 +4,18 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../createForms.module.css";
 import DropdownDeposit from "../../../dropdown/dropdownDeposit";
-import DropdownClient from "../../../dropdown/dropdownClient";
+import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
 
-export default function NewSaleForm() {
+export default function NewSettingForm() {
   let product = null;
-  let offerProduct = null;
-  let finalPrice = null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  const sales = useSelector((state) => state.sales);
-  const offers = useSelector((state) => state.offers);
-  const [newSale, setNewSale] = useState({
+
+  const [newSetting, setNewSetting] = useState({
     id: "",
-    code:'',
     number: "",
     date: "",
     items: [],
@@ -28,17 +24,9 @@ export default function NewSaleForm() {
     mount: [],
     payType: "",
     total: "",
-    client: "",
+    supplier: "",
+    totalMount: "",
   });
-
-  function getLastSale() {
-    let lastSale = sales[0].number;
-    for (let i = 0; i < sales.length; i++) {
-      if (sales[i].number > lastSale) lastSale = sales[i].number;
-    }
-    lastSale = parseInt(lastSale, 10);
-    return lastSale;
-  }
 
   const [cart, setCart] = useState([]);
 
@@ -46,20 +34,15 @@ export default function NewSaleForm() {
 
   const [newItem, setNewItem] = useState({
     code: "",
-    number: "",
     name: "",
     quantity: "",
     price: "",
-    deposit: "",
-    payType: "",
-    total: "",
-    client: "",
     totalMount: "",
   });
 
   useEffect(() => {
-    setNewSale({
-      ...newSale,
+    setNewSetting({
+      ...newSetting,
       items: cart,
       mount: cart.reduce((acc, current) => acc + current.totalMount, 0),
     });
@@ -70,39 +53,29 @@ export default function NewSaleForm() {
       newItem.quantity = 1;
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
-    const lastSale = getLastSale();
-    if (newItem.code.length > 3) {
-      offerProduct = offers.find((e) => e.code === newItem.code);
-      product = products.find((element) => element.code === newItem.code);
-      if (offerProduct)
-        finalPrice = (1 - offerProduct.discount / 100) * product.price;
-      else finalPrice = product.price;
-    }
+    product = products.find((e) => e.code == newItem.code);
 
     if (product) {
-      const selectedProduct = cart.find(
+      const productInCart = cart.find(
         (element) => element.code === product.code
       );
-      if (selectedProduct) {
-        product["quantity"] += newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
+      if (productInCart && productInCart.deposit === newItem.deposit) {
+        productInCart.quantity += newItem.quantity;
         setUpdate(!update);
       } else {
-        product["quantity"] = newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
-        setCart([...cart, product]);
+        setCart([...cart, newItem]);
       }
 
-      setNewSale({
-        ...newSale,
-        number: lastSale + 1,
-        quantity: (newSale.quantity += product.quantity),
+      setNewSetting({
+        ...newSetting,
+        quantity: (newSetting.quantity += newItem.quantity),
       });
 
       setNewItem({
         code: "",
         name: "",
         quantity: "",
+        deposit: "",
       });
     }
   };
@@ -111,10 +84,7 @@ export default function NewSaleForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
-      carroActualizado[index].totalMount =
-        carroActualizado[index].totalMount / carroActualizado[index].quantity;
       carroActualizado[index].quantity = nuevaCantidad;
-      carroActualizado[index].totalMount *= nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);
@@ -135,35 +105,21 @@ export default function NewSaleForm() {
     }
   };
 
-  const handlePayTypeSelect = (selectedPayType) => {
-    setNewSale({
-      ...newSale,
-      payType: selectedPayType,
-    });
-  };
-
-  const handleClientSelect = (selectedClient) => {
-    setNewSale({
-      ...newSale,
-      client: selectedClient,
-    });
-  };
-
   const handleDepositSelect = (selectedDeposit) => {
-    setNewSale({
-      ...newSale,
+    setNewItem({
+      ...newItem,
       deposit: selectedDeposit,
     });
   };
 
   const confirmSale = (event) => {
     event.preventDefault();
-    dispatch(actions.newSale(newSale));
-    navigate("/");
+    dispatch(actions.newSetting(newSetting));
+    navigate("/settings");
   };
 
   const cancelSale = () => {
-    navigate("/");
+    navigate("/settings");
   };
 
   function handleChange(event) {
@@ -177,7 +133,7 @@ export default function NewSaleForm() {
 
   return (
     <div className={styles.container}>
-      <h2>NUEVA VENTA</h2>
+      <h2>NUEVA AJUSTE</h2>
       <form className={styles.form}>
         <div className={styles.divs}>
           <div className={styles.subDivs}>
@@ -206,6 +162,12 @@ export default function NewSaleForm() {
                 type="number"
               />
             </div>
+            <div className={styles.divs}>
+              <div className={styles.dropdown}>
+                <label htmlFor="">Deposito</label>
+                <DropdownDeposit onSelect={handleDepositSelect} />
+              </div>
+            </div>
             <Button onClick={handleAdd}>Agregar</Button>
           </div>
         </div>
@@ -217,15 +179,13 @@ export default function NewSaleForm() {
                 <th>Codigo</th>
                 <th>Producto</th>
                 <th>Marca</th>
-                <th>Precio U.</th>
-                <th>Precio T.</th>
                 <th>Eliminar</th>
-                <th>Stock</th>
               </tr>
             </thead>
             <tbody>
-              {newSale.items[0] &&
-                newSale.items.map((item, index) => {
+              {newSetting.items[0] &&
+                newSetting.items.map((item, index) => {
+                  const product = products.find((e) => e.code === item.code);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
@@ -240,12 +200,13 @@ export default function NewSaleForm() {
                         </div>
                       </td>
                       <td>{item.code}</td>
-                      <td>{item.name}</td>
-                      <td>{item.marca}</td>
+                      <td>{product.name}</td>
+                      <td>{product.marca}</td>
                       <td>
                         {"$ "}
                         {item.price}
                       </td>
+                      <td>{item.price}</td>
                       <td>
                         {"$ "}
                         {item.totalMount}
@@ -260,7 +221,6 @@ export default function NewSaleForm() {
                           Eliminar
                         </Button>
                       </td>
-                      <td>{item.stock}</td>
                     </tr>
                   );
                 })}
@@ -278,22 +238,12 @@ export default function NewSaleForm() {
                 <td>
                   <b>
                     {"$ "}
-                    {newSale.mount}
+                    {newSetting.mount}
                   </b>
                 </td>
               </tr>
             </tbody>
           </Table>
-        </div>
-        <div className={styles.divs}>
-          <div className={styles.dropdown}>
-            <label htmlFor="">Forma de pago</label>
-            <DropdownPayType onSelect={handlePayTypeSelect} />
-            <label htmlFor="">Cliente</label>
-            <DropdownClient onSelect={handleClientSelect} />
-            <label htmlFor="">Deposito</label>
-            <DropdownDeposit onSelect={handleDepositSelect} />
-          </div>
         </div>
         <div className="modal-footer">
           <div className={styles.buttons}>
