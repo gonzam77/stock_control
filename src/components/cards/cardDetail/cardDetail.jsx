@@ -16,7 +16,7 @@ function CardDetail({
   stock,
   proveedor,
   description,
-  marca,
+  brand,
 }) 
 {
   const showModalState = useSelector(state => state.showModal);
@@ -38,7 +38,7 @@ function CardDetail({
         <Card.Header>Producto</Card.Header>
         <Card.Body>
           <Card.Title>
-            {name} {marca}
+            {name} {brand}
           </Card.Title>
           <Card.Text>COD: {code}</Card.Text>
           <Card.Text>Precio: {price}</Card.Text>

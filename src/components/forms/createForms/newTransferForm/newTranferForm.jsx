@@ -4,39 +4,20 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../createForms.module.css";
 import DropdownDeposit from "../../../dropdown/dropdownDeposit";
-import DropdownClient from "../../../dropdown/dropdownClient";
-import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
 
-export default function NewSaleForm() {
+export default function NewTransferForm() {
   let product = null;
-  let offerProduct = null;
-  let finalPrice = null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  const sales = useSelector((state) => state.sales);
-  const offers = useSelector((state) => state.offers);
-  const [newSale, setNewSale] = useState({
-    code:'',
-    number: "",
-    items: [],
-    quantity: 0,
-    deposit: "",
-    mount: [],
-    payType: "",
-    total: "",
-    client: "",
-  });
 
-  function getLastSale() {
-    let lastSale = sales[0].number;
-    for (let i = 0; i < sales.length; i++) {
-      if (sales[i].number > lastSale) lastSale = sales[i].number;
-    }
-    lastSale = parseInt(lastSale, 10);
-    return lastSale;
-  }
+  const [newTransfer, setNewTransfer] = useState({
+    fromDeposit: "",
+    toDeposit: "",
+    quantity: 0,
+    items: [],
+  });
 
   const [cart, setCart] = useState([]);
 
@@ -44,22 +25,14 @@ export default function NewSaleForm() {
 
   const [newItem, setNewItem] = useState({
     code: "",
-    number: "",
     name: "",
     quantity: "",
-    price: "",
-    deposit: "",
-    payType: "",
-    total: "",
-    client: "",
-    totalMount: "",
   });
 
   useEffect(() => {
-    setNewSale({
-      ...newSale,
+    setNewTransfer({
+      ...newTransfer,
       items: cart,
-      mount: cart.reduce((acc, current) => acc + current.totalMount, 0),
     });
   }, [cart, update]);
 
@@ -68,33 +41,22 @@ export default function NewSaleForm() {
       newItem.quantity = 1;
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
-    const lastSale = getLastSale();
-    if (newItem.code.length > 3) {
-      offerProduct = offers.find((e) => e.code === newItem.code);
-      product = products.find((element) => element.code === newItem.code);
-      if (offerProduct)
-        finalPrice = (1 - offerProduct.discount / 100) * product.price;
-      else finalPrice = product.price;
-    }
+    product = products.find((e) => e.code == newItem.code);
 
     if (product) {
-      const selectedProduct = cart.find(
+      const productInCart = cart.find(
         (element) => element.code === product.code
       );
-      if (selectedProduct) {
-        product["quantity"] += newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
+      if (productInCart) {
+        productInCart.quantity += newItem.quantity;
         setUpdate(!update);
       } else {
-        product["quantity"] = newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
-        setCart([...cart, product]);
+        setCart([...cart, newItem]);
       }
 
-      setNewSale({
-        ...newSale,
-        number: lastSale + 1,
-        quantity: (newSale.quantity += product.quantity),
+      setNewTransfer({
+        ...newTransfer,
+        quantity: (newTransfer.quantity += newItem.quantity),
       });
 
       setNewItem({
@@ -109,10 +71,7 @@ export default function NewSaleForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
-      carroActualizado[index].totalMount =
-        carroActualizado[index].totalMount / carroActualizado[index].quantity;
       carroActualizado[index].quantity = nuevaCantidad;
-      carroActualizado[index].totalMount *= nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);
@@ -133,34 +92,28 @@ export default function NewSaleForm() {
     }
   };
 
-  const handlePayTypeSelect = (selectedPayType) => {
-    setNewSale({
-      ...newSale,
-      payType: selectedPayType,
+  const handleFromDepositSelect = (selectedDeposit) => {
+    setNewTransfer({
+      ...newTransfer,
+      fromDeposit: selectedDeposit,
     });
   };
 
-  const handleClientSelect = (selectedClient) => {
-    setNewSale({
-      ...newSale,
-      client: selectedClient,
+  const handleToDepositSelect = (selectedDeposit) => {
+    setNewTransfer({
+      ...newTransfer,
+      toDeposit: selectedDeposit,
     });
   };
 
-  const handleDepositSelect = (selectedDeposit) => {
-    setNewSale({
-      ...newSale,
-      deposit: selectedDeposit,
-    });
-  };
-
-  const confirmSale = (event) => {
+  const confirmSetting = (event) => {
     event.preventDefault();
-    dispatch(actions.newSale(newSale));
+    console.log("ajuste final", newTransfer);
+    dispatch(actions.newTransfer(newTransfer));
     navigate("/");
   };
 
-  const cancelSale = () => {
+  const cancelSetting = () => {
     navigate("/");
   };
 
@@ -175,7 +128,7 @@ export default function NewSaleForm() {
 
   return (
     <div className={styles.container}>
-      <h2>NUEVA VENTA</h2>
+      <h2>NUEVA TRANSFERENCIA</h2>
       <form className={styles.form}>
         <div className={styles.divs}>
           <div className={styles.subDivs}>
@@ -215,15 +168,13 @@ export default function NewSaleForm() {
                 <th>Codigo</th>
                 <th>Producto</th>
                 <th>brand</th>
-                <th>Precio U.</th>
-                <th>Precio T.</th>
                 <th>Eliminar</th>
-                <th>Stock</th>
               </tr>
             </thead>
             <tbody>
-              {newSale.items[0] &&
-                newSale.items.map((item, index) => {
+              {newTransfer.items[0] &&
+                newTransfer.items.map((item, index) => {
+                  const product = products.find((e) => e.code === item.code);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
@@ -238,16 +189,8 @@ export default function NewSaleForm() {
                         </div>
                       </td>
                       <td>{item.code}</td>
-                      <td>{item.name}</td>
-                      <td>{item.brand}</td>
-                      <td>
-                        {"$ "}
-                        {item.price}
-                      </td>
-                      <td>
-                        {"$ "}
-                        {item.totalMount}
-                      </td>
+                      <td>{product.name}</td>
+                      <td>{product.brand}</td>
                       <td>
                         <Button
                           variant="danger"
@@ -258,47 +201,28 @@ export default function NewSaleForm() {
                           Eliminar
                         </Button>
                       </td>
-                      <td>{item.stock}</td>
                     </tr>
                   );
                 })}
             </tbody>
           </Table>
-
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>SUBTOTAL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style={{ textAlign: "center" }}>
-                <td>
-                  <b>
-                    {"$ "}
-                    {newSale.mount}
-                  </b>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
         </div>
         <div className={styles.divs}>
           <div className={styles.dropdown}>
-            <label htmlFor="">Forma de pago</label>
-            <DropdownPayType onSelect={handlePayTypeSelect} />
-            <label htmlFor="">Cliente</label>
-            <DropdownClient onSelect={handleClientSelect} />
-            <label htmlFor="">Deposito</label>
-            <DropdownDeposit onSelect={handleDepositSelect} />
+            <label htmlFor="">Desde Deposito</label>
+            <DropdownDeposit onSelect={handleFromDepositSelect} />
+          </div>
+          <div className={styles.dropdown}>
+            <label htmlFor="">Al Deposito</label>
+            <DropdownDeposit onSelect={handleToDepositSelect} />
           </div>
         </div>
         <div className="modal-footer">
           <div className={styles.buttons}>
-            <Button variant="danger" onClick={cancelSale}>
+            <Button variant="danger" onClick={cancelSetting}>
               Cancelar
             </Button>
-            <Button variant="success" onClick={confirmSale}>
+            <Button variant="success" onClick={confirmSetting}>
               Confirmar
             </Button>
           </div>

@@ -13,7 +13,6 @@ export default function NewSettingForm() {
   const products = useSelector((state) => state.products);
 
   const [newSetting, setNewSetting] = useState({
-    number: "",
     items: [],
     quantity: 0,
     deposit: "",
@@ -104,11 +103,11 @@ export default function NewSettingForm() {
     event.preventDefault();
     console.log('ajuste final',newSetting);
     dispatch(actions.newSetting(newSetting));
-    navigate("/settings");
+    navigate("/");
   };
 
   const cancelSetting = () => {
-    navigate("/settings");
+    navigate("/");
   };
 
   function handleChange(event) {
@@ -161,7 +160,7 @@ export default function NewSettingForm() {
                 <th>Cantidad</th>
                 <th>Codigo</th>
                 <th>Producto</th>
-                <th>Marca</th>
+                <th>brand</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
@@ -184,7 +183,7 @@ export default function NewSettingForm() {
                       </td>
                       <td>{item.code}</td>
                       <td>{product.name}</td>
-                      <td>{product.marca}</td>
+                      <td>{product.brand}</td>
                       <td>
                         <Button
                           variant="danger"

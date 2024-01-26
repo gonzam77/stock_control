@@ -44,7 +44,7 @@ export default function DepositDetail() {
               <th>COD</th>
               <th>CATEGORIA</th>
               <th>NOMBRE</th>
-              <th>MARCA</th>
+              <th>brand</th>
               <th>PROVEEDOR</th>
               <th>PRECIO</th>
               <th>UNIDAD MEDIDA</th>
@@ -67,7 +67,7 @@ export default function DepositDetail() {
                   <td>{item.code}</td>
                   <td>{item.categoria}</td>
                   <td>{item.name}</td>
-                  <td>{item.marca}</td>
+                  <td>{item.brand}</td>
                   <td>{item.supplier}</td>
                   <td>{item.price}</td>
                   <td>{item.unidad_medida}</td>

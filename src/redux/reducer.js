@@ -64,6 +64,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         cart: [...state.cart, payload],
       };
+    case "NEW_TRANSFER":
+      return {
+        ...state,
+        transfers: [...state.transfers, payload],
+      };
     case "NEW_PURCHASE":
       return {
         ...state,

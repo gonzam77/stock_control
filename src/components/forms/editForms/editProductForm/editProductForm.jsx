@@ -70,11 +70,11 @@ export default function ProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Marca</label>
+          <label>brand</label>
           <input
             autoComplete="off"
-            name="marca"
-            value={selectedProduct.marca}
+            name="brand"
+            value={selectedProduct.brand}
             onChange={handleChange}
             type="text"
           />

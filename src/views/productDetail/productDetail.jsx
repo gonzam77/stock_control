@@ -46,9 +46,9 @@ export default function ProductDetail() {
           proveedor={product.id_proveedor}
           fecha_alta={product.fecha_alta}
           fecha_vto={product.fecha_vto}
-          unidad_medida={product.marca}
+          unidad_medida={product.brand}
           description={product.description}
-          marca={product.marca}>
+          brand={product.brand}>
         </CardDetail>
       </div>
       {showModalState && <ModalCreateProductForm />}

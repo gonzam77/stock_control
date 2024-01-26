@@ -18,7 +18,7 @@ export default function CreateProductForm() {
     cant_min: "",
     cant_max: "",
     supplier: "",
-    marca: "",
+    brand: "",
     stock: "",
     price: "",
   });
@@ -90,13 +90,13 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Marca</label>
+          <label>brand</label>
           <input
             autoComplete="off"
-            name="marca"
-            value={newProduct.marca}
+            name="brand"
+            value={newProduct.brand}
             onChange={handleChange}
-            placeholder="Marca..."
+            placeholder="brand..."
             type="text"
           />
         </div>

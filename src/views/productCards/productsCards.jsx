@@ -69,7 +69,7 @@ export default function ProductsCard() {
               image={product.image}
               price={product.price}
               stock={product.stock}
-              marca={product.marca}
+              brand={product.brand}
               description={product.description}
               supplier={product.supplier}
             />

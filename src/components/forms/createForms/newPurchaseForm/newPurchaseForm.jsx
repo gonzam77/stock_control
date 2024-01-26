@@ -212,7 +212,7 @@ export default function NewPurchaseForm() {
                                 <th>Cantidad</th>
                                 <th>Codigo</th>
                                 <th>Producto</th>
-                                <th>Marca</th>
+                                <th>brand</th>
                                 <th>Precio Venta.</th>
                                 <th>Precio Compra</th>
                                 <th>Subtotal Compra</th>
@@ -239,7 +239,7 @@ export default function NewPurchaseForm() {
                                             </td>
                                             <td>{item.code}</td>
                                             <td>{product.name}</td>
-                                            <td>{product.marca}</td>
+                                            <td>{product.brand}</td>
                                             <td>{'$ '}{item.price}</td>
                                             <td>{item.price}</td>
                                             <td>{'$ '}{item.totalMount}</td>

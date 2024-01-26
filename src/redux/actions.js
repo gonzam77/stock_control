@@ -16,6 +16,12 @@ export const addToCart = (data) => {
   };
 };
 
+export const newTransfer = (data) => {
+  return {
+    type: "NEW_TRANSFER",
+    payload: data,
+  };
+};
 export const newSetting = (data) => {
   return {
     type: "NEW_SETTING",
