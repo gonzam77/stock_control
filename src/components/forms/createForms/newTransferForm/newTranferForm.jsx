@@ -132,7 +132,7 @@ export default function NewTransferForm() {
       <form className={styles.form}>
         <div className={styles.divs}>
           <div className={styles.subDivs}>
-            <div>
+            <div className={styles.divs}>
               <label>Codigo</label>
               <input
                 onKeyDown={handleKeyDown}
@@ -145,7 +145,7 @@ export default function NewTransferForm() {
                 type="text"
               />
             </div>
-            <div>
+            <div className={styles.divs}>
               <label>Cantidad</label>
               <input
                 onKeyDown={handleKeyDown}

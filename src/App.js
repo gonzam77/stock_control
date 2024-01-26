@@ -23,6 +23,7 @@ import Purchases from "./views/purchases/purchases";
 import NewPurchase from "./views/newPurchase/newPurchase";
 import NewSettingForm from './views/newSetting/newSetting';
 import NewTransferForm from './views/newTransfer/newTransfer';
+import Movements from './views/movements/movements';
 // import Sales from "./views/sales/sales";
 // import SaleInvoice from "./views/salesInvoice/salesInvoice";
 // import Movements from "./views/movements/movements";
@@ -75,6 +76,7 @@ function App() {
             <Route path="/dispatchers" element={<Dispatchers />} />
             <Route path="/deposits" element={<Deposits />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/movements" element={<Movements />} />
             <Route path="/nomenclatorsPanel" element={<NomenclatorsPanel />} />
             <Route path="/productDetail/:id" element={<ProductDetail />} />
             <Route path="/saleDetail/:id" element={<SaleDetail />} />
