@@ -21,6 +21,7 @@ import Account from './views/account/account'
 import DepositDetail from './views/depositDetail/depositDetail';
 import Purchases from "./views/purchases/purchases";
 import NewPurchase from "./views/newPurchase/newPurchase";
+import NewSettingForm from './views/newSetting/newSetting';
 // import Sales from "./views/sales/sales";
 // import SaleInvoice from "./views/salesInvoice/salesInvoice";
 // import Movements from "./views/movements/movements";
@@ -79,6 +80,7 @@ function App() {
             <Route path="/depositDetail/:id" element={<DepositDetail />} />
             <Route path='/newSale' element={<NewSale />}/>
             <Route path='/newPurchase' element={<NewPurchase />}/>
+            <Route path='/newSetting' element={<NewSettingForm />}/>
             <Route path='//offers' element={<Offers />}/>
             <Route path='/allSales' element={<AllSales />}/>
             <Route path='/accounts' element={<Account />}/>

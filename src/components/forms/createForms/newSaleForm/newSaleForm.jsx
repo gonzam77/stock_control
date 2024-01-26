@@ -18,10 +18,8 @@ export default function NewSaleForm() {
   const sales = useSelector((state) => state.sales);
   const offers = useSelector((state) => state.offers);
   const [newSale, setNewSale] = useState({
-    id: "",
     code:'',
     number: "",
-    date: "",
     items: [],
     quantity: 0,
     deposit: "",

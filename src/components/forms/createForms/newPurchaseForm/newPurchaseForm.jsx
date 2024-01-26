@@ -15,9 +15,7 @@ export default function NewPurchaseForm() {
     const products = useSelector((state) => state.products);
 
     const [newPurchase, setNewPurchase] = useState({
-        id: "",
         number: "",
-        date: "",
         items: [],
         quantity: 0,
         deposit: "",
@@ -157,10 +155,21 @@ export default function NewPurchaseForm() {
                 <div className={styles.divs}>
                     <div className={styles.subDivs}>
                         <div>
+                            <label >Numero de Compra</label>
+                            <input
+                                onKeyDown={handleKeyDown}
+                                autoComplete="off"
+                                name="code"
+                                value={newPurchase.number}
+                                onChange={handleChange}
+                                placeholder="Codigo..."
+                                type="text"
+                            />
+                        </div>
+                        <div>
                             <label >Codigo</label>
                             <input
                                 onKeyDown={handleKeyDown}
-                                className={styles.code}
                                 autoComplete="off"
                                 name="code"
                                 value={newItem.code}

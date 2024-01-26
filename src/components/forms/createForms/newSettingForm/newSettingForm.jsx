@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../createForms.module.css";
 import DropdownDeposit from "../../../dropdown/dropdownDeposit";
-import DropdownSupplier from "../../../dropdown/dropdownSupplier";
-import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
 
 export default function NewSettingForm() {
@@ -15,17 +13,10 @@ export default function NewSettingForm() {
   const products = useSelector((state) => state.products);
 
   const [newSetting, setNewSetting] = useState({
-    id: "",
     number: "",
-    date: "",
     items: [],
     quantity: 0,
     deposit: "",
-    mount: [],
-    payType: "",
-    total: "",
-    supplier: "",
-    totalMount: "",
   });
 
   const [cart, setCart] = useState([]);
@@ -36,15 +27,12 @@ export default function NewSettingForm() {
     code: "",
     name: "",
     quantity: "",
-    price: "",
-    totalMount: "",
   });
 
   useEffect(() => {
     setNewSetting({
       ...newSetting,
       items: cart,
-      mount: cart.reduce((acc, current) => acc + current.totalMount, 0),
     });
   }, [cart, update]);
 
@@ -106,19 +94,20 @@ export default function NewSettingForm() {
   };
 
   const handleDepositSelect = (selectedDeposit) => {
-    setNewItem({
-      ...newItem,
+    setNewSetting({
+      ...newSetting,
       deposit: selectedDeposit,
     });
   };
 
-  const confirmSale = (event) => {
+  const confirmSetting = (event) => {
     event.preventDefault();
+    console.log('ajuste final',newSetting);
     dispatch(actions.newSetting(newSetting));
     navigate("/settings");
   };
 
-  const cancelSale = () => {
+  const cancelSetting = () => {
     navigate("/settings");
   };
 
@@ -162,12 +151,6 @@ export default function NewSettingForm() {
                 type="number"
               />
             </div>
-            <div className={styles.divs}>
-              <div className={styles.dropdown}>
-                <label htmlFor="">Deposito</label>
-                <DropdownDeposit onSelect={handleDepositSelect} />
-              </div>
-            </div>
             <Button onClick={handleAdd}>Agregar</Button>
           </div>
         </div>
@@ -203,15 +186,6 @@ export default function NewSettingForm() {
                       <td>{product.name}</td>
                       <td>{product.marca}</td>
                       <td>
-                        {"$ "}
-                        {item.price}
-                      </td>
-                      <td>{item.price}</td>
-                      <td>
-                        {"$ "}
-                        {item.totalMount}
-                      </td>
-                      <td>
                         <Button
                           variant="danger"
                           onClick={() => {
@@ -226,31 +200,19 @@ export default function NewSettingForm() {
                 })}
             </tbody>
           </Table>
-
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>SUBTOTAL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style={{ textAlign: "center" }}>
-                <td>
-                  <b>
-                    {"$ "}
-                    {newSetting.mount}
-                  </b>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
+        </div>
+        <div className={styles.divs}>
+          <div className={styles.dropdown}>
+            <label htmlFor="">Deposito</label>
+            <DropdownDeposit onSelect={handleDepositSelect} />
+          </div>
         </div>
         <div className="modal-footer">
           <div className={styles.buttons}>
-            <Button variant="danger" onClick={cancelSale}>
+            <Button variant="danger" onClick={cancelSetting}>
               Cancelar
             </Button>
-            <Button variant="success" onClick={confirmSale}>
+            <Button variant="success" onClick={confirmSetting}>
               Confirmar
             </Button>
           </div>

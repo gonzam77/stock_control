@@ -1,10 +1,10 @@
 export const deposito = [
   {
     id: "1",
-    type: "Deposito",
-    name: "Deposito 1",
+    type: "Local",
+    name: "Local 1",
     admin: "Roberto Bolaños",
-    description: "Este es el deposito 1",
+    description: "Este es el local de ventas 1",
     items: [
       {
         id: 1,
@@ -67,7 +67,7 @@ export const deposito = [
   {
     id: "2",
     type: "Deposito",
-    name: "Deposito 2",
+    name: "Deposito 1",
     admin: "Miguelito",
     items: [
       {
@@ -132,7 +132,7 @@ export const deposito = [
   {
     id: "3",
     type: "Deposito",
-    name: "Deposito 3",
+    name: "Deposito 2",
     admin: "Crlitos",
     items: [],
     description: "Este es el deposito 3",
