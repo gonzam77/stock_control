@@ -4,10 +4,13 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function NavMenu({ logout }) {
+  
   const navigate = useNavigate();
+  
   function redirect() {
     navigate("/newSale");
   }
+  
   return (
     <div className={`bg-body ${styles.container}`}>
       <div>
