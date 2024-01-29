@@ -5,13 +5,18 @@ import { Table } from "react-bootstrap";
 import ModalCreateUserForm from "../modals/createModals/modalCreateUserForm/modalCreateUserForm";
 import ModalEditUserForm from "../modals/editModals/modalEditUserForm/modalEditUserForm";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
+  const userType = useSelector((state) => state.userType);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(actions.getAllUsers());
+  }, []);
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -45,35 +50,30 @@ export default function Users() {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>Nombre Usuario</th>
               <th>Nombre</th>
               <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
-              <th>Direccion</th>
-              <th>Localidad</th>
               <th>Cargo</th>
               <th>Estado</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
+            {users?.map((user, index) => {
               return (
-                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>
-                    {user.first_name} {user.last_name}
-                  </td>
+                <tr
+                  key={index}
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
+                  <td>{user.NOMBRE}</td>
+                  <td>{user.PERSONA.NOMBRE}{' '}{user.PERSONA.APELLIDO}</td>
                   <td>{user.cuil}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.adress}</td>
-                  <td>
-                    {user.province}
-                    {", "}
-                    {user.state}
-                  </td>
-                  <td>{user.rol}</td>
-                  <td>{user.status}</td>
+                  <td>{user.PERSONA.EMAIL}</td>
+                  <td>{user.PERSONA.TELEFONO}</td>
+                  <td>{user.TIPO_USUARIO.DESCRIPCION}</td>
+                  <td>{user.ESTADO}</td>
                   <td>
                     <Button
                       variant="primary"

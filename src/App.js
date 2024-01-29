@@ -1,4 +1,5 @@
 import "./App.css";
+import axios from "axios";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Inicio from "./views/inicio/inicio";
 import Login from "./views/login/login";
@@ -26,24 +27,51 @@ import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
 import { useState, useEffect } from "react";
+const qs = require("qs");
 
 export const urlDev = "http://localhost:3000";
 
 function App() {
   const location = useLocation();
-  const [access, setAccess] = useState(false);
-  const userName = "gonzam77@gmail.com";
-  const password = "Medina2023";
+  const [access, setAccess] = useState(
+    localStorage.getItem("token") ? true : false
+  );
+
   const navigate = useNavigate();
 
-  function login(userData) {
-    if (userData.password === password && userData.userName === userName) {
-      setAccess(true);
-      navigate("/");
+  const axiosConfig = {
+    withCredentials: true,
+  };
+
+  async function login(userData) {
+    const formEncodedData = qs.stringify(userData);
+    const config = {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/signin",
+        formEncodedData,
+        config
+      );
+      if (response) {
+        localStorage.setItem("token", response.data.Token);
+        setAccess(true);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
-  const logout = () => {
+  const logout = async () => {
+    const response = await axios.get("http://localhost:4000/signout",axiosConfig);
+    console.log(response);
+    localStorage.clear();
     setAccess(false);
   };
 
@@ -53,7 +81,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="header">{location.pathname !== "/login" && <Nav logout={logout} />}</div>
+      <div className="header">
+        {location.pathname !== "/login" && <Nav logout={logout} />}
+      </div>
       <div className="main-container">
         {location.pathname !== "/login" && (
           <div className="aside">

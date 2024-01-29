@@ -1,13 +1,23 @@
-// import axios from "axios";
-// import {
-//   GET_ALL_PRODUCTS,
-//   GET_ALL_CLIENTS,
-//   GET_ALL_SUPPLIERS,
-//   GET_ALL_SHIPPING,
-//   GET_ALL_ORDERS,
-//   GET_ALL_ACCOUNTS,
-//   GET_ALL_USERS,
-// } from "./actionTypes";
+import axios from "axios";
+import {
+  GET_ALL_PRODUCTS,
+  GET_ALL_CLIENTS,
+  GET_ALL_SUPPLIERS,
+  GET_ALL_SHIPPING,
+  GET_ALL_ORDERS,
+  GET_ALL_ACCOUNTS,
+  GET_ALL_USERS,
+} from "./actionTypes";
+
+const URL = "http://localhost:4000";
+
+const axiosConfig = {
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+};
 
 export const addToCart = (data) => {
   return {
@@ -209,7 +219,7 @@ export const getSupplierId = (id) => {
 };
 
 export const editAccountType = (data) => {
-  console.log('action',data);
+  console.log("action", data);
   return {
     type: "EDIT_ACCOUNT_TYPE",
     payload: data,
@@ -399,13 +409,14 @@ export const hideModalMesure = () => ({
 //     }
 // };
 
-// export const getAllUsers = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/users`);
-//         const data = response.data;
-//         return dispatch({
-//             type: GET_ALL_USERS,
-//             payload: data,
-//         })
-//     }
-// };
+export const getAllUsers = () => {
+  return async function (dispatch) {
+    const response = await axios(`${URL}/usuarios`, axiosConfig);
+    console.log(response);
+    const data = response.data;
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: data.Data,
+    });
+  };
+};

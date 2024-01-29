@@ -4,10 +4,9 @@ import { useState } from "react";
 import styles from "./login.module.css";
 
 function Login({ login }) {
-
   const [userLogin, setUserLogin] = useState({
-    userName: "",
-    password: "",
+    nombre: "",
+    clave: "",
   });
 
   function handleChange(event) {
@@ -30,25 +29,25 @@ function Login({ login }) {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nombre Usuario</Form.Label>
           <Form.Control
-            type="userName"
-            value={userLogin.userName}
-            name="userName"
+            value={userLogin.nombre}
+            name="nombre"
             placeholder="Ingrese el usuario"
             onChange={handleChange}
+            type="text"
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicclave">
+          <Form.Label>clave</Form.Label>
           <Form.Control
-            type="password"
-            value={userLogin.password}
-            name="password"
-            placeholder="Password"
+            value={userLogin.clave}
+            name="clave"
+            placeholder="clave"
             onChange={handleChange}
+            type="password"
           />
         </Form.Group>
         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">

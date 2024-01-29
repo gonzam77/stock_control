@@ -13,15 +13,15 @@ import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-// import {
-//   GET_ALL_PRODUCTS,
-//   GET_ALL_CLIENTS,
-//   GET_ALL_SUPPLIERS,
-//   GET_ALL_SHIPPING,
-//   GET_ALL_ORDERS,
-//   GET_ALL_ACCOUNTS,
-//   GET_ALL_USERS,
-// } from "./actionTypes";
+import {
+  GET_ALL_PRODUCTS,
+  GET_ALL_CLIENTS,
+  GET_ALL_SUPPLIERS,
+  GET_ALL_SHIPPING,
+  GET_ALL_ORDERS,
+  GET_ALL_ACCOUNTS,
+  GET_ALL_USERS,
+} from "./actionTypes";
 
 const initialState = {
   products: productos,
@@ -29,7 +29,7 @@ const initialState = {
   suppliers: suppliers,
   dispatchers: transportistas,
   deposits: deposito,
-  users: users,
+  users: [],
   roles: roles,
   mesures: medidas,
   categories: categorias,
@@ -405,11 +405,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalAccountType: false,
       };
-    // case GET_ALL_USERS:
-    //   return {
-    //     ...state,
-    //     users: payload,
-    //   };
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: payload,
+      };
     // case GET_ALL_ACCOUNTS:
     //   return {
     //     ...state,
