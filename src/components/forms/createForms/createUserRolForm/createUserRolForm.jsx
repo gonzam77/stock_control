@@ -1,4 +1,4 @@
-import styles from "../createFomrs.module.css";
+import styles from "../createForms.module.css";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";

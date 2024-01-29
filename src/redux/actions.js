@@ -1,13 +1,24 @@
-// import axios from "axios";
-// import {
-//   GET_ALL_PRODUCTS,
-//   GET_ALL_CLIENTS,
-//   GET_ALL_SUPPLIERS,
-//   GET_ALL_SHIPPING,
-//   GET_ALL_ORDERS,
-//   GET_ALL_ACCOUNTS,
-//   GET_ALL_USERS,
-// } from "./actionTypes";
+import axios from "axios";
+import {
+  GET_ALL_PRODUCTS,
+  GET_ALL_CLIENTS,
+  GET_ALL_SUPPLIERS,
+  GET_ALL_SHIPPING,
+  GET_ALL_ORDERS,
+  GET_ALL_ACCOUNTS,
+  GET_PRODUCTS_BY_ID,
+  GET_ALL_USERS,
+} from "./actionTypes";
+
+const URL = "http://localhost:4000";
+
+const axiosConfig = {
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+};
 
 export const addToCart = (data) => {
   return {
@@ -16,6 +27,18 @@ export const addToCart = (data) => {
   };
 };
 
+export const newTransfer = (data) => {
+  return {
+    type: "NEW_TRANSFER",
+    payload: data,
+  };
+};
+export const newSetting = (data) => {
+  return {
+    type: "NEW_SETTING",
+    payload: data,
+  };
+};
 export const newPurchase = (data) => {
   return {
     type: "NEW_PURCHASE",
@@ -197,7 +220,6 @@ export const getSupplierId = (id) => {
 };
 
 export const editAccountType = (data) => {
-  console.log('action',data);
   return {
     type: "EDIT_ACCOUNT_TYPE",
     payload: data,
@@ -267,7 +289,6 @@ export const editSupplier = (data) => {
   };
 };
 
-
 export const editClient = (data) => {
   return {
     type: "EDIT_CLIENT",
@@ -275,13 +296,20 @@ export const editClient = (data) => {
   };
 };
 
-
 export const editProduct = (data) => {
   return {
     type: "EDIT_PRODUCT",
     payload: data,
   };
 };
+
+export const showModal = () => ({
+  type: "SHOW_MODAL",
+});
+
+export const showCreateModal = () => ({
+  type: "SHOW_CREATE_MODAL",
+});
 
 export const showModalMesure = () => ({
   type: "SHOW_MODAL_MESURE",
@@ -295,12 +323,16 @@ export const showModalCategories = () => ({
   type: "SHOW_MODAL_CATEGORIES",
 });
 
-export const showModal = () => ({
-  type: "SHOW_MODAL",
+export const hideModal = () => ({
+  type: "HIDE_MODAL",
+});
+
+export const hideCreateModal = () => ({
+  type: "HIDE_CREATE_MODAL",
 });
 
 export const hideModalAccountType = () => ({
-  type: "HIDE_ACCOUNT_TYPE_MODAL",
+  type: "HIDE_MODAL_ACCOUNT_TYPE",
 });
 
 export const hideModalCategories = () => ({
@@ -311,52 +343,28 @@ export const hideModalMesure = () => ({
   type: "HIDE_MODAL_MESURE",
 });
 
-export const hideModal = () => ({
-  type: "HIDE_MODAL",
-});
-
-export const showAccountModal = () => ({
-  type: "SHOW_ACCOUNT_MODAL",
-});
-
-export const showOfferModal = () => ({
-  type: "SHOW_OFFER_MODAL",
-});
-
-export const showNewSaleModal = () => ({
-  type: "SHOW_NEW_SALE_MODAL",
-});
-
-export const showCreateModal = () => ({
-  type: "SHOW_CREATE_MODAL",
-});
-
-export const hideAccountModal = () => ({
-  type: "HIDE_ACCOUNT_MODAL",
-});
-
-export const hideOfferModal = () => ({
-  type: "HIDE_OFFER_MODAL",
-});
-
-
-export const hideCreateModal = () => ({
-  type: "HIDE_CREATE_MODAL",
-});
-
-export const hideNewSaleModal = () => ({
-  type: "HIDE_NEW_SALE_MODAL",
-});
-// export const getAllProducts = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/products`);
-//         const data = response.data;
-//         return dispatch({
-//             type: GET_ALL_PRODUCTS,
-//             payload: data,
-//         })
-//     }
-// };
+export const getAllProducts = () => {
+    return async function (dispatch) {
+        const response = await axios(`${URL}/productos`,axiosConfig);
+        const data = response.data;
+        return dispatch({
+            type: GET_ALL_PRODUCTS,
+            payload: data.Data,
+        })
+    }
+};
+export const getProductById = () => {
+  console.log('llamado');
+    return async function (dispatch) {
+        const response = await axios(`${URL}/producto/id/?id=${id}`,axiosConfig);
+        console.log('response',response.data);
+        const data = response.data;
+        return dispatch({
+            type: GET_PRODUCTS_BY_ID,
+            payload: data.Data,
+        })
+    }
+};
 
 // export const getAllClients = () => {
 //     return async function (dispatch) {
@@ -413,13 +421,13 @@ export const hideNewSaleModal = () => ({
 //     }
 // };
 
-// export const getAllUsers = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/users`);
-//         const data = response.data;
-//         return dispatch({
-//             type: GET_ALL_USERS,
-//             payload: data,
-//         })
-//     }
-// };
+export const getAllUsers = () => {
+  return async function (dispatch) {
+    const response = await axios(`${URL}/usuarios`, axiosConfig);
+    const data = response.data;
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: data.Data,
+    });
+  };
+};

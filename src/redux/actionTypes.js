@@ -5,3 +5,4 @@ export const GET_ALL_SHIPPING = "GET_ALL_SHIPPING";
 export const GET_ALL_ACCOUNTS = "GET_ALL_ACCOUNTS";
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_PRODUCTS_BY_ID = 'GET_PRODUCTS_BY_ID'

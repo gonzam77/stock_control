@@ -28,7 +28,7 @@ export default function CardDetail({
                                     <Card.Text>Cantidad {e.quantity}</Card.Text>
                                     <Card.Text>Codigo {e.code}</Card.Text>
                                     <Card.Text>producto {e.name}</Card.Text>
-                                    <Card.Text>Marca {e.marca}</Card.Text>
+                                    <Card.Text>brand {e.brand}</Card.Text>
                                     <Card.Text>Precio {e.price}</Card.Text>
                                     <Card.Text>Monto Total {e.totalMount}</Card.Text>
                                     <Card.Text>Proveedor {e.supplier}</Card.Text>

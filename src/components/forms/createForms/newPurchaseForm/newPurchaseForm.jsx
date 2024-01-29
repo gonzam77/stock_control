@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../createFomrs.module.css";
+import styles from "../createForms.module.css";
 import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
@@ -15,9 +15,7 @@ export default function NewPurchaseForm() {
     const products = useSelector((state) => state.products);
 
     const [newPurchase, setNewPurchase] = useState({
-        id: "",
         number: "",
-        date: "",
         items: [],
         quantity: 0,
         deposit: "",
@@ -25,6 +23,7 @@ export default function NewPurchaseForm() {
         payType: "",
         total: "",
         supplier: "",
+        totalMount:'',
     });
 
 
@@ -63,6 +62,7 @@ export default function NewPurchaseForm() {
                 productInCart.totalMount = productInCart.quantity * productInCart.price
                 setUpdate(!update);
             } else {
+                newItem.totalMount = newItem.quantity * newItem.price
                 setCart([...cart, newItem]);
             }
 
@@ -155,10 +155,21 @@ export default function NewPurchaseForm() {
                 <div className={styles.divs}>
                     <div className={styles.subDivs}>
                         <div>
+                            <label >Numero de Compra</label>
+                            <input
+                                onKeyDown={handleKeyDown}
+                                autoComplete="off"
+                                name="code"
+                                value={newPurchase.number}
+                                onChange={handleChange}
+                                placeholder="Codigo..."
+                                type="text"
+                            />
+                        </div>
+                        <div>
                             <label >Codigo</label>
                             <input
                                 onKeyDown={handleKeyDown}
-                                className={styles.code}
                                 autoComplete="off"
                                 name="code"
                                 value={newItem.code}
@@ -201,7 +212,7 @@ export default function NewPurchaseForm() {
                                 <th>Cantidad</th>
                                 <th>Codigo</th>
                                 <th>Producto</th>
-                                <th>Marca</th>
+                                <th>brand</th>
                                 <th>Precio Venta.</th>
                                 <th>Precio Compra</th>
                                 <th>Subtotal Compra</th>
@@ -228,7 +239,7 @@ export default function NewPurchaseForm() {
                                             </td>
                                             <td>{item.code}</td>
                                             <td>{product.name}</td>
-                                            <td>{product.marca}</td>
+                                            <td>{product.brand}</td>
                                             <td>{'$ '}{item.price}</td>
                                             <td>{item.price}</td>
                                             <td>{'$ '}{item.totalMount}</td>

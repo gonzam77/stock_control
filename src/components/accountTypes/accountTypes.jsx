@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import ModalEditAccountTypeForm from '../../views/modals/editModals/modalEditAccountTypeForm/modalEditAcountTypeForm';
-import ModaleCreateAccountType from '../../views/modals/createModals/modalCreateAccountTypeForm/modalCreateAccountTypeForm'
+import ModalCreateAccountTypeForm from '../../views/modals/createModals/modalCreateAccountTypeForm/modalCreateAccountTypeForm'
 import styles from './accountTypes.module.css';
 import * as actions from '../../redux/actions';
 
@@ -61,7 +61,7 @@ export default function AccountTypes() {
         </Table>
       </div>
       {showModalAccountType && <ModalEditAccountTypeForm />} 
-      {/* {showCreateModal && <ModalCreateAccountTypeForm />} */}
+      {showCreateModal && <ModalCreateAccountTypeForm />}
     </div>
   );
 }

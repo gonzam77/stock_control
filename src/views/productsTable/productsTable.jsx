@@ -68,7 +68,7 @@ export default function Products() {
                   <td>{product.code}</td>
                   <td>{product.categoria}</td>
                   <td>{product.name}</td>
-                  <td>{product.marca}</td>
+                  <td>{product.brand}</td>
                   <td>
                     {product.supplier}
                   </td>

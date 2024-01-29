@@ -1,7 +1,5 @@
-import { productos } from "../assets/dataHardcodeoProducts";
 import { clientes } from "../assets/dataHardcodeoClients";
 import { suppliers } from "../assets/dataHardcodeoSuppliers";
-import { users } from "../assets/dataHardcodeoUsers";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
@@ -13,23 +11,25 @@ import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-// import {
-//   GET_ALL_PRODUCTS,
-//   GET_ALL_CLIENTS,
-//   GET_ALL_SUPPLIERS,
-//   GET_ALL_SHIPPING,
-//   GET_ALL_ORDERS,
-//   GET_ALL_ACCOUNTS,
-//   GET_ALL_USERS,
-// } from "./actionTypes";
+import {
+  GET_ALL_USERS,
+  GET_ALL_PRODUCTS,
+  GET_PRODUCTS_BY_ID,
+  GET_ALL_CLIENTS,
+  GET_ALL_SUPPLIERS,
+  GET_ALL_SHIPPING,
+  GET_ALL_ORDERS,
+  GET_ALL_ACCOUNTS,
+} from "./actionTypes";
 
 const initialState = {
-  products: productos,
+  products: [],
   clients: clientes,
   suppliers: suppliers,
   dispatchers: transportistas,
   deposits: deposito,
-  users: users,
+  productById:'',
+  users: [],
   roles: roles,
   mesures: medidas,
   categories: categorias,
@@ -41,7 +41,7 @@ const initialState = {
   purchases: compras,
   cart: [],
   orders: [],
-  accountTypeId:'',
+  accountTypeId: "",
   productId: "",
   accountId: "",
   clientId: "",
@@ -55,7 +55,6 @@ const initialState = {
   showModalAccountType: false,
   showOfferModal: false,
   showCreateModal: false,
-  showNewSaleModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -64,6 +63,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         cart: [...state.cart, payload],
+      };
+    case "NEW_TRANSFER":
+      return {
+        ...state,
+        transfers: [...state.transfers, payload],
       };
     case "NEW_PURCHASE":
       return {
@@ -196,7 +200,6 @@ export default function reducer(state = initialState, { type, payload }) {
         supplierId: payload,
       };
     case "EDIT_ACCOUNT_TYPE":
-      console.log('reducer',payload);
       const updatedAccountType = payload;
       const updatedAccountTypes = state.accountTypes.map((accountType) => {
         if (accountType.id === updatedAccountType.id) {
@@ -217,7 +220,6 @@ export default function reducer(state = initialState, { type, payload }) {
         }
         return account;
       });
-      console.log(updatedAccounts);
       return {
         ...state,
         accounts: updatedAccounts,
@@ -351,6 +353,16 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         suppliers: updatedSuppliers,
       };
+    case "SHOW_MODAL":
+      return {
+        ...state,
+        showModal: true,
+      };
+    case "SHOW_CREATE_MODAL":
+      return {
+        ...state,
+        showCreateModal: true,
+      };
     case "SHOW_MODAL_CATEGORIES":
       return {
         ...state,
@@ -361,10 +373,20 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalMesure: true,
       };
-    case "SHOW_MODAL":
+    case "SHOW_MODAL_ACCOUNT_TYPE":
       return {
         ...state,
-        showModal: true,
+        showModalAccountType: true,
+      };
+    case "HIDE_MODAL":
+      return {
+        ...state,
+        showModal: false,
+      };
+    case "HIDE_CREATE_MODAL":
+      return {
+        ...state,
+        showCreateModal: false,
       };
     case "HIDE_MODAL_CATEGORIES":
       return {
@@ -376,56 +398,16 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalMesure: false,
       };
-    case "HIDE_MODAL":
-      return {
-        ...state,
-        showModal: false,
-      };
-    case "SHOW_MODAL_ACCOUNT_TYPE":
-      return {
-        ...state,
-        showModalAccountType: true,
-      };
-    case "SHOW_OFFER_MODAL":
-      return {
-        ...state,
-        showOfferModal: true,
-      };
-    case "SHOW_NEW_SALE_MODAL":
-      return {
-        ...state,
-        showNewSaleModal: true,
-      };
-    case "SHOW_CREATE_MODAL":
-      return {
-        ...state,
-        showCreateModal: true,
-      };
-    case "HIDE_ACCOUNT_TYPE_MODAL":
+    case "HIDE_MODAL_ACCOUNT_TYPE":
       return {
         ...state,
         showModalAccountType: false,
       };
-    case "HIDE_OFFER_MODAL":
+    case GET_ALL_USERS:
       return {
         ...state,
-        showOfferModal: false,
+        users: payload,
       };
-    case "HIDE_NEW_SALE_MODAL":
-      return {
-        ...state,
-        showNewSaleModal: false,
-      };
-    case "HIDE_CREATE_MODAL":
-      return {
-        ...state,
-        showCreateModal: false,
-      };
-    // case GET_ALL_USERS:
-    //   return {
-    //     ...state,
-    //     users: payload,
-    //   };
     // case GET_ALL_ACCOUNTS:
     //   return {
     //     ...state,
@@ -451,11 +433,16 @@ export default function reducer(state = initialState, { type, payload }) {
     //     ...state,
     //     suppliers: payload,
     //   };
-    // case GET_ALL_PRODUCTS:
-    //   return {
-    //     ...state,
-    //     products: payload,
-    //   };
+    case GET_PRODUCTS_BY_ID:
+      return {
+        ...state,
+        productById: payload,
+      };
+    case GET_ALL_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
+      };
     default:
       return { ...state };
   }

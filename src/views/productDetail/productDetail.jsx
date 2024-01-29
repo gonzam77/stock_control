@@ -5,19 +5,26 @@ import ModalCreateProductForm from "../modals/createModals/modalCreateProductFor
 import CardDetail from "../../components/cards/cardDetail/cardDetail";
 import styles from "./productDetail.module.css";
 import * as actions from "../../redux/actions";
+import { useEffect } from "react";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const productId = parseInt(id)
+  console.log('params',id);
+  const productId = parseInt(id);
 
-  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const showModalState = useSelector((state) => state.showCreateModal);
-  const product = products.find((element) => element.id === productId);
+  const productById = useSelector((state) => state.productById);
+  console.log('prod',productById);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
   };
+
+  dispatch(actions.getProductById(productId));
+  
+  useEffect(() => {
+  }, [productById]);
 
   return (
     <div className={styles.container}>
@@ -28,28 +35,27 @@ export default function ProductDetail() {
           onClick={openCreateModal}
         >
           Cargar Nuevo
-        </Button >
+        </Button>
         <Link to="/cards" className={styles.link}>
-          <Button className={styles.backButton} variant="danger">Volver</Button>
+          <Button className={styles.backButton} variant="danger">
+            Volver
+          </Button>
         </Link>
       </div>
       <div className={styles.card}>
         <CardDetail
-          id={product.id}
-          code={product.code}
-          name={product.name}
-          image={product.image}
-          price={product.price}
-          stock={product.stock}
-          cant_min={product.cant_min}
-          cant_max={product.cant_max}
-          proveedor={product.id_proveedor}
-          fecha_alta={product.fecha_alta}
-          fecha_vto={product.fecha_vto}
-          unidad_medida={product.marca}
-          description={product.description}
-          marca={product.marca}>
-        </CardDetail>
+          id={productById.ID_PRODUCTO}
+          code={productById.CODIGO}
+          name={productById.NOMBRE}
+          image={productById.IMAGEN}
+          price={productById.PRECIO_VENTA}
+          cant_min={productById.CANT_MIN}
+          cant_max={productById.CANT_MAX}
+          proveedor={productById.PROVEEDOR.RAZON_SOCIAL}
+          fecha_alta={productById.FECHA_ALTA}
+          fecha_vto={productById.FECHA_CADUCIDAD}
+          description={productById.DESCRIPCION}
+        ></CardDetail>
       </div>
       {showModalState && <ModalCreateProductForm />}
     </div>

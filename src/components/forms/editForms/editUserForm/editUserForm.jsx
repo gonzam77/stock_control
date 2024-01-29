@@ -133,7 +133,7 @@ export default function EditUserForm() {
         <div className={styles.divs}>
           <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>
