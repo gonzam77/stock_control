@@ -19,7 +19,6 @@ export default function EditAccountTypeForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    console.log(accountType);
     dispatch(actions.editAccountType(accountType));
     dispatch(actions.hideModalAccountType());
   };

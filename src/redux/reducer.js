@@ -1,7 +1,5 @@
-import { productos } from "../assets/dataHardcodeoProducts";
 import { clientes } from "../assets/dataHardcodeoClients";
 import { suppliers } from "../assets/dataHardcodeoSuppliers";
-import { users } from "../assets/dataHardcodeoUsers";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
@@ -14,21 +12,23 @@ import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
 import {
+  GET_ALL_USERS,
   GET_ALL_PRODUCTS,
+  GET_PRODUCTS_BY_ID,
   GET_ALL_CLIENTS,
   GET_ALL_SUPPLIERS,
   GET_ALL_SHIPPING,
   GET_ALL_ORDERS,
   GET_ALL_ACCOUNTS,
-  GET_ALL_USERS,
 } from "./actionTypes";
 
 const initialState = {
-  products: productos,
+  products: [],
   clients: clientes,
   suppliers: suppliers,
   dispatchers: transportistas,
   deposits: deposito,
+  productById:'',
   users: [],
   roles: roles,
   mesures: medidas,
@@ -200,7 +200,6 @@ export default function reducer(state = initialState, { type, payload }) {
         supplierId: payload,
       };
     case "EDIT_ACCOUNT_TYPE":
-      console.log("reducer", payload);
       const updatedAccountType = payload;
       const updatedAccountTypes = state.accountTypes.map((accountType) => {
         if (accountType.id === updatedAccountType.id) {
@@ -221,7 +220,6 @@ export default function reducer(state = initialState, { type, payload }) {
         }
         return account;
       });
-      console.log(updatedAccounts);
       return {
         ...state,
         accounts: updatedAccounts,
@@ -435,11 +433,16 @@ export default function reducer(state = initialState, { type, payload }) {
     //     ...state,
     //     suppliers: payload,
     //   };
-    // case GET_ALL_PRODUCTS:
-    //   return {
-    //     ...state,
-    //     products: payload,
-    //   };
+    case GET_PRODUCTS_BY_ID:
+      return {
+        ...state,
+        productById: payload,
+      };
+    case GET_ALL_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
+      };
     default:
       return { ...state };
   }

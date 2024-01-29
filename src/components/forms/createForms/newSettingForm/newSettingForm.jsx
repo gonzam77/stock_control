@@ -101,7 +101,6 @@ export default function NewSettingForm() {
 
   const confirmSetting = (event) => {
     event.preventDefault();
-    console.log('ajuste final',newSetting);
     dispatch(actions.newSetting(newSetting));
     navigate("/");
   };

@@ -1,7 +1,7 @@
 import styles from "./productsCards.module.css";
 import Card from "../../components/cards/card/card";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
@@ -10,6 +10,7 @@ import PaginateNative from "../../components/pagination/paginationNative";
 
 export default function ProductsCard() {
   const products = useSelector((state) => state.products);
+  console.log(products);
   const showModalState = useSelector((state) => state.showCreateModal);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,6 +21,10 @@ export default function ProductsCard() {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+
+  useEffect(()=>{
+    dispatch(actions.getAllProducts())
+  },[])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
@@ -63,15 +68,15 @@ export default function ProductsCard() {
           return (
             <Card
               key={index}
-              id={product.id}
-              code={product.code}
+              id={product.ID_PRODUCTO}
+              code={product.CODIGO}
               name={product.name}
               image={product.image}
-              price={product.price}
+              price={product.PRECIO_VENTA}
               stock={product.stock}
               brand={product.brand}
               description={product.description}
-              supplier={product.supplier}
+              supplier={product.PROVEEDOR.RAZON_SOCIAL}
             />
           );
         })}

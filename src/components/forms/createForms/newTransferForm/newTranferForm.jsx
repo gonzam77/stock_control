@@ -108,7 +108,6 @@ export default function NewTransferForm() {
 
   const confirmSetting = (event) => {
     event.preventDefault();
-    console.log("ajuste final", newTransfer);
     dispatch(actions.newTransfer(newTransfer));
     navigate("/");
   };

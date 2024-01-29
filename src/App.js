@@ -70,7 +70,6 @@ function App() {
 
   const logout = async () => {
     const response = await axios.get("http://localhost:4000/signout",axiosConfig);
-    console.log(response);
     localStorage.clear();
     setAccess(false);
   };

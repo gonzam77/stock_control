@@ -6,6 +6,7 @@ import {
   GET_ALL_SHIPPING,
   GET_ALL_ORDERS,
   GET_ALL_ACCOUNTS,
+  GET_PRODUCTS_BY_ID,
   GET_ALL_USERS,
 } from "./actionTypes";
 
@@ -219,7 +220,6 @@ export const getSupplierId = (id) => {
 };
 
 export const editAccountType = (data) => {
-  console.log("action", data);
   return {
     type: "EDIT_ACCOUNT_TYPE",
     payload: data,
@@ -343,16 +343,28 @@ export const hideModalMesure = () => ({
   type: "HIDE_MODAL_MESURE",
 });
 
-// export const getAllProducts = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/products`);
-//         const data = response.data;
-//         return dispatch({
-//             type: GET_ALL_PRODUCTS,
-//             payload: data,
-//         })
-//     }
-// };
+export const getAllProducts = () => {
+    return async function (dispatch) {
+        const response = await axios(`${URL}/productos`,axiosConfig);
+        const data = response.data;
+        return dispatch({
+            type: GET_ALL_PRODUCTS,
+            payload: data.Data,
+        })
+    }
+};
+export const getProductById = () => {
+  console.log('llamado');
+    return async function (dispatch) {
+        const response = await axios(`${URL}/producto/id/?id=${id}`,axiosConfig);
+        console.log('response',response.data);
+        const data = response.data;
+        return dispatch({
+            type: GET_PRODUCTS_BY_ID,
+            payload: data.Data,
+        })
+    }
+};
 
 // export const getAllClients = () => {
 //     return async function (dispatch) {
@@ -412,7 +424,6 @@ export const hideModalMesure = () => ({
 export const getAllUsers = () => {
   return async function (dispatch) {
     const response = await axios(`${URL}/usuarios`, axiosConfig);
-    console.log(response);
     const data = response.data;
     return dispatch({
       type: GET_ALL_USERS,

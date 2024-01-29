@@ -7,13 +7,10 @@ import { useParams, Link } from "react-router-dom";
 
 export default function DepositDetail() {
   const { id } = useParams();
-  console.log("id paramas", id);
   const idInt = parseInt(id);
   const deposits = useSelector((state) => state.deposits);
   const suppliers = useSelector((state) => state.suppliers);
   const deposit = deposits.find((e) => e.id === id);
-  console.log("deposito en detalle", deposit);
-  console.log("items en el deposito", deposit.items);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
