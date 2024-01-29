@@ -3,15 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function NavMenu() {
+export default function NavMenu({ logout }) {
   const navigate = useNavigate();
-  function redirect(){
-    navigate('/newSale')
+  function redirect() {
+    navigate("/newSale");
   }
   return (
     <div className={`bg-body ${styles.container}`}>
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="" variant=''>
+        <Navbar collapseOnSelect expand="lg" bg="" variant="">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse className="bg-body">
             <Nav>
@@ -50,6 +50,15 @@ export default function NavMenu() {
           onClick={redirect}
         >
           Nueva Venta
+        </Button>
+      </div>
+      <div>
+        <Button
+          className={styles.createButton}
+          variant="danger"
+          onClick={()=>{logout()}}
+        >
+          Cerrar Sesion
         </Button>
       </div>
     </div>

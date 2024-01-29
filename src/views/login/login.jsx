@@ -6,7 +6,7 @@ import styles from "./login.module.css";
 function Login({ login }) {
 
   const [userLogin, setUserLogin] = useState({
-    email: "",
+    userName: "",
     password: "",
   });
 
@@ -28,11 +28,11 @@ function Login({ login }) {
     <div className={styles.container}>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Nombre Usuario</Form.Label>
           <Form.Control
-            type="email"
-            value={userLogin.email}
-            name="email"
+            type="userName"
+            value={userLogin.userName}
+            name="userName"
             placeholder="Ingrese el usuario"
             onChange={handleChange}
           />
