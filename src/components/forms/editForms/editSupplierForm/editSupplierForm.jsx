@@ -22,7 +22,7 @@ export default function SupplierForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editProduct(supplier))
+    dispatch(actions.editSupplier(supplier))
     dispatch(actions.hideModal());
   };
 

@@ -18,7 +18,7 @@ export default function NewSaleForm() {
   const sales = useSelector((state) => state.sales);
   const offers = useSelector((state) => state.offers);
   const [newSale, setNewSale] = useState({
-    code:'',
+    code: "",
     number: "",
     items: [],
     quantity: 0,
@@ -178,6 +178,16 @@ export default function NewSaleForm() {
       <h2>NUEVA VENTA</h2>
       <form className={styles.form}>
         <div className={styles.divs}>
+          <div className={styles.dropdown}>
+            <label htmlFor="">Cliente</label>
+            <DropdownClient onSelect={handleClientSelect} />
+            <label htmlFor="">Deposito</label>
+            <DropdownDeposit onSelect={handleDepositSelect} />
+            <label htmlFor="">Forma de pago</label>
+            <DropdownPayType onSelect={handlePayTypeSelect} />
+          </div>
+        </div>
+        <div className={styles.divs}>
           <div className={styles.subDivs}>
             <div className={styles.divs}>
               <label>Codigo</label>
@@ -282,16 +292,6 @@ export default function NewSaleForm() {
               </tr>
             </tbody>
           </Table>
-        </div>
-        <div className={styles.divs}>
-          <div className={styles.dropdown}>
-            <label htmlFor="">Forma de pago</label>
-            <DropdownPayType onSelect={handlePayTypeSelect} />
-            <label htmlFor="">Cliente</label>
-            <DropdownClient onSelect={handleClientSelect} />
-            <label htmlFor="">Deposito</label>
-            <DropdownDeposit onSelect={handleDepositSelect} />
-          </div>
         </div>
         <div className="modal-footer">
           <div className={styles.buttons}>

@@ -4,22 +4,33 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
-import DropdownMesures from '../../../dropdown/dropdownMesure';
+import DropdownMesures from "../../../dropdown/dropdownMesure";
+import axios from "axios";
 
-export default function ProductForm() {
+export default function EditProductForm() {
   const products = useSelector((state) => state.products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
-  const selectedProduct = products.find((element) => element.id === productId);
+  const selectedProduct = products.find(
+    (element) => element.ID_PRODUCTO === productId
+  );
   const [product, setProduct] = useState(selectedProduct || {});
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
   };
 
-  const closeModal = (event) => {
+  const editProduct = async (data) => {
+    const response = await axios.put(
+      "http://localhost:4000/producto/update",
+      data
+    );
+  };
+
+  const closeModal = async (event) => {
     event.preventDefault();
-    dispatch(actions.editProduct(product));
+    await editProduct({ Producto: product });
+    dispatch(actions.cleanProducts());
     dispatch(actions.hideModal());
   };
 
@@ -54,7 +65,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="CODIGO"
-            value={product.CODIGO}
+            value={product.CODIGO || ""}
             onChange={handleChange}
             type="text"
           />
@@ -64,7 +75,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="NOMBRE"
-            value={product.NOMBRE}
+            value={product.NOMBRE || ""}
             onChange={handleChange}
             type="text"
           />
@@ -74,7 +85,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="MARCA"
-            value={selectedProduct.MARCA}
+            value={product.MARCA || ""}
             onChange={handleChange}
             type="text"
           />
@@ -84,7 +95,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="PRECIO_VENTA"
-            value={product.PRECIO_VENTA}
+            value={product.PRECIO_VENTA || ""}
             onChange={handleChange}
             type="text"
           />
@@ -98,7 +109,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="CANT_MIN"
-            value={product.CANT_MIN}
+            value={product.CANT_MIN || ""}
             onChange={handleChange}
             type="text"
           />
@@ -108,7 +119,7 @@ export default function ProductForm() {
           <input
             autoComplete="off"
             name="CANT_MAX"
-            value={product.CANT_MAX}
+            value={product.CANT_MAX || ""}
             onChange={handleChange}
             type="text"
           />
@@ -118,7 +129,7 @@ export default function ProductForm() {
             <DropdownSupplier onSelect={handleSupplierSelect} />
           </div>
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>

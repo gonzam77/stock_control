@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import ProductForm from "../../../../components/forms/editForms/editProductForm/editProductForm";
+import EditProductForm from "../../../../components/forms/editForms/editProductForm/editProductForm";
 
 function ModalEditProductForm() {
   return (
@@ -9,7 +9,7 @@ function ModalEditProductForm() {
           <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ProductForm />
+          <EditProductForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>

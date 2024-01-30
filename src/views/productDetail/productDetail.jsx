@@ -9,13 +9,11 @@ import { useEffect } from "react";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  console.log('params',id);
   const productId = parseInt(id);
 
   const dispatch = useDispatch();
   const showModalState = useSelector((state) => state.showCreateModal);
   const productById = useSelector((state) => state.productById);
-  console.log('prod',productById);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());

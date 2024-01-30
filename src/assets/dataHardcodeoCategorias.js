@@ -1,10 +1,11 @@
 export const categorias = [
     {
-        id:'1',
-        name:'Piletas'
+        ID_CATEGORIA:'1',
+        NOMBRE:'Piletas',
+
     },
     {
-        id:'2',
-        name:'Limpieza'
+        ID_CATEGORIA:'2',
+        NOMBRE:'Limpieza'
     }
 ]

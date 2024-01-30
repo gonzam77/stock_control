@@ -6,14 +6,21 @@ import Table from "react-bootstrap/Table";
 import ModalEditProductForm from "../modals/editModals/modalEditProductForm/modalEditProductForm";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
+import { useEffect } from "react";
 
 export default function Products() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
-  console.log(products);
+  const mesures = useSelector((state) => state.mesures);
   const suppliers = useSelector((state) => state.suppliers);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(actions.getAllProducts());
+    }
+  }, [products]);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
@@ -60,28 +67,33 @@ export default function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => {
+            {products?.map((product, index) => {
               suppliers.find(
                 (supplier) => (supplier.razon_social = product.supplier)
               );
+              const mesure = mesures.map((e) => e.id === product.UNIDAD_MEDIDA);
               return (
-                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
+                <tr
+                  key={index}
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
                   <td>{product.CODIGO}</td>
                   <td>{product.CATEGORIA}</td>
                   <td>{product.NOMBRE}</td>
                   <td>{product.MARCA}</td>
+                  <td>{product.PROVEEDOR.RAZON_SOCIAL}</td>
                   <td>
-                    {product.PROVEEDOR.RAZON_SOCIAL}
+                    {"$"}
+                    {product.PRECIO_VENTA}
                   </td>
-                  <td>{'$'}{product.PRECIO_VENTA}</td>
-                  <td>{product.UNIDAD_MEDIDA}</td>
-                  <td>{product.unidad_medida}</td>
+                  <td></td>
+                  <td>{mesure}</td>
                   <td>{product.CANT_MIN}</td>
                   <td>{product.CANT_MAX}</td>
-                  <td style={{ textAlign: 'center' }}>
+                  <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(product.ID_PRODUCT)}
+                      onClick={() => openModal(product.ID_PRODUCTO)}
                     >
                       Modificar
                     </Button>

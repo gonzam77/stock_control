@@ -159,14 +159,15 @@ export default function NewSettingForm() {
                 <th>Cantidad</th>
                 <th>Codigo</th>
                 <th>Producto</th>
-                <th>brand</th>
+                <th>Marca</th>
+                <th>Stock</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
               {newSetting.items[0] &&
                 newSetting.items.map((item, index) => {
-                  const product = products.find((e) => e.code === item.code);
+                  const product = products.find((e) => e.CODIGO === item.code);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
@@ -181,8 +182,8 @@ export default function NewSettingForm() {
                         </div>
                       </td>
                       <td>{item.code}</td>
-                      <td>{product.name}</td>
-                      <td>{product.brand}</td>
+                      <td>{product.NOMBRE}</td>
+                      <td>{product.MARCA}</td>
                       <td>
                         <Button
                           variant="danger"

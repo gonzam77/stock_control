@@ -1,17 +1,20 @@
 export const medidas = [
     {
-        id:'1',
-        name:'Unidad',
-        abbreviation:'Un.'
+        ID_UNIDAD_MEDIDA:'7',
+        TIPO,
+        NOMBRE:'Unidad',
+        ABREVIATURA:'Un.'
     },
     {
-        id:'2',
-        name:'Litros',
-        abbreviation:'Lts.'
+        ID_UNIDAD_MEDIDA:'2',
+        NOMBRE:'Litros',
+        TIPO,
+        ABREVIATURA:'Lts.'
     },
     {
-        id:'3',
-        name:'Kilos',
-        abbreviation:'kg.'
+        ID_UNIDAD_MEDIDA:'3',
+        TIPO,
+        NOMBRE:'Kilos',
+        ABREVIATURA:'kg.'
     }
 ]
