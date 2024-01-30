@@ -11,6 +11,7 @@ export default function Products() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
+  console.log(products);
   const suppliers = useSelector((state) => state.suppliers);
   const dispatch = useDispatch();
 
@@ -65,22 +66,22 @@ export default function Products() {
               );
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{product.code}</td>
-                  <td>{product.categoria}</td>
-                  <td>{product.name}</td>
-                  <td>{product.brand}</td>
+                  <td>{product.CODIGO}</td>
+                  <td>{product.CATEGORIA}</td>
+                  <td>{product.NOMBRE}</td>
+                  <td>{product.MARCA}</td>
                   <td>
-                    {product.supplier}
+                    {product.PROVEEDOR.RAZON_SOCIAL}
                   </td>
-                  <td>{product.price}</td>
-                  <td>{product.stock}</td>
+                  <td>{'$'}{product.PRECIO_VENTA}</td>
+                  <td>{product.UNIDAD_MEDIDA}</td>
                   <td>{product.unidad_medida}</td>
-                  <td>{product.cant_min}</td>
-                  <td>{product.cant_max}</td>
+                  <td>{product.CANT_MIN}</td>
+                  <td>{product.CANT_MAX}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(product.id)}
+                      onClick={() => openModal(product.ID_PRODUCT)}
                     >
                       Modificar
                     </Button>

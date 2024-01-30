@@ -50,11 +50,11 @@ export default function ProductForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Code</label>
+          <label>Codigo</label>
           <input
             autoComplete="off"
-            name="code"
-            value={product.code}
+            name="CODIGO"
+            value={product.CODIGO}
             onChange={handleChange}
             type="text"
           />
@@ -63,29 +63,18 @@ export default function ProductForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={product.name}
+            name="NOMBRE"
+            value={product.NOMBRE}
             onChange={handleChange}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>brand</label>
+          <label>Marca</label>
           <input
             autoComplete="off"
-            name="brand"
-            value={selectedProduct.brand}
-            onChange={handleChange}
-            type="text"
-          />
-        </div>
-
-        <div className={styles.divs}>
-          <label>Stock</label>
-          <input
-            autoComplete="off"
-            name="stock"
-            value={product.stock}
+            name="MARCA"
+            value={selectedProduct.MARCA}
             onChange={handleChange}
             type="text"
           />
@@ -94,8 +83,8 @@ export default function ProductForm() {
           <label>Precio</label>
           <input
             autoComplete="off"
-            name="price"
-            value={product.price}
+            name="PRECIO_VENTA"
+            value={product.PRECIO_VENTA}
             onChange={handleChange}
             type="text"
           />
@@ -108,8 +97,8 @@ export default function ProductForm() {
           <label>Cant Min</label>
           <input
             autoComplete="off"
-            name="cant_min"
-            value={product.cant_min}
+            name="CANT_MIN"
+            value={product.CANT_MIN}
             onChange={handleChange}
             type="text"
           />
@@ -118,8 +107,8 @@ export default function ProductForm() {
           <label>Cant Max</label>
           <input
             autoComplete="off"
-            name="cant_max"
-            value={product.cant_max}
+            name="CANT_MAX"
+            value={product.CANT_MAX}
             onChange={handleChange}
             type="text"
           />
