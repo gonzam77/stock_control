@@ -2,11 +2,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-
-function DropdownSupplier({ onSelect }) {
+export default function DropdownBrands({ onSelect }) {
   
   const [select, setSelect] = useState();
-  const suppliers = useSelector(state => state.suppliers);
+  const brands = useSelector(state => state.brands);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -16,14 +15,14 @@ function DropdownSupplier({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="primary" id="dropdown-basic">
-        {select ? select : "Proveedor"}
+        {select ? select : "Marca"}
       </Dropdown.Toggle>
+
       <Dropdown.Menu>
-        <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
-        {suppliers.map((element, index) => {
+        {brands.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.RAZON_SOCIAL}>
-              {element.RAZON_SOCIAL}
+            <Dropdown.Item key={index} eventKey={element.NOMBRE}>
+              {element.NOMBRE}
             </Dropdown.Item>
           );
         })}
@@ -32,4 +31,3 @@ function DropdownSupplier({ onSelect }) {
   );
 }
 
-export default DropdownSupplier;

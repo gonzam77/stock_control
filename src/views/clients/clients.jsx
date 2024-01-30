@@ -10,6 +10,9 @@ export default function Clients() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector(state => state.showCreateModal)
   const clients = useSelector((state) => state.clients);
+  const personas = useSelector(state=> state.personas);
+  const ubicaciones = useSelector(state=> state.ubicaciones);
+  console.log(ubicaciones);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -47,16 +50,19 @@ export default function Clients() {
           </thead>
           <tbody>
             {clients.map((client, index) => {
+              const persona = personas.find(e=>e.ID_PERSONA === client.ID_PERSONA)
+              const ubicacion = ubicaciones.find(e=>e.ID_UBICACION === persona.ID_UBICACION)
+              console.log(ubicacion);
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{client.cuil}</td>
+                  <td>{client.CUIL}</td>
                   <td>
-                    {client.first_name} {client.last_name}
+                    {persona.NOMBRE} {persona.APELLIDO}
                   </td>
-                  <td>{client.email}</td>
-                  <td>{client.phone}</td>
-                  <td>{client.adress}</td>
-                  <td>{client.state}{', '}{client.province}</td>
+                  <td>{persona.EMAIL}</td>
+                  <td>{persona.TELEFONO}</td>
+                  <td>{ubicacion.DIRECCION}</td>
+                  <td>{ubicacion.LOCALIDAD}{', '}{ubicacion.PROVINCIA}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(client.id)}>
                       Modificar

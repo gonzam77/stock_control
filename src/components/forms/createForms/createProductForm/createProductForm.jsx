@@ -1,41 +1,32 @@
 import { useState } from "react";
 import styles from "../createForms.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import Dropdown from '../../../dropdown/dropdownSupplier';
 import DropdownMesures from "../../../dropdown/dropdownMesure";
+import DropdownBrands from "../../../dropdown/dropdownBrand";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
+  const brands = useSelector(state => state.brands)
+  const mesures = useSelector(state => state.mesures)
+  const suppliers = useSelector(state => state.suppliers)
   const [newProduct, setNewProduct] = useState({
-    ID_PRODUCTO: '',
-    NOMBRE: "",
-    CODIGO: "",
-    FECHA_CADUCIDAD: "",
-    UNIDAD_MEDIDA: "",
-    CANT_MIN: "",
-    CANT_MAX: "",
-    PROVEEDOR: "",
-    MARCA: "",
-    STOCK: "",
-    PRECIO_VENTA: "",
+    NOMBRE: null,
+    CODIGO: null,
+    ID_UNIDAD_MEDIDA: null,
+    CANT_MIN: null,
+    CANT_MAX: null,
+    ID_PROVEEDOR: null,
+    ID_MARCA: null,
+    PRECIO_VENTA: null,
   });
-
-
-  const handleSupplierSelect = (selectedSupplier) => {
-    setNewProduct({
-      ...newProduct,
-      PROVEEDOR: selectedSupplier,
-    });
-  };
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    setNewProduct({
-      ...newProduct,
-    })
-    dispatch(actions.createProduct(newProduct));
+    dispatch(actions.createProduct({ Producto: newProduct }));
+    dispatch(actions.cleanProducts());
     dispatch(actions.hideCreateModal());
   };
 
@@ -43,16 +34,31 @@ export default function CreateProductForm() {
     dispatch(actions.hideCreateModal());
   }
 
-  const handleMesureSelect = (selectedDeposit) => {
+  const handleSupplierSelect = (selectedSupplier) => {
+    const supplierId = suppliers.find(e => e.RAZON_SOCIAL === selectedSupplier).ID_MARCA
     setNewProduct({
       ...newProduct,
-      mesure: selectedDeposit,
+      ID_PROVEEDOR: supplierId,
     });
   };
 
+  const handleBrandSelect = (selectedBrand) => {
+    const brandId = brands.find(e => e.NOMBRE === selectedBrand).ID_MARCA
+    setNewProduct({
+      ...newProduct,
+      ID_MARCA: brandId,
+    });
+  };
+
+  const handleMesureSelect = (selectedMesure) => {
+    const mesureId = mesures.find(e => e.NOMBRE === selectedMesure).ID_UNIDAD_MEDIDA
+    setNewProduct({
+      ...newProduct,
+      ID_UNIDAD_MEDIDA: mesureId,
+    });
+  };
 
   function handleChange(event) {
-
     const target = event.target.name;
     const value = event.target.value;
     if (target !== "UNIDAD_MEDIDA" && target !== 'category') {
@@ -85,32 +91,6 @@ export default function CreateProductForm() {
             value={newProduct.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Marca</label>
-          <input
-            autoComplete="off"
-            name="MARCA"
-            value={newProduct.MARCA}
-            onChange={handleChange}
-            placeholder="MARCA..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Unidad medida</label>
-          <DropdownMesures onSelect={handleMesureSelect}/>
-        </div>
-        <div className={styles.divs}>
-          <label>Stock</label>
-          <input
-            autoComplete="off"
-            name="STOCK"
-            value={newProduct.STOCK}
-            onChange={handleChange}
-            placeholder="Stock..."
             type="text"
           />
         </div>
@@ -148,16 +128,12 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Facha de vencimiento</label>
-          <input
-            autoComplete="off"
-            name="FECHA_CADUCIDAD"
-            value={newProduct.FECHA_CADUCIDAD}
-            onChange={handleChange}
-            type="date"
-          />
+          <DropdownMesures onSelect={handleMesureSelect} />
         </div>
-        <div style={{textAlign: 'center', verticalAlign: 'middle'}}>
+        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
+          <DropdownBrands onSelect={handleBrandSelect}></DropdownBrands>
+        </div>
+        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
           <Dropdown onSelect={handleSupplierSelect}></Dropdown>
         </div>
 

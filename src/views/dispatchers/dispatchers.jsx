@@ -10,6 +10,8 @@ export default function Dispatchers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector(state => state.showCreateModal)
   const dispatchers = useSelector((state) => state.dispatchers);
+  const ubicaciones = useSelector((state) => state.ubicaciones);
+  const personas = useSelector((state) => state.personas);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -50,15 +52,17 @@ export default function Dispatchers() {
           </thead>
           <tbody>
             {dispatchers.map((dispatcher, index) => {
+              const persona = personas.find(e => e.ID_PERSONA === dispatcher.ID_PERSONA)
+              const ubicacion = ubicaciones.find(e=>e.ID_UBICACION = persona.ID_UBICACION)
               return (
-                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
+                <tr key={index} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                   <td>
-                    {dispatcher.first_name} {dispatcher.last_name}
+                    {persona.NOMBRE} {persona.APELLIDO}
                   </td>
-                  <td>{dispatcher.email}</td>
-                  <td>{dispatcher.phone}</td>
-                  <td>{dispatcher.adress}</td>
-                  <td>{dispatcher.province}{', '}{dispatcher.state}</td>
+                  <td>{persona.EMAIL}</td>
+                  <td>{persona.TELEFONO}</td>
+                  <td>{ubicacion.DIRECCION}</td>
+                  <td>{ubicacion.LOCALIDAD}{', '}{ubicacion.PROVINCIA}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(dispatcher.id)}>
                       Modificar

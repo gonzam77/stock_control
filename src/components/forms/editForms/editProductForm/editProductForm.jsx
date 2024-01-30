@@ -5,16 +5,29 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
+import DropdownBrands from "../../../dropdown/dropdownBrand";
 import axios from "axios";
 
 export default function EditProductForm() {
   const products = useSelector((state) => state.products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
+  const brands = useSelector(state => state.brands);
+  const mesures = useSelector(state => state.mesures);
+  const suppliers = useSelector(state => state.suppliers);
+
   const selectedProduct = products.find(
     (element) => element.ID_PRODUCTO === productId
   );
+
   const [product, setProduct] = useState(selectedProduct || {});
+
+  const closeModal = async (event) => {
+    event.preventDefault();
+    await editProduct({ Producto: product });
+    dispatch(actions.cleanProducts());
+    dispatch(actions.hideModal());
+  };
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
@@ -25,13 +38,7 @@ export default function EditProductForm() {
       "http://localhost:4000/producto/update",
       data
     );
-  };
-
-  const closeModal = async (event) => {
-    event.preventDefault();
-    await editProduct({ Producto: product });
-    dispatch(actions.cleanProducts());
-    dispatch(actions.hideModal());
+    console.log(response);
   };
 
   function handleChange(event) {
@@ -43,17 +50,26 @@ export default function EditProductForm() {
     });
   }
 
-  const handleMesureSelect = (selectedDeposit) => {
+  const handleBrandSelect = (selectedBrand) => {
+    const brandId = brands.find(e => e.NOMBRE === selectedBrand).ID_MARCA
     setProduct({
       ...product,
-      mesure: selectedDeposit,
+      ID_MARCA: brandId,
+    });
+  };
+
+  const handleMesureSelect = (selectedMesure) => {
+    const mesureId = mesures.find(e => e.NOMBRE === selectedMesure).ID_UNIDAD_MEDIDA
+    setProduct({
+      ...product,
+      ID_UNIDAD_MEDIDA: mesureId,
     });
   };
 
   const handleSupplierSelect = (selectedSupplier) => {
     setProduct({
       ...product,
-      supplier: selectedSupplier,
+      ID_PROVEEDOR: selectedSupplier,
     });
   };
 
@@ -81,16 +97,6 @@ export default function EditProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Marca</label>
-          <input
-            autoComplete="off"
-            name="MARCA"
-            value={product.MARCA || ""}
-            onChange={handleChange}
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
           <label>Precio</label>
           <input
             autoComplete="off"
@@ -100,10 +106,7 @@ export default function EditProductForm() {
             type="text"
           />
         </div>
-        <div className={styles.divs}>
-          <label>Unidad medida</label>
-          <DropdownMesures onSelect={handleMesureSelect} />
-        </div>
+
         <div className={styles.divs}>
           <label>Cant Min</label>
           <input
@@ -125,9 +128,13 @@ export default function EditProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <div className={styles.container}>
-            <DropdownSupplier onSelect={handleSupplierSelect} />
-          </div>
+          <DropdownMesures onSelect={handleMesureSelect} />
+        </div>
+        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
+          <DropdownBrands onSelect={handleBrandSelect}></DropdownBrands>
+        </div>
+        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
+          <DropdownSupplier onSelect={handleSupplierSelect}></DropdownSupplier>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

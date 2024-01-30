@@ -11,6 +11,7 @@ export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const deposits = useSelector((state) => state.deposits);
+  const ubicaciones = useSelector((state) => state.ubicaciones);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -59,6 +60,7 @@ export default function Deposits() {
           </thead>
           <tbody>
             {deposits.map((deposit, index) => {
+              const ubicacion = ubicaciones.find(e=>e.ID_UBICACION === deposit.ID_UBICACION);
               return (
                 <tr
                   key={index}
@@ -69,12 +71,12 @@ export default function Deposits() {
                       <Button variant="primary">VER</Button>
                     </Link>
                   </td>
-                  <td>{deposit.type}</td>
-                  <td>{deposit.name}</td>
-                  <td>{deposit.admin}</td>
-                  <td>{deposit.description}</td>
-                  <td>{deposit.phone}</td>
-                  <td>{deposit.adress}</td>
+                  <td>{deposit.TIPO_BODEGA}</td>
+                  <td>{deposit.NOMBRE}</td>
+                  <td>{deposit.ADMINISTRADOR}</td>
+                  <td>{deposit.DESCRIPCION}</td>
+                  <td>{deposit.TELEFONO}</td>
+                  <td>{ubicacion.DIRECCION}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"

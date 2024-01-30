@@ -1,17 +1,59 @@
 import axios from "axios";
-import {
-  GET_ALL_PRODUCTS,
-  GET_ALL_CLIENTS,
-  GET_ALL_SUPPLIERS,
-  GET_ALL_SHIPPING,
-  GET_ALL_ORDERS,
-  GET_ALL_ACCOUNTS,
-  GET_PRODUCTS_BY_ID,
-  GET_ALL_USERS,
-} from "./actionTypes";
-
 import { axiosConfig } from "../App";
 import { backURL } from "../App";
+
+export const getAllUsers = () => {
+  return async function (dispatch) {
+    const response = await axios(`${backURL}/usuarios`, axiosConfig);
+    const data = response.data;
+    return dispatch({
+      type: 'GET_ALL_USERS',
+      payload: data.Data,
+    });
+  };
+};
+
+export const getAllProducts = () => {
+  return async function (dispatch) {
+    const response = await axios(`${backURL}/productos`, axiosConfig);
+    const data = response.data;
+    return dispatch({
+      type: 'GET_ALL_PRODUCTS',
+      payload: data.Data,
+    });
+  };
+};
+
+export const cleanUsers = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_USERS",
+      payload: [],
+    });
+  }
+};
+export const cleanProducts = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_PRODUCTS",
+      payload: [],
+    });
+  }
+};
+
+export const getProductById = (id) => {
+  return async function (dispatch) {
+    const response = await axios(
+      `${backURL}/producto/id/?id=${id}`,
+      axiosConfig
+    );
+    const data = response.data;
+    return dispatch({
+      type: 'GET_PRODUCTS_BY_ID',
+      payload: data.Data,
+    });
+  };
+};
 
 export const addToCart = (data) => {
   return {
@@ -329,46 +371,13 @@ export const hideModalMesure = () => ({
   type: "HIDE_MODAL_MESURE",
 });
 
-export const getAllProducts = () => {
-  return async function (dispatch) {
-    const response = await axios(`${backURL}/productos`, axiosConfig);
-    const data = response.data;
-    return dispatch({
-      type: GET_ALL_PRODUCTS,
-      payload: data.Data,
-    });
-  };
-};
-
-export const cleanProducts = () => {
-  return async function(dispatch){
-    return dispatch({
-      type: "CLEAN_PRODUCTS",
-      payload: [],
-    });
-  }
-};
-
-export const getProductById = (id) => {
-  return async function (dispatch) {
-    const response = await axios(
-      `${backURL}/producto/id/?id=${id}`,
-      axiosConfig
-    );
-    const data = response.data;
-    return dispatch({
-      type: GET_PRODUCTS_BY_ID,
-      payload: data.Data,
-    });
-  };
-};
 
 // export const getAllClients = () => {
 //     return async function (dispatch) {
 //         const response = await axios(`${URL}/clients`);
 //         const data = response.data;
 //         return dispatch({
-//             type: GET_ALL_CLIENTS,
+//             type: 'GET_ALL_CLIENTS',
 //             payload: data,
 //         })
 //     }
@@ -379,7 +388,7 @@ export const getProductById = (id) => {
 //         const response = await axios(`${URL}/orders`);
 //         const data = response.data;
 //         return dispatch({
-//             type: GET_ALL_ORDERS,
+//             type: 'GET_ALL_ORDERS',
 //             payload: data,
 //         })
 //     }
@@ -390,7 +399,7 @@ export const getProductById = (id) => {
 //         const response = await axios(`${URL}/supplies`);
 //         const data = response.data;
 //         return dispatch({
-//             type: GET_ALL_SUPPLIERS,
+//             type: 'GET_ALL_SUPPLIERS',
 //             payload: data,
 //         })
 //     }
@@ -401,7 +410,7 @@ export const getProductById = (id) => {
 //         const response = await axios(`${URL}/shipping`);
 //         const data = response.data;
 //         return dispatch({
-//             type: GET_ALL_SHIPPING,
+//             type: 'GET_ALL_SHIPPING',
 //             payload: data,
 //         })
 //     }
@@ -412,19 +421,10 @@ export const getProductById = (id) => {
 //         const response = await axios(`${URL}/accounts`);
 //         const data = response.data;
 //         return dispatch({
-//             type: GET_ALL_ACCOUNTS,
+//             type: 'GET_ALL_ACCOUNTS',
 //             payload: data,
 //         })
 //     }
 // };
 
-export const getAllUsers = () => {
-  return async function (dispatch) {
-    const response = await axios(`${URL}/usuarios`, axiosConfig);
-    const data = response.data;
-    return dispatch({
-      type: GET_ALL_USERS,
-      payload: data.Data,
-    });
-  };
-};
+

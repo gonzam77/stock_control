@@ -45,8 +45,6 @@ export default function Suppliers() {
               <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
-              <th>Direccion</th>
-              <th>Localidad</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -54,12 +52,10 @@ export default function Suppliers() {
             {suppliers.map((supplier, index) => {
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{supplier.razon_social}</td>
-                  <td>{supplier.cuil}</td>
-                  <td>{supplier.email}</td>
-                  <td>{supplier.phone}</td>
-                  <td>{supplier.adress}</td>
-                  <td>{supplier.state}{', '}{supplier.province}</td>
+                  <td>{supplier.RAZON_SOCIAL}</td>
+                  <td>{supplier.CUIL}</td>
+                  <td>{supplier.EMAIL}</td>
+                  <td>{supplier.TELEFONO}</td>
                   <td>
                     <Button
                       variant="primary"

@@ -11,12 +11,13 @@ export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
-  const userType = useSelector((state) => state.userType);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.getAllUsers());
-  }, []);
+    if (users.length === 0) {
+      dispatch(actions.getAllUsers());
+    }
+  }, [users]);
 
   const openModal = (id) => {
     dispatch(actions.showModal());
