@@ -12,7 +12,6 @@ export default function Clients() {
   const clients = useSelector((state) => state.clients);
   const personas = useSelector(state=> state.personas);
   const ubicaciones = useSelector(state=> state.ubicaciones);
-  console.log(ubicaciones);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -52,7 +51,6 @@ export default function Clients() {
             {clients.map((client, index) => {
               const persona = personas.find(e=>e.ID_PERSONA === client.ID_PERSONA)
               const ubicacion = ubicaciones.find(e=>e.ID_UBICACION === persona.ID_UBICACION)
-              console.log(ubicacion);
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{client.CUIL}</td>
