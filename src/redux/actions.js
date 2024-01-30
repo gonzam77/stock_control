@@ -353,7 +353,7 @@ export const getAllProducts = () => {
         })
     }
 };
-export const getProductById = () => {
+export const getProductById = (id) => {
   console.log('llamado');
     return async function (dispatch) {
         const response = await axios(`${URL}/producto/id/?id=${id}`,axiosConfig);

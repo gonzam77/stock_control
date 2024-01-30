@@ -9,25 +9,24 @@ import DropdownMesures from "../../../dropdown/dropdownMesure";
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const [newProduct, setNewProduct] = useState({
-    id: '',
-    name: "",
-    code: "",
-    fecha_vto: "",
-    create_date: "",
-    unidad_medida: "",
-    cant_min: "",
-    cant_max: "",
-    supplier: "",
-    brand: "",
-    stock: "",
-    price: "",
+    ID_PRODUCTO: '',
+    NOMBRE: "",
+    CODIGO: "",
+    FECHA_CADUCIDAD: "",
+    UNIDAD_MEDIDA: "",
+    CANT_MIN: "",
+    CANT_MAX: "",
+    PROVEEDOR: "",
+    MARCA: "",
+    STOCK: "",
+    PRECIO_VENTA: "",
   });
 
 
   const handleSupplierSelect = (selectedSupplier) => {
     setNewProduct({
       ...newProduct,
-      supplier: selectedSupplier,
+      PROVEEDOR: selectedSupplier,
     });
   };
 
@@ -56,7 +55,7 @@ export default function CreateProductForm() {
 
     const target = event.target.name;
     const value = event.target.value;
-    if (target !== "unidad_medida" && target !== 'category') {
+    if (target !== "UNIDAD_MEDIDA" && target !== 'category') {
       setNewProduct({
         ...newProduct,
         [target]: value,
@@ -71,8 +70,8 @@ export default function CreateProductForm() {
           <label>Codigo</label>
           <input
             autoComplete="off"
-            name="code"
-            value={newProduct.code}
+            name="CODIGO"
+            value={newProduct.CODIGO}
             onChange={handleChange}
             placeholder="(0001)"
             type="text"
@@ -82,21 +81,21 @@ export default function CreateProductForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={newProduct.name}
+            name="NOMBRE"
+            value={newProduct.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>brand</label>
+          <label>Marca</label>
           <input
             autoComplete="off"
-            name="brand"
-            value={newProduct.brand}
+            name="MARCA"
+            value={newProduct.MARCA}
             onChange={handleChange}
-            placeholder="brand..."
+            placeholder="MARCA..."
             type="text"
           />
         </div>
@@ -108,8 +107,8 @@ export default function CreateProductForm() {
           <label>Stock</label>
           <input
             autoComplete="off"
-            name="stock"
-            value={newProduct.stock}
+            name="STOCK"
+            value={newProduct.STOCK}
             onChange={handleChange}
             placeholder="Stock..."
             type="text"
@@ -119,8 +118,8 @@ export default function CreateProductForm() {
           <label>Cant min</label>
           <input
             autoComplete="off"
-            name="cant_min"
-            value={newProduct.cant_min}
+            name="CANT_MIN"
+            value={newProduct.CANT_MIN}
             onChange={handleChange}
             placeholder="Cant min necesaria"
             type="text"
@@ -130,8 +129,8 @@ export default function CreateProductForm() {
           <label>Cant Max</label>
           <input
             autoComplete="off"
-            name="cant_max"
-            value={newProduct.cant_max}
+            name="CANT_MAX"
+            value={newProduct.CANT_MAX}
             onChange={handleChange}
             placeholder="Cant max deseable"
             type="text"
@@ -141,8 +140,8 @@ export default function CreateProductForm() {
           <label>Precio</label>
           <input
             autoComplete="off"
-            name="price"
-            value={newProduct.price}
+            name="PRECIO_VENTA"
+            value={newProduct.PRECIO_VENTA}
             onChange={handleChange}
             placeholder="Precio..."
             type="text"
@@ -152,8 +151,8 @@ export default function CreateProductForm() {
           <label>Facha de vencimiento</label>
           <input
             autoComplete="off"
-            name="fecha_vto"
-            value={newProduct.fecha_vto}
+            name="FECHA_CADUCIDAD"
+            value={newProduct.FECHA_CADUCIDAD}
             onChange={handleChange}
             type="date"
           />

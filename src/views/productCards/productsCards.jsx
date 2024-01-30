@@ -70,7 +70,7 @@ export default function ProductsCard() {
               key={index}
               id={product.ID_PRODUCTO}
               code={product.CODIGO}
-              name={product.name}
+              name={product.NOMBRE}
               image={product.image}
               price={product.PRECIO_VENTA}
               stock={product.stock}
