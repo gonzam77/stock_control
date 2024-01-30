@@ -10,9 +10,10 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-const URL = "http://localhost:4000";
+
 
 import { axiosConfig } from "../App";
+import { backURL } from "../App";
 
 export const addToCart = (data) => {
   return {
@@ -333,7 +334,7 @@ export const hideModalMesure = () => ({
 
 export const getAllProducts = () => {
     return async function (dispatch) {
-        const response = await axios(`${URL}/productos`,axiosConfig);
+        const response = await axios(`${backURL}/productos`,axiosConfig);
         const data = response.data;
         return dispatch({
             type: GET_ALL_PRODUCTS,
@@ -344,7 +345,7 @@ export const getAllProducts = () => {
 export const getProductById = (id) => {
   console.log('llamado');
     return async function (dispatch) {
-        const response = await axios(`${URL}/producto/id/?id=${id}`,axiosConfig);
+        const response = await axios(`${backURL}/producto/id/?id=${id}`,axiosConfig);
         console.log('response',response.data);
         const data = response.data;
         return dispatch({
