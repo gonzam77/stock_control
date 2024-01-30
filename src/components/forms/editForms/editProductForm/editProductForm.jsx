@@ -5,8 +5,9 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
+import axios from "axios";
 
-export default function ProductForm() {
+export default function EditProductForm() {
   const products = useSelector((state) => state.products);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
@@ -20,13 +21,16 @@ export default function ProductForm() {
   };
 
   const editProduct = async (data) => {
-    const response = await axios.update('http://localhost:4000/producto/update', data)
-    console.log(response);  
+    console.log(data);
+    const response = await axios.put(
+      "http://localhost:4000/producto/update",
+      data
+    );
   };
 
   const closeModal = (event) => {
     event.preventDefault();
-    editProduct(product)
+    editProduct({ Producto: product });
     dispatch(actions.hideModal());
   };
 

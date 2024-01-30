@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import EditOfferForm from "../../../../components/forms/editForms/editOfferForm/editOfferForm";
 
-function ModalEditProductForm() {
+function ModalEditOfferForm() {
   return (
     <div className="modal show" style={{ display: "block", position: "" }}>
       <Modal.Dialog>
@@ -16,4 +16,4 @@ function ModalEditProductForm() {
   );
 }
 
-export default ModalEditProductForm;
+export default ModalEditOfferForm;

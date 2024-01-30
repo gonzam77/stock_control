@@ -1,6 +1,6 @@
 export const medidas = [
     {
-        id:'1',
+        id:'7',
         name:'Unidad',
         abbreviation:'Un.'
     },
