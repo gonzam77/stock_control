@@ -9,10 +9,9 @@ import * as actions from "../../redux/actions";
 import PaginateNative from "../../components/pagination/paginationNative";
 
 export default function ProductsCard() {
-  const products = useSelector((state) => state.products);
-  console.log(products);
-  const showModalState = useSelector((state) => state.showCreateModal);
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const showModalState = useSelector((state) => state.showCreateModal);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -22,9 +21,11 @@ export default function ProductsCard() {
     indexOfLastProduct
   );
 
-  useEffect(()=>{
-    dispatch(actions.getAllProducts())
-  },[])
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(actions.getAllProducts());
+    }
+  }, [products]);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());

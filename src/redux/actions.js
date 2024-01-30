@@ -10,8 +10,6 @@ import {
   GET_ALL_USERS,
 } from "./actionTypes";
 
-
-
 import { axiosConfig } from "../App";
 import { backURL } from "../App";
 
@@ -291,7 +289,6 @@ export const editClient = (data) => {
   };
 };
 
-
 export const showModal = () => ({
   type: "SHOW_MODAL",
 });
@@ -333,26 +330,37 @@ export const hideModalMesure = () => ({
 });
 
 export const getAllProducts = () => {
-    return async function (dispatch) {
-        const response = await axios(`${backURL}/productos`,axiosConfig);
-        const data = response.data;
-        return dispatch({
-            type: GET_ALL_PRODUCTS,
-            payload: data.Data,
-        })
-    }
+  return async function (dispatch) {
+    const response = await axios(`${backURL}/productos`, axiosConfig);
+    const data = response.data;
+    return dispatch({
+      type: GET_ALL_PRODUCTS,
+      payload: data.Data,
+    });
+  };
 };
+
+export const cleanProducts = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_PRODUCTS",
+      payload: [],
+    });
+  }
+};
+
 export const getProductById = (id) => {
-  console.log('llamado');
-    return async function (dispatch) {
-        const response = await axios(`${backURL}/producto/id/?id=${id}`,axiosConfig);
-        console.log('response',response.data);
-        const data = response.data;
-        return dispatch({
-            type: GET_PRODUCTS_BY_ID,
-            payload: data.Data,
-        })
-    }
+  return async function (dispatch) {
+    const response = await axios(
+      `${backURL}/producto/id/?id=${id}`,
+      axiosConfig
+    );
+    const data = response.data;
+    return dispatch({
+      type: GET_PRODUCTS_BY_ID,
+      payload: data.Data,
+    });
+  };
 };
 
 // export const getAllClients = () => {

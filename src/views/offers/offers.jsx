@@ -61,8 +61,6 @@ export default function Offers() {
               const productInOffer = products.find(
                 (e) => offer.product_id == e.ID_PRODUCTO
               );
-              console.log(products);
-              console.log(productInOffer);
               return (
                 <tr
                   key={index}

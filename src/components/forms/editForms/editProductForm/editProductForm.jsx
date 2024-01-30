@@ -21,16 +21,16 @@ export default function EditProductForm() {
   };
 
   const editProduct = async (data) => {
-    console.log(data);
     const response = await axios.put(
       "http://localhost:4000/producto/update",
       data
     );
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
-    editProduct({ Producto: product });
+    await editProduct({ Producto: product });
+    dispatch(actions.cleanProducts());
     dispatch(actions.hideModal());
   };
 

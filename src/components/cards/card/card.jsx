@@ -7,7 +7,6 @@ import ModalEditProductForm from "../../../views/modals/editModals/modalEditProd
 import * as actions from "../../../redux/actions";
 
 function ProductCard({ id, name, brand, price, stock, supplier }) {
-  console.log('productCard',id);
   const showModalState = useSelector((state) => state.showModal);
   const dispatch = useDispatch();
 
