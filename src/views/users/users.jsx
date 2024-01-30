@@ -55,7 +55,6 @@ export default function Users() {
             <tr>
               <th>Nombre Usuario</th>
               <th>Nombre</th>
-              <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Cargo</th>
@@ -73,7 +72,6 @@ export default function Users() {
                 >
                   <td>{user.NOMBRE}</td>
                   <td>{user.PERSONA.NOMBRE}{' '}{user.PERSONA.APELLIDO}</td>
-                  <td>{user.cuil}</td>
                   <td>{user.PERSONA.EMAIL}</td>
                   <td>{user.PERSONA.TELEFONO}</td>
                   <td>{user.TIPO_USUARIO.DESCRIPCION}</td>
@@ -81,7 +79,7 @@ export default function Users() {
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(user.id)}
+                      onClick={() => openModal(user.ID_USUARIO)}
                     >
                       Modificar
                     </Button>

@@ -8,9 +8,12 @@ import DropdownStatus from "../../../dropdown/dropdownStatus";
 
 export default function EditUserForm() {
   const users = useSelector((state) => state.users);
+  console.log(users);
   const userId = useSelector((state) => state.userId);
+  console.log(userId);
   const dispatch = useDispatch();
-  const selectedUser = users.find((element) => element.id === userId);
+  const selectedUser = users.find((element) => element.ID_USUARIO === userId);
+  console.log('selected',selectedUser);
 
   const [user, setUser] = useState(selectedUser);
 
@@ -55,9 +58,9 @@ export default function EditUserForm() {
           <input
             autoComplete="off"
             name="NOMBRE"
-            value={user.adress}
+            value={user.NOMBRE}
             onChange={handleChange}
-            placeholder={selectedUser.NOMBRE}
+            placeholder={user.NOMBRE}
             type="text"
           />
         </div>
