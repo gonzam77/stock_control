@@ -3,12 +3,16 @@ import styles from "../editForms.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import DropdownAccount from "../../../dropdown/dropdownAccount";
+import DropdownUbication from '../../../dropdown/dropdownUbication';
 
 export default function SupplierForm() {
 
   const dispatch = useDispatch();
   const suppliers = useSelector((state) => state.suppliers);
   const supplierId = useSelector((state) => state.supplierId);
+  const ubicaciones = useSelector(state => state.ubicaciones)
+  const accounts = useSelector(state => state.accounts)
 
   const selectedSupplier = suppliers.find(
     (element) => element.id === supplierId
@@ -33,8 +37,23 @@ export default function SupplierForm() {
       ...supplier,
       [target]: value
     })
+  };
 
-  }
+  const handleUbicationSelect = (selectedUbication) => {
+    const ubicacionId = ubicaciones.find(e => e.DIRECCION === selectedUbication).ID_UBICACION
+    setSupplier({
+      ...supplier,
+      ID_UBICACION: ubicacionId,
+    });
+  };
+
+  const handleaccountselect = (selectedAcount) => {
+    const acountId = accounts.find(e => e.DESCRIPCION === selectedAcount).ID_CUENTA
+    setSupplier({
+      ...supplier,
+      ID_CUENTA: acountId,
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -43,10 +62,10 @@ export default function SupplierForm() {
           <label>Razon Social</label>
           <input
             autoComplete="off"
-            name="razon_social"
-            value={supplier.razon_social}
+            name="RAZON_SOCIAL"
+            value={supplier.RAZON_SOCIAL}
             onChange={handleChange}
-            placeholder={selectedSupplier.razon_social}
+            placeholder={selectedSupplier.RAZON_SOCIAL}
             type="text"
           />
         </div>
@@ -54,10 +73,10 @@ export default function SupplierForm() {
           <label>Cuil</label>
           <input
             autoComplete="off"
-            name="cuil"
-            value={supplier.cuil}
+            name="CUIL"
+            value={supplier.CUIL}
             onChange={handleChange}
-            placeholder={selectedSupplier.cuil}
+            placeholder={selectedSupplier.CUIL}
             type="text"
           />
         </div>
@@ -65,10 +84,10 @@ export default function SupplierForm() {
           <label>Email</label>
           <input
             autoComplete="off"
-            name="email"
-            value={supplier.email}
+            name="EMAIL"
+            value={supplier.EMAIL}
             onChange={handleChange}
-            placeholder={selectedSupplier.email}
+            placeholder={selectedSupplier.EMAIL}
             type="text"
           />
         </div>
@@ -76,45 +95,18 @@ export default function SupplierForm() {
           <label>Telefono</label>
           <input
             autoComplete="off"
-            name="phone"
-            value={supplier.phone}
+            name="TELEFONO"
+            value={supplier.TELEFONO}
             onChange={handleChange}
-            placeholder={selectedSupplier.phone}
+            placeholder={selectedSupplier.TELEFONO}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Direccion</label>
-          <input
-            autoComplete="off"
-            name="adress"
-            value={supplier.adress}
-            onChange={handleChange}
-            placeholder={selectedSupplier.adress}
-            type="text"
-          />
+          <DropdownUbication onSelect={handleUbicationSelect}></DropdownUbication>
         </div>
         <div className={styles.divs}>
-          <label>Provincia</label>
-          <input
-            autoComplete="off"
-            name="province"
-            value={supplier.province}
-            onChange={handleChange}
-            placeholder={selectedSupplier.province}
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Localidad</label>
-          <input
-            autoComplete="off"
-            name="state"
-            value={supplier.adress}
-            onChange={handleChange}
-            placeholder={selectedSupplier.state}
-            type="text"
-          />
+          <DropdownAccount onSelect={handleaccountselect}></DropdownAccount>
         </div>
         <div class="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

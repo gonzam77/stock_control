@@ -19,6 +19,8 @@ export default function Users() {
     }
   }, [users]);
 
+
+
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getUserId(id));
@@ -63,6 +65,7 @@ export default function Users() {
           </thead>
           <tbody>
             {users?.map((user, index) => {
+
               return (
                 <tr
                   key={index}
@@ -74,7 +77,7 @@ export default function Users() {
                   <td>{user.PERSONA.EMAIL}</td>
                   <td>{user.PERSONA.TELEFONO}</td>
                   <td>{user.TIPO_USUARIO.DESCRIPCION}</td>
-                  <td>{user.ESTADO}</td>
+                  <td>{user.ESTADO === 1 ? 'Activo' : 'Inactivo'}</td>
                   <td>
                     <Button
                       variant="primary"

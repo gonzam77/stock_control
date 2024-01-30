@@ -2,10 +2,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function DropdownDeposit({ onSelect }) {
+
+function DropdownUbication({ onSelect }) {
   
   const [select, setSelect] = useState();
-  const deposits = useSelector(state => state.deposits);
+  const ubicaciones = useSelector(state => state.ubicaciones);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -15,14 +16,14 @@ export default function DropdownDeposit({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="primary" id="dropdown-basic">
-        {select ? select : "Deposito"}
+        {select ? select : "Ubicacion"}
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
-        {deposits.map((element, index) => {
+        <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
+        {ubicaciones.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.NOMBRE}>
-              {element.NOMBRE}
+            <Dropdown.Item key={index} eventKey={element.DIRECCION}>
+              {element.DIRECCION}{' '}{element.LOCALIDAD}{', '}{element.PROVINCIA}
             </Dropdown.Item>
           );
         })}
@@ -31,3 +32,4 @@ export default function DropdownDeposit({ onSelect }) {
   );
 }
 
+export default DropdownUbication;

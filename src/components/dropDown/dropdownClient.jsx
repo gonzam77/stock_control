@@ -6,6 +6,7 @@ export default function DropdownClient({ onSelect }) {
   
   const [select, setSelect] = useState();
   const clients = useSelector(state => state.clients);
+  const personas = useSelector(state => state.personas);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -20,9 +21,10 @@ export default function DropdownClient({ onSelect }) {
 
       <Dropdown.Menu>
         {clients.map((element, index) => {
+          const persona = personas.find(e=>e.ID_PERSONA === element.ID_PERSONA)
           return (
-            <Dropdown.Item key={index} eventKey={element.cuil}>
-              {element.first_name}{', '}{element.last_name}
+            <Dropdown.Item key={index} eventKey={element.CUIL}>
+              {persona.NOMBRE}{', '}{persona.APELLIDO}
             </Dropdown.Item>
           );
         })}

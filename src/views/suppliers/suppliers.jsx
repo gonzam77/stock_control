@@ -10,6 +10,8 @@ export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModalState = useSelector((state) => state.showCreateModal);
   const suppliers = useSelector((state) => state.suppliers);
+  const accounts = useSelector((state) => state.accounts);
+  const accountTypes = useSelector((state) => state.accountTypes);
   const supplierId = useSelector((state) => state.supplierId);
   const dispatch = useDispatch();
 
@@ -45,17 +47,22 @@ export default function Suppliers() {
               <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
+              <th>Cuenta</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
             {suppliers.map((supplier, index) => {
+              const account = accounts.find(e=>e.ID_CUENTA === supplier.ID_CUENTA)
+              const accountType = accountTypes.find(e=>e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+              console.log(accountType);
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{supplier.RAZON_SOCIAL}</td>
                   <td>{supplier.CUIL}</td>
                   <td>{supplier.EMAIL}</td>
                   <td>{supplier.TELEFONO}</td>
+                  <td>{accountType.DESCRIPCION}{' - '}{account.NUMERO}</td>
                   <td>
                     <Button
                       variant="primary"
