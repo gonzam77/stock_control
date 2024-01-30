@@ -6,20 +6,23 @@ import Table from "react-bootstrap/Table";
 import ModalEditProductForm from "../modals/editModals/modalEditProductForm/modalEditProductForm";
 import ModalCreateProductForm from "../modals/createModals/modalCreateProductForm/modalCreateProductForm";
 import * as actions from "../../redux/actions";
+import { useEffect } from "react";
 
 export default function Products() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
-  console.log(products);
   const suppliers = useSelector((state) => state.suppliers);
   const dispatch = useDispatch();
+  
+ 
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
   };
 
   const openModal = (id) => {
+    console.log(id);
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
   };
@@ -81,7 +84,7 @@ export default function Products() {
                   <td style={{ textAlign: 'center' }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(product.ID_PRODUCT)}
+                      onClick={() => openModal(product.ID_PRODUCTO)}
                     >
                       Modificar
                     </Button>

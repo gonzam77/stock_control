@@ -27,21 +27,34 @@ import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import * as actions from './redux/actions';
+
 const qs = require("qs");
 
 export const urlDev = "http://localhost:3000";
+export const backURL = 'http://localhost:4000'
+
+export const axiosConfig = {
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+};
 
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
 
-  const navigate = useNavigate();
+  useEffect(()=>{
+    dispatch(actions.getAllProducts());
+  },[])
 
-  const axiosConfig = {
-    withCredentials: true,
-  };
+  const navigate = useNavigate();
 
   async function login(userData) {
     const formEncodedData = qs.stringify(userData);
@@ -54,7 +67,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/signin",
+        `${backURL}/signin`,
         formEncodedData,
         config
       );
@@ -69,7 +82,7 @@ function App() {
   }
 
   const logout = async () => {
-    const response = await axios.get("http://localhost:4000/signout",axiosConfig);
+    const response = await axios.get(`${backURL}/signout`,axiosConfig);
     localStorage.clear();
     setAccess(false);
   };

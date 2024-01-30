@@ -13,7 +13,7 @@ toDate.setHours(23,59,59);
 export const ofertas = [
     {
         id: '1',
-        product_id: '1',
+        product_id: '55',
         discount: 20,
         code: '0001',
         create_date: createDate,
@@ -22,7 +22,7 @@ export const ofertas = [
     },
     {
         id: '2',
-        product_id: '3',
+        product_id: '59',
         discount: 15,
         code: '0003',
         create_date: createDate,

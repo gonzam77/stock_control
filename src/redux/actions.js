@@ -12,13 +12,7 @@ import {
 
 const URL = "http://localhost:4000";
 
-const axiosConfig = {
-  withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
-};
+import { axiosConfig } from "../App";
 
 export const addToCart = (data) => {
   return {
@@ -296,12 +290,6 @@ export const editClient = (data) => {
   };
 };
 
-export const editProduct = (data) => {
-  return {
-    type: "EDIT_PRODUCT",
-    payload: data,
-  };
-};
 
 export const showModal = () => ({
   type: "SHOW_MODAL",

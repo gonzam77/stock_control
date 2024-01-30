@@ -331,7 +331,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "EDIT_PRODUCT":
       const updatedProduct = payload;
       const updatedProducts = state.products.map((product) => {
-        if (product.id === updatedProduct.id) {
+        if (product.ID_PRODUCTO === updatedProduct.ID_PRODUCTO) {
           return updatedProduct;
         }
         return product;

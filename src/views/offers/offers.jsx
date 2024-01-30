@@ -59,18 +59,20 @@ export default function Offers() {
           <tbody>
             {offers.map((offer, index) => {
               const productInOffer = products.find(
-                (e) => offer.product_id == e.id
+                (e) => offer.product_id == e.ID_PRODUCTO
               );
+              console.log(products);
+              console.log(productInOffer);
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
-                  <td>{productInOffer?.code}</td>
-                  <td>{productInOffer?.name}</td>
+                  <td>{productInOffer?.CODIGO}</td>
+                  <td>{productInOffer?.NOMBRE}</td>
                   <td>
                     {"$ "}
-                    {productInOffer?.price}
+                    {productInOffer?.PRECIO_VENTA}
                   </td>
                   <td>
                     {offer.discount}
@@ -79,7 +81,7 @@ export default function Offers() {
                   <td>
                     {"$ "}
                     {Math.round(
-                      (1 - offer.discount / 100) * productInOffer?.price
+                      (1 - offer.discount / 100) * productInOffer?.PRECIO_VENTA
                     )}
                   </td>
                   <td>{formatDate(offer.create_date)}</td>
