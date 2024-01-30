@@ -1,9 +1,12 @@
 export const compras = [
     {
-        id:'1',
-        number:'1',
-        date:'22/11/2023',
-        total_mount:220000,
-        supplier:'1',
+        ID_COMPRA:'1',
+        NUMERO_COMPRA:'1',
+        FECHA_COMPRA:'22/11/2023',
+        TOTAL_COMPRA:220000,
+        SUBTOTAL_COMPRA,
+        DESCUENTO,
+        ID_USUARIO,
+        ID_PROVEEDOR:'1',
     }
 ]

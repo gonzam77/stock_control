@@ -1,18 +1,18 @@
 export const tipoCuenta = [
     {
-        id:'1',
-        description:'Cuenta Corriente'
+        ID_TIPO_CUENTA:'1',
+        DESCRIPCION:'Cuenta Corriente'
     },
     {
-        id:'2',
-        description:'Mercado Pago'
+        ID_TIPO_CUENTA:'2',
+        DESCRIPCION:'Mercado Pago'
     },
     {
-        id:'3',
-        description:'Caja Ahorro'
+        ID_TIPO_CUENTA:'3',
+        DESCRIPCION:'Caja Ahorro'
     },
     {
-        id:'4',
-        description:'Lemon'
+        ID_TIPO_CUENTA:'4',
+        DESCRIPCION:'Lemon'
     }
 ]
