@@ -1,14 +1,16 @@
 import { useState } from "react";
 import styles from "../createForms.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-
+import DropdownPersona from "../../../dropdown/dropdownPerson";
 
 
 export default function CreateDispatcherForm() {
   
   const dispatch = useDispatch();
+  const personas = useSelector((state) => state.personas);
+
   
   const [newDispatcher, setnewDispatcher] = useState({
     id:'',
@@ -36,117 +38,20 @@ export default function CreateDispatcherForm() {
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
   }
-  
-  function handleChange(event) {
-    const target = event.target.name;
-    const value = event.target.value;
-      setnewDispatcher({
-        ...newDispatcher,
-        [target]: value,
-      });
-    }
-  
+
+  function handlePersonaSelect(selectedPerson) {
+    const personId = personas.find((e) => e.DNI === selectedPerson).ID_PERSONA;
+    setnewDispatcher({
+      ...newDispatcher,
+      ID_PERSONA: personId,
+    });
+  }
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
-        <div className={styles.divs}>
-          <label>Nombre</label>
-          <input
-            autoComplete="off"
-            name="first_name"
-            value={newDispatcher.first_name}
-            onChange={handleChange}
-            placeholder="Nombre..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Apellido</label>
-          <input
-            autoComplete="off"
-            name="last_name"
-            value={newDispatcher.last_name}
-            onChange={handleChange}
-            placeholder="Apellido..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>CUIL</label>
-          <input
-            autoComplete="off"
-            name="cuil"
-            value={newDispatcher.cuil}
-            onChange={handleChange}
-            placeholder="cuil..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Razon Social</label>
-          <input
-            autoComplete="off"
-            name="razon_social"
-            value={newDispatcher.razon_social}
-            onChange={handleChange}
-            placeholder="Razon Social..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Direccion</label>
-          <input
-            autoComplete="off"
-            name="adress"
-            value={newDispatcher.adress}
-            onChange={handleChange}
-            placeholder="Barrio..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Email</label>
-          <input
-            autoComplete="off"
-            name="email"
-            value={newDispatcher.email}
-            onChange={handleChange}
-            placeholder="example@ejem.com.ar"
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Telefono</label>
-          <input
-            autoComplete="off"
-            name="phone"
-            value={newDispatcher.phone}
-            onChange={handleChange}
-            placeholder="266..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Provincia</label>
-          <input
-            autoComplete="off"
-            name="province"
-            value={newDispatcher.province}
-            onChange={handleChange}
-            placeholder="San Luis..."
-            type="date"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Localidad</label>
-          <input
-            autoComplete="off"
-            name="state"
-            value={newDispatcher.state}
-            onChange={handleChange}
-            placeholder="San Luis..."
-          />
+      <div className={styles.divs}>
+          <DropdownPersona onSelect={handlePersonaSelect}></DropdownPersona>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

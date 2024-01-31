@@ -15,7 +15,7 @@ function DropdownUbication({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Ubicacion"}
       </Dropdown.Toggle>
       <Dropdown.Menu>

@@ -1,6 +1,6 @@
 export const deposito = [
   {
-    ID_BODEGA: "1",
+    ID_BODEGA: 1,
     TIPO_BODEGA: "Local",
     NOMBRE: "Local 1",
     ADMINISTRADOR: "Roberto Bolaños",
@@ -10,7 +10,7 @@ export const deposito = [
    
   },
   {
-    ID_BODEGA: "2",
+    ID_BODEGA: 2,
     TIPO_BODEGA: "Deposito",
     NOMBRE: "Deposito 1",
     ADMINISTRADOR: "Miguelito",
@@ -19,7 +19,7 @@ export const deposito = [
     ID_UBICACION:2,
   },
   {
-    ID_BODEGA: "3",
+    ID_BODEGA: 3,
     TIPO_BODEGA: "Deposito",
     NOMBRE: "Deposito 2",
     ADMINISTRADOR: "Crlitos",

@@ -13,7 +13,7 @@ export default function DropdownPersona({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Persona"}
       </Dropdown.Toggle>
       <Dropdown.Menu>

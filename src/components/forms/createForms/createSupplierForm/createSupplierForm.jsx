@@ -40,11 +40,20 @@ export default function CreateProductForm() {
   };
 
   const handleUbicationSelect = (selectedUbication) => {
-    const ubicacionId = ubicaciones.find(e => e.DIRECCION === selectedUbication).ID_UBICACION
-    setNewSupplier({
-      ...newSupplier,
-      ID_UBICACION: ubicacionId,
-    });
+    if (selectedUbication !== "Desconocido" && selectedUbication) {
+      const ubicacionId = ubicaciones.find(
+        (e) => e.DIRECCION === selectedUbication
+      ).ID_UBICACION;
+      setNewSupplier({
+        ...newSupplier,
+        ID_UBICACION: ubicacionId,
+      });
+    } else {
+      setNewSupplier({
+        ...newSupplier,
+        ID_UBICACION: null,
+      });
+    }
   };
 
   const handleaccountselect = (selectedAcount) => {

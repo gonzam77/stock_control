@@ -11,7 +11,7 @@ function DropdownStatus({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="light" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Estado"}
       </Dropdown.Toggle>
       <Dropdown.Menu>

@@ -14,7 +14,7 @@ function DropdownRoles({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="light" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Tipo de Usuario"}
       </Dropdown.Toggle>
 

@@ -4,48 +4,64 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-
-
+import DropdownUbication from "../../../dropdown/dropdownUbication";
 
 export default function EditDepositForm() {
-  
-    const deposits = useSelector((state) => state.deposits);
-    const depositId = useSelector((state) => state.depositId);
-    const dispatch = useDispatch();
-    const selectedDeposit = deposits.find((element) => element.id === depositId);
-  
-    const [deposit, setdeposit] = useState(selectedDeposit);
-  
-    const cancelModal = () => {
-      dispatch(actions.hideModal());
-    }
-    
-    const closeModal = (event) => {
-      event.preventDefault();
-      dispatch(actions.editDeposit(deposit));
-      dispatch(actions.hideModal());
-    };
-  
-    function handleChange(event) {
-      const target = event.target.name;
-      const value = event.target.value;
+  const deposits = useSelector((state) => state.deposits);
+  const depositId = useSelector((state) => state.depositId);
+  const ubicaciones = useSelector((state) => state.ubicaciones);
+  const dispatch = useDispatch();
+  const selectedDeposit = deposits.find((element) => element.id === depositId);
+
+  const [deposit, setdeposit] = useState(selectedDeposit);
+
+  const cancelModal = () => {
+    dispatch(actions.hideModal());
+  };
+
+  const handleUbicationSelect = (selectedUbication) => {
+    if (selectedUbication !== "Desconocido" && selectedUbication) {
+      const ubicacionId = ubicaciones.find(
+        (e) => e.DIRECCION === selectedUbication
+      ).ID_UBICACION;
       setdeposit({
         ...deposit,
-        [target]:value
-      })
+        ID_UBICACION: ubicacionId,
+      });
+    } else {
+      setdeposit({
+        ...deposit,
+        ID_UBICACION: null,
+      });
     }
+  };
+
+  const closeModal = (event) => {
+    event.preventDefault();
+    dispatch(actions.editDeposit(deposit));
+    dispatch(actions.hideModal());
+  };
+
+  function handleChange(event) {
+    const target = event.target.name;
+    const value = event.target.value;
+    setdeposit({
+      ...deposit,
+      [target]: value,
+    });
+  }
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Tipo</label>
+          <label>Tipo de Bodega</label>
           <input
             autoComplete="off"
-            name="type"
-            value={deposit.type}
+            name="TIPO_BODEGA"
+            value={deposit.TIPO_BODEGA}
             onChange={handleChange}
-            placeholder={selectedDeposit.type}
+            placeholder={selectedDeposit.TIPO_BODEGA}
             type="text"
           />
         </div>
@@ -53,10 +69,10 @@ export default function EditDepositForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={deposit.name}
+            name="NOMBRE"
+            value={deposit.NOMBRE}
             onChange={handleChange}
-            placeholder={selectedDeposit.name}
+            placeholder={selectedDeposit.NOMBRE}
             type="text"
           />
         </div>
@@ -64,10 +80,10 @@ export default function EditDepositForm() {
           <label>Administrador</label>
           <input
             autoComplete="off"
-            name="admin"
-            value={deposit.admin}
+            name="ADMINISTRADOR"
+            value={deposit.ADMINISTRADOR}
             onChange={handleChange}
-            placeholder={selectedDeposit.admin}
+            placeholder={selectedDeposit.ADMINISTRADOR}
             type="text"
           />
         </div>
@@ -75,10 +91,10 @@ export default function EditDepositForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={deposit.description}
+            name="DESCRIPCION"
+            value={deposit.DESCRIPCION}
             onChange={handleChange}
-            placeholder={selectedDeposit.description}
+            placeholder={selectedDeposit.DESCRIPCION}
             type="text"
           />
         </div>
@@ -86,23 +102,17 @@ export default function EditDepositForm() {
           <label>Telefono</label>
           <input
             autoComplete="off"
-            name="phone"
-            value={deposit.phone}
+            name="TELEFONO"
+            value={deposit.TELEFONO}
             onChange={handleChange}
-            placeholder={selectedDeposit.phone}
+            placeholder={selectedDeposit.TELEFONO}
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Direccion</label>
-          <input
-            autoComplete="off"
-            name="adress"
-            value={deposit.adress}
-            onChange={handleChange}
-            placeholder={selectedDeposit.adress}
-            type="text"
-          />
+          <DropdownUbication
+            onSelect={handleUbicationSelect}
+          ></DropdownUbication>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
