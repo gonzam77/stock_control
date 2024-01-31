@@ -20,9 +20,9 @@ export default function DropdownAccount({ onSelect }) {
       <Dropdown.Menu>
         {accounts.map((account, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={account.id}>
+            <Dropdown.Item key={index} eventKey={account.DESCRIPCION}>
               {" "}
-              {account.description}{" "}
+              {account.DESCRIPCION}{" "}
             </Dropdown.Item>
           );
         })}

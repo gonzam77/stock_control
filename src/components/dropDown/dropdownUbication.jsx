@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 
-function DropdownSupplier({ onSelect }) {
+function DropdownUbication({ onSelect }) {
   
   const [select, setSelect] = useState();
-  const suppliers = useSelector(state => state.suppliers);
+  const ubicaciones = useSelector(state => state.ubicaciones);
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
@@ -16,14 +16,14 @@ function DropdownSupplier({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="primary" id="dropdown-basic">
-        {select ? select : "Proveedor"}
+        {select ? select : "Ubicacion"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
-        {suppliers.map((element, index) => {
+        {ubicaciones.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.RAZON_SOCIAL}>
-              {element.RAZON_SOCIAL}
+            <Dropdown.Item key={index} eventKey={element.DIRECCION}>
+              {element.DIRECCION}{' '}{element.LOCALIDAD}{', '}{element.PROVINCIA}
             </Dropdown.Item>
           );
         })}
@@ -32,4 +32,4 @@ function DropdownSupplier({ onSelect }) {
   );
 }
 
-export default DropdownSupplier;
+export default DropdownUbication;

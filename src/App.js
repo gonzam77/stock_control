@@ -1,6 +1,8 @@
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import "./App.css";
 import axios from "axios";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Inicio from "./views/inicio/inicio";
 import Login from "./views/login/login";
 import Nav from "./components/nav/nav";
@@ -26,8 +28,6 @@ import NewPurchase from "./views/newPurchase/newPurchase";
 import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import * as actions from './redux/actions';
 
 const qs = require("qs");
@@ -52,6 +52,7 @@ function App() {
 
   useEffect(()=>{
     dispatch(actions.getAllProducts());
+    dispatch(actions.getAllUsers());
   },[])
 
   const navigate = useNavigate();

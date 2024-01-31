@@ -11,12 +11,15 @@ export default function Users() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const users = useSelector((state) => state.users);
-  const userType = useSelector((state) => state.userType);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.getAllUsers());
-  }, []);
+    if (users.length === 0) {
+      dispatch(actions.getAllUsers());
+    }
+  }, [users]);
+
+
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -52,7 +55,6 @@ export default function Users() {
             <tr>
               <th>Nombre Usuario</th>
               <th>Nombre</th>
-              <th>Cuil</th>
               <th>Email</th>
               <th>Telefono</th>
               <th>Cargo</th>
@@ -62,6 +64,7 @@ export default function Users() {
           </thead>
           <tbody>
             {users?.map((user, index) => {
+
               return (
                 <tr
                   key={index}
@@ -69,15 +72,14 @@ export default function Users() {
                 >
                   <td>{user.NOMBRE}</td>
                   <td>{user.PERSONA.NOMBRE}{' '}{user.PERSONA.APELLIDO}</td>
-                  <td>{user.cuil}</td>
                   <td>{user.PERSONA.EMAIL}</td>
                   <td>{user.PERSONA.TELEFONO}</td>
                   <td>{user.TIPO_USUARIO.DESCRIPCION}</td>
-                  <td>{user.ESTADO}</td>
+                  <td>{user.ESTADO === 1 ? 'Activo' : 'Inactivo'}</td>
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(user.id)}
+                      onClick={() => openModal(user.ID_USUARIO)}
                     >
                       Modificar
                     </Button>

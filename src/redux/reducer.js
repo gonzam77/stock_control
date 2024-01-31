@@ -11,25 +11,22 @@ import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-import {
-  GET_ALL_USERS,
-  GET_ALL_PRODUCTS,
-  GET_PRODUCTS_BY_ID,
-  GET_ALL_CLIENTS,
-  GET_ALL_SUPPLIERS,
-  GET_ALL_SHIPPING,
-  GET_ALL_ORDERS,
-  GET_ALL_ACCOUNTS,
-} from "./actionTypes";
+import { persona } from '../assets/dataHardcodeoPersona';
+import { ubicacion } from '../assets/dataHardcodeoUbicacion';
+import { marca } from '../assets/dataHardcodeoMarca';
 
 const initialState = {
   products: [],
+  users: [],
+  cart: [],
+  orders: [],
+  brands:marca,
   clients: clientes,
   suppliers: suppliers,
   dispatchers: transportistas,
   deposits: deposito,
-  productById:'',
-  users: [],
+  productById: '',
+  personas: persona,
   roles: roles,
   mesures: medidas,
   categories: categorias,
@@ -39,22 +36,18 @@ const initialState = {
   accounts: cuentas,
   accountTypes: tipoCuenta,
   purchases: compras,
-  cart: [],
-  orders: [],
+  ubicaciones: ubicacion,
   accountTypeId: "",
-  productId: "",
   accountId: "",
   clientId: "",
   rolId: "",
-  userId: "",
   supplierId: "",
   showModal: false,
+  showCreateModal: false,
   showModalMesure: false,
   showModalAccount: false,
   showModalCategories: false,
   showModalAccountType: false,
-  showOfferModal: false,
-  showCreateModal: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -403,47 +396,28 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalAccountType: false,
       };
-    case GET_ALL_USERS:
+    case 'GET_ALL_USERS':
       return {
         ...state,
         users: payload,
       };
-    // case GET_ALL_ACCOUNTS:
-    //   return {
-    //     ...state,
-    //     accounts: payload,
-    //   };
-    // case GET_ALL_CLIENTS:
-    //   return {
-    //     ...state,
-    //     clients: payload,
-    //   };
-    // case GET_ALL_ORDERS:
-    //   return {
-    //     ...state,
-    //     orders: payload,
-    //   };
-    // case GET_ALL_SHIPPING:
-    //   return {
-    //     ...state,
-    //     shipping: payload,
-    //   };
-    // case GET_ALL_SUPPLIERS:
-    //   return {
-    //     ...state,
-    //     suppliers: payload,
-    //   };
     case 'CLEAN_PRODUCTS':
       return {
         ...state,
         products: payload,
       };
-    case GET_PRODUCTS_BY_ID:
+    case 'CLEAN_USERS':
+      return {
+        ...state,
+        users: payload,
+      };
+    //   };
+    case 'GET_PRODUCTS_BY_ID':
       return {
         ...state,
         productById: payload,
       };
-    case GET_ALL_PRODUCTS:
+    case 'GET_ALL_PRODUCTS':
       return {
         ...state,
         products: payload,

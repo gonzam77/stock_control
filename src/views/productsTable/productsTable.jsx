@@ -71,7 +71,7 @@ export default function Products() {
               suppliers.find(
                 (supplier) => (supplier.razon_social = product.supplier)
               );
-              const mesure = mesures.map((e) => e.id === product.UNIDAD_MEDIDA);
+              const mesure = mesures.find((e) => e.ID_UNIDAD_MEDIDA === product.ID_UNIDAD_MEDIDA);
               return (
                 <tr
                   key={index}
@@ -87,7 +87,7 @@ export default function Products() {
                     {product.PRECIO_VENTA}
                   </td>
                   <td></td>
-                  <td>{mesure}</td>
+                  <td>{mesure.NOMBRE}</td>
                   <td>{product.CANT_MIN}</td>
                   <td>{product.CANT_MAX}</td>
                   <td style={{ textAlign: "center" }}>

@@ -6,8 +6,8 @@ export const ubicacion = [
         LOCALIDAD: 'San Luis',
         CODIGO_POSTAL: '5700',
         DIRECCION: 'Barrio 1 calle 1',
-        LATITUD,
-        LONGITUD
+        LATITUD:null,
+        LONGITUD:null
     },
     {
         ID_UBICACION: 2,
@@ -16,8 +16,8 @@ export const ubicacion = [
         LOCALIDAD: 'El Trapiche',
         CODIGO_POSTAL: '5700',
         DIRECCION: 'Barrio 1 calle 1',
-        LATITUD,
-        LONGITUD
+        LATITUD:null,
+        LONGITUD:null
     },
     {
         ID_UBICACION: 3,
@@ -26,7 +26,7 @@ export const ubicacion = [
         LOCALIDAD: 'Juana Koslay',
         CODIGO_POSTAL: '5700',
         DIRECCION: 'Barrio 1 calle 1',
-        LATITUD,
-        LONGITUD
+        LATITUD:null,
+        LONGITUD:null
     }
 ]
