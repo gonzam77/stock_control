@@ -10,19 +10,20 @@ import { useEffect } from "react";
 export default function ProductDetail() {
   const { id } = useParams();
   const productId = parseInt(id);
-
   const dispatch = useDispatch();
   const showModalState = useSelector((state) => state.showCreateModal);
   const productById = useSelector((state) => state.productById);
 
+  useEffect(() => {
+    if (!productById) {
+      dispatch(actions.getProductById(productId));
+    }
+  }, [productById]);
+
+
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
   };
-
-  dispatch(actions.getProductById(productId));
-  
-  useEffect(() => {
-  }, [productById]);
 
   return (
     <div className={styles.container}>
@@ -42,17 +43,17 @@ export default function ProductDetail() {
       </div>
       <div className={styles.card}>
         <CardDetail
-          id={productById.ID_PRODUCTO}
-          code={productById.CODIGO}
-          name={productById.NOMBRE}
-          image={productById.IMAGEN}
-          price={productById.PRECIO_VENTA}
-          cant_min={productById.CANT_MIN}
-          cant_max={productById.CANT_MAX}
-          proveedor={productById.PROVEEDOR.RAZON_SOCIAL}
-          fecha_alta={productById.FECHA_ALTA}
-          fecha_vto={productById.FECHA_CADUCIDAD}
-          description={productById.DESCRIPCION}
+          id={productById?.ID_PRODUCTO}
+          code={productById?.CODIGO}
+          name={productById?.NOMBRE}
+          price={productById?.PRECIO_VENTA}
+          cant_min={productById?.CANT_MIN}
+          cant_max={productById?.CANT_MAX}
+          proveedor={productById?.PROVEEDOR.RAZON_SOCIAL}
+          ID_UNIDAD_MEDIDA= {productById?.ID_UNIDAD_MEDIDA}
+          fecha_alta={productById?.FECHA_ALTA}
+          fecha_vto={productById?.FECHA_CADUCIDAD}
+          description={productById?.DESCRIPCION}
         ></CardDetail>
       </div>
       {showModalState && <ModalCreateProductForm />}

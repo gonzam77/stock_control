@@ -9,7 +9,6 @@ function CardDetail({
   name,
   code,
   id,
-  unidad_medida,
   cant_min,
   cant_max,
   price,
@@ -17,10 +16,13 @@ function CardDetail({
   proveedor,
   description,
   brand,
+  ID_UNIDAD_MEDIDA
 }) 
 {
   const showModalState = useSelector(state => state.showModal);
   const dispatch = useDispatch();
+  const mesures = useSelector(state => state.mesures);
+  const mesure = mesures.find(e=>e.ID_UNIDAD_MEDIDA === ID_UNIDAD_MEDIDA)
   
   const closeModal = () => {
     dispatch(actions.hideModal());
@@ -46,7 +48,7 @@ function CardDetail({
           <Card.Text>Cant Min: {cant_min}</Card.Text>
           <Card.Text>Cant Max {cant_max}</Card.Text>
           <Card.Text>Proveedor: {proveedor}</Card.Text>
-          <Card.Text>unidad_medida: {unidad_medida}</Card.Text>
+          <Card.Text>Unidad Medida: {mesure?.NOMBRE}</Card.Text>
           <Card.Text>{description}</Card.Text>
         </Card.Body>
         <Card.Footer>
