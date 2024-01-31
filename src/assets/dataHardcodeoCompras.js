@@ -7,6 +7,6 @@ export const compras = [
         SUBTOTAL_COMPRA:null,
         DESCUENTO:null,
         ID_USUARIO:null,
-        ID_PROVEEDOR:'1',
+        ID_PROVEEDOR:1,
     }
 ]
