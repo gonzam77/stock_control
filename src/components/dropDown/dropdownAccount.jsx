@@ -18,7 +18,7 @@ export default function DropdownAccount({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {accounts.map((account, index) => {
+        {accounts?.map((account, index) => {
           return (
             <Dropdown.Item key={index} eventKey={account.DESCRIPCION}>
               {" "}

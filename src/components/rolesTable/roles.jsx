@@ -48,7 +48,7 @@ export default function Roles() {
             </tr>
           </thead>
           <tbody>
-            {roles.map((rol, index) => {
+            {roles?.map((rol, index) => {
               return (
                 <tr key={index}>
                   <td>{rol.NOMBRE}</td>

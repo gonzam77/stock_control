@@ -49,7 +49,7 @@ export default function Account() {
             </tr>
           </thead>
           <tbody>
-            {accounts.map((account, index) => {
+            {accounts?.map((account, index) => {
                 const accountType = accountTypes.find(e => e.id === account.account_type)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>

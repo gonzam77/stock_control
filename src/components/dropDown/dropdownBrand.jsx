@@ -19,7 +19,7 @@ export default function DropdownBrands({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {brands.map((element, index) => {
+        {brands?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE}

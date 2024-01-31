@@ -45,7 +45,7 @@ export default function Categories() {
             </tr>
           </thead>
           <tbody>
-            {categories.map((category, index) => {
+            {categories?.map((category, index) => {
               return (
                 <tr key={index}>
                   <td>{category.name}</td>

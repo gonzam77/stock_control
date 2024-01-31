@@ -19,7 +19,7 @@ export default function DropdownAccountType({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {accountTypes.map((element, index) => {
+        {accountTypes?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.id}>
               {element.description}

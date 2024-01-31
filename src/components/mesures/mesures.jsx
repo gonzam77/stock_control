@@ -47,7 +47,7 @@ export default function Mesures() {
             </tr>
           </thead>
           <tbody>
-            {mesures.map((mesure, index) => {
+            {mesures?.map((mesure, index) => {
               return (
                 <tr key={index}>
                   <td>{mesure.name}</td>

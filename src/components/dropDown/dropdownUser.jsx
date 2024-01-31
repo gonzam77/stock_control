@@ -19,7 +19,7 @@ export default function DropdownUser({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {users.map((element, index) => {
+        {users?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.cuil}>
               {element.first_name}{', '}{element.last_name}

@@ -19,7 +19,7 @@ export default function DropdownPayType({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {payTypes.map((element, index) => {
+        {payTypes?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.name}>
               {element.name}

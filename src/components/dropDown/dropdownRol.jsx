@@ -20,7 +20,7 @@ function DropdownRoles({ onSelect }) {
 
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'No asignado'}>No asignado</Dropdown.Item>
-        {roles.map((element, index) => {
+        {roles?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.name}>
               {element.DESCRIPCION}

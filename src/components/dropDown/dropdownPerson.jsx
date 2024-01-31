@@ -2,12 +2,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function DropdownClient({ onSelect }) {
-  
+export default function DropdownPersona({ onSelect }) {
   const [select, setSelect] = useState();
-  const clients = useSelector(state => state.clients);
-  const personas = useSelector(state => state.personas);
-  
+  const personas = useSelector((state) => state.personas);
+
   function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
@@ -16,15 +14,13 @@ export default function DropdownClient({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="primary" id="dropdown-basic">
-        {select ? select : "Cliente"}
+        {select ? select : "Persona"}
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
-        {clients?.map((element, index) => {
-          const persona = personas.find(e=>e.ID_PERSONA === element.ID_PERSONA)
+        {personas?.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.CUIL}>
-              {persona.NOMBRE}{', '}{persona.APELLIDO}
+            <Dropdown.Item key={index} eventKey={element.DNI}>
+              {element.NOMBRE} {element.APELLIDO}
             </Dropdown.Item>
           );
         })}
@@ -32,4 +28,3 @@ export default function DropdownClient({ onSelect }) {
     </Dropdown>
   );
 }
-

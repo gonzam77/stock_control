@@ -18,7 +18,7 @@ export default function DropdownMesures({ onSelect }) {
         {select ? select : "Unidad de Medida"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {mesures.map((element, index) => {
+        {mesures?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE}

@@ -28,7 +28,7 @@ export default function PaginateNative({ productsPerPage, products, paginate, cu
                     null
             }
             {pageNumbers &&
-                pageNumbers.map((number, index) => {
+                pageNumbers?.map((number, index) => {
                     return (
                         <button key={index} className={styles.paginate} onClick={() => paginate(number)}>{number}</button>
                     )

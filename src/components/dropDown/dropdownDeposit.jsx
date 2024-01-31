@@ -19,7 +19,7 @@ export default function DropdownDeposit({ onSelect }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {deposits.map((element, index) => {
+        {deposits?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE}
