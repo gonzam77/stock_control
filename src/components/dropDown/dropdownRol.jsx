@@ -14,13 +14,13 @@ function DropdownRoles({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="light" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Tipo de Usuario"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'No asignado'}>No asignado</Dropdown.Item>
-        {roles.map((element, index) => {
+        {roles?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.name}>
               {element.DESCRIPCION}

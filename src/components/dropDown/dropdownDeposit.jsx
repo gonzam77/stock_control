@@ -14,12 +14,12 @@ export default function DropdownDeposit({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Deposito"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {deposits.map((element, index) => {
+        {deposits?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE}

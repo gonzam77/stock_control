@@ -166,8 +166,8 @@ export default function NewSettingForm() {
             </thead>
             <tbody>
               {newSetting.items[0] &&
-                newSetting.items.map((item, index) => {
-                  const product = products.find((e) => e.CODIGO === item.code);
+                newSetting?.items?.map((item, index) => {
+                  const product = products?.find((e) => e.CODIGO === item.code);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>

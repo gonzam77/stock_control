@@ -40,11 +40,20 @@ export default function SupplierForm() {
   };
 
   const handleUbicationSelect = (selectedUbication) => {
-    const ubicacionId = ubicaciones.find(e => e.DIRECCION === selectedUbication).ID_UBICACION
-    setSupplier({
-      ...supplier,
-      ID_UBICACION: ubicacionId,
-    });
+    if (selectedUbication !== "Desconocido" && selectedUbication) {
+      const ubicacionId = ubicaciones.find(
+        (e) => e.DIRECCION === selectedUbication
+      ).ID_UBICACION;
+      setSupplier({
+        ...supplier,
+        ID_UBICACION: ubicacionId,
+      });
+    } else {
+      setSupplier({
+        ...supplier,
+        ID_UBICACION: null,
+      });
+    }
   };
 
   const handleaccountselect = (selectedAcount) => {

@@ -50,6 +50,7 @@ function App() {
     localStorage.getItem("token") ? true : false
   );
 
+
   useEffect(()=>{
     dispatch(actions.getAllProducts());
     dispatch(actions.getAllUsers());

@@ -14,12 +14,12 @@ export default function DropdownBrands({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Marca"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {brands.map((element, index) => {
+        {brands?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE}

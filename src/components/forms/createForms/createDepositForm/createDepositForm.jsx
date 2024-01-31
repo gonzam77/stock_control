@@ -1,14 +1,15 @@
 import { useState } from "react";
 import styles from "../createForms.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-
+import DropdownUbication from "../../../dropdown/dropdownUbication";
 
 
 export default function CreateDepositForm() {
   
   const dispatch = useDispatch();
+  const ubicaciones = useSelector(state => state.ubicaciones);
   
   const [newDeposit, setNewDeposit] = useState({
     id:'',
@@ -32,6 +33,23 @@ export default function CreateDepositForm() {
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
   }
+
+  const handleUbicationSelect = (selectedUbication) => {
+    if (selectedUbication !== "Desconocido" && selectedUbication) {
+      const ubicacionId = ubicaciones.find(
+        (e) => e.DIRECCION === selectedUbication
+      ).ID_UBICACION;
+      setNewDeposit({
+        ...newDeposit,
+        ID_UBICACION: ubicacionId,
+      });
+    } else {
+      setNewDeposit({
+        ...newDeposit,
+        ID_UBICACION: null,
+      });
+    }
+  };
   
   function handleChange(event) {
     const target = event.target.name;
@@ -111,6 +129,11 @@ export default function CreateDepositForm() {
             placeholder="Barrio..."
             type="text"
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownUbication
+            onSelect={handleUbicationSelect}
+          ></DropdownUbication>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

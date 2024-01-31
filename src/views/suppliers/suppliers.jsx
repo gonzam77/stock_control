@@ -53,16 +53,15 @@ export default function Suppliers() {
           </thead>
           <tbody>
             {suppliers.map((supplier, index) => {
-              const account = accounts.find(e=>e.ID_CUENTA === supplier.ID_CUENTA)
-              const accountType = accountTypes.find(e=>e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
-              console.log(accountType);
+              const account = accounts?.find(e=>e.ID_CUENTA === supplier.ID_CUENTA)
+              const accountType = accountTypes?.find(e=>e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{supplier.RAZON_SOCIAL}</td>
                   <td>{supplier.CUIL}</td>
                   <td>{supplier.EMAIL}</td>
                   <td>{supplier.TELEFONO}</td>
-                  <td>{accountType.DESCRIPCION}{' - '}{account.NUMERO}</td>
+                  <td>{accountType?.DESCRIPCION}{' - '}{account?.NUMERO}</td>
                   <td>
                     <Button
                       variant="primary"

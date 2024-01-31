@@ -15,12 +15,12 @@ function DropdownSupplier({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Proveedor"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
-        {suppliers.map((element, index) => {
+        {suppliers?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.RAZON_SOCIAL}>
               {element.RAZON_SOCIAL}

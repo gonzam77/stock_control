@@ -11,6 +11,7 @@ export default function Roles() {
   const showModal = useSelector((state) => state.showModal);
 
   const roles = useSelector((state) => state.roles);
+  const tipoUsuario = useSelector((state) => state.userType);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -47,11 +48,11 @@ export default function Roles() {
             </tr>
           </thead>
           <tbody>
-            {roles.map((rol, index) => {
+            {roles?.map((rol, index) => {
               return (
                 <tr key={index}>
-                  <td>{rol.name}</td>
-                  <td>{rol.description}</td>
+                  <td>{rol.NOMBRE}</td>
+                  <td>{rol.DESCRIPCION}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(rol.id)}>
                       Modificar

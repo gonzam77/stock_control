@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import ClientForm from "../../../../components/forms/editForms/editClientForm/editClientForm";
+import EditClientForm from "../../../../components/forms/editForms/editClientForm/editClientForm";
 
 function ModalEditClientForm() {
   return (
@@ -9,7 +9,7 @@ function ModalEditClientForm() {
           <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ClientForm />
+          <EditClientForm />
         </Modal.Body>
       </Modal.Dialog>
     </div>

@@ -14,12 +14,12 @@ export default function DropdownPayType({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Metodo de Pago"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {payTypes.map((element, index) => {
+        {payTypes?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.name}>
               {element.name}

@@ -14,12 +14,12 @@ export default function DropdownAccountType({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Tipo de Cuenta"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {accountTypes.map((element, index) => {
+        {accountTypes?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.id}>
               {element.description}

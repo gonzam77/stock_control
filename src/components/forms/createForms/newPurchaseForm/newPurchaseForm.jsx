@@ -222,8 +222,8 @@ export default function NewPurchaseForm() {
                         <tbody>
                             {
                                 newPurchase.items[0] &&
-                                newPurchase.items.map((item, index) => {
-                                   const product = products.find(e=>e.code===item.code)
+                                newPurchase.items?.map((item, index) => {
+                                   const product = products?.find(e=>e.code===item.code)
                                     return (
                                         <tr key={index} style={{ textAlign: 'center' }}>
                                             <td>

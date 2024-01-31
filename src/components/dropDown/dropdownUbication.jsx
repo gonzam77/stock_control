@@ -15,12 +15,12 @@ function DropdownUbication({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Ubicacion"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
-        {ubicaciones.map((element, index) => {
+        {ubicaciones?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.DIRECCION}>
               {element.DIRECCION}{' '}{element.LOCALIDAD}{', '}{element.PROVINCIA}

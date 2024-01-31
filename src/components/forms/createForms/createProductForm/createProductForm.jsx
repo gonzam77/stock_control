@@ -3,15 +3,15 @@ import styles from "../createForms.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
-import Dropdown from '../../../dropdown/dropdownSupplier';
+import Dropdown from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-  const brands = useSelector(state => state.brands)
-  const mesures = useSelector(state => state.mesures)
-  const suppliers = useSelector(state => state.suppliers)
+  const brands = useSelector((state) => state.brands);
+  const mesures = useSelector((state) => state.mesures);
+  const suppliers = useSelector((state) => state.suppliers);
   const [newProduct, setNewProduct] = useState({
     NOMBRE: null,
     CODIGO: null,
@@ -32,26 +32,44 @@ export default function CreateProductForm() {
 
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
-  }
+  };
 
   const handleSupplierSelect = (selectedSupplier) => {
-    const supplierId = suppliers.find(e => e.RAZON_SOCIAL === selectedSupplier).ID_MARCA
-    setNewProduct({
-      ...newProduct,
-      ID_PROVEEDOR: supplierId,
-    });
+    if (selectedSupplier && selectedSupplier !== "Desconocido") {
+      const supplierId = suppliers.find(
+        (e) => e.RAZON_SOCIAL === selectedSupplier
+      ).ID_MARCA;
+      setNewProduct({
+        ...newProduct,
+        ID_PROVEEDOR: supplierId,
+      });
+    } else {
+      setNewProduct({
+        ...newProduct,
+        ID_PROVEEDOR: null,
+      });
+    }
   };
 
   const handleBrandSelect = (selectedBrand) => {
-    const brandId = brands.find(e => e.NOMBRE === selectedBrand).ID_MARCA
-    setNewProduct({
-      ...newProduct,
-      ID_MARCA: brandId,
-    });
+    if(selectedBrand && selectedBrand !== 'Otro') {
+      const brandId = brands.find((e) => e.NOMBRE === selectedBrand).ID_MARCA;
+      setNewProduct({
+        ...newProduct,
+        ID_MARCA: brandId,
+      });
+    } else {
+      setNewProduct({
+        ...newProduct,
+        ID_MARCA: null,
+      });
+    }
   };
 
   const handleMesureSelect = (selectedMesure) => {
-    const mesureId = mesures.find(e => e.NOMBRE === selectedMesure).ID_UNIDAD_MEDIDA
+    const mesureId = mesures.find(
+      (e) => e.NOMBRE === selectedMesure
+    ).ID_UNIDAD_MEDIDA;
     setNewProduct({
       ...newProduct,
       ID_UNIDAD_MEDIDA: mesureId,
@@ -61,19 +79,17 @@ export default function CreateProductForm() {
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    if (target !== "UNIDAD_MEDIDA" && target !== 'category') {
-      setNewProduct({
-        ...newProduct,
-        [target]: value,
-      });
-    }
+    setNewProduct({
+      ...newProduct,
+      [target]: value,
+    });
   }
 
   return (
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Codigo</label>
+          <label>*Codigo</label>
           <input
             autoComplete="off"
             name="CODIGO"
@@ -84,7 +100,7 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Nombre</label>
+          <label>*Nombre</label>
           <input
             autoComplete="off"
             name="NOMBRE"
@@ -117,7 +133,7 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <label>Precio</label>
+          <label>*Precio</label>
           <input
             autoComplete="off"
             name="PRECIO_VENTA"
@@ -130,10 +146,16 @@ export default function CreateProductForm() {
         <div className={styles.divs}>
           <DropdownMesures onSelect={handleMesureSelect} />
         </div>
-        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
+        <div
+          className={styles.divs}
+          style={{ textAlign: "center", verticalAlign: "middle" }}
+        >
           <DropdownBrands onSelect={handleBrandSelect}></DropdownBrands>
         </div>
-        <div className={styles.divs} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
+        <div
+          className={styles.divs}
+          style={{ textAlign: "center", verticalAlign: "middle" }}
+        >
           <Dropdown onSelect={handleSupplierSelect}></Dropdown>
         </div>
 

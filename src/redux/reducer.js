@@ -25,7 +25,7 @@ const initialState = {
   suppliers: suppliers,
   dispatchers: transportistas,
   deposits: deposito,
-  productById: '',
+  productById: null,
   personas: persona,
   roles: roles,
   mesures: medidas,
@@ -52,6 +52,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_PRODUCT_BY_ID":
+      return {
+        ...state,
+        productById: payload
+      };
     case "ADD_TO_CART":
       return {
         ...state,
@@ -194,7 +199,7 @@ export default function reducer(state = initialState, { type, payload }) {
       };
     case "EDIT_ACCOUNT_TYPE":
       const updatedAccountType = payload;
-      const updatedAccountTypes = state.accountTypes.map((accountType) => {
+      const updatedAccountTypes = state.accountTypes?.map((accountType) => {
         if (accountType.id === updatedAccountType.id) {
           return updatedAccountType;
         }
@@ -207,7 +212,7 @@ export default function reducer(state = initialState, { type, payload }) {
       };
     case "EDIT_ACCOUNT":
       const updatedAccount = payload;
-      const updatedAccounts = state.accounts.map((account) => {
+      const updatedAccounts = state.accounts?.map((account) => {
         if (account.id === updatedAccount.id) {
           return updatedAccount;
         }
@@ -219,7 +224,7 @@ export default function reducer(state = initialState, { type, payload }) {
       };
     case "EDIT_OFFER":
       const updatedOffer = payload;
-      const updatedOffers = state.offers.map((offer) => {
+      const updatedOffers = state.offers?.map((offer) => {
         if (offer.id === updatedOffer.id) {
           return updatedOffer;
         }
@@ -232,7 +237,7 @@ export default function reducer(state = initialState, { type, payload }) {
       };
     case "EDIT_CATEGORY":
       const updatedCategory = payload;
-      const updatedCategories = state.categories.map((category) => {
+      const updatedCategories = state.categories?.map((category) => {
         if (category.id === updatedCategory.id) {
           return updatedCategory;
         }
@@ -405,17 +410,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         products: payload,
+        productById:null
       };
     case 'CLEAN_USERS':
       return {
         ...state,
         users: payload,
-      };
-    //   };
-    case 'GET_PRODUCTS_BY_ID':
-      return {
-        ...state,
-        productById: payload,
       };
     case 'GET_ALL_PRODUCTS':
       return {

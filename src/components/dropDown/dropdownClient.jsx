@@ -15,12 +15,12 @@ export default function DropdownClient({ onSelect }) {
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="primary" id="dropdown-basic">
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         {select ? select : "Cliente"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {clients.map((element, index) => {
+        {clients?.map((element, index) => {
           const persona = personas.find(e=>e.ID_PERSONA === element.ID_PERSONA)
           return (
             <Dropdown.Item key={index} eventKey={element.CUIL}>

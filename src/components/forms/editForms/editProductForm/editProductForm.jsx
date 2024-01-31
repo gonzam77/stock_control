@@ -14,7 +14,6 @@ export default function EditProductForm() {
   const dispatch = useDispatch();
   const brands = useSelector(state => state.brands);
   const mesures = useSelector(state => state.mesures);
-  const suppliers = useSelector(state => state.suppliers);
 
   const selectedProduct = products.find(
     (element) => element.ID_PRODUCTO === productId
@@ -38,7 +37,6 @@ export default function EditProductForm() {
       "http://localhost:4000/producto/update",
       data
     );
-    console.log(response);
   };
 
   function handleChange(event) {

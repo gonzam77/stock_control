@@ -4,23 +4,48 @@ import { backURL } from "../App";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
-    const response = await axios(`${backURL}/usuarios`, axiosConfig);
-    const data = response.data;
-    return dispatch({
-      type: 'GET_ALL_USERS',
-      payload: data.Data,
-    });
+    try {
+      const response = await axios(`${backURL}/usuarios`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_USERS',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
+export const getProductById = (id) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/producto/id/?id=${id}`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_PRODUCT_BY_ID',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
 export const getAllProducts = () => {
   return async function (dispatch) {
-    const response = await axios(`${backURL}/productos`, axiosConfig);
-    const data = response.data;
-    return dispatch({
-      type: 'GET_ALL_PRODUCTS',
-      payload: data.Data,
-    });
+    try {
+      const response = await axios(`${backURL}/productos`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_PRODUCTS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -39,20 +64,6 @@ export const cleanProducts = () => {
       payload: [],
     });
   }
-};
-
-export const getProductById = (id) => {
-  return async function (dispatch) {
-    const response = await axios(
-      `${backURL}/producto/id/?id=${id}`,
-      axiosConfig
-    );
-    const data = response.data;
-    return dispatch({
-      type: 'GET_PRODUCTS_BY_ID',
-      payload: data.Data,
-    });
-  };
 };
 
 export const addToCart = (data) => {

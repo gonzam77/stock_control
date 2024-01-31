@@ -45,7 +45,7 @@ export default function AccountTypes() {
             </tr>
           </thead>
           <tbody>
-            {accountTypes.map((account, index) => {
+            {accountTypes?.map((account, index) => {
               return (
                 <tr key={index}>
                   <td>{account.description}</td>

@@ -171,9 +171,9 @@ export default function NewTransferForm() {
               </tr>
             </thead>
             <tbody>
-              {newTransfer.items[0] &&
-                newTransfer.items.map((item, index) => {
-                  const product = products.find((e) => e.code === item.code);
+              {newTransfer?.items[0] &&
+                newTransfer?.items?.map((item, index) => {
+                  const product = products?.find((e) => e.code === item.code);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>

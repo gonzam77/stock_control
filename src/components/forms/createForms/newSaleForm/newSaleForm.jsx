@@ -233,7 +233,7 @@ export default function NewSaleForm() {
             </thead>
             <tbody>
               {newSale.items[0] &&
-                newSale.items.map((item, index) => {
+                newSale.items?.map((item, index) => {
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
