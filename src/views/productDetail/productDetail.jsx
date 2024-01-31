@@ -16,6 +16,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     if (!productById) {
+      dispatch(actions.getAllProducts());
       dispatch(actions.getProductById(productId));
     }
   }, [productById]);

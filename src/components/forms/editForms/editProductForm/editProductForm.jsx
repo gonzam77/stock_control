@@ -7,7 +7,6 @@ import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
 
 export default function EditProductForm() {
   const products = useSelector((state) => state.products);

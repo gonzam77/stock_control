@@ -24,11 +24,9 @@ function CardDetail({
   const mesures = useSelector(state => state.mesures);
   const mesure = mesures.find(e=>e.ID_UNIDAD_MEDIDA === ID_UNIDAD_MEDIDA)
   
-  const closeModal = () => {
-    dispatch(actions.hideModal());
-  };
 
   const openModal = (id) => {
+    console.log('id',id);
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
 
@@ -60,7 +58,7 @@ function CardDetail({
             </Button>
         </Card.Footer>
       </Card>
-      {showModalState && <ModalEditProductForm closeModal={closeModal} />}
+      {showModalState && <ModalEditProductForm />}
     </div>
   );
 }
