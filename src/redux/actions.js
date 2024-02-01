@@ -33,6 +33,22 @@ export const getProductById = (id) => {
   };
 };
 
+export const getAllSuppliers = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/proveedores`, axiosConfig);
+      const data = response.data;
+      console.log();
+      return dispatch({
+        type: 'GET_ALL_SUPPPLIERS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllProducts = () => {
   return async function (dispatch) {
     try {

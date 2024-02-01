@@ -11,14 +11,13 @@ export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const offers = useSelector((state) => state.offers);
-  console.log("ofertas", offers);
   const date = new Date();
 
   const products = useSelector((state) => state.products);
-  console.log('productos',products);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
+    console.log('id',id);
     dispatch(actions.showModal());
     dispatch(actions.getOfferId(id));
   };
@@ -60,11 +59,9 @@ export default function Offers() {
           </thead>
           <tbody>
             {offers?.map((offer, index) => {
-              console.log('offer.id_producto', offer.ID_PRODUCTO);
               const productInOffer = products.find(
                 (e) => offer.ID_PRODUCTO === e.ID_PRODUCTO
               );
-              console.log("producto en oferta", productInOffer);
               return (
                 <tr
                   key={index}
@@ -82,9 +79,9 @@ export default function Offers() {
                   </td>
                   <td>
                     {"$ "}
-                    {Math.round(
+                    {Number(
                       (1 - offer.DESCUENTO / 100) * productInOffer?.PRECIO_VENTA
-                    )}
+                    ).toFixed(2)}
                   </td>
                   <td>{formatDate(offer.FECHA_CREACION)}</td>
                   <td

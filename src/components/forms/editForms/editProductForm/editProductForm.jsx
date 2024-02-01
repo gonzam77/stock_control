@@ -65,6 +65,7 @@ export default function EditProductForm() {
   };
 
   const handleSupplierSelect = (selectedSupplier) => {
+    console.log(selectedSupplier);
     setProduct({
       ...product,
       ID_PROVEEDOR: selectedSupplier,

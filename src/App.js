@@ -54,6 +54,7 @@ function App() {
   useEffect(()=>{
     dispatch(actions.getAllProducts());
     dispatch(actions.getAllUsers());
+    dispatch(actions.getAllSuppliers());
   },[])
 
   const navigate = useNavigate();

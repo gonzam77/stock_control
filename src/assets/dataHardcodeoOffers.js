@@ -12,8 +12,8 @@ toDate.setHours(23,59,59);
 
 export const ofertas = [
     {
-        ID_OFERTA: '1',
-        ID_PRDUCTO: 20,
+        ID_OFERTA: 1,
+        ID_PRODUCTO: 20,
         DESCUENTO: 20,
         CODIGO: '0001',
         FECHA_CREACION: createDate,
@@ -21,8 +21,8 @@ export const ofertas = [
         FECHA_HASTA: toDate
     },
     {
-        ID_OFERTA: '2',
-        ID_PRDUCTO: 22,
+        ID_OFERTA: 2,
+        ID_PRODUCTO: 22,
         DESCUENTO: 15,
         CODIGO: '0003',
         FECHA_CREACION: createDate,
