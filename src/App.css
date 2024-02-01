@@ -35,3 +35,29 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* Default font size for html */
+html {
+  font-size: 0.5rem;
+}
+
+/* Media query for small screens and up */
+@media (min-width: 576px) {
+  html {
+    font-size: 0.6rem;
+  }
+}
+
+/* Media query for medium screens and up */
+@media (min-width: 768px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+/* Media query for large screens and up */
+@media (min-width: 992px) {
+  html {
+    font-size: 1rem;
+  }
+}

@@ -1,5 +1,4 @@
 import { clientes } from "../assets/dataHardcodeoClients";
-import { suppliers } from "../assets/dataHardcodeoSuppliers";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
@@ -22,7 +21,7 @@ const initialState = {
   orders: [],
   brands:marca,
   clients: clientes,
-  suppliers: suppliers,
+  suppliers: [],
   dispatchers: transportistas,
   deposits: deposito,
   productById: null,
@@ -52,6 +51,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_ALL_SUPPPLIERS":
+      return {
+        ...state,
+        suppliers: payload
+      };
     case "GET_PRODUCT_BY_ID":
       return {
         ...state,
@@ -225,7 +229,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "EDIT_OFFER":
       const updatedOffer = payload;
       const updatedOffers = state.offers?.map((offer) => {
-        if (offer.id === updatedOffer.id) {
+        if (offer.ID_OFERTA === updatedOffer.ID_OFERTA) {
           return updatedOffer;
         }
         return offer;

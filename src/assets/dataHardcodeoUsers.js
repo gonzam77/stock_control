@@ -6,7 +6,6 @@ export const users = [
         NOMBRE:'USUARIO1',
         CLAVE:1234,
         FOTO:'',
-        CARGO:'',
         ESTADO:'Activo'
     },
     {   

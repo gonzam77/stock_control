@@ -10,8 +10,11 @@ export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModalState = useSelector((state) => state.showCreateModal);
   const suppliers = useSelector((state) => state.suppliers);
+  console.log('supplier',suppliers);
   const accounts = useSelector((state) => state.accounts);
+  console.log('accounts',accounts);
   const accountTypes = useSelector((state) => state.accountTypes);
+  console.log('accountTypes',accountTypes);
   const supplierId = useSelector((state) => state.supplierId);
   const dispatch = useDispatch();
 

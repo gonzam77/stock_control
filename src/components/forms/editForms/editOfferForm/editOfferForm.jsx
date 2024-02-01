@@ -9,8 +9,10 @@ import { formatDate } from "../../../date/date";
 export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
   const offerId = useSelector((state) => state.offerId);
+  console.log('offerId',offerId);
   const dispatch = useDispatch();
-  const selectedOffer = offers.find((element) => element.id === offerId);
+  const selectedOffer = offers.find((element) => element.ID_OFERTA === offerId);
+  console.log(selectedOffer);
 
   const [offer, setOffer] = useState(selectedOffer);
 
@@ -20,6 +22,7 @@ export default function EditOfferForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
+    console.log('offer', offer);
     dispatch(actions.editOffer(offer));
     dispatch(actions.hideModal());
   };
@@ -28,7 +31,7 @@ export default function EditOfferForm() {
     const target = event.target.name;
     let value = event.target.value;
     
-    if (target !== "to_date" && target !== "from_date") {
+    if (target !== "FECHA_HASTA" && target !== "FECHA_DESDE") {
       setOffer({
         ...offer,
         [target]: value,
@@ -49,10 +52,10 @@ export default function EditOfferForm() {
           <label>Descuento</label>
           <input
             autoComplete="off"
-            name="discount"
-            value={offer.discount}
+            name="DESCUENTO"
+            value={offer.DESCUENTO}
             onChange={handleChange}
-            placeholder={selectedOffer.discount}
+            placeholder={selectedOffer.DESCUENTO}
             type="text"
           />
         </div>
@@ -60,8 +63,8 @@ export default function EditOfferForm() {
           <label>Fecha Desde</label>
           <input
             autoComplete="off"
-            name="from_date"
-            value={formatDate(offer.from, "yyyy-mm-dd")}
+            name="FECHA_DESDE"
+            value={formatDate(offer.FECHA_DESDE, "yyyy-mm-dd")}
             onChange={handleChange}
             type="date"
           />
@@ -70,8 +73,8 @@ export default function EditOfferForm() {
           <label>Fecha Hasta</label>
           <input
             autoComplete="off"
-            name="to_date"
-            value={formatDate(offer.to_date, "yyyy-mm-dd")}
+            name="FECHA_HASTA"
+            value={formatDate(offer.FECHA_HASTA, "yyyy-mm-dd")}
             onChange={handleChange}
             type="date"
           />
