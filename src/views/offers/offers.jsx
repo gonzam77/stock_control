@@ -11,9 +11,11 @@ export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const offers = useSelector((state) => state.offers);
+  console.log("ofertas", offers);
   const date = new Date();
 
   const products = useSelector((state) => state.products);
+  console.log('productos',products);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -57,10 +59,12 @@ export default function Offers() {
             </tr>
           </thead>
           <tbody>
-            {offers.map((offer, index) => {
+            {offers?.map((offer, index) => {
+              console.log('offer.id_producto', offer.ID_PRODUCTO);
               const productInOffer = products.find(
-                (e) => offer.product_id == e.ID_PRODUCTO
+                (e) => offer.ID_PRODUCTO === e.ID_PRODUCTO
               );
+              console.log("producto en oferta", productInOffer);
               return (
                 <tr
                   key={index}
@@ -73,45 +77,44 @@ export default function Offers() {
                     {productInOffer?.PRECIO_VENTA}
                   </td>
                   <td>
-                    {offer.discount}
+                    {offer.DESCUENTO}
                     {"%"}
                   </td>
                   <td>
                     {"$ "}
                     {Math.round(
-                      (1 - offer.discount / 100) * productInOffer?.PRECIO_VENTA
+                      (1 - offer.DESCUENTO / 100) * productInOffer?.PRECIO_VENTA
                     )}
                   </td>
-                  <td>{formatDate(offer.create_date)}</td>
+                  <td>{formatDate(offer.FECHA_CREACION)}</td>
                   <td
                     className={
-                      offer.from_date <= date
+                      offer.FECHA_DESDE <= date
                         ? styles.activo
                         : styles.inactivo
                     }
                   >
-                    {formatDate(offer.from_date)}
+                    {formatDate(offer.FECHA_DESDE)}
                   </td>
                   <td
-                    className={offer.to_date >= date
-                      ? styles.activo
-                      : styles.inactivo
+                    className={
+                      offer.FECHA_HASTA >= date
+                        ? styles.activo
+                        : styles.inactivo
                     }
                   >
-                    {formatDate(offer.to_date)}
+                    {formatDate(offer.FECHA_HASTA)}
                   </td>
 
-                  {offer.from_date <= date && offer.to_date >= date ?
-                    (
-                      <td className={styles.activo}>Activo</td>
-                    )
-                    : (
-                      <td className={styles.inactivo}>Inactivo</td>
-                    )}
+                  {offer.FECHA_DESDE <= date && offer.FECHA_HASTA >= date ? (
+                    <td className={styles.activo}>Activo</td>
+                  ) : (
+                    <td className={styles.inactivo}>Inactivo</td>
+                  )}
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(offer.id)}
+                      onClick={() => openModal(offer.ID_OFERTA)}
                     >
                       Modificar
                     </Button>

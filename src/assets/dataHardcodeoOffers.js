@@ -12,21 +12,21 @@ toDate.setHours(23,59,59);
 
 export const ofertas = [
     {
-        id: '1',
-        product_id: '55',
-        discount: 20,
-        code: '0001',
-        create_date: createDate,
-        from_date: fromDate,
-        to_date: toDate
+        ID_OFERTA: '1',
+        ID_PRDUCTO: 20,
+        DESCUENTO: 20,
+        CODIGO: '0001',
+        FECHA_CREACION: createDate,
+        FECHA_DESDE: fromDate,
+        FECHA_HASTA: toDate
     },
     {
-        id: '2',
-        product_id: '59',
-        discount: 15,
-        code: '0003',
-        create_date: createDate,
-        from_date: fromDate2,
-        to_date: toDate2
+        ID_OFERTA: '2',
+        ID_PRDUCTO: 22,
+        DESCUENTO: 15,
+        CODIGO: '0003',
+        FECHA_CREACION: createDate,
+        FECHA_DESDE: fromDate2,
+        FECHA_HASTA: toDate2
     }
 ]

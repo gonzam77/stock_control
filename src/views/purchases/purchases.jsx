@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Purchases() {
   const purchases = useSelector((state) => state.purchases);
-
-  
+  const suppliers = useSelector((state) => state.suppliers);
 
   return (
     <div className={styles.container}>
@@ -34,15 +33,16 @@ export default function Purchases() {
           </thead>
           <tbody>
             {purchases?.map((purchase, index) => {
+              const supplier = suppliers?.find(e=> e.ID_PROVEEDOR === purchase.ID_PROVEEDOR)
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
-                  <td>{purchase?.number}</td>
-                  <td>{purchase?.date}</td>
-                  <td>{'$'}{purchase?.total_mount}</td>
-                  <td>{purchase.supplier}</td>
+                  <td>{purchase?.NUMERO_COMPRA}</td>
+                  <td>{purchase?.FECHA_COMPRA}</td>
+                  <td>{'$'}{purchase?.TOTAL_COMPRA}</td>
+                  <td>{supplier?.RAZON_SOCIAL}</td>
                   <td style={{ textAlign: "center" }}>
                     <Link to={`/purchaseDetail/${purchase.id}`}>
                       <Button variant="primary">Detalle</Button>
