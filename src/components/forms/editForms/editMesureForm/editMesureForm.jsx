@@ -19,7 +19,6 @@ export default function EditMesureForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editMesure(mesure));
     dispatch(actions.hideModalMesure());
   };
 

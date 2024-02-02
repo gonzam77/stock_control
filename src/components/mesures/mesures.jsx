@@ -50,8 +50,8 @@ export default function Mesures() {
             {mesures?.map((mesure, index) => {
               return (
                 <tr key={index}>
-                  <td>{mesure.name}</td>
-                  <td>{mesure.abbreviation}</td>
+                  <td>{mesure.NOMBRE}</td>
+                  <td>{mesure.ABREVIATURA}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(mesure.id)}>
                       Modificar

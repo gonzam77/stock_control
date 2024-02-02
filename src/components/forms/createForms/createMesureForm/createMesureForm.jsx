@@ -14,7 +14,6 @@ export default function CreateMesureForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createMesure(newMesure));
     dispatch(actions.hideCreateModal());
   };
 

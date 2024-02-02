@@ -58,5 +58,11 @@ export const cuentas = [
         ID_TIPO_CUENTA: 1,
         DESCRIPCION: 'Andres Castro',
         NUMERO: '12345678901234567890'
+    },
+    {
+        ID_CUENTA: 11,
+        ID_TIPO_CUENTA: 1,
+        DESCRIPCION: 'PRUEBA',
+        NUMERO: '12345678901234567890'
     }
 ];

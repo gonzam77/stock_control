@@ -36,11 +36,14 @@ export default function NavMenu({ logout }) {
               <Link to="/deposits" className={styles.link}>
                 Depositos
               </Link>
-              <Link to="/movements" className={styles.link}>
-                Movimiento
+              <Link to="/accounts" className={styles.link}>
+                Cuentas
               </Link>
               <Link to="/users" className={styles.link}>
                 Usuarios
+              </Link>
+              <Link to="/persons" className={styles.link}>
+                Personas
               </Link>
             </Nav>
           </Navbar.Collapse>

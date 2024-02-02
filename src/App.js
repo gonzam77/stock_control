@@ -1,12 +1,12 @@
+import "./App.css";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import "./App.css";
 import axios from "axios";
 import Inicio from "./views/inicio/inicio";
 import Login from "./views/login/login";
 import Nav from "./components/nav/nav";
 import Clients from "./views/clients/clients";
+import Persons from './views/persons/persons'
 import Suppliers from "./views/suppliers/suppliers";
 import Dispatchers from "./views/dispatchers/dispatchers";
 import ProductDetail from "./views/productDetail/productDetail";
@@ -28,7 +28,6 @@ import NewPurchase from "./views/newPurchase/newPurchase";
 import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
-import * as actions from './redux/actions';
 
 const qs = require("qs");
 
@@ -44,18 +43,12 @@ export const axiosConfig = {
 };
 
 function App() {
-  const dispatch = useDispatch();
   const location = useLocation();
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
 
 
-  useEffect(()=>{
-    dispatch(actions.getAllProducts());
-    dispatch(actions.getAllUsers());
-    dispatch(actions.getAllSuppliers());
-  },[])
 
   const navigate = useNavigate();
 
@@ -113,6 +106,7 @@ function App() {
             <Route path="/productsTable" element={<ProductsTable />} />
             <Route path="/suppliers" element={<Suppliers />} />
             <Route path="/clients" element={<Clients />} />
+            <Route path="/persons" element={<Persons />} />
             <Route path="/dispatchers" element={<Dispatchers />} />
             <Route path="/deposits" element={<Deposits />} />
             <Route path="/users" element={<Users />} />

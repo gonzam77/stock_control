@@ -19,7 +19,6 @@ export default function EditcategoryForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editCategory(category));
     dispatch(actions.hideModalCategories());
   };
 

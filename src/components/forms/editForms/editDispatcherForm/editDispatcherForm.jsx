@@ -23,7 +23,6 @@ export default function EditDispatcherForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editDispatcher(dispatcher));
     dispatch(actions.hideModal());
   };
 

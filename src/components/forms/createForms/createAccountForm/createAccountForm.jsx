@@ -20,7 +20,6 @@ export default function CreateAccountForm() {
     setNewAccount({
       ...newAccount,
     });
-    dispatch(actions.createAccount(newAccount));
     dispatch(actions.hideCreateModal());
   };
 

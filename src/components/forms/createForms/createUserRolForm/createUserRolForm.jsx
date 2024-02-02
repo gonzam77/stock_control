@@ -16,7 +16,6 @@ export default function CreateUserRolForm() {
 
     const closeCreateModal = (event) => {
         event.preventDefault();
-        dispatch(actions.createRol(newRol));
         dispatch(actions.hideCreateModal());
     };
 

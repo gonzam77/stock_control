@@ -33,17 +33,7 @@ export default function CreateProductForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createOffer(newOffer));
     dispatch(actions.hideCreateModal());
-    setNewOffer({
-      id: "",
-      product_id: "",
-      discount: "",
-      code: "",
-      create_date: null,
-      to_date: null,
-      from_date: null,
-    })
   };
 
   const cancelCreateModal = () => {

@@ -48,6 +48,36 @@ export const getAllSuppliers = () => {
     }
   };
 };
+export const getAllClients = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/clientes`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_CLIENTS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllPersons = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/personas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_PERSONS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllProducts = () => {
   return async function (dispatch) {
     try {
@@ -64,6 +94,24 @@ export const getAllProducts = () => {
   };
 };
 
+export const cleanSuppliers = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_SUPPLIERS",
+      payload: [],
+    });
+  }
+};
+
+export const cleanPerson = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_PERSONS",
+      payload: [],
+    });
+  }
+};
+
 export const cleanUsers = () => {
   return async function(dispatch){
     return dispatch({
@@ -72,6 +120,7 @@ export const cleanUsers = () => {
     });
   }
 };
+
 export const cleanProducts = () => {
   return async function(dispatch){
     return dispatch({
@@ -114,88 +163,6 @@ export const newSale = (data) => {
   };
 };
 
-export const createAccountType = (data) => {
-  return {
-    type: "CREATE_ACCOUNT_TYPE",
-    payload: data,
-  };
-};
-export const createOffer = (data) => {
-  return {
-    type: "CREATE_OFFER",
-    payload: data,
-  };
-};
-
-export const createCategory = (data) => {
-  return {
-    type: "CREATE_CATEGORY",
-    payload: data,
-  };
-};
-
-export const createMesure = (data) => {
-  return {
-    type: "CREATE_MESURE",
-    payload: data,
-  };
-};
-
-export const createDeposit = (data) => {
-  return {
-    type: "CREATE_DEPOSIT",
-    payload: data,
-  };
-};
-
-export const createRol = (data) => {
-  return {
-    type: "CREATE_ROL",
-    payload: data,
-  };
-};
-
-export const createUser = (data) => {
-  return {
-    type: "CREATE_USER",
-    payload: data,
-  };
-};
-
-export const createAccount = (data) => {
-  return {
-    type: "CREATE_ACCOUNT",
-    payload: data,
-  };
-};
-
-export const createDispatcher = (data) => {
-  return {
-    type: "CREATE_DISPATCHER",
-    payload: data,
-  };
-};
-
-export const createClient = (data) => {
-  return {
-    type: "CREATE_CLIENT",
-    payload: data,
-  };
-};
-
-export const createProduct = (data) => {
-  return {
-    type: "CREATE_PRODUCT",
-    payload: data,
-  };
-};
-
-export const createSupplier = (data) => {
-  return {
-    type: "CREATE_SUPPLIER",
-    payload: data,
-  };
-};
 
 export const getAccountTypeId = (id) => {
   return {
@@ -203,6 +170,7 @@ export const getAccountTypeId = (id) => {
     payload: id,
   };
 };
+
 export const getMesureId = (id) => {
   return {
     type: "GET_MESURE_ID",
@@ -259,6 +227,12 @@ export const getCategoryId = (id) => {
   };
 };
 
+export const getPersonId = (id) => {
+  return {
+    type: "GET_PERSON_ID",
+    payload: id,
+  };
+};
 export const getClientId = (id) => {
   return {
     type: "GET_CLIENT_ID",
@@ -277,83 +251,6 @@ export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
     payload: id,
-  };
-};
-
-export const editAccountType = (data) => {
-  return {
-    type: "EDIT_ACCOUNT_TYPE",
-    payload: data,
-  };
-};
-
-export const editMesure = (data) => {
-  return {
-    type: "EDIT_MESURE",
-    payload: data,
-  };
-};
-
-export const editCategory = (data) => {
-  return {
-    type: "EDIT_CATEGORY",
-    payload: data,
-  };
-};
-
-export const editAccount = (data) => {
-  return {
-    type: "EDIT_ACCOUNT",
-    payload: data,
-  };
-};
-
-export const editDeposit = (data) => {
-  return {
-    type: "EDIT_DEPOSIT",
-    payload: data,
-  };
-};
-
-export const editOffer = (data) => {
-  return {
-    type: "EDIT_OFFER",
-    payload: data,
-  };
-};
-
-export const editUserRol = (data) => {
-  return {
-    type: "EDIT_USER_ROL",
-    payload: data,
-  };
-};
-
-export const editUser = (data) => {
-  return {
-    type: "EDIT_USER",
-    payload: data,
-  };
-};
-
-export const editDispatcher = (data) => {
-  return {
-    type: "EDIT_DISPATCHER",
-    payload: data,
-  };
-};
-
-export const editSupplier = (data) => {
-  return {
-    type: "EDIT_SUPPLIER",
-    payload: data,
-  };
-};
-
-export const editClient = (data) => {
-  return {
-    type: "EDIT_CLIENT",
-    payload: data,
   };
 };
 
@@ -396,61 +293,4 @@ export const hideModalCategories = () => ({
 export const hideModalMesure = () => ({
   type: "HIDE_MODAL_MESURE",
 });
-
-
-// export const getAllClients = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/clients`);
-//         const data = response.data;
-//         return dispatch({
-//             type: 'GET_ALL_CLIENTS',
-//             payload: data,
-//         })
-//     }
-// };
-
-// export const getAllOrders = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/orders`);
-//         const data = response.data;
-//         return dispatch({
-//             type: 'GET_ALL_ORDERS',
-//             payload: data,
-//         })
-//     }
-// };
-
-// export const getAllSuppliers = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/supplies`);
-//         const data = response.data;
-//         return dispatch({
-//             type: 'GET_ALL_SUPPLIERS',
-//             payload: data,
-//         })
-//     }
-// };
-
-// export const getAllShipping = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/shipping`);
-//         const data = response.data;
-//         return dispatch({
-//             type: 'GET_ALL_SHIPPING',
-//             payload: data,
-//         })
-//     }
-// };
-
-// export const getAllAccounts = () => {
-//     return async function (dispatch) {
-//         const response = await axios(`${URL}/accounts`);
-//         const data = response.data;
-//         return dispatch({
-//             type: 'GET_ALL_ACCOUNTS',
-//             payload: data,
-//         })
-//     }
-// };
-
 

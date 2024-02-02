@@ -13,7 +13,6 @@ export default function CreateCategoryForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createCategory(newCategory));
     dispatch(actions.hideCreateModal());
   };
 

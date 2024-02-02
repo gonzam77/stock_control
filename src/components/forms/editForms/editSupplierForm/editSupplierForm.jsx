@@ -5,6 +5,8 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
 import DropdownUbication from '../../../dropdown/dropdownUbication';
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function SupplierForm() {
 
@@ -15,7 +17,7 @@ export default function SupplierForm() {
   const accounts = useSelector(state => state.accounts)
 
   const selectedSupplier = suppliers.find(
-    (element) => element.id === supplierId
+    (element) => element.ID_PROVEEDOR === supplierId
   );
 
   const [supplier, setSupplier] = useState(selectedSupplier);
@@ -24,9 +26,14 @@ export default function SupplierForm() {
     dispatch(actions.hideModal());
   }
 
-  const closeModal = (event) => {
+  async function putSupplier(proveedor) {
+    await axios.put(`${backURL}/proveedor/update`, proveedor)
+  }
+
+  const closeModal = async (event) => {
     event.preventDefault();
-    dispatch(actions.editSupplier(supplier))
+    await putSupplier({ Proveedor: supplier })
+    dispatch(actions.cleanSuppliers());
     dispatch(actions.hideModal());
   };
 

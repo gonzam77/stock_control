@@ -4,16 +4,9 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
-import DropdownUbication from '../../../dropdown/dropdownUbication';
+import { backURL } from "../../../../App";
+import axios from "axios";
 
-
-// {
-//   "Proveedor": {
-//       "ID_CUENTA": 1,
-//       "RAZON_SOCIAL": "Proveedor AA",
-//       "CUIL": "20-12125633-9"
-//   }
-// }
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -27,9 +20,18 @@ export default function CreateProductForm() {
   });
 
 
-  const closeCreateModal = (event) => {
+  async function postSupplier(proveedor) {
+    try {
+      await axios.post(`${backURL}/proveedor/nuevo`, proveedor)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    dispatch(actions.createSupplier({ Proveedor: newSupplier }));
+    await postSupplier({ Proveedor: newSupplier });
+    dispatch(actions.cleanSuppliers());
     dispatch(actions.hideCreateModal());
   };
 

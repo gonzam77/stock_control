@@ -5,6 +5,7 @@ import Table from "react-bootstrap/Table";
 import ModalEditSuppliersForm from "../modals/editModals/modalSupplierForm/modalSupllierForm";
 import * as actions from "../../redux/actions";
 import ModalCreateSuppliersForm from '../modals/createModals/ModalCreteSupplierForm/modalCreateSupplierForm';
+import { useEffect } from "react";
 
 export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);
@@ -16,9 +17,16 @@ export default function Suppliers() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
+    console.log(id);
     dispatch(actions.showModal());
     dispatch(actions.getSupplierId(id));
   };
+
+  useEffect(() => {
+    if (suppliers.length === 0) {
+      dispatch(actions.getAllSuppliers());
+    }
+  }, [suppliers]);
 
   const openCreateSupplierModal = () => {
     dispatch(actions.showCreateModal());
@@ -65,7 +73,7 @@ export default function Suppliers() {
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(supplier.id)}
+                      onClick={() => openModal(supplier.ID_PROVEEDOR)}
                     >
                       Modificar
                     </Button>
