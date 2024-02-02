@@ -1,4 +1,3 @@
-import { clientes } from "../assets/dataHardcodeoClients";
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { deposito } from "../assets/dataHardcodeoDeposito";
@@ -10,7 +9,6 @@ import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-import { persona } from '../assets/dataHardcodeoPersona';
 import { ubicacion } from '../assets/dataHardcodeoUbicacion';
 import { marca } from '../assets/dataHardcodeoMarca';
 
@@ -22,7 +20,7 @@ const initialState = {
   suppliers: [],
   persons:[],
   brands:marca,
-  clients: clientes,
+  clients: [],
   dispatchers: transportistas,
   deposits: deposito,
   roles: roles,
@@ -52,6 +50,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_ALL_CLIENTS":
+      return {
+        ...state,
+        clients: payload
+      };
     case "GET_ALL_PERSONS":
       return {
         ...state,

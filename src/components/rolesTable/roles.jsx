@@ -43,7 +43,6 @@ export default function Roles() {
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Descripcion</th>
               <th>Modificar</th>
             </tr>
           </thead>
@@ -52,7 +51,6 @@ export default function Roles() {
               return (
                 <tr key={index}>
                   <td>{rol.NOMBRE}</td>
-                  <td>{rol.DESCRIPCION}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(rol.id)}>
                       Modificar

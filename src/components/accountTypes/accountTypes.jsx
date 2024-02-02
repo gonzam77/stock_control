@@ -48,7 +48,7 @@ export default function AccountTypes() {
             {accountTypes?.map((account, index) => {
               return (
                 <tr key={index}>
-                  <td>{account.description}</td>
+                  <td>{account.DESCRIPCION}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(account.id)}>
                       Modificar

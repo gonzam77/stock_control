@@ -5,19 +5,24 @@ import { Table } from "react-bootstrap";
 import ModalEditClientForm from "../modals/editModals/modalEditClientForm/modalEditClientForm";
 import ModalCreateClientForm from "../modals/createModals/modalCreateClientForm/modaleCreateClientForm";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Clients() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector(state => state.showCreateModal)
   const clients = useSelector((state) => state.clients);
-  const personas = useSelector(state=> state.personas);
-  const ubicaciones = useSelector(state=> state.ubicaciones);
+  const personas = useSelector(state=> state.persons);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getClientId(id));
   };
+
+  useEffect(()=>{
+    if(!clients.length) dispatch(actions.getAllClients())
+    if(!personas.length) dispatch(actions.getAllPersons())
+  },[clients, personas])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal())
@@ -42,25 +47,20 @@ export default function Clients() {
               <th>Nombre</th>
               <th>Email</th>
               <th>Telefono</th>
-              <th>Direccion</th>
-              <th>Localidad</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
-            {clients.map((client, index) => {
-              const persona = personas.find(e=>e.ID_PERSONA === client.ID_PERSONA)
-              const ubicacion = ubicaciones.find(e=>e.ID_UBICACION === persona.ID_UBICACION)
+            {clients?.map((client, index) => {
+              const persona = personas?.find(e=>e.ID_PERSONA === client.ID_PERSONA)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{client.CUIL}</td>
                   <td>
-                    {persona.NOMBRE} {persona.APELLIDO}
+                    {persona?.NOMBRE} {persona?.APELLIDO}
                   </td>
-                  <td>{persona.EMAIL}</td>
-                  <td>{persona.TELEFONO}</td>
-                  <td>{ubicacion.DIRECCION}</td>
-                  <td>{ubicacion.LOCALIDAD}{', '}{ubicacion.PROVINCIA}</td>
+                  <td>{persona?.EMAIL}</td>
+                  <td>{persona?.TELEFONO}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(client.id)}>
                       Modificar

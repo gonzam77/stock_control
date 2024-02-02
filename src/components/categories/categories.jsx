@@ -48,7 +48,7 @@ export default function Categories() {
             {categories?.map((category, index) => {
               return (
                 <tr key={index}>
-                  <td>{category.name}</td>
+                  <td>{category.NOMBRE}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(category.id)}>
                       Modificar

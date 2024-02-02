@@ -48,6 +48,21 @@ export const getAllSuppliers = () => {
     }
   };
 };
+export const getAllClients = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/clientes`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_CLIENTS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllPersons = () => {
   return async function (dispatch) {
     try {

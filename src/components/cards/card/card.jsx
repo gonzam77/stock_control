@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -19,6 +20,10 @@ function ProductCard({ id, name, brand, price, stock, supplier }) {
     dispatch(actions.getProductId(id));
   };
 
+  useEffect(()=>{
+    if(!suppliers.length) dispatch(actions.getAllSuppliers())
+  },[suppliers])
+
   const closeModal = () => {
     dispatch(actions.hideModal());
   };
@@ -32,7 +37,7 @@ function ProductCard({ id, name, brand, price, stock, supplier }) {
           </Card.Title>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: ${price}</Card.Text>
-          <Card.Text>Proveedor: {proveedor.RAZON_SOCIAL}</Card.Text>
+          <Card.Text>Proveedor: {proveedor?.RAZON_SOCIAL}</Card.Text>
           <div className={styles.buttons}>
             <Link to={`/productDetail/${id}`} className={styles.detailButton}>
               <Button variant="primary">Detalle</Button>

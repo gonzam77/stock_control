@@ -1,12 +1,12 @@
 export const roles = [
   {
     ID_TIPO_USUARIO: 1,
-    DESCRIPCION: "Administrador",
+    NOMBRE: "Administrador",
     ROL:1,
   },
   {
     ID_TIPO_USUARIO: 2,
-    DESCRIPCION: "Vendedor",
+    NOMBRE: "Vendedor",
     ROL:1,
   },
 ];

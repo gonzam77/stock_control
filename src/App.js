@@ -1,7 +1,6 @@
+import "./App.css";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import "./App.css";
 import axios from "axios";
 import Inicio from "./views/inicio/inicio";
 import Login from "./views/login/login";
@@ -29,7 +28,6 @@ import NewPurchase from "./views/newPurchase/newPurchase";
 import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
-import * as actions from './redux/actions';
 
 const qs = require("qs");
 
@@ -45,18 +43,12 @@ export const axiosConfig = {
 };
 
 function App() {
-  const dispatch = useDispatch();
   const location = useLocation();
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
 
 
-  useEffect(()=>{
-    dispatch(actions.getAllProducts());
-    dispatch(actions.getAllUsers());
-    dispatch(actions.getAllSuppliers());
-  },[])
 
   const navigate = useNavigate();
 
