@@ -23,8 +23,8 @@ export default function EditClientForm() {
     dispatch(actions.hideModal());
   };
 
-  function handlePersonaSelect(selectedPerson) {
-    const personId = personas.find((e) => e.DNI === selectedPerson).ID_PERSONA;
+  function handlePersonSelect(selectedPerson) {
+    const personId = personas?.find((e) => e.DNI === selectedPerson).ID_PERSONA;
     setClient({
       ...client,
       ID_PERSONA: personId,
@@ -44,7 +44,7 @@ export default function EditClientForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <DropdownPersona onSelect={handlePersonaSelect}></DropdownPersona>
+          <DropdownPersona onSelect={handlePersonSelect}></DropdownPersona>
         </div>
         <div className={styles.divs}>
           <label>Razon Social</label>

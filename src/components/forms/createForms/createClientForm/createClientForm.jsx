@@ -1,35 +1,41 @@
-import { useState } from "react";
-import styles from "../createForms.module.css";
+import { useEffect, useState } from "react";
+import { backURL } from "../../../../App";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
+import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
 import DropdownPersona from "../../../dropdown/dropdownPerson";
+import axios from "axios";
+import * as actions from "../../../../redux/actions";
 
 export default function CreateClientForm() {
   const dispatch = useDispatch();
-  const personas = useSelector((state) => state.personas);
-  const date = new Date();
+  const personas = useSelector((state) => state.persons);
+  console.log(personas);
+  const accounts = useSelector((state) => state.accounts);
 
   const [newClient, setNewClient] = useState({
-    id: "",
-    first_name: "",
-    last_name: "",
-    CUIL: "",
-    state: "",
-    province: "",
-    phone: "",
-    email: "",
-    adress: "",
-    RAZON_SOCIAL: "",
-    create_date: "",
+    ID_PERSONA: null,
+    RAZON_SOCIAL: null,
+    CUIL: null,
+    ID_CUENTA: null,
   });
 
-  const closeCreateModal = (event) => {
+  useEffect(()=>{
+    if(!personas.length) dispatch(actions.getAllPersons())
+  },[personas])
+
+  async function postClient(cliente) {
+    try {
+      await axios.post(`${backURL}/cliente/nuevo`, cliente)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    setNewClient({
-      ...newClient,
-    });
+    await postClient({ Cliente: newClient })
     dispatch(actions.hideCreateModal());
   };
 
@@ -37,8 +43,18 @@ export default function CreateClientForm() {
     dispatch(actions.hideCreateModal());
   };
 
-  function handlePersonaSelect(selectedPerson) {
-    const personId = personas.find((e) => e.DNI === selectedPerson).ID_PERSONA;
+  function handleAccountSelect(selectedAccount) {
+    const accountId = accounts?.find((e) => e.ID_CUENTA === selectedAccount).ID_CUENTA;
+    setNewClient({
+      ...newClient,
+      ID_PERSONA: accountId,
+    });
+  }
+  function handlePersonSelect(selectedPerson) {
+    console.log('selectedPerson',selectedPerson);
+    console.log('personas', personas);
+    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+    console.log('personId', personId);
     setNewClient({
       ...newClient,
       ID_PERSONA: personId,
@@ -58,7 +74,7 @@ export default function CreateClientForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <DropdownPersona onSelect={handlePersonaSelect}></DropdownPersona>
+          <DropdownPersona onSelect={handlePersonSelect}></DropdownPersona>
         </div>
         <div className={styles.divs}>
           <label>Razon Social</label>
@@ -83,7 +99,7 @@ export default function CreateClientForm() {
           />
         </div>
         <div className={styles.divs}>
-          <DropdownAccount></DropdownAccount>
+          <DropdownAccount onSelect={handleAccountSelect}></DropdownAccount>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

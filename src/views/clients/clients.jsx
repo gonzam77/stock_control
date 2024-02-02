@@ -44,6 +44,7 @@ export default function Clients() {
           <thead>
             <tr>
               <th>Cuil</th>
+              <th>Razon Social</th>
               <th>Nombre</th>
               <th>Email</th>
               <th>Telefono</th>
@@ -56,13 +57,14 @@ export default function Clients() {
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{client.CUIL}</td>
+                  <td>{client.RAZON_SOCIAL}</td>
                   <td>
                     {persona?.NOMBRE} {persona?.APELLIDO}
                   </td>
                   <td>{persona?.EMAIL}</td>
                   <td>{persona?.TELEFONO}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(client.id)}>
+                    <Button variant="primary" onClick={() => openModal(client.ID_CLIENTE)}>
                       Modificar
                     </Button>
                   </td>

@@ -1,13 +1,20 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from '../../redux/actions';
 
 export default function DropdownClient({ onSelect }) {
   
   const [select, setSelect] = useState();
   const clients = useSelector(state => state.clients);
   const personas = useSelector(state => state.personas);
+  const dispatch = useDispatch();
   
+  useEffect(()=>{
+    if(!personas.length) dispatch(actions.getAllPersons());
+    if(!clients.length) dispatch(actions.getAllClients());
+  },[clients, personas])
+
   function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
@@ -21,10 +28,10 @@ export default function DropdownClient({ onSelect }) {
 
       <Dropdown.Menu>
         {clients?.map((element, index) => {
-          const persona = personas.find(e=>e.ID_PERSONA === element.ID_PERSONA)
+          const persona = personas?.find(e=>e.ID_PERSONA === element.ID_PERSONA)
           return (
             <Dropdown.Item key={index} eventKey={element.CUIL}>
-              {persona.NOMBRE}{', '}{persona.APELLIDO}
+              {persona?.NOMBRE}{', '}{persona?.APELLIDO}
             </Dropdown.Item>
           );
         })}

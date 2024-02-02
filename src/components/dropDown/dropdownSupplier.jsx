@@ -1,17 +1,23 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from '../../redux/actions'
 
 
 function DropdownSupplier({ onSelect }) {
   
   const [select, setSelect] = useState();
   const suppliers = useSelector(state => state.suppliers);
+  const dispatch = useDispatch();
   
   function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
   }
+
+  useEffect(()=>{
+    if(!suppliers.length) dispatch(actions.getAllSuppliers())
+  },[suppliers])
 
   return (
     <Dropdown onSelect={handleSelect}>

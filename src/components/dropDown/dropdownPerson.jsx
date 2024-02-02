@@ -1,15 +1,23 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from '../../redux/actions';
 
 export default function DropdownPersona({ onSelect }) {
   const [select, setSelect] = useState();
-  const personas = useSelector((state) => state.personas);
-
-  function handleSelect(eventKey) {
+  const personas = useSelector((state) => state.persons);
+  
+  const dispatch = useDispatch();
+  
+  async function handleSelect(eventKey) {
+    console.log('eventkey',eventKey);
     setSelect(eventKey);
     onSelect(eventKey);
   }
+
+  useEffect(()=>{
+    if(!personas.length) dispatch(actions.getAllPersons())
+  },[personas])
 
   return (
     <Dropdown onSelect={handleSelect}>
@@ -19,7 +27,7 @@ export default function DropdownPersona({ onSelect }) {
       <Dropdown.Menu>
         {personas?.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.DNI}>
+            <Dropdown.Item key={index} eventKey={element.NOMBRE}>
               {element.NOMBRE} {element.APELLIDO}
             </Dropdown.Item>
           );
