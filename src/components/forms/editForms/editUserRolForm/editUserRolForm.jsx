@@ -19,7 +19,6 @@ export default function EditUserRolForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editUserRol(rol));
     dispatch(actions.hideModal());
   };
 

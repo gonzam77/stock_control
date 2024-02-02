@@ -26,7 +26,6 @@ export default function CreateDepositForm() {
     setNewDeposit({
       ...newDeposit,
     })
-    dispatch(actions.createDeposit(newDeposit));
     dispatch(actions.hideCreateModal());
   };
   

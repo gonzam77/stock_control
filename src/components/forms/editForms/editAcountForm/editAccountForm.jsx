@@ -20,7 +20,6 @@ export default function EditaccountForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editAccount(account));
     dispatch(actions.hideModal());
   };
 

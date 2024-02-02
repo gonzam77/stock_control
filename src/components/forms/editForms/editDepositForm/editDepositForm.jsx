@@ -38,7 +38,6 @@ export default function EditDepositForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editDeposit(deposit));
     dispatch(actions.hideModal());
   };
 

@@ -20,7 +20,6 @@ export default function EditOfferForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editOffer(offer));
     dispatch(actions.hideModal());
   };
 

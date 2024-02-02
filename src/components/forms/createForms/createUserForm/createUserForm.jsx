@@ -29,7 +29,6 @@ export default function CreateUserForm() {
     setNewUser({
       ...newUser,
     });
-    dispatch(actions.createUser(newUser));
     dispatch(actions.hideCreateModal());
   };
 

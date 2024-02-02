@@ -13,7 +13,6 @@ export default function CreateAccountTypeForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createAccountType(newAccountType));
     dispatch(actions.hideCreateModal());
   };
 

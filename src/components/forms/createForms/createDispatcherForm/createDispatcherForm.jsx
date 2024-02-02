@@ -31,7 +31,6 @@ export default function CreateDispatcherForm() {
     setnewDispatcher({
       ...newDispatcher,
     })
-    dispatch(actions.createDispatcher(newDispatcher));
     dispatch(actions.hideCreateModal());
   };
   

@@ -30,7 +30,6 @@ export default function CreateClientForm() {
     setNewClient({
       ...newClient,
     });
-    dispatch(actions.createClient(newClient));
     dispatch(actions.hideCreateModal());
   };
 

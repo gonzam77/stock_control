@@ -20,7 +20,6 @@ export default function EditUserForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editUser(user));
     dispatch(actions.hideModal());
   };
 

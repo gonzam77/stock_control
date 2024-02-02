@@ -405,6 +405,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+    case 'CLEAN_SUPPLIERS':
+      return {
+        ...state,
+        suppliers: payload,
+      };
     case 'CLEAN_PRODUCTS':
       return {
         ...state,

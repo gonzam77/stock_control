@@ -20,7 +20,6 @@ export default function EditClientForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.editClient(client));
     dispatch(actions.hideModal());
   };
 
