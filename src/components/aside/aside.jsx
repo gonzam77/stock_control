@@ -22,7 +22,7 @@ function Aside() {
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>
         <Container>
-          <Navbar.Brand className={styles.nav_text} href="/accounts">Cuentas</Navbar.Brand>
+          <Navbar.Brand className={styles.nav_text} href="/movements">Movimientos</Navbar.Brand>
         </Container>
       </Navbar>
       <Navbar className={`bg-info ${styles.nav}`}>

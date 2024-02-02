@@ -17,6 +17,7 @@ export default function Suppliers() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
+    console.log(id);
     dispatch(actions.showModal());
     dispatch(actions.getSupplierId(id));
   };
@@ -72,7 +73,7 @@ export default function Suppliers() {
                   <td>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(supplier.id)}
+                      onClick={() => openModal(supplier.ID_PROVEEDOR)}
                     >
                       Modificar
                     </Button>

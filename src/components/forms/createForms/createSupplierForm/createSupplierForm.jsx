@@ -8,14 +8,6 @@ import { backURL } from "../../../../App";
 import axios from "axios";
 
 
-// {
-//   "Proveedor": {
-//       "ID_CUENTA": 1,
-//       "RAZON_SOCIAL": "Proveedor AA",
-//       "CUIL": "20-12125633-9"
-//   }
-// }
-
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const accounts = useSelector(state => state.accounts);
