@@ -17,7 +17,6 @@ export default function Offers() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    console.log('id',id);
     dispatch(actions.showModal());
     dispatch(actions.getOfferId(id));
   };

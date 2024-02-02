@@ -136,11 +136,6 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         suppliers: [...state.suppliers, payload],
       };
-    case "CREATE_PRODUCT":
-      return {
-        ...state,
-        products: [...state.products, payload],
-      };
     case "GET_DEPOSIT_ID":
       return {
         ...state,

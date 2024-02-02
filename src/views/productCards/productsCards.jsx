@@ -72,12 +72,12 @@ export default function ProductsCard() {
               id={product.ID_PRODUCTO}
               code={product.CODIGO}
               name={product.NOMBRE}
-              image={product.image}
+              image={product.IMAGEN}
               price={product.PRECIO_VENTA}
               stock={product.stock}
-              brand={product.brand}
-              description={product.description}
-              supplier={product.PROVEEDOR.RAZON_SOCIAL}
+              brand={product.ID_MARCA}
+              description={product.DESCRIPCION}
+              supplier={product.ID_PROVEEDOR}
             />
           );
         })}

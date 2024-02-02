@@ -6,6 +6,8 @@ import { Button } from "react-bootstrap";
 import Dropdown from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -23,9 +25,17 @@ export default function CreateProductForm() {
     PRECIO_VENTA: null,
   });
 
+  async function postProduct(product) {
+    try {
+      await axios.post(`${backURL}/producto/nuevo`, product)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createProduct({ Producto: newProduct }));
+    postProduct({ Producto: newProduct })
     dispatch(actions.cleanProducts());
     dispatch(actions.hideCreateModal());
   };
@@ -38,7 +48,7 @@ export default function CreateProductForm() {
     if (selectedSupplier && selectedSupplier !== "Desconocido") {
       const supplierId = suppliers.find(
         (e) => e.RAZON_SOCIAL === selectedSupplier
-      ).ID_MARCA;
+      ).ID_PROVEEDOR;
       setNewProduct({
         ...newProduct,
         ID_PROVEEDOR: supplierId,
@@ -52,7 +62,7 @@ export default function CreateProductForm() {
   };
 
   const handleBrandSelect = (selectedBrand) => {
-    if(selectedBrand && selectedBrand !== 'Otro') {
+    if (selectedBrand && selectedBrand !== 'Otro') {
       const brandId = brands.find((e) => e.NOMBRE === selectedBrand).ID_MARCA;
       setNewProduct({
         ...newProduct,
