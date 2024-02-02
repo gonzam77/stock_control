@@ -10,11 +10,8 @@ export default function Suppliers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModalState = useSelector((state) => state.showCreateModal);
   const suppliers = useSelector((state) => state.suppliers);
-  console.log('supplier',suppliers);
   const accounts = useSelector((state) => state.accounts);
-  console.log('accounts',accounts);
   const accountTypes = useSelector((state) => state.accountTypes);
-  console.log('accountTypes',accountTypes);
   const supplierId = useSelector((state) => state.supplierId);
   const dispatch = useDispatch();
 
@@ -56,10 +53,10 @@ export default function Suppliers() {
           </thead>
           <tbody>
             {suppliers.map((supplier, index) => {
-              const account = accounts?.find(e=>e.ID_CUENTA === supplier.ID_CUENTA)
-              const accountType = accountTypes?.find(e=>e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+              const account = accounts?.find(e => e.ID_CUENTA === supplier.ID_CUENTA)
+              const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
               return (
-                <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
+                <tr key={index} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                   <td>{supplier.RAZON_SOCIAL}</td>
                   <td>{supplier.CUIL}</td>
                   <td>{supplier.EMAIL}</td>

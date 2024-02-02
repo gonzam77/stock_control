@@ -38,7 +38,6 @@ export const getAllSuppliers = () => {
     try {
       const response = await axios(`${backURL}/proveedores`, axiosConfig);
       const data = response.data;
-      console.log();
       return dispatch({
         type: 'GET_ALL_SUPPPLIERS',
         payload: data.Data,

@@ -13,6 +13,7 @@ export default function Products() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
   const mesures = useSelector((state) => state.mesures);
+  const marcas = useSelector((state) => state.brands);
   const suppliers = useSelector((state) => state.suppliers);
   const dispatch = useDispatch();
 
@@ -20,7 +21,10 @@ export default function Products() {
     if (products.length === 0) {
       dispatch(actions.getAllProducts());
     }
-  }, [products]);
+    if (suppliers.length === 0) {
+      dispatch(actions.getAllSuppliers());
+    }
+  }, [products, suppliers]);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
@@ -68,12 +72,11 @@ export default function Products() {
           </thead>
           <tbody>
             {products?.map((product, index) => {
-              suppliers.find(
-                (supplier) => (supplier.razon_social = product.supplier)
+              const supplier = suppliers.find(
+                (supplier) => (supplier.ID_PROVEEDOR === product.ID_PROVEEDOR)
               );
-              let mesure = null
-              product.ID_UNIDAD_MEDIDA ? 
-              mesure = mesures.find((e) => e.ID_UNIDAD_MEDIDA === product.ID_UNIDAD_MEDIDA) : null;
+              const marca = marcas.find(e => e.ID_MARCA === product.ID_MARCA) 
+              const mesure = mesures.find((e) => e.ID_UNIDAD_MEDIDA === product.ID_UNIDAD_MEDIDA);
               return (
                 <tr
                   key={index}
@@ -82,8 +85,8 @@ export default function Products() {
                   <td>{product.CODIGO}</td>
                   <td>{product.CATEGORIA}</td>
                   <td>{product.NOMBRE}</td>
-                  <td>{product.MARCA}</td>
-                  <td>{product.PROVEEDOR.RAZON_SOCIAL}</td>
+                  <td>{marca?.NOMBRE}</td>
+                  <td>{supplier?.RAZON_SOCIAL}</td>
                   <td>
                     {"$"}
                     {product.PRECIO_VENTA}

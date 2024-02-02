@@ -26,7 +26,6 @@ function CardDetail({
   
 
   const openModal = (id) => {
-    console.log('id',id);
     dispatch(actions.showModal());
     dispatch(actions.getProductId(id));
 

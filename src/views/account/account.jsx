@@ -50,16 +50,16 @@ export default function Account() {
           </thead>
           <tbody>
             {accounts?.map((account, index) => {
-                const accountType = accountTypes.find(e => e.id === account.account_type)
+                const accountType = accountTypes.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{accountType.description}</td>
-                  <td>{account.description}</td>
-                  <td>{account.number}</td>
+                  <td>{accountType.DESCRIPCION}</td>
+                  <td>{account.DESCRIPCION}</td>
+                  <td>{account.NUMERO}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(account.id)}
+                      onClick={() => openModal(account.ID_CUENTA)}
                     >
                       Modificar
                     </Button>

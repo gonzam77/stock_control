@@ -9,10 +9,8 @@ import { formatDate } from "../../../date/date";
 export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
   const offerId = useSelector((state) => state.offerId);
-  console.log('offerId',offerId);
   const dispatch = useDispatch();
   const selectedOffer = offers.find((element) => element.ID_OFERTA === offerId);
-  console.log(selectedOffer);
 
   const [offer, setOffer] = useState(selectedOffer);
 
@@ -22,7 +20,6 @@ export default function EditOfferForm() {
 
   const closeModal = (event) => {
     event.preventDefault();
-    console.log('offer', offer);
     dispatch(actions.editOffer(offer));
     dispatch(actions.hideModal());
   };

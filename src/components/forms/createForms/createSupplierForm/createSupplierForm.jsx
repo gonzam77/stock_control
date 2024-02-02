@@ -6,15 +6,22 @@ import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
 import DropdownUbication from '../../../dropdown/dropdownUbication';
 
+
+// {
+//   "Proveedor": {
+//       "ID_CUENTA": 1,
+//       "RAZON_SOCIAL": "Proveedor AA",
+//       "CUIL": "20-12125633-9"
+//   }
+// }
+
 export default function CreateProductForm() {
   const dispatch = useDispatch();
-  const ubicaciones = useSelector(state => state.ubicaciones);
   const accounts = useSelector(state => state.accounts);
   const [newSupplier, setNewSupplier] = useState({
     ID_CUENTA: '',
     RAZON_SOCIAL: '',
     CUIL: '',
-    ID_UBICACION: '',
     EMAIL: '',
     TELEFONO: '',
   });
@@ -22,7 +29,7 @@ export default function CreateProductForm() {
 
   const closeCreateModal = (event) => {
     event.preventDefault();
-    dispatch(actions.createSupplier(newSupplier));
+    dispatch(actions.createSupplier({ Proveedor: newSupplier }));
     dispatch(actions.hideCreateModal());
   };
 
@@ -39,24 +46,7 @@ export default function CreateProductForm() {
     });
   };
 
-  const handleUbicationSelect = (selectedUbication) => {
-    if (selectedUbication !== "Desconocido" && selectedUbication) {
-      const ubicacionId = ubicaciones.find(
-        (e) => e.DIRECCION === selectedUbication
-      ).ID_UBICACION;
-      setNewSupplier({
-        ...newSupplier,
-        ID_UBICACION: ubicacionId,
-      });
-    } else {
-      setNewSupplier({
-        ...newSupplier,
-        ID_UBICACION: null,
-      });
-    }
-  };
-
-  const handleaccountselect = (selectedAcount) => {
+  const handleAccountSelect = (selectedAcount) => {
     const acountId = accounts.find(e => e.DESCRIPCION === selectedAcount).ID_CUENTA
     setNewSupplier({
       ...newSupplier,
@@ -75,7 +65,7 @@ export default function CreateProductForm() {
             name="RAZON_SOCIAL"
             value={newSupplier.RAZON_SOCIAL}
             onChange={handleChange}
-            placeholder="Razon Socila..."
+            placeholder="Razon Social..."
             type="text"
           />
         </div>
@@ -113,10 +103,7 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
-          <DropdownUbication onSelect={handleUbicationSelect}></DropdownUbication>
-        </div>
-        <div className={styles.divs}>
-          <DropdownAccount onSelect={handleaccountselect}></DropdownAccount>
+          <DropdownAccount onSelect={handleAccountSelect}></DropdownAccount>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>
