@@ -9,8 +9,8 @@ import { ofertas } from "../assets/dataHardcodeoOffers";
 import { cuentas } from "../assets/dataHardcodeoCuentas";
 import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-import { ubicacion } from '../assets/dataHardcodeoUbicacion';
-import { marca } from '../assets/dataHardcodeoMarca';
+import { ubicacion } from "../assets/dataHardcodeoUbicacion";
+import { marca } from "../assets/dataHardcodeoMarca";
 
 const initialState = {
   products: [],
@@ -18,8 +18,8 @@ const initialState = {
   cart: [],
   orders: [],
   suppliers: [],
-  persons:[],
-  brands:marca,
+  persons: [],
+  brands: marca,
   clients: [],
   dispatchers: transportistas,
   deposits: deposito,
@@ -35,7 +35,7 @@ const initialState = {
   ubicaciones: ubicacion,
   productById: null,
   accountTypeId: null,
-  personId:null,
+  personId: null,
   accountId: null,
   clientId: null,
   rolId: null,
@@ -50,25 +50,35 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_ALL_PRODUCTS":
+      return {
+        ...state,
+        products: payload,
+      };
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        users: payload,
+      };
     case "GET_ALL_CLIENTS":
       return {
         ...state,
-        clients: payload
+        clients: payload,
       };
     case "GET_ALL_PERSONS":
       return {
         ...state,
-        persons: payload
+        persons: payload,
       };
     case "GET_ALL_SUPPPLIERS":
       return {
         ...state,
-        suppliers: payload
+        suppliers: payload,
       };
     case "GET_PRODUCT_BY_ID":
       return {
         ...state,
-        productById: payload
+        productById: payload,
       };
     case "ADD_TO_CART":
       return {
@@ -89,61 +99,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         sales: [...state.sales, payload],
-      };
-    case "CREATE_ACCOUNT_TYPE":
-      return {
-        ...state,
-        accountTypes: [...state.accountTypes, payload],
-      };
-    case "CREATE_OFFER":
-      return {
-        ...state,
-        offers: [...state.offers, payload],
-      };
-    case "CREATE_MESURE":
-      return {
-        ...state,
-        mesures: [...state.mesures, payload],
-      };
-    case "CREATE_DISPATCHER":
-      return {
-        ...state,
-        dispatchers: [...state.dispatchers, payload],
-      };
-    case "CREATE_DEPOSIT":
-      return {
-        ...state,
-        deposits: [...state.deposits, payload],
-      };
-    case "CREATE_USER":
-      return {
-        ...state,
-        users: [...state.users, payload],
-      };
-    case "CREATE_ROL":
-      return {
-        ...state,
-        roles: [...state.roles, payload],
-      };
-    case "CREATE_CATEGORY":
-      return {
-        ...state,
-        categories: [...state.categories, payload],
-      };
-    case "CREATE_CLIENT":
-      return {
-        ...state,
-        clients: [...state.clients, payload],
-      };
-    case "CREATE_ACCOUNT":
-      return {
-        ...state,
-        accounts: [...state.accounts, payload],
-      };
-    case "CREATE_SUPPLIER":
-      return {
-        ...state,
-        suppliers: [...state.suppliers, payload],
       };
     case "GET_DEPOSIT_ID":
       return {
@@ -260,36 +215,31 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalAccountType: false,
       };
-    case 'GET_ALL_USERS':
-      return {
-        ...state,
-        users: payload,
-      };
-    case 'CLEAN_SUPPLIERS':
+    case "CLEAN_SUPPLIERS":
       return {
         ...state,
         suppliers: payload,
       };
-    case 'CLEAN_PRODUCTS':
+    case "CLEAN_PRODUCTS":
       return {
         ...state,
         products: payload,
-        productById:null
+        productById: null,
       };
-    case 'CLEAN_PERSONS':
+    case "CLEAN_CLIENTS":
+      return {
+        ...state,
+        clients: payload,
+      };
+    case "CLEAN_PERSONS":
       return {
         ...state,
         persons: payload,
       };
-    case 'CLEAN_USERS':
+    case "CLEAN_USERS":
       return {
         ...state,
         users: payload,
-      };
-    case 'GET_ALL_PRODUCTS':
-      return {
-        ...state,
-        products: payload,
       };
     default:
       return { ...state };

@@ -94,6 +94,14 @@ export const getAllProducts = () => {
   };
 };
 
+export const cleanClients = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_CLIENTS",
+      payload: [],
+    });
+  }
+};
 export const cleanSuppliers = () => {
   return async function(dispatch){
     return dispatch({

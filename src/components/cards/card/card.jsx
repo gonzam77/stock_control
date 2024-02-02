@@ -12,6 +12,8 @@ function ProductCard({ id, name, brand, price, stock, supplier }) {
   const suppliers = useSelector((state) => state.suppliers);
   const proveedor = suppliers.find(element => element.ID_PROVEEDOR === supplier)
   const marcas = useSelector((state) => state.brands);
+  console.log(marcas);
+  console.log('brand', brand);
   const marca = marcas.find(element => element.ID_MARCA === brand)
   const dispatch = useDispatch();
 
@@ -33,7 +35,7 @@ function ProductCard({ id, name, brand, price, stock, supplier }) {
       <Card className={styles.card} style={{ width: "18rem" }}>
         <Card.Body>
           <Card.Title className={styles.name}>
-            {name} {marca.NOMBRE}
+            {name} {marca?.NOMBRE}
           </Card.Title>
           <Card.Text>Sock: {stock}</Card.Text>
           <Card.Text>Precio: ${price}</Card.Text>

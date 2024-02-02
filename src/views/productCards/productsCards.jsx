@@ -16,7 +16,7 @@ export default function ProductsCard() {
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProduct = products.slice(
+  const currentProduct = products?.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -65,13 +65,13 @@ export default function ProductsCard() {
       </div>
 
       <div className={styles.cards}>
-        {currentProduct.map((product, index) => {
+        {currentProduct?.map((product, index) => {
           return (
             <Card
               key={index}
               id={product.ID_PRODUCTO}
               code={product.CODIGO}
-              name={product.NOMBRE}
+              name={product?.NOMBRE}
               image={product.IMAGEN}
               price={product.PRECIO_VENTA}
               stock={product.stock}
