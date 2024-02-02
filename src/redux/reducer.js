@@ -19,13 +19,12 @@ const initialState = {
   users: [],
   cart: [],
   orders: [],
+  suppliers: [],
+  persons:[],
   brands:marca,
   clients: clientes,
-  suppliers: [],
   dispatchers: transportistas,
   deposits: deposito,
-  productById: null,
-  personas: persona,
   roles: roles,
   mesures: medidas,
   categories: categorias,
@@ -36,11 +35,13 @@ const initialState = {
   accountTypes: tipoCuenta,
   purchases: compras,
   ubicaciones: ubicacion,
-  accountTypeId: "",
-  accountId: "",
-  clientId: "",
-  rolId: "",
-  supplierId: "",
+  productById: null,
+  accountTypeId: null,
+  personId:null,
+  accountId: null,
+  clientId: null,
+  rolId: null,
+  supplierId: null,
   showModal: false,
   showCreateModal: false,
   showModalMesure: false,
@@ -51,6 +52,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_ALL_PERSONS":
+      return {
+        ...state,
+        persons: payload
+      };
     case "GET_ALL_SUPPPLIERS":
       return {
         ...state,
@@ -191,6 +197,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         dispatcherId: payload,
       };
+    case "GET_PERSON_ID":
+      return {
+        ...state,
+        personId: payload,
+      };
     case "GET_SUPPLIER_ID":
       return {
         ...state,
@@ -261,6 +272,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         products: payload,
         productById:null
+      };
+    case 'CLEAN_PERSONS':
+      return {
+        ...state,
+        persons: payload,
       };
     case 'CLEAN_USERS':
       return {

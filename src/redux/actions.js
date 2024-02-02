@@ -48,6 +48,21 @@ export const getAllSuppliers = () => {
     }
   };
 };
+export const getAllPersons = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/personas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_PERSONS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllProducts = () => {
   return async function (dispatch) {
     try {
@@ -72,6 +87,16 @@ export const cleanSuppliers = () => {
     });
   }
 };
+
+export const cleanPerson = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_PERSONS",
+      payload: [],
+    });
+  }
+};
+
 export const cleanUsers = () => {
   return async function(dispatch){
     return dispatch({
@@ -187,6 +212,12 @@ export const getCategoryId = (id) => {
   };
 };
 
+export const getPersonId = (id) => {
+  return {
+    type: "GET_PERSON_ID",
+    payload: id,
+  };
+};
 export const getClientId = (id) => {
   return {
     type: "GET_CLIENT_ID",
