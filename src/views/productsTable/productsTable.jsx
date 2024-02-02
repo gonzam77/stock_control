@@ -65,8 +65,6 @@ export default function Products() {
               <th>PRECIO</th>
               <th>STOCK</th>
               <th>UNIDAD MEDIDA</th>
-              <th>CANTIDAD MIN</th>
-              <th>CANTIDAD MAX</th>
               <th>MODIFICAR</th>
             </tr>
           </thead>
@@ -93,8 +91,6 @@ export default function Products() {
                   </td>
                   <td></td>
                   <td>{mesure?.NOMBRE}</td>
-                  <td>{product.CANT_MIN}</td>
-                  <td>{product.CANT_MAX}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
