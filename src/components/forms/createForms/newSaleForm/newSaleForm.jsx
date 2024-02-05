@@ -31,11 +31,13 @@ export default function NewSaleForm() {
 
   function getLastSale() {
     let lastSale = sales[0].number;
-    for (let i = 0; i < sales.length; i++) {
-      if (sales[i].number > lastSale) lastSale = sales[i].number;
+    if (sales.length) {
+      for (let i = 0; i < sales.length; i++) {
+        if (sales[i].number > lastSale) lastSale = sales[i].number;
+      }
+      lastSale = parseInt(lastSale, 10);
+      return lastSale;
     }
-    lastSale = parseInt(lastSale, 10);
-    return lastSale;
   }
 
   const [cart, setCart] = useState([]);
@@ -69,6 +71,7 @@ export default function NewSaleForm() {
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
     const lastSale = getLastSale();
+    console.log(newItem.code);
     if (newItem.code.length > 3) {
       offerProduct = offers.find((e) => e.code === newItem.code);
       product = products.find((element) => element.code === newItem.code);
