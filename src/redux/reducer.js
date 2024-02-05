@@ -6,8 +6,6 @@ import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
-import { cuentas } from "../assets/dataHardcodeoCuentas";
-import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
 import { ubicacion } from '../assets/dataHardcodeoUbicacion';
 import { marca } from '../assets/dataHardcodeoMarca';
@@ -19,20 +17,20 @@ const initialState = {
   orders: [],
   suppliers: [],
   persons:[],
-  brands:marca,
   clients: [],
-  dispatchers: transportistas,
-  deposits: deposito,
+  accounts: [],
+  accountTypes: [],
   roles: roles,
+  brands:marca,
+  deposits: deposito,
+  offers: ofertas,
+  dispatchers: transportistas,
+  ubicaciones: ubicacion,
   mesures: medidas,
   categories: categorias,
   payTypes: metodo_de_pago,
   sales: ventas,
-  offers: ofertas,
-  accounts: cuentas,
-  accountTypes: tipoCuenta,
   purchases: compras,
-  ubicaciones: ubicacion,
   productById: null,
   accountTypeId: null,
   personId:null,
@@ -50,6 +48,16 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+    case "GET_ALL_ACCOUNTS":
+      return {
+        ...state,
+        accounts: payload
+      };
+    case "GET_ALL_ACCOUNT_TYPES":
+      return {
+        ...state,
+        accountTypes: payload
+      };
     case "GET_ALL_CLIENTS":
       return {
         ...state,
@@ -90,11 +98,6 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         sales: [...state.sales, payload],
       };
-    case "CREATE_ACCOUNT_TYPE":
-      return {
-        ...state,
-        accountTypes: [...state.accountTypes, payload],
-      };
     case "CREATE_OFFER":
       return {
         ...state,
@@ -129,21 +132,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         categories: [...state.categories, payload],
-      };
-    case "CREATE_CLIENT":
-      return {
-        ...state,
-        clients: [...state.clients, payload],
-      };
-    case "CREATE_ACCOUNT":
-      return {
-        ...state,
-        accounts: [...state.accounts, payload],
-      };
-    case "CREATE_SUPPLIER":
-      return {
-        ...state,
-        suppliers: [...state.suppliers, payload],
       };
     case "GET_DEPOSIT_ID":
       return {
@@ -275,11 +263,15 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         clients: payload,
       };
+    case 'CLEAN_ACCOUNT_TYPES':
+      return {
+        ...state,
+        accountTypes: payload,
+      };
     case 'CLEAN_PRODUCTS':
       return {
         ...state,
         products: payload,
-        productById:null
       };
     case 'CLEAN_PERSONS':
       return {

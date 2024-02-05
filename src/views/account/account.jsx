@@ -5,12 +5,15 @@ import { Table } from "react-bootstrap";
 import ModalCreateAccountForm from "../modals/createModals/modalCreateAccountForm/modalCreateAccountForm";
 import ModalEditAccountForm from "../modals/editModals/modalEditAccountForm/modalEditAccountForm";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Account() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const accounts = useSelector((state) => state.accounts);
+  console.log('accounts',accounts);
   const accountTypes = useSelector((state) => state.accountTypes);
+  console.log('accountTypes',accountTypes);
   const dispatch = useDispatch();
 
 
@@ -18,6 +21,11 @@ export default function Account() {
     dispatch(actions.showModal());
     dispatch(actions.getAccountId(id));
   };
+
+  useEffect(()=>{
+    if(!accounts.length) dispatch(actions.getAllAccounts())
+    if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
+  },[accounts, accountTypes])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());

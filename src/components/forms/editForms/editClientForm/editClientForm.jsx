@@ -20,7 +20,7 @@ export default function EditClientForm() {
     dispatch(actions.hideModal());
   };
 
-  async function putClient(cliente){
+  async function putClient(cliente) {
     try {
       await axios.put(`${backURL}/cliente/update`, cliente)
     } catch (error) {
@@ -30,7 +30,7 @@ export default function EditClientForm() {
 
   const closeModal = async (event) => {
     event.preventDefault();
-    await putClient({ Cliente: client});
+    await putClient({ Cliente: client });
     dispatch(actions.cleanClient())
     dispatch(actions.hideModal());
   };

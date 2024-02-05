@@ -63,6 +63,36 @@ export const getAllClients = () => {
     }
   };
 };
+export const getAllAccounts = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/cuentas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_ACCOUNTS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllAccountTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/tipocuentas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_ACCOUNT_TYPES',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllPersons = () => {
   return async function (dispatch) {
     try {
@@ -94,6 +124,14 @@ export const getAllProducts = () => {
   };
 };
 
+export const cleanAccountTypes = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_ACCOUNT_TYPES",
+      payload: [],
+    });
+  }
+};
 export const cleanClient = () => {
   return async function(dispatch){
     return dispatch({
