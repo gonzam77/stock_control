@@ -14,15 +14,16 @@ export default function CreateClientForm() {
   const accounts = useSelector((state) => state.accounts);
 
   const [newClient, setNewClient] = useState({
-    ID_PERSONA: null,
-    RAZON_SOCIAL: null,
-    CUIL: null,
-    ID_CUENTA: null,
+    RAZON_SOCIAL:'',
+    CUIL:'',
+    ID_PERSONA:'',
+    ID_CUENTA:'',
+    ESTADO: 1
   });
 
-  useEffect(()=>{
-    if(!personas.length) dispatch(actions.getAllPersons())
-  },[personas])
+  useEffect(() => {
+    if (!personas.length) dispatch(actions.getAllPersons())
+  }, [personas])
 
   async function postClient(cliente) {
     try {
@@ -35,6 +36,7 @@ export default function CreateClientForm() {
   const closeCreateModal = async (event) => {
     event.preventDefault();
     await postClient({ Cliente: newClient })
+    dispatch(actions.cleanClient());
     dispatch(actions.hideCreateModal());
   };
 

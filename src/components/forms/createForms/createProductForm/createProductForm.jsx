@@ -33,9 +33,9 @@ export default function CreateProductForm() {
     }
   }
 
-  const closeCreateModal = (event) => {
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    postProduct({ Producto: newProduct })
+    await postProduct({ Producto: newProduct })
     dispatch(actions.cleanProducts());
     dispatch(actions.hideCreateModal());
   };

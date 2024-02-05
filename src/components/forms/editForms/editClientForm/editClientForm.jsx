@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownPersona from "../../../dropdown/dropdownPerson";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditClientForm() {
   const clients = useSelector((state) => state.clients);
   const clientId = useSelector((state) => state.clientId);
-  const personas = useSelector((state) => state.personas);
+  const personas = useSelector((state) => state.persons);
   const dispatch = useDispatch();
   const selectedlClient = clients.find((element) => element.ID_CLIENTE === clientId);
 
@@ -18,13 +20,23 @@ export default function EditClientForm() {
     dispatch(actions.hideModal());
   };
 
-  const closeModal = (event) => {
+  async function putClient(cliente){
+    try {
+      await axios.put(`${backURL}/cliente/update`, cliente)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putClient({ Cliente: client});
+    dispatch(actions.cleanClient())
     dispatch(actions.hideModal());
   };
 
   function handlePersonSelect(selectedPerson) {
-    const personId = personas?.find((e) => e.DNI === selectedPerson).ID_PERSONA;
+    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
     setClient({
       ...client,
       ID_PERSONA: personId,
@@ -68,7 +80,7 @@ export default function EditClientForm() {
             type="text"
           />
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>
