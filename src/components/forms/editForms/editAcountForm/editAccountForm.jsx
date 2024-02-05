@@ -5,10 +5,13 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import DropdownAccountType from "../../../dropdown/dropdownAccountType";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditaccountForm() {
   const accounts = useSelector((state) => state.accounts);
   const accountId = useSelector((state) => state.accountId);
+  const accountTypes = useSelector((state) => state.accountTypes);
   const dispatch = useDispatch();
   const selectedAccount = accounts.find((element) => element.ID_CUENTA === accountId);
 
@@ -18,10 +21,21 @@ export default function EditaccountForm() {
     dispatch(actions.hideModal());
   };
 
-  const closeModal = (event) => {
+  async function putAccount(cuenta) {
+    try {
+      await axios.put(`${backURL}/cuenta/update`, cuenta)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putAccount({ Cuenta: account })
+    dispatch(actions.cleanAccount());
     dispatch(actions.hideModal());
   };
+
 
   function handleChange(event) {
     const target = event.target.name;
@@ -33,9 +47,10 @@ export default function EditaccountForm() {
   }
 
   const handleAccountTypeSelect = (selectedAccount) => {
+    const accountTypeId = accountTypes.find(e => e.DESCRIPCION === selectedAccount).ID_TIPO_CUENTA
     setAccount({
       ...account,
-      account_type: selectedAccount,
+      ID_TIPO_CUENTA: accountTypeId,
     });
   };
 
