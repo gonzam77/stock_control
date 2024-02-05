@@ -11,9 +11,7 @@ export default function Account() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const accounts = useSelector((state) => state.accounts);
-  console.log('accounts',accounts);
   const accountTypes = useSelector((state) => state.accountTypes);
-  console.log('accountTypes',accountTypes);
   const dispatch = useDispatch();
 
 
@@ -58,10 +56,11 @@ export default function Account() {
           </thead>
           <tbody>
             {accounts?.map((account, index) => {
-                const accountType = accountTypes.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+                const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+                console.log('hola');
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{accountType.DESCRIPCION}</td>
+                  <td>{accountType?.DESCRIPCION}</td>
                   <td>{account.DESCRIPCION}</td>
                   <td>{account.NUMERO}</td>
                   <td style={{ textAlign: 'center' }}>

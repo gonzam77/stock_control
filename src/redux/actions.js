@@ -132,6 +132,14 @@ export const cleanAccountTypes = () => {
     });
   }
 };
+export const cleanAccount = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_ACCOUNT",
+      payload: [],
+    });
+  }
+};
 export const cleanClient = () => {
   return async function(dispatch){
     return dispatch({

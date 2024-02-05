@@ -10,7 +10,7 @@ export default function EditaccountForm() {
   const accounts = useSelector((state) => state.accounts);
   const accountId = useSelector((state) => state.accountId);
   const dispatch = useDispatch();
-  const selectedAccount = accounts.find((element) => element.id === accountId);
+  const selectedAccount = accounts.find((element) => element.ID_CUENTA === accountId);
 
   const [account, setAccount] = useState(selectedAccount);
 
@@ -49,10 +49,10 @@ export default function EditaccountForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={account.description}
+            name="DESCRIPCION"
+            value={account.DESCRIPCION}
             onChange={handleChange}
-            placeholder={selectedAccount.description}
+            placeholder={selectedAccount.DESCRIPCION}
             type="text"
           />
         </div>
@@ -60,10 +60,10 @@ export default function EditaccountForm() {
           <label>Numero de Cuenta</label>
           <input
             autoComplete="off"
-            name="number"
-            value={account.number}
+            name="NUMERO"
+            value={account.NUMERO}
             onChange={handleChange}
-            placeholder={selectedAccount.number}
+            placeholder={selectedAccount.NUMERO}
             type="text"
           />
         </div>
