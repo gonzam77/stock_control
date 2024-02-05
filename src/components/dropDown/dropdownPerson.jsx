@@ -10,7 +10,6 @@ export default function DropdownPersona({ onSelect }) {
   const dispatch = useDispatch();
   
   async function handleSelect(eventKey) {
-    console.log('eventkey',eventKey);
     setSelect(eventKey);
     onSelect(eventKey);
   }

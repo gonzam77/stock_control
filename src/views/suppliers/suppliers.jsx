@@ -17,7 +17,6 @@ export default function Suppliers() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    console.log(id);
     dispatch(actions.showModal());
     dispatch(actions.getSupplierId(id));
   };

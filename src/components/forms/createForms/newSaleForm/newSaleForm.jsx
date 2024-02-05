@@ -71,7 +71,6 @@ export default function NewSaleForm() {
     const quantity = parseInt(newItem.quantity);
     newItem.quantity = quantity;
     const lastSale = getLastSale();
-    console.log(newItem.code);
     if (newItem.code.length > 3) {
       offerProduct = offers.find((e) => e.code === newItem.code);
       product = products.find((element) => element.code === newItem.code);

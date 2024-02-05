@@ -10,7 +10,7 @@ export default function EditClientForm() {
   const clientId = useSelector((state) => state.clientId);
   const personas = useSelector((state) => state.personas);
   const dispatch = useDispatch();
-  const selectedlClient = clients.find((element) => element.id === clientId);
+  const selectedlClient = clients.find((element) => element.ID_CLIENTE === clientId);
 
   const [client, setClient] = useState(selectedlClient);
 

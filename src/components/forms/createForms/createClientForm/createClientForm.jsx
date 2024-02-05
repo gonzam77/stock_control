@@ -11,7 +11,6 @@ import * as actions from "../../../../redux/actions";
 export default function CreateClientForm() {
   const dispatch = useDispatch();
   const personas = useSelector((state) => state.persons);
-  console.log(personas);
   const accounts = useSelector((state) => state.accounts);
 
   const [newClient, setNewClient] = useState({
@@ -44,17 +43,14 @@ export default function CreateClientForm() {
   };
 
   function handleAccountSelect(selectedAccount) {
-    const accountId = accounts?.find((e) => e.ID_CUENTA === selectedAccount).ID_CUENTA;
+    const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
     setNewClient({
       ...newClient,
-      ID_PERSONA: accountId,
+      ID_CUENTA: accountId,
     });
   }
   function handlePersonSelect(selectedPerson) {
-    console.log('selectedPerson',selectedPerson);
-    console.log('personas', personas);
     const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-    console.log('personId', personId);
     setNewClient({
       ...newClient,
       ID_PERSONA: personId,
