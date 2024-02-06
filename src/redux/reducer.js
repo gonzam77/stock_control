@@ -6,7 +6,6 @@ import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { compras } from "../assets/dataHardcodeoCompras";
-import { marca } from '../assets/dataHardcodeoMarca';
 
 const initialState = {
   products: [],
@@ -20,28 +19,30 @@ const initialState = {
   accountTypes: [],
   deposits: [],
   ubicaciones: [],
+  brands:[],
   roles: roles,
-  brands:marca,
-  offers: ofertas,
-  dispatchers: transportistas,
   mesures: medidas,
+  offers: ofertas,
   categories: categorias,
+  dispatchers: transportistas,
   payTypes: metodo_de_pago,
   sales: ventas,
   purchases: compras,
   productById: null,
   accountTypeId: null,
   personId:null,
+  brandId:null,
   accountId: null,
   clientId: null,
   rolId: null,
   supplierId: null,
   showModal: false,
   showCreateModal: false,
-  showModalMesure: false,
-  showModalAccount: false,
-  showModalCategories: false,
-  showModalAccountType: false,
+  showModalEditMesure: false,
+  showModalEditAccount: false,
+  showModalEditCategories: false,
+  showModalEditBrand: false,
+  showModalEditUserRol: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -65,6 +66,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         ubicaciones: payload
+      };
+    case "GET_ALL_BRANDS":
+      return {
+        ...state,
+        brands: payload
       };
     case "GET_ALL_ACCOUNT_TYPES":
       return {
@@ -166,6 +172,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         mesureId: payload,
       };
+    case "GET_BRAND_ID":
+      return {
+        ...state,
+        brandId: payload,
+      };
     case "GET_ACCOUNT_ID":
       return {
         ...state,
@@ -221,20 +232,30 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: true,
       };
-    case "SHOW_MODAL_CATEGORIES":
+    case "SHOW_MODAL_EDIT_MESURE":
       return {
         ...state,
-        showModalCategories: true,
+        showModalEditMesure: true,
       };
-    case "SHOW_MODAL_MESURE":
+    case "SHOW_MODAL_EDIT_CATEGORIES":
       return {
         ...state,
-        showModalMesure: true,
+        showModalEditCategories: true,
       };
-    case "SHOW_MODAL_ACCOUNT_TYPE":
+    case "SHOW_MODAL_EDIT_ACCOUNT_TYPE":
       return {
         ...state,
-        showModalAccountType: true,
+        showModalEditAccountType: true,
+      };
+    case "SHOW_MODAL_EDIT_BRAND":
+      return {
+        ...state,
+        showModalEditBrand: true,
+      };
+    case "SHOW_MODAL_EDIT_USER_ROL":
+      return {
+        ...state,
+        showModalEditUserRol: true,
       };
     case "HIDE_MODAL":
       return {
@@ -246,25 +267,40 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: false,
       };
-    case "HIDE_MODAL_CATEGORIES":
+    case "HIDE_MODAL_EDIT_MESURE":
       return {
         ...state,
-        showModalCategories: false,
+        showModalEditMesure: false,
       };
-    case "HIDE_MODAL_MESURE":
+    case "HIDE_MODAL_EDIT_CATEGORIES":
       return {
         ...state,
-        showModalMesure: false,
+        showModalEditCategories: false,
       };
-    case "HIDE_MODAL_ACCOUNT_TYPE":
+    case "HIDE_MODAL_EDIT_ACCOUNT_TYPE":
       return {
         ...state,
-        showModalAccountType: false,
+        showModalEditAccountType: false,
+      };
+    case "HIDE_MODAL_EDIT_BRAND":
+      return {
+        ...state,
+        showModalEditBrand: false,
+      };
+    case "HIDE_MODAL_EDIT_USER_ROL":
+      return {
+        ...state,
+        showModalEditUserRol: false,
       };
     case 'CLEAN_SUPPLIERS':
       return {
         ...state,
         suppliers: payload,
+      };
+    case 'CLEAN_BRANDS':
+      return {
+        ...state,
+        brands: payload,
       };
     case 'CLEAN_DEPOSITS':
       return {

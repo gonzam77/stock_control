@@ -123,6 +123,21 @@ export const getAllAccountTypes = () => {
     }
   };
 };
+export const getAllBrands = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/marcas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_BRANDS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllPersons = () => {
   return async function (dispatch) {
     try {
@@ -154,6 +169,14 @@ export const getAllProducts = () => {
   };
 };
 
+export const cleanBrands = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_BRANDS",
+      payload: [],
+    });
+  }
+};
 export const cleanDeposits = () => {
   return async function(dispatch){
     return dispatch({
@@ -275,6 +298,12 @@ export const getMesureId = (id) => {
   };
 };
 
+export const getBrandId = (id) => {
+  return {
+    type: "GET_BRAND_ID",
+    payload: id,
+  };
+};
 export const getAccountId = (id) => {
   return {
     type: "GET_ACCOUNT_ID",
@@ -359,16 +388,22 @@ export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
 });
 
-export const showModalMesure = () => ({
-  type: "SHOW_MODAL_MESURE",
+export const showModalEditBrand = () => ({
+  type: "SHOW_MODAL_EDIT_BRAND",
+});
+export const showModalEditMesure = () =>({
+  type: "SHOW_MODAL_EDIT_MESURE",
 });
 
-export const showModalAccountType = () => ({
-  type: "SHOW_MODAL_ACCOUNT_TYPE",
+export const showModalEditAccountType = () => ({
+  type: "SHOW_MODAL_EDIT_ACCOUNT_TYPE",
+});
+export const showModalEditUserRol = () => ({
+  type: "SHOW_MODAL_EDIT_USER_ROL",
 });
 
-export const showModalCategories = () => ({
-  type: "SHOW_MODAL_CATEGORIES",
+export const showModalEditCategories = () => ({
+  type: "SHOW_MODAL_EDIT_CATEGORIES",
 });
 
 export const hideModal = () => ({
@@ -379,15 +414,22 @@ export const hideCreateModal = () => ({
   type: "HIDE_CREATE_MODAL",
 });
 
-export const hideModalAccountType = () => ({
-  type: "HIDE_MODAL_ACCOUNT_TYPE",
+export const hideModalEditUserRol = () => ({
+  type: "HIDE_MODAL_EDIT_USER_ROL",
 });
 
-export const hideModalCategories = () => ({
-  type: "HIDE_MODAL_CATEGORIES",
+export const hideModalEditAccounType = () => ({
+  type: "HIDE_MODAL_EDIT_ACCOUNT_TYPE",
 });
 
-export const hideModalMesure = () => ({
-  type: "HIDE_MODAL_MESURE",
+export const hideModalEditCategories = () => ({
+  type: "HIDE_MODAL_EDIT_CATEGORIES",
+});
+
+export const hideModalEditMesure = () => ({
+  type: "HIDE_MODAL_EDIT_MESURE",
+});
+export const hideModalEditBrand = () => ({
+  type: "HIDE_MODAL_EDIT_BRAND",
 });
 

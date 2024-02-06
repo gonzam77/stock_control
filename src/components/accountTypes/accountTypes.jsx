@@ -9,12 +9,12 @@ import { useEffect } from "react";
 
 export default function AccountTypes() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModalAccountType = useSelector((state) => state.showModalAccountType);
+  const showModalEditAccountType = useSelector((state) => state.showModalEditAccountType);
   const accountTypes = useSelector((state) => state.accountTypes);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    dispatch(actions.showModalAccountType());
+    dispatch(actions.showModalEditAccountType());
     dispatch(actions.getAccountTypeId(id));
   };
 
@@ -65,7 +65,7 @@ export default function AccountTypes() {
           </tbody>
         </Table>
       </div>
-      {showModalAccountType && <ModalEditAccountTypeForm />} 
+      {showModalEditAccountType && <ModalEditAccountTypeForm />} 
       {showCreateModal && <ModalCreateAccountTypeForm />}
     </div>
   );

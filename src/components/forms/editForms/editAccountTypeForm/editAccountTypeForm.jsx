@@ -16,7 +16,7 @@ export default function EditAccountTypeForm() {
   const [accountType, setAccountType] = useState(selectedAccountType);
 
   const cancelModal = () => {
-    dispatch(actions.hideModalAccountType());
+    dispatch(actions.hideModalEditAccounType());
   };
 
   async function putAccountType(tipoCuenta){
@@ -31,7 +31,7 @@ export default function EditAccountTypeForm() {
     event.preventDefault();
     await putAccountType({ TipoCuenta: accountType});
     dispatch(actions.cleanAccountTypes());
-    dispatch(actions.hideModalAccountType());
+    dispatch(actions.hideModalEditAccounType());
   };
 
   function handleChange(event) {

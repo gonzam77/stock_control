@@ -8,12 +8,12 @@ import * as actions from '../../redux/actions';
 
 export default function Categories() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModalCategories = useSelector((state) => state.showModalCategories);
+  const showModalEditCategories = useSelector((state) => state.showModalEditCategories);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    dispatch(actions.showModalCategories());
+    dispatch(actions.showModalEditCategories());
     dispatch(actions.getCategoryId(id));
   };
   
@@ -60,7 +60,7 @@ export default function Categories() {
           </tbody>
         </Table>
       </div>
-      {showModalCategories && <ModalEditCategoryForm />} 
+      {showModalEditCategories && <ModalEditCategoryForm />} 
       {showCreateModal && <ModalCreateCategoryForm />}
     </div>
   );
