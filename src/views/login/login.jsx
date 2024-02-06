@@ -23,6 +23,12 @@ function Login({ login }) {
     login(userLogin);
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Form onSubmit={handleSubmit}>
@@ -43,6 +49,7 @@ function Login({ login }) {
         <Form.Group className="mb-3" controlId="formBasicclave">
           <Form.Label>clave</Form.Label>
           <Form.Control
+            onKeyDown={handleKeyDown}
             value={userLogin.clave}
             name="clave"
             placeholder="clave"

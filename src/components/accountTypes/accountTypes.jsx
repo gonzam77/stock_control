@@ -5,17 +5,22 @@ import ModalEditAccountTypeForm from '../../views/modals/editModals/modalEditAcc
 import ModalCreateAccountTypeForm from '../../views/modals/createModals/modalCreateAccountTypeForm/modalCreateAccountTypeForm'
 import styles from './accountTypes.module.css';
 import * as actions from '../../redux/actions';
+import { useEffect } from "react";
 
 export default function AccountTypes() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModalAccountType = useSelector((state) => state.showModalAccountType);
+  const showModalEditAccountType = useSelector((state) => state.showModalEditAccountType);
   const accountTypes = useSelector((state) => state.accountTypes);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    dispatch(actions.showModalAccountType());
+    dispatch(actions.showModalEditAccountType());
     dispatch(actions.getAccountTypeId(id));
   };
+
+  useEffect(()=>{
+    if(!accountTypes.length) dispatch(actions.getAllAccountTypes());
+  },[accountTypes])
   
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
@@ -50,7 +55,7 @@ export default function AccountTypes() {
                 <tr key={index}>
                   <td>{account.DESCRIPCION}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(account.id)}>
+                    <Button variant="primary" onClick={() => openModal(account.ID_TIPO_CUENTA)}>
                       Modificar
                     </Button>
                   </td>
@@ -60,7 +65,7 @@ export default function AccountTypes() {
           </tbody>
         </Table>
       </div>
-      {showModalAccountType && <ModalEditAccountTypeForm />} 
+      {showModalEditAccountType && <ModalEditAccountTypeForm />} 
       {showCreateModal && <ModalCreateAccountTypeForm />}
     </div>
   );

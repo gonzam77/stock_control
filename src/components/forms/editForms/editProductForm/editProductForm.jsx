@@ -7,6 +7,7 @@ import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditProductForm() {
   const products = useSelector((state) => state.products);
@@ -14,6 +15,7 @@ export default function EditProductForm() {
   const dispatch = useDispatch();
   const brands = useSelector(state => state.brands);
   const mesures = useSelector(state => state.mesures);
+  const suppliers = useSelector(state => state.suppliers);
 
   const selectedProduct = products.find(
     (element) => element.ID_PRODUCTO === productId
@@ -33,8 +35,7 @@ export default function EditProductForm() {
   };
 
   const editProduct = async (data) => {
-    const response = await axios.put(
-      "http://localhost:4000/producto/update",
+    const response = await axios.put(`${backURL}/producto/update`,
       data
     );
   };
@@ -65,9 +66,10 @@ export default function EditProductForm() {
   };
 
   const handleSupplierSelect = (selectedSupplier) => {
+    const supplierId = suppliers?.find(e => e.RAZON_SOCIAL === selectedSupplier).ID_PROVEEDOR
     setProduct({
       ...product,
-      ID_PROVEEDOR: selectedSupplier,
+      ID_PROVEEDOR: supplierId,
     });
   };
 

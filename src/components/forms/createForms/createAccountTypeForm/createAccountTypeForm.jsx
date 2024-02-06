@@ -1,20 +1,31 @@
-import styles from "../createForms.module.css";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import { backURL } from "../../../../App";
+import styles from "../createForms.module.css";
+import axios from "axios";
 import * as actions from "../../../../redux/actions";
 
 export default function CreateAccountTypeForm() {
   const dispatch = useDispatch();
   const [newAccountType, setNewAccountType] = useState({
-    id: "",
-    name: "",
+    DESCRIPTION: "",
   });
 
-  const closeCreateModal = (event) => {
+  const closeCreateModal = async (event) => {
     event.preventDefault();
+    await postAccountType({TipoCuenta: newAccountType})
+    dispatch(actions.cleanAccountTypes());
     dispatch(actions.hideCreateModal());
   };
+
+  async function postAccountType(tipoCuenta){
+    try {
+      await axios.post(`${backURL}/tipocuenta/nuevo`,tipoCuenta)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const cancelCreateModal = () => {
     dispatch(actions.hideCreateModal());
@@ -36,8 +47,8 @@ export default function CreateAccountTypeForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={newAccountType.description}
+            name="DESCRIPCION"
+            value={newAccountType.DESCRIPCION}
             onChange={handleChange}
             placeholder="Descripcion..."
             type="text"

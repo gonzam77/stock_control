@@ -4,22 +4,34 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditAccountTypeForm() {
   const accountTypes = useSelector((state) => state.accountTypes);
   const accountTypeId = useSelector((state) => state.accountTypeId);
   const dispatch = useDispatch();
-  const selectedAccountType = accountTypes.find((element) => element.id === accountTypeId);
+  const selectedAccountType = accountTypes.find((element) => element.ID_TIPO_CUENTA === accountTypeId);
 
   const [accountType, setAccountType] = useState(selectedAccountType);
 
   const cancelModal = () => {
-    dispatch(actions.hideModalAccountType());
+    dispatch(actions.hideModalEditAccounType());
   };
 
-  const closeModal = (event) => {
+  async function putAccountType(tipoCuenta){
+    try {
+      await axios.put(`${backURL}/tipocuenta/update`,tipoCuenta)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const closeModal = async (event) => {
     event.preventDefault();
-    dispatch(actions.hideModalAccountType());
+    await putAccountType({ TipoCuenta: accountType});
+    dispatch(actions.cleanAccountTypes());
+    dispatch(actions.hideModalEditAccounType());
   };
 
   function handleChange(event) {
@@ -38,10 +50,10 @@ export default function EditAccountTypeForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={accountType.description}
+            name="DESCRIPCION"
+            value={accountType.DESCRIPCION}
             onChange={handleChange}
-            placeholder={selectedAccountType.description}
+            placeholder={selectedAccountType.DESCRIPCION}
             type="text"
           />
         </div>

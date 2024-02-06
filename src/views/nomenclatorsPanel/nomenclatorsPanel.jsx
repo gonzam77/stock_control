@@ -2,6 +2,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Roles from "../../components/rolesTable/roles";
 import Mesures from "../../components/mesures/mesures";
+import Brands from '../../components/brands/brands';
 import Categories from "../../components/categories/categories";
 import AccountTypes from '../../components/accountTypes/accountTypes';
 import styles from "./nomenclatorsPanel.module.css";
@@ -28,6 +29,13 @@ export default function NomenclatorsPanel() {
             title={<span style={{ color: "black" }}>Medidas</span>}
           >
             <Mesures></Mesures>
+          </Tab>
+          <Tab
+            className=""
+            eventKey="brands"
+            title={<span style={{ color: "black" }}>Marcas</span>}
+          >
+            <Brands></Brands>
           </Tab>
           <Tab
             className=""

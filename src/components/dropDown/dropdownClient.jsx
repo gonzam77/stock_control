@@ -7,7 +7,7 @@ export default function DropdownClient({ onSelect }) {
   
   const [select, setSelect] = useState();
   const clients = useSelector(state => state.clients);
-  const personas = useSelector(state => state.personas);
+  const personas = useSelector(state => state.persons);
   const dispatch = useDispatch();
   
   useEffect(()=>{

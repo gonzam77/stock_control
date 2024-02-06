@@ -8,14 +8,13 @@ import * as actions from '../../redux/actions';
 
 export default function Roles() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModal = useSelector((state) => state.showModal);
+  const showModalEditUserRol = useSelector((state) => state.showModalEditUserRol);
 
   const roles = useSelector((state) => state.roles);
-  const tipoUsuario = useSelector((state) => state.userType);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    dispatch(actions.showModal());
+    dispatch(actions.showModalEditUserRol());
     dispatch(actions.getRolId(id));
   };
   
@@ -62,7 +61,7 @@ export default function Roles() {
           </tbody>
         </Table>
       </div>
-      {showModal && <ModalEditUserRolForm />}
+      {showModalEditUserRol && <ModalEditUserRolForm />}
       {showCreateModal && <ModalCreateRolForm />}
     </div>
   );

@@ -62,7 +62,13 @@ export const cuentas = [
     {
         ID_CUENTA: 11,
         ID_TIPO_CUENTA: 1,
-        DESCRIPCION: 'PRUEBA',
+        DESCRIPCION: 'NUEVO PROVEEDOR',
         NUMERO: '12345678901234567890'
+    },
+    {
+        ID_CUENTA: 12,
+        ID_TIPO_CUENTA: 1,
+        DESCRIPCION: 'NUEVO CLIENTE',
+        NUMERO: '123456789012346546590'
     }
 ];

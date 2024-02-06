@@ -14,12 +14,12 @@ export default function EditUserRolForm() {
   const [rol, setRol] = useState(selectedRol);
 
   const cancelModal = () => {
-    dispatch(actions.hideModal());
+    dispatch(actions.hideModalEditUserRol());
   };
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.hideModal());
+    dispatch(actions.hideModalEditUserRol());
   };
 
   function handleChange(event) {

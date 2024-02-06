@@ -1,16 +1,12 @@
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
-import { deposito } from "../assets/dataHardcodeoDeposito";
 import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
-import { cuentas } from "../assets/dataHardcodeoCuentas";
-import { tipoCuenta } from "../assets/dataHardcodeoAccountType";
 import { compras } from "../assets/dataHardcodeoCompras";
-import { ubicacion } from "../assets/dataHardcodeoUbicacion";
-import { marca } from "../assets/dataHardcodeoMarca";
+
 
 const initialState = {
   products: [],
@@ -18,38 +14,75 @@ const initialState = {
   cart: [],
   orders: [],
   suppliers: [],
-  persons: [],
-  brands: marca,
+
+  persons:[],
+
   clients: [],
-  dispatchers: transportistas,
-  deposits: deposito,
+  accounts: [],
+  accountTypes: [],
+  deposits: [],
+  ubicaciones: [],
+  brands:[],
   roles: roles,
   mesures: medidas,
+  offers: ofertas,
   categories: categorias,
+  dispatchers: transportistas,
   payTypes: metodo_de_pago,
   sales: ventas,
-  offers: ofertas,
-  accounts: cuentas,
-  accountTypes: tipoCuenta,
   purchases: compras,
-  ubicaciones: ubicacion,
   productById: null,
   accountTypeId: null,
-  personId: null,
+
+  personId:null,
+  brandId:null,
+
   accountId: null,
   clientId: null,
   rolId: null,
   supplierId: null,
   showModal: false,
   showCreateModal: false,
-  showModalMesure: false,
-  showModalAccount: false,
-  showModalCategories: false,
-  showModalAccountType: false,
+  showModalEditMesure: false,
+  showModalEditAccount: false,
+  showModalEditCategories: false,
+  showModalEditBrand: false,
+  showModalEditUserRol: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+
+    case "GET_ALL_ACCOUNTS":
+      return {
+        ...state,
+        accounts: payload
+      };
+      case 'GET_ALL_DEPOSITS':
+        return {
+          ...state,
+          deposits: payload,
+        };
+      case 'GET_ALL_USERS':
+        return {
+          ...state,
+          users: payload,
+        };
+    case "GET_ALL_UBUCATIONS":
+      return {
+        ...state,
+        ubicaciones: payload
+      };
+    case "GET_ALL_BRANDS":
+      return {
+        ...state,
+        brands: payload
+      };
+    case "GET_ALL_ACCOUNT_TYPES":
+      return {
+        ...state,
+        accountTypes: payload
+
     case "GET_ALL_PRODUCTS":
       return {
         ...state,
@@ -59,6 +92,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         users: payload,
+
       };
     case "GET_ALL_CLIENTS":
       return {
@@ -100,6 +134,43 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         sales: [...state.sales, payload],
       };
+
+    case "CREATE_OFFER":
+      return {
+        ...state,
+        offers: [...state.offers, payload],
+      };
+    case "CREATE_MESURE":
+      return {
+        ...state,
+        mesures: [...state.mesures, payload],
+      };
+    case "CREATE_DISPATCHER":
+      return {
+        ...state,
+        dispatchers: [...state.dispatchers, payload],
+      };
+    case "CREATE_DEPOSIT":
+      return {
+        ...state,
+        deposits: [...state.deposits, payload],
+      };
+    case "CREATE_USER":
+      return {
+        ...state,
+        users: [...state.users, payload],
+      };
+    case "CREATE_ROL":
+      return {
+        ...state,
+        roles: [...state.roles, payload],
+      };
+    case "CREATE_CATEGORY":
+      return {
+        ...state,
+        categories: [...state.categories, payload],
+      };
+
     case "GET_DEPOSIT_ID":
       return {
         ...state,
@@ -119,6 +190,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         mesureId: payload,
+      };
+    case "GET_BRAND_ID":
+      return {
+        ...state,
+        brandId: payload,
       };
     case "GET_ACCOUNT_ID":
       return {
@@ -175,20 +251,30 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: true,
       };
-    case "SHOW_MODAL_CATEGORIES":
+    case "SHOW_MODAL_EDIT_MESURE":
       return {
         ...state,
-        showModalCategories: true,
+        showModalEditMesure: true,
       };
-    case "SHOW_MODAL_MESURE":
+    case "SHOW_MODAL_EDIT_CATEGORIES":
       return {
         ...state,
-        showModalMesure: true,
+        showModalEditCategories: true,
       };
-    case "SHOW_MODAL_ACCOUNT_TYPE":
+    case "SHOW_MODAL_EDIT_ACCOUNT_TYPE":
       return {
         ...state,
-        showModalAccountType: true,
+        showModalEditAccountType: true,
+      };
+    case "SHOW_MODAL_EDIT_BRAND":
+      return {
+        ...state,
+        showModalEditBrand: true,
+      };
+    case "SHOW_MODAL_EDIT_USER_ROL":
+      return {
+        ...state,
+        showModalEditUserRol: true,
       };
     case "HIDE_MODAL":
       return {
@@ -200,31 +286,69 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: false,
       };
-    case "HIDE_MODAL_CATEGORIES":
+    case "HIDE_MODAL_EDIT_MESURE":
       return {
         ...state,
-        showModalCategories: false,
+        showModalEditMesure: false,
       };
-    case "HIDE_MODAL_MESURE":
+    case "HIDE_MODAL_EDIT_CATEGORIES":
       return {
         ...state,
-        showModalMesure: false,
+        showModalEditCategories: false,
       };
-    case "HIDE_MODAL_ACCOUNT_TYPE":
+    case "HIDE_MODAL_EDIT_ACCOUNT_TYPE":
       return {
         ...state,
-        showModalAccountType: false,
+        showModalEditAccountType: false,
       };
-    case "CLEAN_SUPPLIERS":
+
+    case "HIDE_MODAL_EDIT_BRAND":
+      return {
+        ...state,
+        showModalEditBrand: false,
+      };
+    case "HIDE_MODAL_EDIT_USER_ROL":
+      return {
+        ...state,
+        showModalEditUserRol: false,
+      };
+    case 'CLEAN_SUPPLIERS':
+
       return {
         ...state,
         suppliers: payload,
       };
-    case "CLEAN_PRODUCTS":
+
+    case 'CLEAN_BRANDS':
+      return {
+        ...state,
+        brands: payload,
+      };
+    case 'CLEAN_DEPOSITS':
+      return {
+        ...state,
+        deposits: payload,
+      };
+    case 'CLEAN_CLIENT':
+      return {
+        ...state,
+        clients: payload,
+      };
+    case 'CLEAN_ACCOUNT_TYPES':
+      return {
+        ...state,
+        accountTypes: payload,
+      };
+    case 'CLEAN_ACCOUNT':
+      return {
+        ...state,
+        accounts: payload,
+      };
+    case 'CLEAN_PRODUCTS':
       return {
         ...state,
         products: payload,
-        productById: null,
+
       };
     case "CLEAN_CLIENTS":
       return {
