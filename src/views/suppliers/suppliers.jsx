@@ -22,10 +22,10 @@ export default function Suppliers() {
   };
 
   useEffect(() => {
-    if (suppliers.length === 0) {
-      dispatch(actions.getAllSuppliers());
-    }
-  }, [suppliers]);
+    if (suppliers.length === 0) dispatch(actions.getAllSuppliers());
+    if (accounts.length === 0) dispatch(actions.getAllAccounts());
+    if (accountTypes.length === 0) dispatch(actions.getAllAccountTypes());
+  }, [suppliers, accounts, accountTypes]);
 
   const openCreateSupplierModal = () => {
     dispatch(actions.showCreateModal());
