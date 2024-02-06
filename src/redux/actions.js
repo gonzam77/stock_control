@@ -169,14 +169,17 @@ export const getAllProducts = () => {
   };
 };
 
+
 export const cleanBrands = () => {
   return async function(dispatch){
     return dispatch({
       type: "CLEAN_BRANDS",
+
       payload: [],
     });
   }
 };
+
 export const cleanDeposits = () => {
   return async function(dispatch){
     return dispatch({

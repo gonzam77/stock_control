@@ -7,13 +7,16 @@ import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { compras } from "../assets/dataHardcodeoCompras";
 
+
 const initialState = {
   products: [],
   users: [],
   cart: [],
   orders: [],
   suppliers: [],
+
   persons:[],
+
   clients: [],
   accounts: [],
   accountTypes: [],
@@ -30,8 +33,10 @@ const initialState = {
   purchases: compras,
   productById: null,
   accountTypeId: null,
+
   personId:null,
   brandId:null,
+
   accountId: null,
   clientId: null,
   rolId: null,
@@ -47,6 +52,7 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
+
     case "GET_ALL_ACCOUNTS":
       return {
         ...state,
@@ -76,26 +82,37 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         accountTypes: payload
+
+    case "GET_ALL_PRODUCTS":
+      return {
+        ...state,
+        products: payload,
+      };
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        users: payload,
+
       };
     case "GET_ALL_CLIENTS":
       return {
         ...state,
-        clients: payload
+        clients: payload,
       };
     case "GET_ALL_PERSONS":
       return {
         ...state,
-        persons: payload
+        persons: payload,
       };
     case "GET_ALL_SUPPPLIERS":
       return {
         ...state,
-        suppliers: payload
+        suppliers: payload,
       };
     case "GET_PRODUCT_BY_ID":
       return {
         ...state,
-        productById: payload
+        productById: payload,
       };
     case "ADD_TO_CART":
       return {
@@ -117,6 +134,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         sales: [...state.sales, payload],
       };
+
     case "CREATE_OFFER":
       return {
         ...state,
@@ -152,6 +170,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         categories: [...state.categories, payload],
       };
+
     case "GET_DEPOSIT_ID":
       return {
         ...state,
@@ -282,6 +301,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalEditAccountType: false,
       };
+
     case "HIDE_MODAL_EDIT_BRAND":
       return {
         ...state,
@@ -293,10 +313,12 @@ export default function reducer(state = initialState, { type, payload }) {
         showModalEditUserRol: false,
       };
     case 'CLEAN_SUPPLIERS':
+
       return {
         ...state,
         suppliers: payload,
       };
+
     case 'CLEAN_BRANDS':
       return {
         ...state,
@@ -326,21 +348,22 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         products: payload,
+
       };
-    case 'CLEAN_PERSONS':
+    case "CLEAN_CLIENTS":
+      return {
+        ...state,
+        clients: payload,
+      };
+    case "CLEAN_PERSONS":
       return {
         ...state,
         persons: payload,
       };
-    case 'CLEAN_USERS':
+    case "CLEAN_USERS":
       return {
         ...state,
         users: payload,
-      };
-    case 'GET_ALL_PRODUCTS':
-      return {
-        ...state,
-        products: payload,
       };
     default:
       return { ...state };

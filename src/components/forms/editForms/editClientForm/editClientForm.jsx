@@ -9,10 +9,13 @@ import { backURL } from "../../../../App";
 
 export default function EditClientForm() {
   const clients = useSelector((state) => state.clients);
+  console.log("clients", clients);
   const clientId = useSelector((state) => state.clientId);
+
   const personas = useSelector((state) => state.persons);
   const dispatch = useDispatch();
   const selectedlClient = clients.find((element) => element.ID_CLIENTE === clientId);
+
 
   const [client, setClient] = useState(selectedlClient);
 
@@ -21,17 +24,21 @@ export default function EditClientForm() {
   };
 
   async function putClient(cliente) {
+
     try {
       await axios.put(`${backURL}/cliente/update`, cliente)
     } catch (error) {
       console.log(error);
     }
+
   }
 
   const closeModal = async (event) => {
     event.preventDefault();
     await putClient({ Cliente: client });
-    dispatch(actions.cleanClient())
+
+    dispatch(actions.cleanClients());
+
     dispatch(actions.hideModal());
   };
 
