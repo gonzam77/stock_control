@@ -1,13 +1,11 @@
 import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
-import { deposito } from "../assets/dataHardcodeoDeposito";
 import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { compras } from "../assets/dataHardcodeoCompras";
-import { ubicacion } from '../assets/dataHardcodeoUbicacion';
 import { marca } from '../assets/dataHardcodeoMarca';
 
 const initialState = {
@@ -20,12 +18,12 @@ const initialState = {
   clients: [],
   accounts: [],
   accountTypes: [],
+  deposits: [],
+  ubicaciones: [],
   roles: roles,
   brands:marca,
-  deposits: deposito,
   offers: ofertas,
   dispatchers: transportistas,
-  ubicaciones: ubicacion,
   mesures: medidas,
   categories: categorias,
   payTypes: metodo_de_pago,
@@ -52,6 +50,21 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         accounts: payload
+      };
+      case 'GET_ALL_DEPOSITS':
+        return {
+          ...state,
+          deposits: payload,
+        };
+      case 'GET_ALL_USERS':
+        return {
+          ...state,
+          users: payload,
+        };
+    case "GET_ALL_UBUCATIONS":
+      return {
+        ...state,
+        ubicaciones: payload
       };
     case "GET_ALL_ACCOUNT_TYPES":
       return {
@@ -248,15 +261,15 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalAccountType: false,
       };
-    case 'GET_ALL_USERS':
-      return {
-        ...state,
-        users: payload,
-      };
     case 'CLEAN_SUPPLIERS':
       return {
         ...state,
         suppliers: payload,
+      };
+    case 'CLEAN_DEPOSITS':
+      return {
+        ...state,
+        deposits: payload,
       };
     case 'CLEAN_CLIENT':
       return {

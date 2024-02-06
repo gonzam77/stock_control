@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../createForms.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownUbication from "../../../dropdown/dropdownUbication";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 
 export default function CreateDepositForm() {
@@ -12,20 +14,31 @@ export default function CreateDepositForm() {
   const ubicaciones = useSelector(state => state.ubicaciones);
   
   const [newDeposit, setNewDeposit] = useState({
-    id:'',
-    type:'',
-    name:'',
-    description:'',
-    phone:'',
-    adress:'',
-    admin:'',
+    TIPO_BODEGA:'',
+    NOMBRE:'',
+    ADMINISTRADOR:'',
+    TELEFONO:'',
+    DESCRIPCION:'',
+    ID_UBICACION:'',
+    ESTADO:1
   });
+
+  useEffect(()=>{
+    if(!ubicaciones.length) dispatch(actions.getAllUbications());
+  },[ubicaciones,dispatch])
   
-  const closeCreateModal = (event) => {
+  async function postDeposit(deposito){
+    try {
+      await axios.post(`${backURL}/bodega/nuevo`, deposito)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    setNewDeposit({
-      ...newDeposit,
-    })
+    await postDeposit({Bodega: newDeposit})
+    dispatch(actions.cleanDeposits())
     dispatch(actions.hideCreateModal());
   };
   
@@ -45,7 +58,7 @@ export default function CreateDepositForm() {
     } else {
       setNewDeposit({
         ...newDeposit,
-        ID_UBICACION: null,
+        ID_UBICACION: ''
       });
     }
   };
@@ -67,8 +80,8 @@ export default function CreateDepositForm() {
           <label>Tipo</label>
           <input
             autoComplete="off"
-            name="type"
-            value={newDeposit.type}
+            name="TIPO_BODEGA"
+            value={newDeposit.TIPO_BODEGA}
             onChange={handleChange}
             placeholder="Tipo de deposito"
             type="text"
@@ -78,8 +91,8 @@ export default function CreateDepositForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={newDeposit.name}
+            name="NOMBRE"
+            value={newDeposit.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
@@ -89,8 +102,8 @@ export default function CreateDepositForm() {
           <label>Administrador</label>
           <input
             autoComplete="off"
-            name="admin"
-            value={newDeposit.admin}
+            name="ADMINISTRADOR"
+            value={newDeposit.ADMINISTRADOR}
             onChange={handleChange}
             placeholder="Administrador..."
             type="text"
@@ -100,8 +113,8 @@ export default function CreateDepositForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={newDeposit.description}
+            name="DESCRIPCION"
+            value={newDeposit.DESCRIPCION}
             onChange={handleChange}
             placeholder="Descripcion..."
             type="text"
@@ -111,14 +124,14 @@ export default function CreateDepositForm() {
           <label>Telefono</label>
           <input
             autoComplete="off"
-            name="phone"
-            value={newDeposit.phone}
+            name="TELEFONO"
+            value={newDeposit.TELEFONO}
             onChange={handleChange}
             placeholder="266..."
             type="text"
           />
         </div>
-        <div className={styles.divs}>
+        {/* <div className={styles.divs}>
           <label>Direccion</label>
           <input
             autoComplete="off"
@@ -128,7 +141,7 @@ export default function CreateDepositForm() {
             placeholder="Barrio..."
             type="text"
           />
-        </div>
+        </div> */}
         <div className={styles.divs}>
           <DropdownUbication
             onSelect={handleUbicationSelect}

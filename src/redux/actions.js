@@ -78,6 +78,36 @@ export const getAllAccounts = () => {
     }
   };
 };
+export const getAllUbications = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/ubicaciones`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_UBUCATIONS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllDeposits = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/bodegas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_DEPOSITS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllAccountTypes = () => {
   return async function (dispatch) {
     try {
@@ -124,6 +154,15 @@ export const getAllProducts = () => {
   };
 };
 
+export const cleanDeposits = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_DEPOSITS",
+      payload: [],
+    });
+  }
+};
+
 export const cleanAccountTypes = () => {
   return async function(dispatch){
     return dispatch({
@@ -132,6 +171,7 @@ export const cleanAccountTypes = () => {
     });
   }
 };
+
 export const cleanAccount = () => {
   return async function(dispatch){
     return dispatch({
@@ -140,6 +180,7 @@ export const cleanAccount = () => {
     });
   }
 };
+
 export const cleanClient = () => {
   return async function(dispatch){
     return dispatch({
@@ -148,6 +189,7 @@ export const cleanClient = () => {
     });
   }
 };
+
 export const cleanSuppliers = () => {
   return async function(dispatch){
     return dispatch({
@@ -197,12 +239,14 @@ export const newTransfer = (data) => {
     payload: data,
   };
 };
+
 export const newSetting = (data) => {
   return {
     type: "NEW_SETTING",
     payload: data,
   };
 };
+
 export const newPurchase = (data) => {
   return {
     type: "NEW_PURCHASE",
@@ -216,7 +260,6 @@ export const newSale = (data) => {
     payload: data,
   };
 };
-
 
 export const getAccountTypeId = (id) => {
   return {

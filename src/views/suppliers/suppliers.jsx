@@ -29,7 +29,7 @@ export default function Suppliers() {
 
   const openCreateSupplierModal = () => {
     dispatch(actions.showCreateModal());
-  }
+  };
 
   const closeModal = () => {
     dispatch(actions.hideModal());
