@@ -36,9 +36,7 @@ export default function EditClientForm() {
   const closeModal = async (event) => {
     event.preventDefault();
     await putClient({ Cliente: client });
-
-    dispatch(actions.cleanClients());
-
+    dispatch(actions.cleanClient());
     dispatch(actions.hideModal());
   };
 

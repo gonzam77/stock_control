@@ -82,7 +82,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         accountTypes: payload
-
+      }
     case "GET_ALL_PRODUCTS":
       return {
         ...state,
