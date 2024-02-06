@@ -19,7 +19,7 @@ export default function NomenclatorsPanel() {
           <Tab
             className=""
             eventKey="roles"
-            title={<span style={{ color: "black" }}>Roles</span>}
+            title={<span style={{ color: "black" }}>Tipo de Usuarios</span>}
           >
             <Roles></Roles>
           </Tab>

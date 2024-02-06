@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
@@ -6,20 +6,25 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 
 export default function EditUserRolForm() {
-  const roles = useSelector((state) => state.roles);
+  const roles = useSelector((state) => state.userTypes);
   const rolId = useSelector((state) => state.rolId);
   const dispatch = useDispatch();
-  const selectedRol = roles.find((element) => element.id === rolId);
+  console.log('roles',roles);
+  const selectedRol = roles?.find((element) => element.ID_TIPO_USUARIO === rolId);
 
   const [rol, setRol] = useState(selectedRol);
 
+  useEffect(()=>{
+    if(!roles.length) dispatch(actions.getAllUserTypes());
+  },[roles, dispatch])
+
   const cancelModal = () => {
-    dispatch(actions.hideModalEditUserRol());
+    dispatch(actions.hideModalEditUserType());
   };
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.hideModalEditUserRol());
+    dispatch(actions.hideModalEditUserType());
   };
 
   function handleChange(event) {
@@ -38,21 +43,10 @@ export default function EditUserRolForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={rol.name}
+            name="DESCRIPCION"
+            value={rol.DESCRIPCION}
             onChange={handleChange}
-            placeholder={selectedRol.name}
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Descripcion</label>
-          <input
-            autoComplete="off"
-            name="description"
-            value={rol.description}
-            onChange={handleChange}
-            placeholder={selectedRol.description}
+            placeholder={selectedRol.DESCRIPCION}
             type="text"
           />
         </div>

@@ -25,7 +25,7 @@ export default function Suppliers() {
     if (suppliers.length === 0) dispatch(actions.getAllSuppliers());
     if (accounts.length === 0) dispatch(actions.getAllAccounts());
     if (accountTypes.length === 0) dispatch(actions.getAllAccountTypes());
-  }, [suppliers, accounts, accountTypes]);
+  }, [suppliers, accounts, accountTypes, dispatch]);
 
   const openCreateSupplierModal = () => {
     dispatch(actions.showCreateModal());
@@ -61,7 +61,7 @@ export default function Suppliers() {
           <tbody>
             {suppliers.map((supplier, index) => {
               const account = accounts?.find(e => e.ID_CUENTA === supplier.ID_CUENTA)
-              const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+              const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account?.ID_TIPO_CUENTA)
               return (
                 <tr key={index} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                   <td>{supplier.RAZON_SOCIAL}</td>

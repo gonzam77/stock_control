@@ -1,4 +1,3 @@
-import { roles } from "../assets/dataHardcodeoRoles";
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { medidas } from "../assets/dataHardcodeoMesures";
 import { categorias } from "../assets/dataHardcodeoCategorias";
@@ -14,16 +13,14 @@ const initialState = {
   cart: [],
   orders: [],
   suppliers: [],
-
   persons:[],
-
   clients: [],
   accounts: [],
   accountTypes: [],
   deposits: [],
   ubicaciones: [],
   brands:[],
-  roles: roles,
+  userTypes:[],
   mesures: medidas,
   offers: ofertas,
   categories: categorias,
@@ -33,10 +30,8 @@ const initialState = {
   purchases: compras,
   productById: null,
   accountTypeId: null,
-
   personId:null,
   brandId:null,
-
   accountId: null,
   clientId: null,
   rolId: null,
@@ -47,7 +42,7 @@ const initialState = {
   showModalEditAccount: false,
   showModalEditCategories: false,
   showModalEditBrand: false,
-  showModalEditUserRol: false,
+  showModalEditUserType: false,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -62,6 +57,11 @@ export default function reducer(state = initialState, { type, payload }) {
         return {
           ...state,
           deposits: payload,
+        };
+      case 'GET_ALL_USER_TYPES':
+        return {
+          ...state,
+          userTypes: payload,
         };
       case 'GET_ALL_USERS':
         return {
@@ -271,10 +271,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalEditBrand: true,
       };
-    case "SHOW_MODAL_EDIT_USER_ROL":
+    case "SHOW_MODAL_EDIT_USER_TYPE":
       return {
         ...state,
-        showModalEditUserRol: true,
+        showModalEditUserType: true,
       };
     case "HIDE_MODAL":
       return {
@@ -307,18 +307,23 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalEditBrand: false,
       };
-    case "HIDE_MODAL_EDIT_USER_ROL":
+    case "HIDE_MODAL_EDIT_USER_TYPE":
       return {
         ...state,
-        showModalEditUserRol: false,
+        showModalEditUserType: false,
+      };
+    case 'CLEAN_USER_TYPES':
+      console.log('limpiando');
+      console.log(payload);
+      return {
+        ...state,
+        userTypes: payload,
       };
     case 'CLEAN_SUPPLIERS':
-
       return {
         ...state,
         suppliers: payload,
       };
-
     case 'CLEAN_BRANDS':
       return {
         ...state,

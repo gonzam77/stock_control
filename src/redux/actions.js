@@ -2,6 +2,21 @@ import axios from "axios";
 import { axiosConfig } from "../App";
 import { backURL } from "../App";
 
+export const getAllUserTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/tipos`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_USER_TYPES',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
 export const getAllUsers = () => {
   return async function (dispatch) {
     try {
@@ -170,11 +185,19 @@ export const getAllProducts = () => {
 };
 
 
+export const cleanUserTypes = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_USER_TYPES",
+      payload: [],
+    });
+  }
+};
+
 export const cleanBrands = () => {
   return async function(dispatch){
     return dispatch({
       type: "CLEAN_BRANDS",
-
       payload: [],
     });
   }
@@ -401,8 +424,8 @@ export const showModalEditMesure = () =>({
 export const showModalEditAccountType = () => ({
   type: "SHOW_MODAL_EDIT_ACCOUNT_TYPE",
 });
-export const showModalEditUserRol = () => ({
-  type: "SHOW_MODAL_EDIT_USER_ROL",
+export const showModalEditUserType = () => ({
+  type: "SHOW_MODAL_EDIT_USER_TYPE",
 });
 
 export const showModalEditCategories = () => ({
@@ -417,8 +440,8 @@ export const hideCreateModal = () => ({
   type: "HIDE_CREATE_MODAL",
 });
 
-export const hideModalEditUserRol = () => ({
-  type: "HIDE_MODAL_EDIT_USER_ROL",
+export const hideModalEditUserType = () => ({
+  type: "HIDE_MODAL_EDIT_USER_TYPE",
 });
 
 export const hideModalEditAccounType = () => ({
