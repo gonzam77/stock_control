@@ -22,7 +22,6 @@ export default function CreateBrandForm() {
     };
 
     const closeCreateModal = async (event) => {
-        console.log('newBrand',newBrand);
         event.preventDefault();
         await PostBrand({ Marca: newBrand })
         dispatch(actions.cleanBrands());

@@ -12,7 +12,6 @@ export default function Brands() {
 
     const showCreateModal = useSelector((state) => state.showCreateModal);
     const showModalEditBrand = useSelector((state) => state.showModalEditBrand);
-    console.log(showModalEditBrand);
     const brands = useSelector((state) => state.brands);
     const dispatch = useDispatch();
 

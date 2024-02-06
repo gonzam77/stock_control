@@ -14,7 +14,6 @@ export default function EditBrandForm() {
   const [brand, setBrand] = useState(selectedBrand);
 
   const cancelModal = () => {
-    console.log('ENTRANDO');
     dispatch(actions.hideModalEditBrand());
   };
 

@@ -9,7 +9,6 @@ import { backURL } from "../../../../App";
 
 export default function EditClientForm() {
   const clients = useSelector((state) => state.clients);
-  console.log("clients", clients);
   const clientId = useSelector((state) => state.clientId);
 
   const personas = useSelector((state) => state.persons);
