@@ -4,6 +4,8 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditBrandForm() {
   const brands = useSelector((state) => state.brands);
@@ -13,12 +15,23 @@ export default function EditBrandForm() {
 
   const [brand, setBrand] = useState(selectedBrand);
 
+
+  async function postBrand(marca){
+    try {
+      await axios.post(`${backURL}/marca/nuevo`, marca)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const cancelModal = () => {
     dispatch(actions.hideModalEditBrand());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    await postBrand({ Marca: brand})
+    dispatch(actions.cleanBrands());
     dispatch(actions.hideModalEditBrand());
   };
 
