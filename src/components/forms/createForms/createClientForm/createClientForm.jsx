@@ -13,6 +13,7 @@ export default function CreateClientForm() {
   const personas = useSelector((state) => state.persons);
   console.log(personas);
   const accounts = useSelector((state) => state.accounts);
+  console.log("acounts", accounts);
 
   const [newClient, setNewClient] = useState({
     ID_PERSONA: null,
@@ -36,6 +37,7 @@ export default function CreateClientForm() {
   const closeCreateModal = async (event) => {
     event.preventDefault();
     await postClient({ Cliente: newClient })
+    dispatch(actions.cleanClients());
     dispatch(actions.hideCreateModal());
   };
 
@@ -44,7 +46,10 @@ export default function CreateClientForm() {
   };
 
   function handleAccountSelect(selectedAccount) {
-    const accountId = accounts?.find((e) => e.ID_CUENTA === selectedAccount).ID_CUENTA;
+    
+    console.log("ENTRANDO");
+    const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
+    console.log('acountId',accountId);
     setNewClient({
       ...newClient,
       ID_PERSONA: accountId,

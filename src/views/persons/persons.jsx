@@ -22,6 +22,7 @@ export default function Persons() {
         if (personas.length === 0) {
           dispatch(actions.getAllPersons());
         }
+        console.log('PERSONA', personas);
       }, [personas]);
 
     const openCreateModal = () => {

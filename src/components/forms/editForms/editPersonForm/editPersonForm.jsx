@@ -103,7 +103,7 @@ export default function EditpersonForm() {
             type="text"
           />
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>
