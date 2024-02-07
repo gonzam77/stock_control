@@ -11,20 +11,20 @@ import * as actions from "../../../../redux/actions";
 export default function CreateClientForm() {
   const dispatch = useDispatch();
   const personas = useSelector((state) => state.persons);
-  console.log(personas);
   const accounts = useSelector((state) => state.accounts);
   console.log("acounts", accounts);
 
   const [newClient, setNewClient] = useState({
-    ID_PERSONA: null,
-    RAZON_SOCIAL: null,
-    CUIL: null,
-    ID_CUENTA: null,
+    RAZON_SOCIAL:'',
+    CUIL:'',
+    ID_PERSONA:'',
+    ID_CUENTA:'',
+    ESTADO: 1
   });
 
-  useEffect(()=>{
-    if(!personas.length) dispatch(actions.getAllPersons())
-  },[personas])
+  useEffect(() => {
+    if (!personas.length) dispatch(actions.getAllPersons())
+  }, [personas])
 
   async function postClient(cliente) {
     try {
@@ -37,7 +37,11 @@ export default function CreateClientForm() {
   const closeCreateModal = async (event) => {
     event.preventDefault();
     await postClient({ Cliente: newClient })
+<<<<<<< HEAD
     dispatch(actions.cleanClients());
+=======
+    dispatch(actions.cleanClient());
+>>>>>>> 82a83e9ed97b79c50baec73fb605746d2e22c007
     dispatch(actions.hideCreateModal());
   };
 
@@ -46,20 +50,21 @@ export default function CreateClientForm() {
   };
 
   function handleAccountSelect(selectedAccount) {
+<<<<<<< HEAD
     
     console.log("ENTRANDO");
     const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
     console.log('acountId',accountId);
+=======
+    const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
+>>>>>>> 82a83e9ed97b79c50baec73fb605746d2e22c007
     setNewClient({
       ...newClient,
-      ID_PERSONA: accountId,
+      ID_CUENTA: accountId,
     });
   }
   function handlePersonSelect(selectedPerson) {
-    console.log('selectedPerson',selectedPerson);
-    console.log('personas', personas);
     const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-    console.log('personId', personId);
     setNewClient({
       ...newClient,
       ID_PERSONA: personId,

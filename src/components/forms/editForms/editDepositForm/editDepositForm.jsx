@@ -1,21 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../editForms.module.css";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import DropdownUbication from "../../../dropdown/dropdownUbication";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditDepositForm() {
   const deposits = useSelector((state) => state.deposits);
   const depositId = useSelector((state) => state.depositId);
   const ubicaciones = useSelector((state) => state.ubicaciones);
   const dispatch = useDispatch();
-  const selectedDeposit = deposits.find((element) => element.id === depositId);
-
+  const selectedDeposit = deposits.find((element) => element.ID_BODEGA === depositId);
+  
   const [deposit, setdeposit] = useState(selectedDeposit);
+  
+  useEffect(() => {
+    if (!ubicaciones) dispatch(actions.getAllUbications());
+    if (!deposits) dispatch(actions.getAllDeposits());
+  }, [ubicaciones, deposits, dispatch])
+  
+  async function putDeposit(deposito){
+    try {
+      await axios.put(`${backURL}/bodega/update`, deposito)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const cancelModal = () => {
+    dispatch(actions.hideModal());
+  };
+  
+  const closeModal = async (event) => {
+    event.preventDefault();
+    await putDeposit({ Bodega: deposit})
+    dispatch(actions.cleanDeposits());
     dispatch(actions.hideModal());
   };
 
@@ -36,10 +58,6 @@ export default function EditDepositForm() {
     }
   };
 
-  const closeModal = (event) => {
-    event.preventDefault();
-    dispatch(actions.hideModal());
-  };
 
   function handleChange(event) {
     const target = event.target.name;

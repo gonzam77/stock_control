@@ -1,26 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../createForms.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownAccountType from "../../../dropdown/dropdownAccountType";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function CreateAccountForm() {
   const dispatch = useDispatch();
+  const accountTypes = useSelector(state => state.accountTypes)
 
   const [newAccount, setNewAccount] = useState({
-    id: "",
-    account_type: "",
-    description: "",
-    number: "",
+    ID_TIPO_CUENTA: "",
+    DESCRIPCION: "",
+    NUMERO: "",
   });
 
-  const closeCreateModal = (event) => {
+  useEffect(()=>{
+    if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
+  },[accountTypes])
+
+  async function postAccount(cuenta) {
+    try {
+      await axios.post(`${backURL}/cuenta/nuevo`, cuenta)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    setNewAccount({
-      ...newAccount,
-    });
-    dispatch(actions.hideCreateModal());
+    await postAccount({ Cuenta: newAccount})
+    dispatch(actions.cleanAccount())
+      dispatch(actions.hideCreateModal());
   };
 
   const cancelCreateModal = () => {
@@ -37,9 +50,10 @@ export default function CreateAccountForm() {
   }
 
   const handleAccountTypeSelect = (selectedType) => {
+    const accountTypeId = accountTypes?.find(e=>e.DESCRIPCION === selectedType).ID_TIPO_CUENTA;
     setNewAccount({
       ...newAccount,
-      account_Type: selectedType,
+      ID_TIPO_CUENTA: accountTypeId,
     });
   };
 
@@ -53,8 +67,8 @@ export default function CreateAccountForm() {
           <label>Descripcion</label>
           <input
             autoComplete="off"
-            name="description"
-            value={newAccount.description}
+            name="DESCRIPCION"
+            value={newAccount.DESCRIPCION}
             onChange={handleChange}
             placeholder="Descripcion..."
             type="text"
@@ -64,8 +78,8 @@ export default function CreateAccountForm() {
           <label>Number</label>
           <input
             autoComplete="off"
-            name="number"
-            value={newAccount.number}
+            name="NUMERO"
+            value={newAccount.NUMERO}
             onChange={handleChange}
             placeholder="Numero de cuenta..."
             type="text"

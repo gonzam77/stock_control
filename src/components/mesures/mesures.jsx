@@ -9,12 +9,12 @@ import * as actions from '../../redux/actions';
 
 export default function Mesures() {
   const showCreateModalMesures = useSelector((state) => state.showCreateModal);
-  const showModalMesures = useSelector((state) => state.showModalMesure);
+  const showModalEditMesure = useSelector((state) => state.showModalEditMesure);
   const mesures = useSelector((state) => state.mesures);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    dispatch(actions.showModalMesure())
+    dispatch(actions.showModalEditMesure())
     dispatch(actions.getMesureId(id))
   };
 
@@ -63,7 +63,7 @@ export default function Mesures() {
           </tbody>
         </Table>
       </div>
-      {showModalMesures && <ModalEditMesureForm />}
+      {showModalEditMesure && <ModalEditMesureForm />}
       {showCreateModalMesures && <ModalCreateMesureForm />}
     </div>
   );

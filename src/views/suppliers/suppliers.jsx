@@ -17,20 +17,19 @@ export default function Suppliers() {
   const dispatch = useDispatch();
 
   const openModal = (id) => {
-    console.log(id);
     dispatch(actions.showModal());
     dispatch(actions.getSupplierId(id));
   };
 
   useEffect(() => {
-    if (suppliers.length === 0) {
-      dispatch(actions.getAllSuppliers());
-    }
-  }, [suppliers]);
+    if (suppliers.length === 0) dispatch(actions.getAllSuppliers());
+    if (accounts.length === 0) dispatch(actions.getAllAccounts());
+    if (accountTypes.length === 0) dispatch(actions.getAllAccountTypes());
+  }, [suppliers, accounts, accountTypes, dispatch]);
 
   const openCreateSupplierModal = () => {
     dispatch(actions.showCreateModal());
-  }
+  };
 
   const closeModal = () => {
     dispatch(actions.hideModal());
@@ -62,7 +61,7 @@ export default function Suppliers() {
           <tbody>
             {suppliers.map((supplier, index) => {
               const account = accounts?.find(e => e.ID_CUENTA === supplier.ID_CUENTA)
-              const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+              const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account?.ID_TIPO_CUENTA)
               return (
                 <tr key={index} style={{ textAlign: 'center', verticalAlign: 'middle' }}>
                   <td>{supplier.RAZON_SOCIAL}</td>

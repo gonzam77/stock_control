@@ -9,15 +9,12 @@ import { backURL } from "../../../../App";
 
 export default function EditClientForm() {
   const clients = useSelector((state) => state.clients);
-  console.log("clients", clients);
   const clientId = useSelector((state) => state.clientId);
-  console.log("clientsId", clientId);
-  const personas = useSelector((state) => state.personas);
+
+  const personas = useSelector((state) => state.persons);
   const dispatch = useDispatch();
-  const selectedlClient = clients?.find(
-    (element) => element.ID_CLIENTE === clientId
-  );
-  console.log("selected", selectedlClient);
+  const selectedlClient = clients.find((element) => element.ID_CLIENTE === clientId);
+
 
   const [client, setClient] = useState(selectedlClient);
 
@@ -26,19 +23,24 @@ export default function EditClientForm() {
   };
 
   async function putClient(cliente) {
-    await axios.put(`${backURL}/cliente/update`, cliente);
-    return;
+
+    try {
+      await axios.put(`${backURL}/cliente/update`, cliente)
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   const closeModal = async (event) => {
     event.preventDefault();
     await putClient({ Cliente: client });
-    dispatch(actions.cleanClients());
+    dispatch(actions.cleanClient());
     dispatch(actions.hideModal());
   };
 
   function handlePersonSelect(selectedPerson) {
-    const personId = personas?.find((e) => e.DNI === selectedPerson).ID_PERSONA;
+    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
     setClient({
       ...client,
       ID_PERSONA: personId,

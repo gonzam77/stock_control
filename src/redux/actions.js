@@ -2,6 +2,21 @@ import axios from "axios";
 import { axiosConfig } from "../App";
 import { backURL } from "../App";
 
+export const getAllUserTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/tipos`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_USER_TYPES',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
 export const getAllUsers = () => {
   return async function (dispatch) {
     try {
@@ -63,6 +78,81 @@ export const getAllClients = () => {
     }
   };
 };
+export const getAllAccounts = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/cuentas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_ACCOUNTS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllUbications = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/ubicaciones`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_UBUCATIONS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllDeposits = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/bodegas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_DEPOSITS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllAccountTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/tipocuentas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_ACCOUNT_TYPES',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getAllBrands = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/marcas`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_BRANDS',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllPersons = () => {
   return async function (dispatch) {
     try {
@@ -94,14 +184,61 @@ export const getAllProducts = () => {
   };
 };
 
-export const cleanClients = () => {
+
+export const cleanUserTypes = () => {
   return async function(dispatch){
     return dispatch({
-      type: "CLEAN_CLIENTS",
+      type: "CLEAN_USER_TYPES",
       payload: [],
     });
   }
 };
+
+export const cleanBrands = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_BRANDS",
+      payload: [],
+    });
+  }
+};
+
+export const cleanDeposits = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_DEPOSITS",
+      payload: [],
+    });
+  }
+};
+
+export const cleanAccountTypes = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_ACCOUNT_TYPES",
+      payload: [],
+    });
+  }
+};
+
+export const cleanAccount = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_ACCOUNT",
+      payload: [],
+    });
+  }
+};
+
+export const cleanClient = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_CLIENT",
+      payload: [],
+    });
+  }
+};
+
 export const cleanSuppliers = () => {
   return async function(dispatch){
     return dispatch({
@@ -151,12 +288,14 @@ export const newTransfer = (data) => {
     payload: data,
   };
 };
+
 export const newSetting = (data) => {
   return {
     type: "NEW_SETTING",
     payload: data,
   };
 };
+
 export const newPurchase = (data) => {
   return {
     type: "NEW_PURCHASE",
@@ -170,7 +309,6 @@ export const newSale = (data) => {
     payload: data,
   };
 };
-
 
 export const getAccountTypeId = (id) => {
   return {
@@ -186,6 +324,12 @@ export const getMesureId = (id) => {
   };
 };
 
+export const getBrandId = (id) => {
+  return {
+    type: "GET_BRAND_ID",
+    payload: id,
+  };
+};
 export const getAccountId = (id) => {
   return {
     type: "GET_ACCOUNT_ID",
@@ -270,16 +414,22 @@ export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
 });
 
-export const showModalMesure = () => ({
-  type: "SHOW_MODAL_MESURE",
+export const showModalEditBrand = () => ({
+  type: "SHOW_MODAL_EDIT_BRAND",
+});
+export const showModalEditMesure = () =>({
+  type: "SHOW_MODAL_EDIT_MESURE",
 });
 
-export const showModalAccountType = () => ({
-  type: "SHOW_MODAL_ACCOUNT_TYPE",
+export const showModalEditAccountType = () => ({
+  type: "SHOW_MODAL_EDIT_ACCOUNT_TYPE",
+});
+export const showModalEditUserType = () => ({
+  type: "SHOW_MODAL_EDIT_USER_TYPE",
 });
 
-export const showModalCategories = () => ({
-  type: "SHOW_MODAL_CATEGORIES",
+export const showModalEditCategories = () => ({
+  type: "SHOW_MODAL_EDIT_CATEGORIES",
 });
 
 export const hideModal = () => ({
@@ -290,15 +440,22 @@ export const hideCreateModal = () => ({
   type: "HIDE_CREATE_MODAL",
 });
 
-export const hideModalAccountType = () => ({
-  type: "HIDE_MODAL_ACCOUNT_TYPE",
+export const hideModalEditUserType = () => ({
+  type: "HIDE_MODAL_EDIT_USER_TYPE",
 });
 
-export const hideModalCategories = () => ({
-  type: "HIDE_MODAL_CATEGORIES",
+export const hideModalEditAccounType = () => ({
+  type: "HIDE_MODAL_EDIT_ACCOUNT_TYPE",
 });
 
-export const hideModalMesure = () => ({
-  type: "HIDE_MODAL_MESURE",
+export const hideModalEditCategories = () => ({
+  type: "HIDE_MODAL_EDIT_CATEGORIES",
+});
+
+export const hideModalEditMesure = () => ({
+  type: "HIDE_MODAL_EDIT_MESURE",
+});
+export const hideModalEditBrand = () => ({
+  type: "HIDE_MODAL_EDIT_BRAND",
 });
 

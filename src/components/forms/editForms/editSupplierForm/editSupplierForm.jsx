@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../editForms.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
@@ -21,6 +21,13 @@ export default function SupplierForm() {
   );
 
   const [supplier, setSupplier] = useState(selectedSupplier);
+
+
+    useEffect(()=>{
+      if(!ubicaciones.length)dispatch(actions.getAllUbications());
+      if(!suppliers.length)dispatch(actions.getAllSuppliers());
+      if(!accounts.length)dispatch(actions.getAllAccounts());
+    },[ubicaciones, dispatch, suppliers, accounts])
 
   const cancelModal = () => {
     dispatch(actions.hideModal());

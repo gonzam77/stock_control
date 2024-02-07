@@ -6,6 +6,7 @@ import ModalCreatedepositForm from "../modals/createModals/modalCreateDepositFor
 import ModalEditdepositForm from "../modals/editModals/modalEditDepositForm/modalEditDepositForm";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
@@ -14,6 +15,12 @@ export default function Deposits() {
   const ubicaciones = useSelector((state) => state.ubicaciones);
   const dispatch = useDispatch();
 
+  
+  useEffect(()=>{
+    if(!deposits.length) dispatch(actions.getAllDeposits());
+    if(!ubicaciones.length) dispatch(actions.getAllUbications());
+  },[deposits, dispatch])
+  
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getDepositId(id));
@@ -26,8 +33,6 @@ export default function Deposits() {
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
   };
-
- 
 
   return (
     <div className={styles.container}>
@@ -60,14 +65,14 @@ export default function Deposits() {
           </thead>
           <tbody>
             {deposits.map((deposit, index) => {
-              const ubicacion = ubicaciones.find(e=>e.ID_UBICACION === deposit.ID_UBICACION);
+              const ubicacion = ubicaciones?.find(e=>e.ID_UBICACION === deposit.ID_UBICACION);
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
                   <td style={{ textAlign: "center" }}>
-                    <Link to={`/depositDetail/${deposit.id}`}>
+                    <Link to={`/depositDetail/${deposit.ID_BODEGA}`}>
                       <Button variant="primary">VER</Button>
                     </Link>
                   </td>
@@ -76,11 +81,11 @@ export default function Deposits() {
                   <td>{deposit.ADMINISTRADOR}</td>
                   <td>{deposit.DESCRIPCION}</td>
                   <td>{deposit.TELEFONO}</td>
-                  <td>{ubicacion.DIRECCION}</td>
+                  <td>{ubicacion?.DIRECCION}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(deposit.id)}
+                      onClick={() => openModal(deposit.ID_BODEGA)}
                     >
                       Modificar
                     </Button>

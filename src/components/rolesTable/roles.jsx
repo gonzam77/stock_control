@@ -5,17 +5,22 @@ import ModalCreateRolForm from '../../views/modals/createModals/modalCreateUserR
 import ModalEditUserRolForm from '../../views/modals/editModals/modalEditUserRolForm/modalEditUserRolForm';
 import styles from './roles.module.css';
 import * as actions from '../../redux/actions';
+import { useEffect } from "react";
 
 export default function Roles() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const showModal = useSelector((state) => state.showModal);
-
-  const roles = useSelector((state) => state.roles);
-  const tipoUsuario = useSelector((state) => state.userType);
+  const showModalEditUserRol = useSelector((state) => state.showModalEditUserType);
+  const userTypes = useSelector((state) => state.userTypes);
   const dispatch = useDispatch();
 
-  const openModal = (id) => {
-    dispatch(actions.showModal());
+
+  useEffect(()=>{
+    if(!userTypes.length) dispatch(actions.getAllUserTypes());
+  },[userTypes, dispatch])
+
+
+  const openModal = async (id) => {
+    dispatch(actions.showModalEditUserType());
     dispatch(actions.getRolId(id));
   };
   
@@ -36,23 +41,29 @@ export default function Roles() {
       </div>
 
       <div className={styles.title}>
-        <h1>Roles</h1>
+        <h1>Tipo de Usuarios</h1>
       </div>
       <div className={styles.tableContainer}>
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Crear</th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
-            {roles?.map((rol, index) => {
+            {userTypes?.map((userType, index) => {
               return (
                 <tr key={index}>
-                  <td>{rol.NOMBRE}</td>
+                  <td>{userType.DESCRIPCION}</td>
+                  <td>{userType.CREATE === 1 ? 'Si': 'No'}</td>
+                  <td>{userType.UPDATE === 1 ? 'Si': 'No'}</td>
+                  <td>{userType.DELETE === 1 ? 'Si': 'No'}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(rol.id)}>
+                    <Button variant="primary" onClick={() => openModal(userType.ID_TIPO_USUARIO)}>
                       Modificar
                     </Button>
                   </td>
@@ -62,7 +73,7 @@ export default function Roles() {
           </tbody>
         </Table>
       </div>
-      {showModal && <ModalEditUserRolForm />}
+      {showModalEditUserRol && <ModalEditUserRolForm />}
       {showCreateModal && <ModalCreateRolForm />}
     </div>
   );

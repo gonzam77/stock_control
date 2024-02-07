@@ -4,29 +4,42 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
-export default function EditcategoryForm() {
-  const categories = useSelector((state) => state.categories);
-  const categoryId = useSelector((state) => state.categoryId);
+export default function EditBrandForm() {
+  const brands = useSelector((state) => state.brands);
+  const brandId = useSelector((state) => state.brandId);
   const dispatch = useDispatch();
-  const selectedCategory = categories.find((element) => element.id === categoryId);
+  const selectedBrand = brands.find((element) => element.ID_MARCA === brandId);
 
-  const [category, setCategory] = useState(selectedCategory);
+  const [brand, setBrand] = useState(selectedBrand);
 
-  const cancelModal = () => {
-    dispatch(actions.hideModalEditCategories());
+
+  async function postBrand(marca){
+    try {
+      await axios.post(`${backURL}/marca/nuevo`, marca)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const closeModal = (event) => {
+  const cancelModal = () => {
+    dispatch(actions.hideModalEditBrand());
+  };
+
+  const closeModal = async (event) => {
     event.preventDefault();
-    dispatch(actions.hideModalEditCategories());
+    await postBrand({ Marca: brand})
+    dispatch(actions.cleanBrands());
+    dispatch(actions.hideModalEditBrand());
   };
 
   function handleChange(event) {
     const target = event.target.name;
     const value = event.target.value;
-    setCategory({
-      ...category,
+    setBrand({
+      ...brand,
       [target]: value,
     });
   }
@@ -38,10 +51,10 @@ export default function EditcategoryForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={category.name}
+            name="NOMBRE"
+            value={brand.NOMBRE}
             onChange={handleChange}
-            placeholder={selectedCategory.name}
+            placeholder={selectedBrand.NOMBRE}
             type="text"
           />
         </div>

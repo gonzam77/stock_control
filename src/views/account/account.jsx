@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import ModalCreateAccountForm from "../modals/createModals/modalCreateAccountForm/modalCreateAccountForm";
 import ModalEditAccountForm from "../modals/editModals/modalEditAccountForm/modalEditAccountForm";
 import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Account() {
   const showModalState = useSelector((state) => state.showModal);
@@ -18,6 +19,11 @@ export default function Account() {
     dispatch(actions.showModal());
     dispatch(actions.getAccountId(id));
   };
+
+  useEffect(()=>{
+    if(!accounts.length) dispatch(actions.getAllAccounts())
+    if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
+  },[accounts, accountTypes])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
@@ -50,10 +56,10 @@ export default function Account() {
           </thead>
           <tbody>
             {accounts?.map((account, index) => {
-                const accountType = accountTypes.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
+                const accountType = accountTypes?.find(e => e.ID_TIPO_CUENTA === account.ID_TIPO_CUENTA)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                  <td>{accountType.DESCRIPCION}</td>
+                  <td>{accountType?.DESCRIPCION}</td>
                   <td>{account.DESCRIPCION}</td>
                   <td>{account.NUMERO}</td>
                   <td style={{ textAlign: 'center' }}>

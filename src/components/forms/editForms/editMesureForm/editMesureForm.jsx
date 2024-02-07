@@ -14,12 +14,12 @@ export default function EditMesureForm() {
   const [mesure, setMesure] = useState(selectedMesure);
 
   const cancelModal = () => {
-    dispatch(actions.hideModalMesure());
+    dispatch(actions.hideModalEditMesure());
   };
 
   const closeModal = (event) => {
     event.preventDefault();
-    dispatch(actions.hideModalMesure());
+    dispatch(actions.hideModalEditMesure());
   };
 
   function handleChange(event) {

@@ -31,11 +31,13 @@ export default function NewSaleForm() {
 
   function getLastSale() {
     let lastSale = sales[0].number;
-    for (let i = 0; i < sales.length; i++) {
-      if (sales[i].number > lastSale) lastSale = sales[i].number;
+    if (sales.length) {
+      for (let i = 0; i < sales.length; i++) {
+        if (sales[i].number > lastSale) lastSale = sales[i].number;
+      }
+      lastSale = parseInt(lastSale, 10);
+      return lastSale;
     }
-    lastSale = parseInt(lastSale, 10);
-    return lastSale;
   }
 
   const [cart, setCart] = useState([]);
