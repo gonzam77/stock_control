@@ -6,15 +6,20 @@ import ModalEditOfferForm from "../modals/editModals/modalEditOfferForm/modalEdi
 import ModaleCreateOfferForm from "../modals/createModals/modalCreateOfferForm/modalCreateOfferForm";
 import { Button } from "react-bootstrap";
 import { formatDate } from "../../components/date/date";
+import { useEffect } from "react";
 
 export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const offers = useSelector((state) => state.offers);
   const date = new Date();
-
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(!offers.length) dispatch(actions.getAllOffers())
+    if(!products.length) dispatch(actions.getAllProducts())
+  },[offers, products, dispatch])
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -58,51 +63,50 @@ export default function Offers() {
           </thead>
           <tbody>
             {offers?.map((offer, index) => {
-              const productInOffer = products.find(
-                (e) => offer.ID_PRODUCTO === e.ID_PRODUCTO
-              );
+              const porcentaje = parseFloat(offer.PORCENTAJE_DESCUENTO);
+              const precio = parseFloat(offer.PRODUCTO.PRECIO_VENTA);
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
-                  <td>{productInOffer?.CODIGO}</td>
-                  <td>{productInOffer?.NOMBRE}</td>
+                  <td>{offer.PRODUCTO.CODIGO}</td>
+                  <td>{offer.PRODUCTO.NOMBRE}</td>
                   <td>
                     {"$ "}
-                    {productInOffer?.PRECIO_VENTA}
+                    {offer.PRODUCTO.PRECIO_VENTA}
                   </td>
                   <td>
-                    {offer.DESCUENTO}
+                    {offer.PORCENTAJE_DESCUENTO}
                     {"%"}
                   </td>
                   <td>
                     {"$ "}
                     {Number(
-                      (1 - offer.DESCUENTO / 100) * productInOffer?.PRECIO_VENTA
+                      (1 - porcentaje / 100) * precio
                     ).toFixed(2)}
                   </td>
                   <td>{formatDate(offer.FECHA_CREACION)}</td>
                   <td
                     className={
-                      offer.FECHA_DESDE <= date
+                      offer.FECHA_INICIO <= date
                         ? styles.activo
                         : styles.inactivo
                     }
                   >
-                    {formatDate(offer.FECHA_DESDE)}
+                    {formatDate(offer.FECHA_INICIO)}
                   </td>
                   <td
                     className={
-                      offer.FECHA_HASTA >= date
+                      offer.FECHA_FIN >= date
                         ? styles.activo
                         : styles.inactivo
                     }
                   >
-                    {formatDate(offer.FECHA_HASTA)}
+                    {formatDate(offer.FECHA_FIN)}
                   </td>
 
-                  {offer.FECHA_DESDE <= date && offer.FECHA_HASTA >= date ? (
+                  {offer.FECHA_INICIO <= date && offer.FECHA_FIN >= date ? (
                     <td className={styles.activo}>Activo</td>
                   ) : (
                     <td className={styles.inactivo}>Inactivo</td>

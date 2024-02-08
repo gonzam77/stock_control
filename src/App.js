@@ -33,7 +33,6 @@ const qs = require("qs");
 
 export const urlDev = "http://localhost:3000";
 export const backURL = 'http://localhost:4000'
-
 export let axiosConfig = null;
 
 function App() {

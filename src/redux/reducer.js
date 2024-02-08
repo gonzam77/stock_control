@@ -1,7 +1,6 @@
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
-import { ofertas } from "../assets/dataHardcodeoOffers";
 import { compras } from "../assets/dataHardcodeoCompras";
 
 const initialState = {
@@ -20,7 +19,7 @@ const initialState = {
   userTypes:[],
   categories: [],
   mesures: [],
-  offers: ofertas,
+  offers: [],
   dispatchers: transportistas,
   payTypes: metodo_de_pago,
   sales: ventas,
@@ -45,6 +44,11 @@ const initialState = {
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
 
+    case "GET_ALL_OFFERS":
+      return {
+        ...state,
+        offers: payload
+      };
     case "GET_ALL_CATEGORIES":
       return {
         ...state,

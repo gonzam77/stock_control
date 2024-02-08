@@ -32,6 +32,21 @@ export const getAllCategories = () => {
   };
 };
 
+export const getAllOffers = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/descuentos`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_OFFERS',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
 export const getAllUsers = () => {
   return async function (dispatch) {
     try {
