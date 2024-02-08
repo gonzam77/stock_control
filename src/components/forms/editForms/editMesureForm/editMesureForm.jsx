@@ -1,24 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditMesureForm() {
   const mesures = useSelector((state) => state.mesures);
   const mesureId = useSelector((state) => state.mesureId);
   const dispatch = useDispatch();
-  const selectedMesure = mesures.find((element) => element.id === mesureId);
+  const selectedMesure = mesures.find((element) => element.ID_UNIDAD_MEDIDA === mesureId);
 
   const [mesure, setMesure] = useState(selectedMesure);
+
+  useEffect(()=>{
+    if(!mesures.length) dispatch(actions.getAllMesures());
+  },[mesures, dispatch]);
+
+  async function putMesure(medida){
+    try {
+      await axios.put(`${backURL}/unidad/update`, medida)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const cancelModal = () => {
     dispatch(actions.hideModalEditMesure());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putMesure({UnidadMedida: mesure});
+    dispatch(actions.cleanMesures());
     dispatch(actions.hideModalEditMesure());
   };
 
@@ -38,10 +54,10 @@ export default function EditMesureForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={mesure.name}
+            name="NOMBRE"
+            value={mesure.NOMBRE}
             onChange={handleChange}
-            placeholder={selectedMesure.name}
+            placeholder={selectedMesure.NOMBRE}
             type="text"
           />
         </div>
@@ -49,10 +65,10 @@ export default function EditMesureForm() {
           <label>Abreviacion</label>
           <input
             autoComplete="off"
-            name="abbreviation"
-            value={mesure.abbreviation}
+            name="ABREVIATURA"
+            value={mesure.ABREVIATURA}
             onChange={handleChange}
-            placeholder={selectedMesure.description}
+            placeholder={selectedMesure.ABREVIATURA}
             type="text"
           />
         </div>

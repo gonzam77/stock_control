@@ -3,17 +3,30 @@ import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function CreateMesureForm() {
   const dispatch = useDispatch();
   const [newMesure, setNewMesure] = useState({
-    id: "",
-    name: "",
-    abbreviation: "",
+    NOMBRE: "",
+    ABREVIATURA: "",
+    TIPO:''
   });
 
-  const closeCreateModal = (event) => {
+  async function postMesure(medida){
+    console.log('medida',medida);
+    try {
+      await axios.post(`${backURL}/unidad/nuevo`, medida)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
+    await postMesure({UnidadMedida: newMesure});
+    dispatch(actions.cleanMesures());
     dispatch(actions.hideCreateModal());
   };
 
@@ -37,8 +50,8 @@ export default function CreateMesureForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={newMesure.name}
+            name="NOMBRE"
+            value={newMesure.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
@@ -48,10 +61,10 @@ export default function CreateMesureForm() {
           <label>Abreviacion</label>
           <input
             autoComplete="off"
-            name="abbreviation"
-            value={newMesure.abbreviation}
+            name="ABREVIATURA"
+            value={newMesure.ABREVIATURA}
             onChange={handleChange}
-            placeholder="Descripcion..."
+            placeholder="Abreviatura..."
             type="text"
           />
         </div>

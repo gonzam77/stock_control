@@ -183,6 +183,21 @@ export const getAllPersons = () => {
     }
   };
 };
+export const getAllMesures = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/unidades`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_MESURES',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getAllProducts = () => {
   return async function (dispatch) {
     try {
@@ -200,6 +215,14 @@ export const getAllProducts = () => {
 };
 
 
+export const cleanMesures = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_MESURES",
+      payload: [],
+    });
+  }
+};
 export const cleanCategories = () => {
   return async function(dispatch){
     return dispatch({

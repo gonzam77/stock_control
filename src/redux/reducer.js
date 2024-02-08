@@ -1,5 +1,4 @@
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
-import { medidas } from "../assets/dataHardcodeoMesures";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
@@ -20,7 +19,7 @@ const initialState = {
   brands:[],
   userTypes:[],
   categories: [],
-  mesures: medidas,
+  mesures: [],
   offers: ofertas,
   dispatchers: transportistas,
   payTypes: metodo_de_pago,
@@ -101,6 +100,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         clients: payload,
+      };
+    case "GET_ALL_MESURES":
+      return {
+        ...state,
+        mesures: payload,
       };
     case "GET_ALL_PERSONS":
       return {
@@ -315,9 +319,12 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalEditUserType: false,
       };
+    case 'CLEAN_MESURES':
+      return {
+        ...state,
+        mesures: payload,
+      };
     case 'CLEAN_USER_TYPES':
-      console.log('limpiando');
-      console.log(payload);
       return {
         ...state,
         userTypes: payload,

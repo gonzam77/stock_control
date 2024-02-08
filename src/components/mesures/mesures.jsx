@@ -5,6 +5,7 @@ import ModalCreateMesureForm from '../../views/modals/createModals/modalCreateMe
 import ModalEditMesureForm from '../../views/modals/editModals/modalEditMesureForm/modalEditMesureForm';
 import styles from './mesures.module.css';
 import * as actions from '../../redux/actions';
+import { useEffect } from "react";
 
 
 export default function Mesures() {
@@ -12,6 +13,10 @@ export default function Mesures() {
   const showModalEditMesure = useSelector((state) => state.showModalEditMesure);
   const mesures = useSelector((state) => state.mesures);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(!mesures.length) dispatch(actions.getAllMesures())
+  },[mesures, dispatch])
 
   const openModal = (id) => {
     dispatch(actions.showModalEditMesure())
@@ -53,7 +58,7 @@ export default function Mesures() {
                   <td>{mesure.NOMBRE}</td>
                   <td>{mesure.ABREVIATURA}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(mesure.id)}>
+                    <Button variant="primary" onClick={() => openModal(mesure.ID_UNIDAD_MEDIDA)}>
                       Modificar
                     </Button>
                   </td>
