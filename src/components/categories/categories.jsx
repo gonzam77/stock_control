@@ -5,12 +5,17 @@ import ModalCreateCategoryForm from '../../views/modals/createModals/modalCreate
 import ModalEditCategoryForm from '../../views/modals/editModals/modalEditCategoryForm/modalEditCategory';
 import styles from './categories.module.css';
 import * as actions from '../../redux/actions';
+import { useEffect } from "react";
 
 export default function Categories() {
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const showModalEditCategories = useSelector((state) => state.showModalEditCategories);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(!categories.length) dispatch(actions.getAllCategories());
+  },[categories, dispatch])
 
   const openModal = (id) => {
     dispatch(actions.showModalEditCategories());
@@ -50,7 +55,7 @@ export default function Categories() {
                 <tr key={index}>
                   <td>{category.NOMBRE}</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Button variant="primary" onClick={() => openModal(category.id)}>
+                    <Button variant="primary" onClick={() => openModal(category.ID_CATEGORIA)}>
                       Modificar
                     </Button>
                   </td>

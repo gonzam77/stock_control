@@ -17,6 +17,21 @@ export const getAllUserTypes = () => {
   };
 };
 
+export const getAllCategories = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/categorias`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_CATEGORIES',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
 export const getAllUsers = () => {
   return async function (dispatch) {
     try {
@@ -185,6 +200,14 @@ export const getAllProducts = () => {
 };
 
 
+export const cleanCategories = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_CATEGORIES",
+      payload: [],
+    });
+  }
+};
 export const cleanUserTypes = () => {
   return async function(dispatch){
     return dispatch({

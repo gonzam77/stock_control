@@ -1,11 +1,9 @@
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { medidas } from "../assets/dataHardcodeoMesures";
-import { categorias } from "../assets/dataHardcodeoCategorias";
 import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { ofertas } from "../assets/dataHardcodeoOffers";
 import { compras } from "../assets/dataHardcodeoCompras";
-
 
 const initialState = {
   products: [],
@@ -21,9 +19,9 @@ const initialState = {
   ubicaciones: [],
   brands:[],
   userTypes:[],
+  categories: [],
   mesures: medidas,
   offers: ofertas,
-  categories: categorias,
   dispatchers: transportistas,
   payTypes: metodo_de_pago,
   sales: ventas,
@@ -48,6 +46,11 @@ const initialState = {
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
 
+    case "GET_ALL_CATEGORIES":
+      return {
+        ...state,
+        categories: payload
+      };
     case "GET_ALL_ACCOUNTS":
       return {
         ...state,
@@ -318,6 +321,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         userTypes: payload,
+      };
+    case 'CLEAN_CATEGORIES':
+      return {
+        ...state,
+        categories: payload,
       };
     case 'CLEAN_SUPPLIERS':
       return {

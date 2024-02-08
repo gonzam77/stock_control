@@ -1,24 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import { backURL } from "../../../../App";
+import axios from "axios";
 
 export default function EditcategoryForm() {
   const categories = useSelector((state) => state.categories);
   const categoryId = useSelector((state) => state.categoryId);
   const dispatch = useDispatch();
-  const selectedCategory = categories.find((element) => element.id === categoryId);
-
+  const selectedCategory = categories.find((element) => element.ID_CATEGORIA === categoryId);
   const [category, setCategory] = useState(selectedCategory);
+
+  useEffect(() => {
+    if (!categories.length) dispatch(actions.getAllCategories());
+  }, [categories, dispatch]);
+
+  async function putCategory(categoria) {
+    try {
+      await axios.put(`${backURL}/categoria/update`, categoria)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const cancelModal = () => {
     dispatch(actions.hideModalEditCategories());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putCategory({ Categoria: category });
+    dispatch(actions.cleanCategories());
     dispatch(actions.hideModalEditCategories());
   };
 
@@ -38,8 +53,8 @@ export default function EditcategoryForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={category.name}
+            name="NOMBRE"
+            value={category.NOMBRE}
             onChange={handleChange}
             placeholder={selectedCategory.name}
             type="text"

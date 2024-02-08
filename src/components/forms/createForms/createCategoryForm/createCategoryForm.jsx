@@ -3,16 +3,27 @@ import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function CreateCategoryForm() {
   const dispatch = useDispatch();
   const [newCategory, setNewCategory] = useState({
-    id: "",
-    name: "",
+    NOMBRE: "",
   });
 
-  const closeCreateModal = (event) => {
+  async function postCategory(categoria){
+    try {
+      await axios.post(`${backURL}/categoria/nuevo`, categoria)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
+    await postCategory({ Categoria: newCategory});
+    dispatch(actions.cleanCategories())
     dispatch(actions.hideCreateModal());
   };
 
@@ -36,8 +47,8 @@ export default function CreateCategoryForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="name"
-            value={newCategory.name}
+            name="NOMBRE"
+            value={newCategory.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
             type="text"
