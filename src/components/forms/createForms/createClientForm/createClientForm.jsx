@@ -37,11 +37,7 @@ export default function CreateClientForm() {
   const closeCreateModal = async (event) => {
     event.preventDefault();
     await postClient({ Cliente: newClient })
-<<<<<<< HEAD
-    dispatch(actions.cleanClients());
-=======
     dispatch(actions.cleanClient());
->>>>>>> 82a83e9ed97b79c50baec73fb605746d2e22c007
     dispatch(actions.hideCreateModal());
   };
 
@@ -50,14 +46,9 @@ export default function CreateClientForm() {
   };
 
   function handleAccountSelect(selectedAccount) {
-<<<<<<< HEAD
     
     console.log("ENTRANDO");
     const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
-    console.log('acountId',accountId);
-=======
-    const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
->>>>>>> 82a83e9ed97b79c50baec73fb605746d2e22c007
     setNewClient({
       ...newClient,
       ID_CUENTA: accountId,
