@@ -4,28 +4,83 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
+import DropdownPermits from '../../../dropdown/dropdownPermits';
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditUserRolForm() {
   const roles = useSelector((state) => state.userTypes);
   const rolId = useSelector((state) => state.rolId);
   const dispatch = useDispatch();
-  console.log('roles',roles);
+  console.log('roles', roles);
   const selectedRol = roles?.find((element) => element.ID_TIPO_USUARIO === rolId);
 
   const [rol, setRol] = useState(selectedRol);
 
-  useEffect(()=>{
-    if(!roles.length) dispatch(actions.getAllUserTypes());
-  },[roles, dispatch])
+  useEffect(() => {
+    if (!roles.length) dispatch(actions.getAllUserTypes());
+  }, [roles, dispatch]);
+
+  async function putUserType(tipo) {
+    try {
+      await axios.put(`${backURL}/tipo/update`, tipo)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const cancelModal = () => {
     dispatch(actions.hideModalEditUserType());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putUserType({ TipoUsuario: rol });
+    dispatch(actions.cleanUserTypes());
     dispatch(actions.hideModalEditUserType());
   };
+
+  const handlePermitsCreate = (eventkey) => {
+    if (eventkey === 'Si') {
+      setRol({
+        ...rol,
+        CREATE: 1
+      })
+    } else {
+      setRol({
+        ...rol,
+        CREATE: 0
+      })
+    }
+  }
+  const handlePermitsUpdate = (eventkey) => {
+    if (eventkey === 'Si') {
+      setRol({
+        ...rol,
+        UPDATE: 1
+      })
+    } else {
+      setRol({
+        ...rol,
+        UPDATE: 0
+      })
+    }
+  };
+
+  const handlePermitsDelete = (eventkey) => {
+    if (eventkey === 'Si') {
+      setRol({
+        ...rol,
+        DELETE: 1
+      })
+    } else {
+      setRol({
+        ...rol,
+        DELETE: 0
+      })
+    }
+  };
+
 
   function handleChange(event) {
     const target = event.target.name;
@@ -49,6 +104,20 @@ export default function EditUserRolForm() {
             placeholder={selectedRol.DESCRIPCION}
             type="text"
           />
+        </div>
+        <div className={styles.divs}></div>
+        <h5>Permisos</h5>
+        <div className={styles.divs}>
+          <span style={{textAlign: 'center', verticalAlign: 'middle'}}>Crear</span>
+           <DropdownPermits onSelect={handlePermitsCreate}></DropdownPermits>
+        </div>
+        <div className={styles.divs}>
+          <span>Modificar</span>
+          <DropdownPermits onSelect={handlePermitsUpdate}></DropdownPermits>
+        </div>
+        <div className={styles.divs}>
+          <span>Eliminar</span>
+          <DropdownPermits onSelect={handlePermitsDelete}></DropdownPermits>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

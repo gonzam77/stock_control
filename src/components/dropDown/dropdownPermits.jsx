@@ -13,7 +13,7 @@ export default function DropdownPermits({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {select ? select : "No"}
+        {select ? select : "Permiso"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
             <Dropdown.Item eventKey={'Si'}>
