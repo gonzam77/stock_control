@@ -19,11 +19,8 @@ export default function Persons() {
     };
 
     useEffect(() => {
-        if (personas.length === 0) {
-          dispatch(actions.getAllPersons());
-        }
-        console.log('PERSONA', personas);
-      }, [personas]);
+        if (personas.length === 0) dispatch(actions.getAllPersons());
+    }, [personas, dispatch]);
 
     const openCreateModal = () => {
         dispatch(actions.showCreateModal())

@@ -17,8 +17,7 @@ export default function Users() {
     if (users.length === 0) {
       dispatch(actions.getAllUsers());
     }
-  }, [users]);
-
+  }, [users, dispatch]);
 
 
   const openModal = (id) => {

@@ -34,13 +34,7 @@ const qs = require("qs");
 export const urlDev = "http://localhost:3000";
 export const backURL = 'http://localhost:4000'
 
-export const axiosConfig = {
-  withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
-};
+export let axiosConfig = null;
 
 function App() {
   const location = useLocation();
@@ -69,6 +63,13 @@ function App() {
       );
       if (response) {
         localStorage.setItem("token", response.data.Token);
+        axiosConfig = {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        };
         setAccess(true);
         navigate("/");
       }
@@ -78,14 +79,14 @@ function App() {
   }
 
   const logout = async () => {
-    const response = await axios.get(`${backURL}/signout`,axiosConfig);
+    await axios.get(`${backURL}/signout`,axiosConfig);
     localStorage.clear();
     setAccess(false);
   };
 
   useEffect(() => {
     !access && navigate("/login");
-  }, [access]);
+  }, [access, navigate]);
 
   return (
     <div className="app-container">

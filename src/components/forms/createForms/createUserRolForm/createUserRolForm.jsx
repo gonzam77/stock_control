@@ -15,7 +15,6 @@ export default function CreateUserRolForm() {
     });
 
     async function postUserType(tipo) {
-        console.log('tipo', tipo);
         try {
             axios.post(`${backURL}/tipo/nuevo`, tipo)
         } catch (error) {

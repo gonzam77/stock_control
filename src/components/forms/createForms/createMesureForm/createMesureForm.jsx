@@ -15,7 +15,6 @@ export default function CreateMesureForm() {
   });
 
   async function postMesure(medida){
-    console.log('medida',medida);
     try {
       await axios.post(`${backURL}/unidad/nuevo`, medida)
     } catch (error) {

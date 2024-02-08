@@ -12,9 +12,7 @@ export default function EditUserRolForm() {
   const roles = useSelector((state) => state.userTypes);
   const rolId = useSelector((state) => state.rolId);
   const dispatch = useDispatch();
-  console.log('roles', roles);
   const selectedRol = roles?.find((element) => element.ID_TIPO_USUARIO === rolId);
-
   const [rol, setRol] = useState(selectedRol);
 
   useEffect(() => {

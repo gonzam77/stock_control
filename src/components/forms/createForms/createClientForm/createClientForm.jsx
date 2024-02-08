@@ -12,7 +12,6 @@ export default function CreateClientForm() {
   const dispatch = useDispatch();
   const personas = useSelector((state) => state.persons);
   const accounts = useSelector((state) => state.accounts);
-  console.log("acounts", accounts);
 
   const [newClient, setNewClient] = useState({
     RAZON_SOCIAL:'',
@@ -46,8 +45,6 @@ export default function CreateClientForm() {
   };
 
   function handleAccountSelect(selectedAccount) {
-    
-    console.log("ENTRANDO");
     const accountId = accounts?.find((e) => e.DESCRIPCION === selectedAccount).ID_CUENTA;
     setNewClient({
       ...newClient,
