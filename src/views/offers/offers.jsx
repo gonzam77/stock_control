@@ -65,6 +65,8 @@ export default function Offers() {
             {offers?.map((offer, index) => {
               const porcentaje = parseFloat(offer.PORCENTAJE_DESCUENTO);
               const precio = parseFloat(offer.PRODUCTO.PRECIO_VENTA);
+              const fechaDesde = new Date(offer.FECHA_INICIO)
+              const fechaHasta = new Date(offer.FECHA_FIN)
               return (
                 <tr
                   key={index}
@@ -89,24 +91,24 @@ export default function Offers() {
                   <td>{formatDate(offer.FECHA_CREACION)}</td>
                   <td
                     className={
-                      offer.FECHA_INICIO <= date
+                      fechaDesde <= date
                         ? styles.activo
                         : styles.inactivo
                     }
                   >
-                    {formatDate(offer.FECHA_INICIO)}
+                    {formatDate(fechaDesde)}
                   </td>
                   <td
                     className={
-                      offer.FECHA_FIN >= date
+                     fechaHasta >= date
                         ? styles.activo
                         : styles.inactivo
                     }
                   >
-                    {formatDate(offer.FECHA_FIN)}
+                    {formatDate(fechaHasta)}
                   </td>
 
-                  {offer.FECHA_INICIO <= date && offer.FECHA_FIN >= date ? (
+                  {fechaDesde <= date && fechaHasta >= date ? (
                     <td className={styles.activo}>Activo</td>
                   ) : (
                     <td className={styles.inactivo}>Inactivo</td>
