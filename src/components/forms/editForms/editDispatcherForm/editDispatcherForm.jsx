@@ -40,7 +40,7 @@ export default function EditDispatcherForm() {
         <div className={styles.divs}>
           <DropdownPersona onSelect={handlePersonaSelect}></DropdownPersona>
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>

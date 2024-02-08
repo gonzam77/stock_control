@@ -131,7 +131,7 @@ export default function SupplierForm() {
         <div className={styles.divs}>
           <DropdownAccount onSelect={handleaccountselect}></DropdownAccount>
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
             Cancelar
           </Button>
