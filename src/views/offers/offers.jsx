@@ -12,6 +12,7 @@ export default function Offers() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const offers = useSelector((state) => state.offers);
+  const payTypes = useSelector((state) => state.payTypes);
   const date = new Date();
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ export default function Offers() {
               <th>Nombre</th>
               <th>Precio Regular</th>
               <th>Descuento</th>
+              <th>Tipo de Pago</th>
               <th>Precio Final</th>
               <th>Fecha</th>
               <th>Fecha Desde</th>
@@ -63,6 +65,7 @@ export default function Offers() {
           </thead>
           <tbody>
             {offers?.map((offer, index) => {
+              const payType = payTypes?.find(e => e.ID_TIPO_PAGO === offer.ID_TIPO_PAGO)
               const porcentaje = parseFloat(offer.PORCENTAJE_DESCUENTO);
               const precio = parseFloat(offer.PRODUCTO.PRECIO_VENTA);
               const fechaDesde = new Date(offer.FECHA_INICIO)
@@ -81,6 +84,9 @@ export default function Offers() {
                   <td>
                     {offer.PORCENTAJE_DESCUENTO}
                     {"%"}
+                  </td>
+                  <td>
+                    {payType?.NOMBRE}
                   </td>
                   <td>
                     {"$ "}

@@ -1,22 +1,22 @@
 export const metodo_de_pago = [
     {
-        id:'1',
-        name:'Contado',
+        ID_TIPO_PAGO:'1',
+        NOMBRE:'Contado',
     },
     {
-        id:'2',
-        name:'Debito'
+        ID_TIPO_PAGO:'2',
+        NOMBRE:'Debito'
     },
     {
-        id:'3',
-        name:'Credito'
+        ID_TIPO_PAGO:'3',
+        NOMBRE:'Credito'
     },
     {
-        id:'4',
-        name:'Mercado Pago'
+        ID_TIPO_PAGO:'4',
+        NOMBRE:'Mercado Pago'
     },
     {
-        id:'5',
-        name:'Otro'
+        ID_TIPO_PAGO:'5',
+        NOMBRE:'Otro'
     }
 ]

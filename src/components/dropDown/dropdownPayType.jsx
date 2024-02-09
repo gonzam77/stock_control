@@ -21,8 +21,8 @@ export default function DropdownPayType({ onSelect }) {
       <Dropdown.Menu>
         {payTypes?.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.name}>
-              {element.name}
+            <Dropdown.Item key={index} eventKey={element.NOMBRE}>
+              {element.NOMBRE}
             </Dropdown.Item>
           );
         })}
