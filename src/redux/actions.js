@@ -475,9 +475,14 @@ export const showCreateModal = () => ({
   type: "SHOW_CREATE_MODAL",
 });
 
+export const showImportModal = () => ({
+  type: "SHOW_IMPORT_MODAL",
+});
+
 export const showModalEditBrand = () => ({
   type: "SHOW_MODAL_EDIT_BRAND",
 });
+
 export const showModalEditMesure = () =>({
   type: "SHOW_MODAL_EDIT_MESURE",
 });
@@ -485,6 +490,7 @@ export const showModalEditMesure = () =>({
 export const showModalEditAccountType = () => ({
   type: "SHOW_MODAL_EDIT_ACCOUNT_TYPE",
 });
+
 export const showModalEditUserType = () => ({
   type: "SHOW_MODAL_EDIT_USER_TYPE",
 });
@@ -499,6 +505,10 @@ export const hideModal = () => ({
 
 export const hideCreateModal = () => ({
   type: "HIDE_CREATE_MODAL",
+});
+
+export const hideImportModal = () => ({
+  type: "HIDE_IMPORT_MODAL",
 });
 
 export const hideModalEditUserType = () => ({

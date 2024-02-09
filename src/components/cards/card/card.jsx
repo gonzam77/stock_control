@@ -22,7 +22,8 @@ function ProductCard({ id, name, brand, price, stock, supplier }) {
 
   useEffect(()=>{
     if(!suppliers.length) dispatch(actions.getAllSuppliers())
-  },[suppliers])
+    if(!marcas.length) dispatch(actions.getAllBrands())
+  },[suppliers, marcas, dispatch])
 
   const closeModal = () => {
     dispatch(actions.hideModal());

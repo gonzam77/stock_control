@@ -15,14 +15,14 @@ export default function CreateProductForm() {
   const mesures = useSelector((state) => state.mesures);
   const suppliers = useSelector((state) => state.suppliers);
   const [newProduct, setNewProduct] = useState({
-    NOMBRE: null,
-    CODIGO: null,
-    ID_UNIDAD_MEDIDA: null,
-    CANT_MIN: null,
-    CANT_MAX: null,
-    ID_PROVEEDOR: null,
-    ID_MARCA: null,
-    PRECIO_VENTA: null,
+    NOMBRE: '',
+    CODIGO: '',
+    ID_UNIDAD_MEDIDA: '',
+    CANT_MIN: '',
+    CANT_MAX: '',
+    ID_PROVEEDOR: '',
+    ID_MARCA: '',
+    PRECIO_VENTA: ''
   });
 
   async function postProduct(product) {

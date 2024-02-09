@@ -60,7 +60,8 @@ function App() {
         formEncodedData,
         config
       );
-      if (response) {
+      console.log('login_response', response);
+      if (response.data.Status === 'Accepted') {
         localStorage.setItem("token", response.data.Token);
         axiosConfig = {
           withCredentials: true,
@@ -78,9 +79,16 @@ function App() {
   }
 
   const logout = async () => {
-    await axios.get(`${backURL}/signout`,axiosConfig);
-    localStorage.clear();
-    setAccess(false);
+    try {
+      const response = await axios.get(`${backURL}/signout`,axiosConfig);
+      console.log('logout_response',response);
+      if(response.data.Status === 'OK'){
+        localStorage.clear();
+        setAccess(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

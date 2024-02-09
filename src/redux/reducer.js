@@ -34,6 +34,7 @@ const initialState = {
   supplierId: null,
   showModal: false,
   showCreateModal: false,
+  showImportModal: false,
   showModalEditMesure: false,
   showModalEditAccount: false,
   showModalEditCategories: false,
@@ -262,6 +263,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showCreateModal: true,
       };
+    case "SHOW_IMPORT_MODAL":
+      return {
+        ...state,
+        showImportModal: true,
+      };
     case "SHOW_MODAL_EDIT_MESURE":
       return {
         ...state,
@@ -296,6 +302,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showCreateModal: false,
+      };
+    case "HIDE_IMPORT_MODAL":
+      return {
+        ...state,
+        showImportModal: false,
       };
     case "HIDE_MODAL_EDIT_MESURE":
       return {
