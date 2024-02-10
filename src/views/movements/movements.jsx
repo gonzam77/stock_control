@@ -8,8 +8,8 @@ import { useState } from "react";
 
 export default function Movements() {
   const movements = useSelector((state) => state.movements);
-  const deposits = useSelector((state) => state.deposits);
-  const products = useSelector((state) => state.products);
+  // const deposits = useSelector((state) => state.deposits);
+  // const products = useSelector((state) => state.products);
 
   const [code, setCode] = useState({
     code: "",
@@ -80,8 +80,8 @@ export default function Movements() {
           </thead>
           <tbody>
             {movements?.map((element, index) => {
-              const deposit = deposits.find((e) => e.id === element.deposit);
-              const product = products.find((e) => e.code === element.product);
+              // const deposit = deposits.find((e) => e.id === element.deposit);
+              // const product = products.find((e) => e.code === element.product);
               return (
                 <tr
                   key={index}

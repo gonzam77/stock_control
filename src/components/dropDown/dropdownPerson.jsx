@@ -16,7 +16,7 @@ export default function DropdownPersona({ onSelect }) {
 
   useEffect(()=>{
     if(!personas.length) dispatch(actions.getAllPersons())
-  },[personas])
+  },[dispatch, personas])
 
   return (
     <Dropdown onSelect={handleSelect}>

@@ -19,7 +19,7 @@ export default function ProductDetail() {
       dispatch(actions.getAllProducts());
       dispatch(actions.getProductById(productId));
     }
-  }, [productById]);
+  }, [productById, dispatch, productId]);
 
 
   const openCreateModal = () => {

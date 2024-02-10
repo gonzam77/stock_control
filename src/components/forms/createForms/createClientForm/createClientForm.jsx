@@ -23,7 +23,7 @@ export default function CreateClientForm() {
 
   useEffect(() => {
     if (!personas.length) dispatch(actions.getAllPersons())
-  }, [personas])
+  }, [dispatch, personas])
 
   async function postClient(cliente) {
     try {

@@ -25,7 +25,7 @@ export default function ProductsCard() {
     if (products.length === 0) {
       dispatch(actions.getAllProducts());
     }
-  }, [products]);
+  }, [products, dispatch]);
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());

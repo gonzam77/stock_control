@@ -63,7 +63,7 @@ export default function NewSaleForm() {
       items: cart,
       mount: cart.reduce((acc, current) => acc + current.totalMount, 0),
     });
-  }, [cart, update]);
+  }, [cart, newSale, update]);
 
   const handleAdd = () => {
     if (!newItem.quantity || newItem.quantity === "" || newItem.quantity < 1)

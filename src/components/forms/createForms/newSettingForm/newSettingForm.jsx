@@ -14,8 +14,8 @@ export default function NewSettingForm() {
 
   const [newSetting, setNewSetting] = useState({
     items: [],
-    quantity: 0,
-    deposit: "",
+    CANTIDAD: 0,
+    ID_BODEGA: "",
   });
 
   const [cart, setCart] = useState([]);
@@ -23,9 +23,9 @@ export default function NewSettingForm() {
   const [update, setUpdate] = useState();
 
   const [newItem, setNewItem] = useState({
-    code: "",
-    name: "",
-    quantity: "",
+    CODIGO: "",
+    NOMBRE: "",
+    CANTIDAD: "",
   });
 
   useEffect(() => {
@@ -33,21 +33,21 @@ export default function NewSettingForm() {
       ...newSetting,
       items: cart,
     });
-  }, [cart, update]);
+  }, [cart, newSetting, update]);
 
   const handleAdd = () => {
-    if (!newItem.quantity || newItem.quantity === "" || newItem.quantity < 1)
-      newItem.quantity = 1;
-    const quantity = parseInt(newItem.quantity);
-    newItem.quantity = quantity;
-    product = products.find((e) => e.code == newItem.code);
+    if (!newItem.CANTIDAD || newItem.CANTIDAD === "" || newItem.CANTIDAD < 1)
+      newItem.CANTIDAD = 1;
+    const CANTIDAD = parseInt(newItem.CANTIDAD);
+    newItem.CANTIDAD = CANTIDAD;
+    product = products.find((e) => e.CODIGO === newItem.CODIGO);
 
     if (product) {
       const productInCart = cart.find(
-        (element) => element.code === product.code
+        (element) => element.CODIGO === product.CODIGO
       );
-      if (productInCart && productInCart.deposit === newItem.deposit) {
-        productInCart.quantity += newItem.quantity;
+      if (productInCart && productInCart.ID_BODEGA === newItem.ID_BODEGA) {
+        productInCart.CANTIDAD += newItem.CANTIDAD;
         setUpdate(!update);
       } else {
         setCart([...cart, newItem]);
@@ -55,14 +55,14 @@ export default function NewSettingForm() {
 
       setNewSetting({
         ...newSetting,
-        quantity: (newSetting.quantity += newItem.quantity),
+        CANTIDAD: (newSetting.CANTIDAD += newItem.CANTIDAD),
       });
 
       setNewItem({
-        code: "",
-        name: "",
-        quantity: "",
-        deposit: "",
+        CODIGO: "",
+        NOMBRE: "",
+        CANTIDAD: "",
+        ID_BODEGA: "",
       });
     }
   };
@@ -71,7 +71,7 @@ export default function NewSettingForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
-      carroActualizado[index].quantity = nuevaCantidad;
+      carroActualizado[index].CANTIDAD = nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);
@@ -84,9 +84,9 @@ export default function NewSettingForm() {
     }
   };
 
-  const deleteProduct = (code) => {
-    if (code) {
-      const index = cart.findIndex((e) => e.code === code);
+  const deleteProduct = (CODIGO) => {
+    if (CODIGO) {
+      const index = cart.findIndex((e) => e.CODIGO === CODIGO);
       cart.splice(index, 1);
       setUpdate(!update);
     }
@@ -95,7 +95,7 @@ export default function NewSettingForm() {
   const handleDepositSelect = (selectedDeposit) => {
     setNewSetting({
       ...newSetting,
-      deposit: selectedDeposit,
+      ID_BODEGA: selectedDeposit,
     });
   };
 
@@ -128,10 +128,10 @@ export default function NewSettingForm() {
               <label>Codigo</label>
               <input
                 onKeyDown={handleKeyDown}
-                className={styles.code}
+                className={styles.CODIGO}
                 autoComplete="off"
-                name="code"
-                value={newItem.code}
+                name="CODIGO"
+                value={newItem.CODIGO}
                 onChange={handleChange}
                 placeholder="Codigo..."
                 type="text"
@@ -142,8 +142,8 @@ export default function NewSettingForm() {
               <input
                 onKeyDown={handleKeyDown}
                 autoComplete="off"
-                name="quantity"
-                value={newItem.quantity}
+                name="CANTIDAD"
+                value={newItem.CANTIDAD}
                 onChange={handleChange}
                 placeholder="Cantidad..."
                 type="number"
@@ -167,28 +167,28 @@ export default function NewSettingForm() {
             <tbody>
               {newSetting.items[0] &&
                 newSetting?.items?.map((item, index) => {
-                  const product = products?.find((e) => e.CODIGO === item.code);
+                  const product = products?.find((e) => e.CODIGO === item.CODIGO);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
                         <div>
                           <input
                             autoComplete="off"
-                            name="quantity"
-                            value={item.quantity}
+                            name="CANTIDAD"
+                            value={item.CANTIDAD}
                             onChange={(e) => handleCantidadChange(e, index)}
                             type="number"
                           />
                         </div>
                       </td>
-                      <td>{item.code}</td>
+                      <td>{item.CODIGO}</td>
                       <td>{product.NOMBRE}</td>
                       <td>{product.MARCA}</td>
                       <td>
                         <Button
                           variant="danger"
                           onClick={() => {
-                            deleteProduct(item.code);
+                            deleteProduct(item.CODIGO);
                           }}
                         >
                           Eliminar

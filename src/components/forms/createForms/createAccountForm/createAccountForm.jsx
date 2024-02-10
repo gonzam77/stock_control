@@ -19,7 +19,7 @@ export default function CreateAccountForm() {
 
   useEffect(()=>{
     if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
-  },[accountTypes])
+  },[accountTypes, dispatch])
 
   async function postAccount(cuenta) {
     try {

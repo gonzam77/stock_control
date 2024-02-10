@@ -11,11 +11,12 @@ export default function NewTransferForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const brands = useSelector((state) => state.brands);
 
   const [newTransfer, setNewTransfer] = useState({
     fromDeposit: "",
     toDeposit: "",
-    quantity: 0,
+    CANTIDAD: 0,
     items: [],
   });
 
@@ -24,31 +25,33 @@ export default function NewTransferForm() {
   const [update, setUpdate] = useState();
 
   const [newItem, setNewItem] = useState({
-    code: "",
-    name: "",
-    quantity: "",
+    CODIGO: "",
+    NOMBRE: "",
+    CANTIDAD: "",
   });
 
   useEffect(() => {
+    if(!products.length) dispatch(actions.getAllProducts());
+    if(!brands.length) dispatch(actions.getAllBrands());
     setNewTransfer({
       ...newTransfer,
       items: cart,
     });
-  }, [cart, update]);
+  }, [brands.length, cart, dispatch, newTransfer, products.length, update]);
 
   const handleAdd = () => {
-    if (!newItem.quantity || newItem.quantity === "" || newItem.quantity < 1)
-      newItem.quantity = 1;
-    const quantity = parseInt(newItem.quantity);
-    newItem.quantity = quantity;
-    product = products.find((e) => e.code == newItem.code);
+    if (!newItem.CANTIDAD || newItem.CANTIDAD === "" || newItem.CANTIDAD < 1)
+      newItem.CANTIDAD = 1;
+    const CANTIDAD = parseInt(newItem.CANTIDAD);
+    newItem.CANTIDAD = CANTIDAD;
+    product = products.find((e) => e.CODIGO === newItem.CODIGO);
 
     if (product) {
       const productInCart = cart.find(
-        (element) => element.code === product.code
+        (element) => element.CODIGO === product.CODIGO
       );
       if (productInCart) {
-        productInCart.quantity += newItem.quantity;
+        productInCart.CANTIDAD += newItem.CANTIDAD;
         setUpdate(!update);
       } else {
         setCart([...cart, newItem]);
@@ -56,13 +59,13 @@ export default function NewTransferForm() {
 
       setNewTransfer({
         ...newTransfer,
-        quantity: (newTransfer.quantity += newItem.quantity),
+        CANTIDAD: (newTransfer.CANTIDAD += newItem.CANTIDAD),
       });
 
       setNewItem({
-        code: "",
-        name: "",
-        quantity: "",
+        CODIGO: "",
+        NOMBRE: "",
+        CANTIDAD: "",
       });
     }
   };
@@ -71,7 +74,7 @@ export default function NewTransferForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
-      carroActualizado[index].quantity = nuevaCantidad;
+      carroActualizado[index].CANTIDAD = nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);
@@ -84,9 +87,9 @@ export default function NewTransferForm() {
     }
   };
 
-  const deleteProduct = (code) => {
-    if (code) {
-      const index = cart.findIndex((e) => e.code === code);
+  const deleteProduct = (CODIGO) => {
+    if (CODIGO) {
+      const index = cart.findIndex((e) => e.CODIGO === CODIGO);
       cart.splice(index, 1);
       setUpdate(!update);
     }
@@ -135,10 +138,10 @@ export default function NewTransferForm() {
               <label>Codigo</label>
               <input
                 onKeyDown={handleKeyDown}
-                className={styles.code}
+                className={styles.CODIGO}
                 autoComplete="off"
-                name="code"
-                value={newItem.code}
+                name="CODIGO"
+                value={newItem.CODIGO}
                 onChange={handleChange}
                 placeholder="Codigo..."
                 type="text"
@@ -149,8 +152,8 @@ export default function NewTransferForm() {
               <input
                 onKeyDown={handleKeyDown}
                 autoComplete="off"
-                name="quantity"
-                value={newItem.quantity}
+                name="CANTIDAD"
+                value={newItem.CANTIDAD}
                 onChange={handleChange}
                 placeholder="Cantidad..."
                 type="number"
@@ -173,28 +176,29 @@ export default function NewTransferForm() {
             <tbody>
               {newTransfer?.items[0] &&
                 newTransfer?.items?.map((item, index) => {
-                  const product = products?.find((e) => e.code === item.code);
+                  const product = products?.find((e) => e.CODIGO === item.CODIGO);
+                  const brand = brands?.find((e) => e.ID_MARCA === item.ID_MARCA);
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
                         <div>
                           <input
                             autoComplete="off"
-                            name="quantity"
-                            value={item.quantity}
+                            name="CANTIDAD"
+                            value={item.CANTIDAD}
                             onChange={(e) => handleCantidadChange(e, index)}
                             type="number"
                           />
                         </div>
                       </td>
-                      <td>{item.code}</td>
-                      <td>{product.name}</td>
-                      <td>{product.brand}</td>
+                      <td>{item.CODIGO}</td>
+                      <td>{product.NOMBRE}</td>
+                      <td>{brand.NOMBRE}</td>
                       <td>
                         <Button
                           variant="danger"
                           onClick={() => {
-                            deleteProduct(item.code);
+                            deleteProduct(item.CODIGO);
                           }}
                         >
                           Eliminar

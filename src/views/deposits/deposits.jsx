@@ -19,7 +19,7 @@ export default function Deposits() {
   useEffect(()=>{
     if(!deposits.length) dispatch(actions.getAllDeposits());
     if(!ubicaciones.length) dispatch(actions.getAllUbications());
-  },[deposits, dispatch])
+  },[deposits, dispatch, ubicaciones])
   
   const openModal = (id) => {
     dispatch(actions.showModal());

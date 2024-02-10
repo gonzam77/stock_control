@@ -17,7 +17,7 @@ function DropdownSupplier({ onSelect }) {
 
   useEffect(()=>{
     if(!suppliers.length) dispatch(actions.getAllSuppliers())
-  },[suppliers])
+  },[dispatch, suppliers])
 
   return (
     <Dropdown onSelect={handleSelect}>

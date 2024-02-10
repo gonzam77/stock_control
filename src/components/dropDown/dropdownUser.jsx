@@ -16,7 +16,7 @@ export default function DropdownUser({ onSelect }) {
 
   useEffect(()=>{
     if(!users.length) dispatch(actions.getAllUsers());
-  },[users])
+  },[dispatch, users])
 
   return (
     <Dropdown onSelect={handleSelect}>

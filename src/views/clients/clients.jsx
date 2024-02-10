@@ -22,7 +22,7 @@ export default function Clients() {
   useEffect(()=>{
     if(!clients.length) dispatch(actions.getAllClients())
     if(!personas.length) dispatch(actions.getAllPersons())
-  },[clients, personas])
+  },[clients, personas, dispatch])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal())

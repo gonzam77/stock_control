@@ -23,7 +23,7 @@ export default function Account() {
   useEffect(()=>{
     if(!accounts.length) dispatch(actions.getAllAccounts())
     if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
-  },[accounts, accountTypes])
+  },[accounts, accountTypes, dispatch])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());

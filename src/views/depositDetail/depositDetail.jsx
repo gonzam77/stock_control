@@ -1,22 +1,22 @@
 import styles from "./depositDetail.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../redux/actions";
+import { useSelector } from "react-redux";
+//import * as actions from "../../redux/actions";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 
 export default function DepositDetail() {
   const { id } = useParams();
-  const idInt = parseInt(id);
+  // const idInt = parseInt(id);
   const deposits = useSelector((state) => state.deposits);
   const suppliers = useSelector((state) => state.suppliers);
   const deposit = deposits.find((e) => e.id === id);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
-  const openModal = (id) => {
-    dispatch(actions.showModal());
-    dispatch(actions.getClientId(id));
-  };
+  // const openModal = (id) => {
+  //   dispatch(actions.showModal());
+  //   dispatch(actions.getClientId(id));
+  // };
 
   return (
     <div className={styles.container}>
@@ -32,7 +32,7 @@ export default function DepositDetail() {
       </div>
 
       <div className={styles.title}>
-        <h1>Deposito {}</h1>
+        <h1>Deposito { }</h1>
       </div>
       <div className={styles.tableContainer}>
         <Table striped bordered hover>

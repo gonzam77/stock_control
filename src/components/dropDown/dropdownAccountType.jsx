@@ -16,7 +16,7 @@ export default function DropdownAccountType({ onSelect }) {
 
   useEffect(()=>{
     if(!accountTypes.length) dispatch(actions.getAllAccountTypes())
-  },[accountTypes])
+  },[accountTypes, dispatch])
 
   return (
     <Dropdown onSelect={handleSelect}>

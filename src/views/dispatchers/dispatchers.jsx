@@ -21,7 +21,7 @@ export default function Dispatchers() {
 
   useEffect(()=>{
     if(!personas.length) dispatch(actions.getAllPersons())
-  },[personas])
+  },[personas, dispatch])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal())

@@ -32,7 +32,7 @@ export default function NewPurchaseForm() {
     const [update, setUpdate] = useState();
 
     const [newItem, setNewItem] = useState({
-        code: "",
+        CODIGO: "",
         name: "",
         quantity: "",
         price: '',
@@ -45,7 +45,7 @@ export default function NewPurchaseForm() {
             items: cart,
             mount: cart.reduce((acc, current) => acc + current.totalMount, 0)
         });
-    }, [cart, update]);
+    }, [cart, update, newPurchase]);
 
 
     const handleAdd = () => {
@@ -53,10 +53,10 @@ export default function NewPurchaseForm() {
         if (!newItem.quantity || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
         const quantity = parseInt(newItem.quantity);
         newItem.quantity = quantity;
-        product = products.find(e => e.code == newItem.code)
+        product = products.find(e => e.CODIGO === newItem.CODIGO)
 
         if (product) {
-            const productInCart = cart.find(element => element.code === product.code)
+            const productInCart = cart.find(element => element.CODIGO === product.CODIGO)
             if (productInCart) {
                 productInCart.quantity += newItem.quantity;
                 productInCart.totalMount = productInCart.quantity * productInCart.price
@@ -72,7 +72,7 @@ export default function NewPurchaseForm() {
             });
 
             setNewItem({
-                code: "",
+                CODIGO: "",
                 name: "",
                 quantity: "",
                 price: '',
@@ -100,9 +100,9 @@ export default function NewPurchaseForm() {
         }
     };
 
-    const deleteProduct = (code) => {
-        if (code) {
-            const index = cart.findIndex(e => e.code === code);
+    const deleteProduct = (CODIGO) => {
+        if (CODIGO) {
+            const index = cart.findIndex(e => e.CODIGO === CODIGO);
             cart.splice(index, 1);
             setUpdate(!update);
         }
@@ -159,7 +159,7 @@ export default function NewPurchaseForm() {
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="code"
+                                name="CODIGO"
                                 value={newPurchase.number}
                                 onChange={handleChange}
                                 placeholder="Codigo..."
@@ -171,8 +171,8 @@ export default function NewPurchaseForm() {
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="code"
-                                value={newItem.code}
+                                name="CODIGO"
+                                value={newItem.CODIGO}
                                 onChange={handleChange}
                                 placeholder="Codigo..."
                                 type="text"
@@ -223,7 +223,7 @@ export default function NewPurchaseForm() {
                             {
                                 newPurchase.items[0] &&
                                 newPurchase.items?.map((item, index) => {
-                                   const product = products?.find(e=>e.code===item.code)
+                                   const product = products?.find(e=>e.CODIGO===item.CODIGO)
                                     return (
                                         <tr key={index} style={{ textAlign: 'center' }}>
                                             <td>
@@ -237,14 +237,14 @@ export default function NewPurchaseForm() {
                                                     />
                                                 </div>
                                             </td>
-                                            <td>{item.code}</td>
+                                            <td>{item.CODIGO}</td>
                                             <td>{product.name}</td>
                                             <td>{product.brand}</td>
                                             <td>{'$ '}{item.price}</td>
                                             <td>{item.price}</td>
                                             <td>{'$ '}{item.totalMount}</td>
                                             <td>
-                                                <Button variant="danger" onClick={() => { deleteProduct(item.code) }}>Eliminar</Button>
+                                                <Button variant="danger" onClick={() => { deleteProduct(item.CODIGO) }}>Eliminar</Button>
                                             </td>
                                         </tr>)
                                 })}
