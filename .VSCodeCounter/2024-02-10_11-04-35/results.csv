@@ -1,0 +1,201 @@
+"filename", "language", "JSON", "Markdown", "CSS", "JavaScript JSX", "HTML", "JavaScript", "XML", "comment", "blank", "total"
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\README.md", "Markdown", 0, 38, 0, 0, 0, 0, 0, 0, 33, 71
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\package-lock.json", "JSON", 18712, 0, 0, 0, 0, 0, 0, 0, 1, 18713
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\package.json", "JSON", 52, 0, 0, 0, 0, 0, 0, 0, 1, 53
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\public\index.html", "HTML", 0, 0, 0, 0, 32, 0, 0, 10, 1, 43
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\public\manifest.json", "JSON", 25, 0, 0, 0, 0, 0, 0, 0, 1, 26
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.css", "CSS", 0, 0, 50, 0, 0, 0, 0, 4, 10, 64
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.js", "JavaScript", 0, 0, 0, 0, 0, 143, 0, 0, 11, 154
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.test.js", "JavaScript", 0, 0, 0, 0, 0, 7, 0, 0, 2, 9
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoAccountType.js", "JavaScript", 0, 0, 0, 0, 0, 18, 0, 0, 0, 18
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCategorias.js", "JavaScript", 0, 0, 0, 0, 0, 10, 0, 0, 1, 11
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCompras.js", "JavaScript", 0, 0, 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCuentas.js", "JavaScript", 0, 0, 0, 0, 0, 74, 0, 0, 1, 75
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoDeposito.js", "JavaScript", 0, 0, 0, 0, 0, 29, 0, 0, 2, 31
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoDetalleCompra.js", "JavaScript", 0, 0, 0, 0, 0, 26, 0, 0, 2, 28
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoMarca.js", "JavaScript", 0, 0, 0, 0, 0, 242, 0, 0, 1, 243
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoMesures.js", "JavaScript", 0, 0, 0, 0, 0, 20, 0, 0, 0, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoOffers.js", "JavaScript", 0, 0, 0, 0, 0, 27, 0, 0, 5, 32
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoPayType.js", "JavaScript", 0, 0, 0, 0, 0, 22, 0, 0, 0, 22
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoRoles.js", "JavaScript", 0, 0, 0, 0, 0, 12, 0, 0, 1, 13
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoSale.js", "JavaScript", 0, 0, 0, 0, 0, 32, 0, 0, 4, 36
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoStockDeposito.js", "JavaScript", 0, 0, 0, 0, 0, 65, 0, 0, 1, 66
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoTransportistas.js", "JavaScript", 0, 0, 0, 0, 0, 12, 0, 0, 1, 13
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoUbicacion.js", "JavaScript", 0, 0, 0, 0, 0, 32, 0, 0, 0, 32
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\accountTypes\accountTypes.jsx", "JavaScript JSX", 0, 0, 0, 66, 0, 0, 0, 0, 7, 73
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\accountTypes\accountTypes.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\aside\aside.jsx", "JavaScript JSX", 0, 0, 0, 45, 0, 0, 0, 0, 3, 48
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\aside\aside.module.css", "CSS", 0, 0, 24, 0, 0, 0, 0, 0, 5, 29
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\brands\brands.jsx", "JavaScript JSX", 0, 0, 0, 66, 0, 0, 0, 0, 9, 75
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\brands\brands.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\cardDetail\cardDetail.jsx", "JavaScript JSX", 0, 0, 0, 59, 0, 0, 0, 0, 7, 66
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\cardDetail\cardDetail.module.css", "CSS", 0, 0, 4, 0, 0, 0, 0, 0, 0, 4
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\card\card.jsx", "JavaScript JSX", 0, 0, 0, 51, 0, 0, 0, 0, 7, 58
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\card\card.module.css", "CSS", 0, 0, 18, 0, 0, 0, 0, 0, 4, 22
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\saleDetail\saleDetail.jsx", "JavaScript JSX", 0, 0, 0, 42, 0, 0, 0, 0, 1, 43
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\saleDetail\saleDetail.module.css", "CSS", 0, 0, 4, 0, 0, 0, 0, 0, 0, 4
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\categories\categories.jsx", "JavaScript JSX", 0, 0, 0, 66, 0, 0, 0, 0, 7, 73
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\categories\categories.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\date\date.js", "JavaScript", 0, 0, 0, 0, 0, 14, 0, 0, 6, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropDown.module.css", "CSS", 0, 0, 6, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownAccount.jsx", "JavaScript JSX", 0, 0, 0, 34, 0, 0, 0, 0, 6, 40
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownAccountType.jsx", "JavaScript JSX", 0, 0, 0, 32, 0, 0, 0, 0, 8, 40
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownActive.jsx", "JavaScript JSX", 0, 0, 0, 20, 0, 0, 0, 0, 7, 27
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownBrand.jsx", "JavaScript JSX", 0, 0, 0, 32, 0, 0, 0, 0, 8, 40
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownCategory.jsx", "JavaScript JSX", 0, 0, 0, 32, 0, 0, 0, 0, 9, 41
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownClient.jsx", "JavaScript JSX", 0, 0, 0, 35, 0, 0, 0, 0, 8, 43
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownDeposit.jsx", "JavaScript JSX", 0, 0, 0, 27, 0, 0, 0, 0, 7, 34
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownMesure.jsx", "JavaScript JSX", 0, 0, 0, 27, 0, 0, 0, 0, 6, 33
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownMovementType.jsx", "JavaScript JSX", 0, 0, 0, 22, 0, 0, 0, 0, 5, 27
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPayType.jsx", "JavaScript JSX", 0, 0, 0, 27, 0, 0, 0, 0, 7, 34
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPermits.jsx", "JavaScript JSX", 0, 0, 0, 24, 0, 0, 0, 0, 6, 30
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPerson.jsx", "JavaScript JSX", 0, 0, 0, 32, 0, 0, 0, 0, 6, 38
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownRol.jsx", "JavaScript JSX", 0, 0, 0, 29, 0, 0, 0, 0, 7, 36
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownStatus.jsx", "JavaScript JSX", 0, 0, 0, 21, 0, 0, 0, 0, 5, 26
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownSupplier.jsx", "JavaScript JSX", 0, 0, 0, 34, 0, 0, 0, 0, 8, 42
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownUbication.jsx", "JavaScript JSX", 0, 0, 0, 36, 0, 0, 0, 0, 8, 44
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownUser.jsx", "JavaScript JSX", 0, 0, 0, 32, 0, 0, 0, 0, 8, 40
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\footer\footer.jsx", "JavaScript JSX", 0, 0, 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\footer\footer.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createAccountForm\createAccountForm.jsx", "JavaScript JSX", 0, 0, 0, 90, 0, 0, 0, 0, 10, 100
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createAccountTypeForm\createAccountTypeForm.jsx", "JavaScript JSX", 0, 0, 0, 62, 0, 0, 0, 0, 7, 69
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createBrandForm\createBrandForm.jsx", "JavaScript JSX", 0, 0, 0, 63, 0, 0, 0, 0, 7, 70
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createCategoryForm\createCategoryForm.jsx", "JavaScript JSX", 0, 0, 0, 62, 0, 0, 0, 0, 7, 69
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createClientForm\createClientForm.jsx", "JavaScript JSX", 0, 0, 0, 104, 0, 0, 0, 0, 10, 114
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createDepositForm\createDepositForm.jsx", "JavaScript JSX", 0, 0, 0, 138, 0, 0, 0, 11, 13, 162
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createDispatcherForm\createDispatcherForm.jsx", "JavaScript JSX", 0, 0, 0, 57, 0, 0, 0, 0, 10, 67
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createForms.module.css", "CSS", 0, 0, 28, 0, 0, 0, 0, 0, 5, 33
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createMesureForm\createMesureForm.jsx", "JavaScript JSX", 0, 0, 0, 75, 0, 0, 0, 0, 7, 82
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createOfferForm\createOfferForm.jsx", "JavaScript JSX", 0, 0, 0, 119, 0, 0, 0, 0, 13, 132
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createPersonForm\createPersonForm.jsx", "JavaScript JSX", 0, 0, 0, 110, 0, 0, 0, 0, 8, 118
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createProductForm\createProductForm.jsx", "JavaScript JSX", 0, 0, 0, 187, 0, 0, 0, 0, 11, 198
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createProductsFromXLSX\createProductsFromXLSX.jsx", "JavaScript JSX", 0, 0, 0, 88, 0, 0, 0, 0, 8, 96
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createSupplierForm\createSupplierForm.jsx", "JavaScript JSX", 0, 0, 0, 111, 0, 0, 0, 0, 11, 122
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUbicationForm\createUbicationForm.jsx", "JavaScript JSX", 0, 0, 0, 87, 0, 0, 0, 0, 7, 94
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUserForm\createUserForm.jsx", "JavaScript JSX", 0, 0, 0, 161, 0, 0, 0, 0, 8, 169
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUserRolForm\createUserRolForm.jsx", "JavaScript JSX", 0, 0, 0, 133, 0, 0, 0, 0, 10, 143
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newPurchaseForm\newPurchaseForm.jsx", "JavaScript JSX", 0, 0, 0, 265, 0, 0, 0, 0, 26, 291
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newSaleForm\newSaleForm.jsx", "JavaScript JSX", 0, 0, 0, 289, 0, 0, 0, 0, 23, 312
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newSettingForm\newSettingForm.jsx", "JavaScript JSX", 0, 0, 0, 203, 0, 0, 0, 0, 20, 223
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newTransferForm\newTranferForm.jsx", "JavaScript JSX", 0, 0, 0, 216, 0, 0, 0, 0, 21, 237
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editAccountTypeForm\editAccountTypeForm.jsx", "JavaScript JSX", 0, 0, 0, 64, 0, 0, 0, 0, 8, 72
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editAcountForm\editAccountForm.jsx", "JavaScript JSX", 0, 0, 0, 87, 0, 0, 0, 0, 10, 97
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editBrandForm\editBrandForm.jsx", "JavaScript JSX", 0, 0, 0, 64, 0, 0, 0, 0, 9, 73
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editCategoryForm\editCategoryForm.jsx", "JavaScript JSX", 0, 0, 0, 67, 0, 0, 0, 0, 8, 75
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editClientForm\editClientForm.jsx", "JavaScript JSX", 0, 0, 0, 86, 0, 0, 0, 0, 13, 99
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editDepositForm\editDepositForm.jsx", "JavaScript JSX", 0, 0, 0, 135, 0, 0, 0, 0, 11, 146
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editDispatcherForm\editDispatcherForm.jsx", "JavaScript JSX", 0, 0, 0, 47, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editForms.module.css", "CSS", 0, 0, 8, 0, 0, 0, 0, 0, 2, 10
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editMesureForm\editMesureForm.jsx", "JavaScript JSX", 0, 0, 0, 78, 0, 0, 0, 0, 9, 87
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editOfferForm\editOfferForm.jsx", "JavaScript JSX", 0, 0, 0, 82, 0, 0, 0, 0, 8, 90
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editPersonForm\editPersonForm.jsx", "JavaScript JSX", 0, 0, 0, 107, 0, 0, 0, 0, 11, 118
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editProductForm\editProductForm.jsx", "JavaScript JSX", 0, 0, 0, 148, 0, 0, 0, 0, 12, 160
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editSupplierForm\editSupplierForm.jsx", "JavaScript JSX", 0, 0, 0, 132, 0, 0, 0, 0, 14, 146
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUbicationForm\editUbicationForm.jsx", "JavaScript JSX", 0, 0, 0, 89, 0, 0, 0, 0, 9, 98
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUserForm\editUserForm.jsx", "JavaScript JSX", 0, 0, 0, 72, 0, 0, 0, 0, 9, 81
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUserRolForm\editUserRolForm.jsx", "JavaScript JSX", 0, 0, 0, 138, 0, 0, 0, 0, 11, 149
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\mesures\mesures.jsx", "JavaScript JSX", 0, 0, 0, 68, 0, 0, 0, 0, 8, 76
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\mesures\mesures.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\nav\nav.jsx", "JavaScript JSX", 0, 0, 0, 68, 0, 0, 0, 0, 5, 73
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\nav\nav.module.css", "CSS", 0, 0, 21, 0, 0, 0, 0, 0, 3, 24
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\pagination\Paginate.module.css", "CSS", 0, 0, 44, 0, 0, 0, 0, 0, 6, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\pagination\paginationNative.jsx", "JavaScript JSX", 0, 0, 0, 38, 0, 0, 0, 0, 5, 43
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\rolesTable\roles.jsx", "JavaScript JSX", 0, 0, 0, 74, 0, 0, 0, 0, 9, 83
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\rolesTable\roles.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\searchBar\searchBar.module.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\searchBar\serachBar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\ubications\ubications.jsx", "JavaScript JSX", 0, 0, 0, 70, 0, 0, 0, 0, 8, 78
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\ubications\ubications.module.css", "CSS", 0, 0, 43, 0, 0, 0, 0, 0, 7, 50
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\index.css", "CSS", 0, 0, 9, 0, 0, 0, 0, 0, 2, 11
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\index.js", "JavaScript", 0, 0, 0, 0, 0, 20, 0, 0, 3, 23
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\logo.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\actionTypes.js", "JavaScript", 0, 0, 0, 0, 0, 8, 0, 0, 1, 9
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\actions.js", "JavaScript", 0, 0, 0, 0, 0, 491, 0, 0, 64, 555
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\reducer.js", "JavaScript", 0, 0, 0, 0, 0, 420, 0, 0, 9, 429
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\store.js", "JavaScript", 0, 0, 0, 0, 0, 5, 0, 1, 3, 9
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\reportWebVitals.js", "JavaScript", 0, 0, 0, 0, 0, 12, 0, 0, 2, 14
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\setupTests.js", "JavaScript", 0, 0, 0, 0, 0, 1, 0, 4, 1, 6
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\about\about.jsx", "JavaScript JSX", 0, 0, 0, 5, 0, 0, 0, 0, 0, 5
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\about\about.module.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\account\account.jsx", "JavaScript JSX", 0, 0, 0, 76, 0, 0, 0, 0, 8, 84
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\account\account.module.css", "CSS", 0, 0, 48, 0, 0, 0, 0, 0, 7, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\allSales\allSales.jsx", "JavaScript JSX", 0, 0, 0, 57, 0, 0, 0, 2, 4, 63
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\allSales\allSales.module.css", "CSS", 0, 0, 48, 0, 0, 0, 0, 0, 7, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\clients\clients.jsx", "JavaScript JSX", 0, 0, 0, 75, 0, 0, 0, 0, 7, 82
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\clients\clients.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 7, 54
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\depositDetail\depositDetail.jsx", "JavaScript JSX", 0, 0, 0, 67, 0, 0, 0, 14, 5, 86
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\depositDetail\depositDetail.module.css", "CSS", 0, 0, 48, 0, 0, 0, 0, 0, 7, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\deposits\deposits.jsx", "JavaScript JSX", 0, 0, 0, 95, 0, 0, 0, 0, 9, 104
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\deposits\deposits.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\dispatchers\dispatchers.jsx", "JavaScript JSX", 0, 0, 0, 73, 0, 0, 0, 0, 8, 81
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\dispatchers\dispatchers.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\inicio\inicio.jsx", "JavaScript JSX", 0, 0, 0, 13, 0, 0, 0, 0, 2, 15
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\inicio\inicio.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 7, 54
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\lastSales\lastSales.jsx", "JavaScript JSX", 0, 0, 0, 59, 0, 0, 0, 2, 4, 65
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\lastSales\sales.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 7, 54
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\login\login.jsx", "JavaScript JSX", 0, 0, 0, 61, 0, 0, 0, 3, 8, 72
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\login\login.module.css", "CSS", 0, 0, 13, 0, 0, 0, 0, 0, 1, 14
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\ModalCreteSupplierForm\modalCreateSupplierForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 4, 21
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateAccountForm\modalCreateAccountForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateAccountTypeForm\modalCreateAccountTypeForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateBrandForm\modalCreateBrandForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateCategoryForm\modalCreateCategoryForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateClientForm\modaleCreateClientForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateDepositForm\modalCreateDepositForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateDispatcherForm\modalCreateDispatcherForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateMesureForm\ModalCreateMesureForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateOfferForm\modalCreateOfferForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 5, 21
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreatePersonForm\modalCreatePersonForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateProductForm\modalCreateProductForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 5, 22
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUbicationForm\modalCreateUbicationForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUserForm\modalCreateUserForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUserRolForm\modalCreateUserRolForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalUploadFileForm\modalUploadFileForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 4, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditAccountForm\modalEditAccountForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditAccountTypeForm\modalEditAcountTypeForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditBrandForm\modalEditBrandForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditCategoryForm\modalEditCategory.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditClientForm\modalEditClientForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditDepositForm\modalEditDepositForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditDispatcherForm\modalEditDispatcherForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditMesureForm\modalEditMesureForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditOfferForm\modalEditOfferForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditPersonForm\modalEditPersonForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditProductForm\modalEditProductForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUbicationForm\modalEditUbicationForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUserForm\modalEditUserForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 2, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUserRolForm\modalEditUserRolForm.jsx", "JavaScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalSupplierForm\modalSupllierForm.jsx", "JavaScript JSX", 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\movements\movements.jsx", "JavaScript JSX", 0, 0, 0, 95, 0, 0, 0, 4, 8, 107
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\movements\movements.module.css", "CSS", 0, 0, 55, 0, 0, 0, 0, 0, 9, 64
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newPurchase\newPurchase.jsx", "JavaScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newPurchase\newPurchase.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSale\newSale.jsx", "JavaScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSale\newSale.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSetting\newSetting.jsx", "JavaScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSetting\newSetting.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newTransfer\newTransfer.jsx", "JavaScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newTransfer\newTransfer.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\nomenclatorsPanel\nomenclatorsPanel.jsx", "JavaScript JSX", 0, 0, 0, 65, 0, 0, 0, 0, 2, 67
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\nomenclatorsPanel\nomenclatorsPanel.module.css", "CSS", 0, 0, 11, 0, 0, 0, 0, 0, 3, 14
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\offers\offers.jsx", "JavaScript JSX", 0, 0, 0, 133, 0, 0, 0, 0, 8, 141
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\offers\offers.module.css", "CSS", 0, 0, 55, 0, 0, 0, 0, 0, 9, 64
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\persons\persons.jsx", "JavaScript JSX", 0, 0, 0, 70, 0, 0, 0, 0, 7, 77
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\persons\persons.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 7, 54
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productCards\productsCards.jsx", "JavaScript JSX", 0, 0, 0, 79, 0, 0, 0, 0, 10, 89
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productCards\productsCards.module.css", "CSS", 0, 0, 44, 0, 0, 0, 0, 0, 5, 49
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productDetail\productDetail.jsx", "JavaScript JSX", 0, 0, 0, 58, 0, 0, 0, 0, 6, 64
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productDetail\productDetail.module.css", "CSS", 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productsTable\productsTable.jsx", "JavaScript JSX", 0, 0, 0, 118, 0, 0, 0, 0, 9, 127
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productsTable\productsTable.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\purchases\purchases.jsx", "JavaScript JSX", 0, 0, 0, 57, 0, 0, 0, 0, 3, 60
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\purchases\purchases.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\saleDetail\saleDetail.module.css", "CSS", 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\saleDetail\saleDeteail.jsx", "JavaScript JSX", 0, 0, 0, 31, 0, 0, 0, 1, 4, 36
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\salesInvoice\saleInvoice.module.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\salesInvoice\salesInvoice.jsx", "JavaScript JSX", 0, 0, 0, 5, 0, 0, 0, 0, 0, 5
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\suppliers\suppliers.jsx", "JavaScript JSX", 0, 0, 0, 83, 0, 0, 0, 0, 8, 91
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\suppliers\suppliers.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\users\users.jsx", "JavaScript JSX", 0, 0, 0, 87, 0, 0, 0, 0, 10, 97
+"c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\users\users.module.css", "CSS", 0, 0, 47, 0, 0, 0, 0, 0, 8, 55
+"Total", "-", 18789, 38, 1347, 7238, 32, 1754, 1, 56, 1207, 30462

@@ -1,0 +1,354 @@
+Date : 2024-02-10 11:04:35
+Directory : c:\Users\Gonzalo\Desktop\Aguas Claras\frontend
+Total : 199 files,  29199 codes, 56 comments, 1207 blanks, all 30462 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          3 |     18,789 |          0 |          3 |     18,792 |
+| JavaScript JSX |        123 |      7,238 |         37 |        835 |      8,110 |
+| JavaScript     |         25 |      1,754 |          5 |        121 |      1,880 |
+| CSS            |         45 |      1,347 |          4 |        214 |      1,565 |
+| Markdown       |          1 |         38 |          0 |         33 |         71 |
+| HTML           |          1 |         32 |         10 |          1 |         43 |
+| XML            |          1 |          1 |          0 |          0 |          1 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                   | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                      |        199 |     29,199 |         56 |      1,207 |     30,462 |
+| . (Files)                                                                                                                              |          3 |     18,802 |          0 |         35 |     18,837 |
+| public                                                                                                                                 |          2 |         57 |         10 |          2 |         69 |
+| src                                                                                                                                    |        194 |     10,340 |         46 |      1,170 |     11,556 |
+| src (Files)                                                                                                                            |          8 |        243 |          8 |         31 |        282 |
+| src\assets                                                                                                                             |         15 |        633 |          0 |         19 |        652 |
+| src\components                                                                                                                         |         84 |      5,671 |         11 |        660 |      6,342 |
+| src\components\accountTypes                                                                                                            |          2 |        109 |          0 |         14 |        123 |
+| src\components\aside                                                                                                                   |          2 |         69 |          0 |          8 |         77 |
+| src\components\brands                                                                                                                  |          2 |        109 |          0 |         16 |        125 |
+| src\components\cards                                                                                                                   |          6 |        178 |          0 |         19 |        197 |
+| src\components\cards\card                                                                                                              |          2 |         69 |          0 |         11 |         80 |
+| src\components\cards\cardDetail                                                                                                        |          2 |         63 |          0 |          7 |         70 |
+| src\components\cards\saleDetail                                                                                                        |          2 |         46 |          0 |          1 |         47 |
+| src\components\categories                                                                                                              |          2 |        109 |          0 |         14 |        123 |
+| src\components\date                                                                                                                    |          1 |         14 |          0 |          6 |         20 |
+| src\components\dropdown                                                                                                                |         18 |        502 |          0 |        120 |        622 |
+| src\components\footer                                                                                                                  |          2 |         17 |          0 |          2 |         19 |
+| src\components\forms                                                                                                                   |         37 |      4,052 |         11 |        394 |      4,457 |
+| src\components\forms\createForms                                                                                                       |         21 |      2,648 |         11 |        242 |      2,901 |
+| src\components\forms\createForms (Files)                                                                                               |          1 |         28 |          0 |          5 |         33 |
+| src\components\forms\createForms\createAccountForm                                                                                     |          1 |         90 |          0 |         10 |        100 |
+| src\components\forms\createForms\createAccountTypeForm                                                                                 |          1 |         62 |          0 |          7 |         69 |
+| src\components\forms\createForms\createBrandForm                                                                                       |          1 |         63 |          0 |          7 |         70 |
+| src\components\forms\createForms\createCategoryForm                                                                                    |          1 |         62 |          0 |          7 |         69 |
+| src\components\forms\createForms\createClientForm                                                                                      |          1 |        104 |          0 |         10 |        114 |
+| src\components\forms\createForms\createDepositForm                                                                                     |          1 |        138 |         11 |         13 |        162 |
+| src\components\forms\createForms\createDispatcherForm                                                                                  |          1 |         57 |          0 |         10 |         67 |
+| src\components\forms\createForms\createMesureForm                                                                                      |          1 |         75 |          0 |          7 |         82 |
+| src\components\forms\createForms\createOfferForm                                                                                       |          1 |        119 |          0 |         13 |        132 |
+| src\components\forms\createForms\createPersonForm                                                                                      |          1 |        110 |          0 |          8 |        118 |
+| src\components\forms\createForms\createProductForm                                                                                     |          1 |        187 |          0 |         11 |        198 |
+| src\components\forms\createForms\createProductsFromXLSX                                                                                |          1 |         88 |          0 |          8 |         96 |
+| src\components\forms\createForms\createSupplierForm                                                                                    |          1 |        111 |          0 |         11 |        122 |
+| src\components\forms\createForms\createUbicationForm                                                                                   |          1 |         87 |          0 |          7 |         94 |
+| src\components\forms\createForms\createUserForm                                                                                        |          1 |        161 |          0 |          8 |        169 |
+| src\components\forms\createForms\createUserRolForm                                                                                     |          1 |        133 |          0 |         10 |        143 |
+| src\components\forms\createForms\newPurchaseForm                                                                                       |          1 |        265 |          0 |         26 |        291 |
+| src\components\forms\createForms\newSaleForm                                                                                           |          1 |        289 |          0 |         23 |        312 |
+| src\components\forms\createForms\newSettingForm                                                                                        |          1 |        203 |          0 |         20 |        223 |
+| src\components\forms\createForms\newTransferForm                                                                                       |          1 |        216 |          0 |         21 |        237 |
+| src\components\forms\editForms                                                                                                         |         16 |      1,404 |          0 |        152 |      1,556 |
+| src\components\forms\editForms (Files)                                                                                                 |          1 |          8 |          0 |          2 |         10 |
+| src\components\forms\editForms\editAccountTypeForm                                                                                     |          1 |         64 |          0 |          8 |         72 |
+| src\components\forms\editForms\editAcountForm                                                                                          |          1 |         87 |          0 |         10 |         97 |
+| src\components\forms\editForms\editBrandForm                                                                                           |          1 |         64 |          0 |          9 |         73 |
+| src\components\forms\editForms\editCategoryForm                                                                                        |          1 |         67 |          0 |          8 |         75 |
+| src\components\forms\editForms\editClientForm                                                                                          |          1 |         86 |          0 |         13 |         99 |
+| src\components\forms\editForms\editDepositForm                                                                                         |          1 |        135 |          0 |         11 |        146 |
+| src\components\forms\editForms\editDispatcherForm                                                                                      |          1 |         47 |          0 |          8 |         55 |
+| src\components\forms\editForms\editMesureForm                                                                                          |          1 |         78 |          0 |          9 |         87 |
+| src\components\forms\editForms\editOfferForm                                                                                           |          1 |         82 |          0 |          8 |         90 |
+| src\components\forms\editForms\editPersonForm                                                                                          |          1 |        107 |          0 |         11 |        118 |
+| src\components\forms\editForms\editProductForm                                                                                         |          1 |        148 |          0 |         12 |        160 |
+| src\components\forms\editForms\editSupplierForm                                                                                        |          1 |        132 |          0 |         14 |        146 |
+| src\components\forms\editForms\editUbicationForm                                                                                       |          1 |         89 |          0 |          9 |         98 |
+| src\components\forms\editForms\editUserForm                                                                                            |          1 |         72 |          0 |          9 |         81 |
+| src\components\forms\editForms\editUserRolForm                                                                                         |          1 |        138 |          0 |         11 |        149 |
+| src\components\mesures                                                                                                                 |          2 |        111 |          0 |         15 |        126 |
+| src\components\nav                                                                                                                     |          2 |         89 |          0 |          8 |         97 |
+| src\components\pagination                                                                                                              |          2 |         82 |          0 |         11 |         93 |
+| src\components\rolesTable                                                                                                              |          2 |        117 |          0 |         16 |        133 |
+| src\components\searchBar                                                                                                               |          2 |          0 |          0 |          2 |          2 |
+| src\components\ubications                                                                                                              |          2 |        113 |          0 |         15 |        128 |
+| src\redux                                                                                                                              |          4 |        924 |          1 |         77 |      1,002 |
+| src\views                                                                                                                              |         83 |      2,869 |         26 |        383 |      3,278 |
+| src\views\about                                                                                                                        |          2 |          5 |          0 |          1 |          6 |
+| src\views\account                                                                                                                      |          2 |        124 |          0 |         15 |        139 |
+| src\views\allSales                                                                                                                     |          2 |        105 |          2 |         11 |        118 |
+| src\views\clients                                                                                                                      |          2 |        122 |          0 |         14 |        136 |
+| src\views\depositDetail                                                                                                                |          2 |        115 |         14 |         12 |        141 |
+| src\views\deposits                                                                                                                     |          2 |        142 |          0 |         17 |        159 |
+| src\views\dispatchers                                                                                                                  |          2 |        120 |          0 |         16 |        136 |
+| src\views\inicio                                                                                                                       |          2 |         60 |          0 |          9 |         69 |
+| src\views\lastSales                                                                                                                    |          2 |        106 |          2 |         11 |        119 |
+| src\views\login                                                                                                                        |          2 |         74 |          3 |          9 |         86 |
+| src\views\modals                                                                                                                       |         31 |        505 |          0 |        109 |        614 |
+| src\views\modals\createModals                                                                                                          |         16 |        258 |          0 |         65 |        323 |
+| src\views\modals\createModals\ModalCreteSupplierForm                                                                                   |          1 |         17 |          0 |          4 |         21 |
+| src\views\modals\createModals\modalCreateAccountForm                                                                                   |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateAccountTypeForm                                                                               |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateBrandForm                                                                                     |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateCategoryForm                                                                                  |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateClientForm                                                                                    |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateDepositForm                                                                                   |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateDispatcherForm                                                                                |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateMesureForm                                                                                    |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateOfferForm                                                                                     |          1 |         16 |          0 |          5 |         21 |
+| src\views\modals\createModals\modalCreatePersonForm                                                                                    |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateProductForm                                                                                   |          1 |         17 |          0 |          5 |         22 |
+| src\views\modals\createModals\modalCreateUbicationForm                                                                                 |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalCreateUserForm                                                                                      |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\createModals\modalCreateUserRolForm                                                                                   |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\createModals\modalUploadFileForm                                                                                      |          1 |         16 |          0 |          4 |         20 |
+| src\views\modals\editModals                                                                                                            |         15 |        247 |          0 |         44 |        291 |
+| src\views\modals\editModals\modalEditAccountForm                                                                                       |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditAccountTypeForm                                                                                   |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditBrandForm                                                                                         |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditCategoryForm                                                                                      |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditClientForm                                                                                        |          1 |         17 |          0 |          3 |         20 |
+| src\views\modals\editModals\modalEditDepositForm                                                                                       |          1 |         17 |          0 |          3 |         20 |
+| src\views\modals\editModals\modalEditDispatcherForm                                                                                    |          1 |         17 |          0 |          3 |         20 |
+| src\views\modals\editModals\modalEditMesureForm                                                                                        |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditOfferForm                                                                                         |          1 |         17 |          0 |          3 |         20 |
+| src\views\modals\editModals\modalEditPersonForm                                                                                        |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditProductForm                                                                                       |          1 |         17 |          0 |          3 |         20 |
+| src\views\modals\editModals\modalEditUbicationForm                                                                                     |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalEditUserForm                                                                                          |          1 |         17 |          0 |          2 |         19 |
+| src\views\modals\editModals\modalEditUserRolForm                                                                                       |          1 |         16 |          0 |          3 |         19 |
+| src\views\modals\editModals\modalSupplierForm                                                                                          |          1 |         17 |          0 |          3 |         20 |
+| src\views\movements                                                                                                                    |          2 |        150 |          4 |         17 |        171 |
+| src\views\newPurchase                                                                                                                  |          2 |         16 |          0 |          3 |         19 |
+| src\views\newSale                                                                                                                      |          2 |         16 |          0 |          3 |         19 |
+| src\views\newSetting                                                                                                                   |          2 |         16 |          0 |          3 |         19 |
+| src\views\newTransfer                                                                                                                  |          2 |         16 |          0 |          3 |         19 |
+| src\views\nomenclatorsPanel                                                                                                            |          2 |         76 |          0 |          5 |         81 |
+| src\views\offers                                                                                                                       |          2 |        188 |          0 |         17 |        205 |
+| src\views\persons                                                                                                                      |          2 |        117 |          0 |         14 |        131 |
+| src\views\productCards                                                                                                                 |          2 |        123 |          0 |         15 |        138 |
+| src\views\productDetail                                                                                                                |          2 |         81 |          0 |          9 |         90 |
+| src\views\productsTable                                                                                                                |          2 |        165 |          0 |         17 |        182 |
+| src\views\purchases                                                                                                                    |          2 |        104 |          0 |         11 |        115 |
+| src\views\saleDetail                                                                                                                   |          2 |         54 |          1 |          7 |         62 |
+| src\views\salesInvoice                                                                                                                 |          2 |          5 |          0 |          1 |          6 |
+| src\views\suppliers                                                                                                                    |          2 |        130 |          0 |         16 |        146 |
+| src\views\users                                                                                                                        |          2 |        134 |          0 |         18 |        152 |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                                               | language       | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\README.md                                                                               | Markdown       |         38 |          0 |         33 |         71 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\package-lock.json                                                                       | JSON           |     18,712 |          0 |          1 |     18,713 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\package.json                                                                            | JSON           |         52 |          0 |          1 |         53 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\public\index.html                                                                       | HTML           |         32 |         10 |          1 |         43 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\public\manifest.json                                                                    | JSON           |         25 |          0 |          1 |         26 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.css                                                                             | CSS            |         50 |          4 |         10 |         64 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.js                                                                              | JavaScript     |        143 |          0 |         11 |        154 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\App.test.js                                                                         | JavaScript     |          7 |          0 |          2 |          9 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoAccountType.js                                                  | JavaScript     |         18 |          0 |          0 |         18 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCategorias.js                                                   | JavaScript     |         10 |          0 |          1 |         11 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCompras.js                                                      | JavaScript     |         12 |          0 |          0 |         12 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoCuentas.js                                                      | JavaScript     |         74 |          0 |          1 |         75 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoDeposito.js                                                     | JavaScript     |         29 |          0 |          2 |         31 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoDetalleCompra.js                                                | JavaScript     |         26 |          0 |          2 |         28 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoMarca.js                                                        | JavaScript     |        242 |          0 |          1 |        243 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoMesures.js                                                      | JavaScript     |         20 |          0 |          0 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoOffers.js                                                       | JavaScript     |         27 |          0 |          5 |         32 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoPayType.js                                                      | JavaScript     |         22 |          0 |          0 |         22 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoRoles.js                                                        | JavaScript     |         12 |          0 |          1 |         13 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoSale.js                                                         | JavaScript     |         32 |          0 |          4 |         36 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoStockDeposito.js                                                | JavaScript     |         65 |          0 |          1 |         66 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoTransportistas.js                                               | JavaScript     |         12 |          0 |          1 |         13 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\assets\dataHardcodeoUbicacion.js                                                    | JavaScript     |         32 |          0 |          0 |         32 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\accountTypes\accountTypes.jsx                                            | JavaScript JSX |         66 |          0 |          7 |         73 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\accountTypes\accountTypes.module.css                                     | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\aside\aside.jsx                                                          | JavaScript JSX |         45 |          0 |          3 |         48 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\aside\aside.module.css                                                   | CSS            |         24 |          0 |          5 |         29 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\brands\brands.jsx                                                        | JavaScript JSX |         66 |          0 |          9 |         75 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\brands\brands.module.css                                                 | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\cardDetail\cardDetail.jsx                                          | JavaScript JSX |         59 |          0 |          7 |         66 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\cardDetail\cardDetail.module.css                                   | CSS            |          4 |          0 |          0 |          4 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\card\card.jsx                                                      | JavaScript JSX |         51 |          0 |          7 |         58 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\card\card.module.css                                               | CSS            |         18 |          0 |          4 |         22 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\saleDetail\saleDetail.jsx                                          | JavaScript JSX |         42 |          0 |          1 |         43 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\cards\saleDetail\saleDetail.module.css                                   | CSS            |          4 |          0 |          0 |          4 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\categories\categories.jsx                                                | JavaScript JSX |         66 |          0 |          7 |         73 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\categories\categories.module.css                                         | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\date\date.js                                                             | JavaScript     |         14 |          0 |          6 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropDown.module.css                                             | CSS            |          6 |          0 |          1 |          7 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownAccount.jsx                                             | JavaScript JSX |         34 |          0 |          6 |         40 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownAccountType.jsx                                         | JavaScript JSX |         32 |          0 |          8 |         40 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownActive.jsx                                              | JavaScript JSX |         20 |          0 |          7 |         27 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownBrand.jsx                                               | JavaScript JSX |         32 |          0 |          8 |         40 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownCategory.jsx                                            | JavaScript JSX |         32 |          0 |          9 |         41 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownClient.jsx                                              | JavaScript JSX |         35 |          0 |          8 |         43 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownDeposit.jsx                                             | JavaScript JSX |         27 |          0 |          7 |         34 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownMesure.jsx                                              | JavaScript JSX |         27 |          0 |          6 |         33 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownMovementType.jsx                                        | JavaScript JSX |         22 |          0 |          5 |         27 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPayType.jsx                                             | JavaScript JSX |         27 |          0 |          7 |         34 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPermits.jsx                                             | JavaScript JSX |         24 |          0 |          6 |         30 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownPerson.jsx                                              | JavaScript JSX |         32 |          0 |          6 |         38 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownRol.jsx                                                 | JavaScript JSX |         29 |          0 |          7 |         36 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownStatus.jsx                                              | JavaScript JSX |         21 |          0 |          5 |         26 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownSupplier.jsx                                            | JavaScript JSX |         34 |          0 |          8 |         42 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownUbication.jsx                                           | JavaScript JSX |         36 |          0 |          8 |         44 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\dropdown\dropdownUser.jsx                                                | JavaScript JSX |         32 |          0 |          8 |         40 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\footer\footer.jsx                                                        | JavaScript JSX |         10 |          0 |          1 |         11 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\footer\footer.module.css                                                 | CSS            |          7 |          0 |          1 |          8 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createAccountForm\createAccountForm.jsx                | JavaScript JSX |         90 |          0 |         10 |        100 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createAccountTypeForm\createAccountTypeForm.jsx        | JavaScript JSX |         62 |          0 |          7 |         69 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createBrandForm\createBrandForm.jsx                    | JavaScript JSX |         63 |          0 |          7 |         70 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createCategoryForm\createCategoryForm.jsx              | JavaScript JSX |         62 |          0 |          7 |         69 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createClientForm\createClientForm.jsx                  | JavaScript JSX |        104 |          0 |         10 |        114 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createDepositForm\createDepositForm.jsx                | JavaScript JSX |        138 |         11 |         13 |        162 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createDispatcherForm\createDispatcherForm.jsx          | JavaScript JSX |         57 |          0 |         10 |         67 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createForms.module.css                                 | CSS            |         28 |          0 |          5 |         33 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createMesureForm\createMesureForm.jsx                  | JavaScript JSX |         75 |          0 |          7 |         82 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createOfferForm\createOfferForm.jsx                    | JavaScript JSX |        119 |          0 |         13 |        132 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createPersonForm\createPersonForm.jsx                  | JavaScript JSX |        110 |          0 |          8 |        118 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createProductForm\createProductForm.jsx                | JavaScript JSX |        187 |          0 |         11 |        198 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createProductsFromXLSX\createProductsFromXLSX.jsx      | JavaScript JSX |         88 |          0 |          8 |         96 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createSupplierForm\createSupplierForm.jsx              | JavaScript JSX |        111 |          0 |         11 |        122 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUbicationForm\createUbicationForm.jsx            | JavaScript JSX |         87 |          0 |          7 |         94 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUserForm\createUserForm.jsx                      | JavaScript JSX |        161 |          0 |          8 |        169 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\createUserRolForm\createUserRolForm.jsx                | JavaScript JSX |        133 |          0 |         10 |        143 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newPurchaseForm\newPurchaseForm.jsx                    | JavaScript JSX |        265 |          0 |         26 |        291 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newSaleForm\newSaleForm.jsx                            | JavaScript JSX |        289 |          0 |         23 |        312 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newSettingForm\newSettingForm.jsx                      | JavaScript JSX |        203 |          0 |         20 |        223 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\createForms\newTransferForm\newTranferForm.jsx                     | JavaScript JSX |        216 |          0 |         21 |        237 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editAccountTypeForm\editAccountTypeForm.jsx              | JavaScript JSX |         64 |          0 |          8 |         72 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editAcountForm\editAccountForm.jsx                       | JavaScript JSX |         87 |          0 |         10 |         97 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editBrandForm\editBrandForm.jsx                          | JavaScript JSX |         64 |          0 |          9 |         73 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editCategoryForm\editCategoryForm.jsx                    | JavaScript JSX |         67 |          0 |          8 |         75 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editClientForm\editClientForm.jsx                        | JavaScript JSX |         86 |          0 |         13 |         99 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editDepositForm\editDepositForm.jsx                      | JavaScript JSX |        135 |          0 |         11 |        146 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editDispatcherForm\editDispatcherForm.jsx                | JavaScript JSX |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editForms.module.css                                     | CSS            |          8 |          0 |          2 |         10 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editMesureForm\editMesureForm.jsx                        | JavaScript JSX |         78 |          0 |          9 |         87 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editOfferForm\editOfferForm.jsx                          | JavaScript JSX |         82 |          0 |          8 |         90 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editPersonForm\editPersonForm.jsx                        | JavaScript JSX |        107 |          0 |         11 |        118 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editProductForm\editProductForm.jsx                      | JavaScript JSX |        148 |          0 |         12 |        160 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editSupplierForm\editSupplierForm.jsx                    | JavaScript JSX |        132 |          0 |         14 |        146 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUbicationForm\editUbicationForm.jsx                  | JavaScript JSX |         89 |          0 |          9 |         98 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUserForm\editUserForm.jsx                            | JavaScript JSX |         72 |          0 |          9 |         81 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\forms\editForms\editUserRolForm\editUserRolForm.jsx                      | JavaScript JSX |        138 |          0 |         11 |        149 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\mesures\mesures.jsx                                                      | JavaScript JSX |         68 |          0 |          8 |         76 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\mesures\mesures.module.css                                               | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\nav\nav.jsx                                                              | JavaScript JSX |         68 |          0 |          5 |         73 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\nav\nav.module.css                                                       | CSS            |         21 |          0 |          3 |         24 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\pagination\Paginate.module.css                                           | CSS            |         44 |          0 |          6 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\pagination\paginationNative.jsx                                          | JavaScript JSX |         38 |          0 |          5 |         43 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\rolesTable\roles.jsx                                                     | JavaScript JSX |         74 |          0 |          9 |         83 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\rolesTable\roles.module.css                                              | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\searchBar\searchBar.module.css                                           | CSS            |          0 |          0 |          1 |          1 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\searchBar\serachBar.jsx                                                  | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\ubications\ubications.jsx                                                | JavaScript JSX |         70 |          0 |          8 |         78 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\components\ubications\ubications.module.css                                         | CSS            |         43 |          0 |          7 |         50 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\index.css                                                                           | CSS            |          9 |          0 |          2 |         11 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\index.js                                                                            | JavaScript     |         20 |          0 |          3 |         23 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\logo.svg                                                                            | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\actionTypes.js                                                                | JavaScript     |          8 |          0 |          1 |          9 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\actions.js                                                                    | JavaScript     |        491 |          0 |         64 |        555 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\reducer.js                                                                    | JavaScript     |        420 |          0 |          9 |        429 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\redux\store.js                                                                      | JavaScript     |          5 |          1 |          3 |          9 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\reportWebVitals.js                                                                  | JavaScript     |         12 |          0 |          2 |         14 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\setupTests.js                                                                       | JavaScript     |          1 |          4 |          1 |          6 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\about\about.jsx                                                               | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\about\about.module.css                                                        | CSS            |          0 |          0 |          1 |          1 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\account\account.jsx                                                           | JavaScript JSX |         76 |          0 |          8 |         84 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\account\account.module.css                                                    | CSS            |         48 |          0 |          7 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\allSales\allSales.jsx                                                         | JavaScript JSX |         57 |          2 |          4 |         63 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\allSales\allSales.module.css                                                  | CSS            |         48 |          0 |          7 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\clients\clients.jsx                                                           | JavaScript JSX |         75 |          0 |          7 |         82 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\clients\clients.module.css                                                    | CSS            |         47 |          0 |          7 |         54 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\depositDetail\depositDetail.jsx                                               | JavaScript JSX |         67 |         14 |          5 |         86 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\depositDetail\depositDetail.module.css                                        | CSS            |         48 |          0 |          7 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\deposits\deposits.jsx                                                         | JavaScript JSX |         95 |          0 |          9 |        104 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\deposits\deposits.module.css                                                  | CSS            |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\dispatchers\dispatchers.jsx                                                   | JavaScript JSX |         73 |          0 |          8 |         81 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\dispatchers\dispatchers.module.css                                            | CSS            |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\inicio\inicio.jsx                                                             | JavaScript JSX |         13 |          0 |          2 |         15 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\inicio\inicio.module.css                                                      | CSS            |         47 |          0 |          7 |         54 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\lastSales\lastSales.jsx                                                       | JavaScript JSX |         59 |          2 |          4 |         65 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\lastSales\sales.module.css                                                    | CSS            |         47 |          0 |          7 |         54 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\login\login.jsx                                                               | JavaScript JSX |         61 |          3 |          8 |         72 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\login\login.module.css                                                        | CSS            |         13 |          0 |          1 |         14 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\ModalCreteSupplierForm\modalCreateSupplierForm.jsx        | JavaScript JSX |         17 |          0 |          4 |         21 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateAccountForm\modalCreateAccountForm.jsx         | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateAccountTypeForm\modalCreateAccountTypeForm.jsx | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateBrandForm\modalCreateBrandForm.jsx             | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateCategoryForm\modalCreateCategoryForm.jsx       | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateClientForm\modaleCreateClientForm.jsx          | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateDepositForm\modalCreateDepositForm.jsx         | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateDispatcherForm\modalCreateDispatcherForm.jsx   | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateMesureForm\ModalCreateMesureForm.jsx           | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateOfferForm\modalCreateOfferForm.jsx             | JavaScript JSX |         16 |          0 |          5 |         21 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreatePersonForm\modalCreatePersonForm.jsx           | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateProductForm\modalCreateProductForm.jsx         | JavaScript JSX |         17 |          0 |          5 |         22 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUbicationForm\modalCreateUbicationForm.jsx     | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUserForm\modalCreateUserForm.jsx               | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalCreateUserRolForm\modalCreateUserRolForm.jsx         | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\createModals\modalUploadFileForm\modalUploadFileForm.jsx               | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditAccountForm\modalEditAccountForm.jsx               | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditAccountTypeForm\modalEditAcountTypeForm.jsx        | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditBrandForm\modalEditBrandForm.jsx                   | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditCategoryForm\modalEditCategory.jsx                 | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditClientForm\modalEditClientForm.jsx                 | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditDepositForm\modalEditDepositForm.jsx               | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditDispatcherForm\modalEditDispatcherForm.jsx         | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditMesureForm\modalEditMesureForm.jsx                 | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditOfferForm\modalEditOfferForm.jsx                   | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditPersonForm\modalEditPersonForm.jsx                 | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditProductForm\modalEditProductForm.jsx               | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUbicationForm\modalEditUbicationForm.jsx           | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUserForm\modalEditUserForm.jsx                     | JavaScript JSX |         17 |          0 |          2 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalEditUserRolForm\modalEditUserRolForm.jsx               | JavaScript JSX |         16 |          0 |          3 |         19 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\modals\editModals\modalSupplierForm\modalSupllierForm.jsx                     | JavaScript JSX |         17 |          0 |          3 |         20 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\movements\movements.jsx                                                       | JavaScript JSX |         95 |          4 |          8 |        107 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\movements\movements.module.css                                                | CSS            |         55 |          0 |          9 |         64 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newPurchase\newPurchase.jsx                                                   | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newPurchase\newPurchase.module.css                                            | CSS            |          7 |          0 |          0 |          7 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSale\newSale.jsx                                                           | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSale\newSale.module.css                                                    | CSS            |          7 |          0 |          0 |          7 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSetting\newSetting.jsx                                                     | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newSetting\newSetting.module.css                                              | CSS            |          7 |          0 |          0 |          7 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newTransfer\newTransfer.jsx                                                   | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\newTransfer\newTransfer.module.css                                            | CSS            |          7 |          0 |          0 |          7 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\nomenclatorsPanel\nomenclatorsPanel.jsx                                       | JavaScript JSX |         65 |          0 |          2 |         67 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\nomenclatorsPanel\nomenclatorsPanel.module.css                                | CSS            |         11 |          0 |          3 |         14 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\offers\offers.jsx                                                             | JavaScript JSX |        133 |          0 |          8 |        141 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\offers\offers.module.css                                                      | CSS            |         55 |          0 |          9 |         64 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\persons\persons.jsx                                                           | JavaScript JSX |         70 |          0 |          7 |         77 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\persons\persons.module.css                                                    | CSS            |         47 |          0 |          7 |         54 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productCards\productsCards.jsx                                                | JavaScript JSX |         79 |          0 |         10 |         89 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productCards\productsCards.module.css                                         | CSS            |         44 |          0 |          5 |         49 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productDetail\productDetail.jsx                                               | JavaScript JSX |         58 |          0 |          6 |         64 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productDetail\productDetail.module.css                                        | CSS            |         23 |          0 |          3 |         26 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productsTable\productsTable.jsx                                               | JavaScript JSX |        118 |          0 |          9 |        127 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\productsTable\productsTable.module.css                                        | CSS            |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\purchases\purchases.jsx                                                       | JavaScript JSX |         57 |          0 |          3 |         60 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\purchases\purchases.module.css                                                | CSS            |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\saleDetail\saleDetail.module.css                                              | CSS            |         23 |          0 |          3 |         26 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\saleDetail\saleDeteail.jsx                                                    | JavaScript JSX |         31 |          1 |          4 |         36 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\salesInvoice\saleInvoice.module.css                                           | CSS            |          0 |          0 |          1 |          1 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\salesInvoice\salesInvoice.jsx                                                 | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\suppliers\suppliers.jsx                                                       | JavaScript JSX |         83 |          0 |          8 |         91 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\suppliers\suppliers.module.css                                                | CSS            |         47 |          0 |          8 |         55 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\users\users.jsx                                                               | JavaScript JSX |         87 |          0 |         10 |         97 |
+| c:\Users\Gonzalo\Desktop\Aguas Claras\frontend\src\views\users\users.module.css                                                        | CSS            |         47 |          0 |          8 |         55 |
+| Total                                                                                                                                  |                |     29,199 |         56 |      1,207 |     30,462 |
++----------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
