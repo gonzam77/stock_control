@@ -12,14 +12,16 @@ export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const deposits = useSelector((state) => state.deposits);
-  const ubicaciones = useSelector((state) => state.ubicaciones);
+  console.log(deposits);
+  const ubications = useSelector((state) => state.ubications);
+  console.log(ubications);
   const dispatch = useDispatch();
 
   
   useEffect(()=>{
     if(!deposits.length) dispatch(actions.getAllDeposits());
-    if(!ubicaciones.length) dispatch(actions.getAllUbications());
-  },[deposits, dispatch, ubicaciones])
+    if(!ubications.length) dispatch(actions.getAllUbications());
+  },[deposits, dispatch, ubications])
   
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -65,7 +67,7 @@ export default function Deposits() {
           </thead>
           <tbody>
             {deposits.map((deposit, index) => {
-              const ubicacion = ubicaciones?.find(e=>e.ID_UBICACION === deposit.ID_UBICACION);
+              const ubicacion = ubications?.find(e=>e.ID_UBICACION === deposit.ID_UBICACION);
               return (
                 <tr
                   key={index}

@@ -69,7 +69,7 @@ export default function Products() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>COD</th>
+              <th>CODIGO</th>
               <th>CATEGORIA</th>
               <th>NOMBRE</th>
               <th>MARCA</th>

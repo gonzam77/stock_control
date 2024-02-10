@@ -13,7 +13,7 @@ export default function SupplierForm() {
   const dispatch = useDispatch();
   const suppliers = useSelector((state) => state.suppliers);
   const supplierId = useSelector((state) => state.supplierId);
-  const ubicaciones = useSelector(state => state.ubicaciones)
+  const ubications = useSelector(state => state.ubications)
   const accounts = useSelector(state => state.accounts)
 
   const selectedSupplier = suppliers.find(
@@ -24,17 +24,21 @@ export default function SupplierForm() {
 
 
     useEffect(()=>{
-      if(!ubicaciones.length)dispatch(actions.getAllUbications());
+      if(!ubications.length)dispatch(actions.getAllUbications());
       if(!suppliers.length)dispatch(actions.getAllSuppliers());
       if(!accounts.length)dispatch(actions.getAllAccounts());
-    },[ubicaciones, dispatch, suppliers, accounts])
+    },[ubications, dispatch, suppliers, accounts])
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
   }
 
   async function putSupplier(proveedor) {
-    await axios.put(`${backURL}/proveedor/update`, proveedor)
+    try {
+      await axios.put(`${backURL}/proveedor/update`, proveedor)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const closeModal = async (event) => {
@@ -55,7 +59,7 @@ export default function SupplierForm() {
 
   const handleUbicationSelect = (selectedUbication) => {
     if (selectedUbication !== "Desconocido" && selectedUbication) {
-      const ubicacionId = ubicaciones.find(
+      const ubicacionId = ubications.find(
         (e) => e.DIRECCION === selectedUbication
       ).ID_UBICACION;
       setSupplier({
