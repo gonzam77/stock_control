@@ -71,24 +71,37 @@ function App() {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
+      console.error('Error:', error);
     }
   }
 
   const logout = async () => {
     try {
-      const response = await axios.get(`${backURL}/signout`,axiosConfig);
-      if(response.data.Status === 'OK'){
-        localStorage.clear();
+      const response = await axios.get(`${backURL}/signout`, axiosConfig);
+      if (response.data.Status === 'OK') {
+        localStorage.removeItem('token');
         setAccess(false);
       }
     } catch (error) {
-      console.log(error);
+      console.error('Error:', error);
     }
   };
 
   useEffect(() => {
-    !access && navigate("/login");
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAccess(true);
+      axiosConfig = {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+    } else {
+      setAccess(false);
+      navigate("/login");
+    }
   }, [access, navigate]);
 
   return (
@@ -105,7 +118,7 @@ function App() {
         <div className="body">
           <Routes>
             <Route path="/" element={<Inicio />} />
-1            <Route path="/login" element={<Login login={login} />} />
+            1            <Route path="/login" element={<Login login={login} />} />
             <Route path="/cards" element={<ProductsCard />} />
             <Route path="/productsTable" element={<ProductsTable />} />
             <Route path="/suppliers" element={<Suppliers />} />

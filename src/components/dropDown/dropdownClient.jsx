@@ -13,7 +13,7 @@ export default function DropdownClient({ onSelect }) {
   useEffect(()=>{
     if(!personas.length) dispatch(actions.getAllPersons());
     if(!clients.length) dispatch(actions.getAllClients());
-  },[clients, personas])
+  },[clients, personas, dispatch])
 
   function handleSelect(eventKey) {
     setSelect(eventKey);
