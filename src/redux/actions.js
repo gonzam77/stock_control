@@ -230,6 +230,15 @@ export const getAllProducts = () => {
 };
 
 
+export const cleanUbication = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_UBICATION",
+      payload: [],
+    });
+  }
+};
+
 export const cleanMesures = () => {
   return async function(dispatch){
     return dispatch({
@@ -460,6 +469,12 @@ export const getUserId = (id) => {
   };
 };
 
+export const getUbicationId = (id) => {
+  return {
+    type: "GET_UBICATION_ID",
+    payload: id,
+  };
+};
 export const getSupplierId = (id) => {
   return {
     type: "GET_SUPPLIER_ID",
@@ -481,6 +496,9 @@ export const showImportModal = () => ({
 
 export const showModalEditBrand = () => ({
   type: "SHOW_MODAL_EDIT_BRAND",
+});
+export const showModalEditUbication = () => ({
+  type: "SHOW_MODAL_EDIT_UBICATION",
 });
 
 export const showModalEditMesure = () =>({
@@ -517,6 +535,10 @@ export const hideModalEditUserType = () => ({
 
 export const hideModalEditAccounType = () => ({
   type: "HIDE_MODAL_EDIT_ACCOUNT_TYPE",
+});
+
+export const hideModalEditUbication = () => ({
+  type: "HIDE_MODAL_EDIT_UBICATION",
 });
 
 export const hideModalEditCategories = () => ({

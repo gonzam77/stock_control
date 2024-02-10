@@ -3,20 +3,25 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from '../../redux/actions';
 
-function DropdownUbication({ onSelect }) {
+export default function DropdownUbication({ onSelect }) {
   
   const [select, setSelect] = useState();
-  const ubicaciones = useSelector(state => state.ubicaciones);
+  const ubications = useSelector(state => state.ubications);
   const dispatch = useDispatch();
   
+
+  useEffect(()=>{
+    if(!ubications.length) dispatch(actions.getAllUbications());
+  },[ubications, dispatch])
+
   function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
   }
 
   useEffect(()=>{
-    if(!ubicaciones.length)dispatch(actions.getAllUbications())
-  },[ubicaciones, dispatch])
+    if(!ubications.length)dispatch(actions.getAllUbications())
+  },[ubications, dispatch])
 
   return (
     <Dropdown onSelect={handleSelect}>
@@ -25,7 +30,7 @@ function DropdownUbication({ onSelect }) {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
-        {ubicaciones?.map((element, index) => {
+        {ubications?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.DIRECCION}>
               {element.DIRECCION}{' '}{element.LOCALIDAD}{', '}{element.PROVINCIA}
@@ -35,6 +40,4 @@ function DropdownUbication({ onSelect }) {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
-
-export default DropdownUbication;
+};

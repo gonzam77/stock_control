@@ -38,6 +38,19 @@ export default function EditUserRolForm() {
     dispatch(actions.hideModalEditUserType());
   };
 
+  const handlePermitsRead = (eventkey) => {
+    if (eventkey === 'Si') {
+      setRol({
+        ...rol,
+        READ: 1
+      })
+    } else {
+      setRol({
+        ...rol,
+        READ: 0
+      })
+    }
+  }
   const handlePermitsCreate = (eventkey) => {
     if (eventkey === 'Si') {
       setRol({
@@ -106,7 +119,11 @@ export default function EditUserRolForm() {
         <div className={styles.divs}></div>
         <h5>Permisos</h5>
         <div className={styles.divs}>
-          <span style={{textAlign: 'center', verticalAlign: 'middle'}}>Crear</span>
+          <span>Ver</span>
+           <DropdownPermits onSelect={handlePermitsRead}></DropdownPermits>
+        </div>
+        <div className={styles.divs}>
+          <span>Crear</span>
            <DropdownPermits onSelect={handlePermitsCreate}></DropdownPermits>
         </div>
         <div className={styles.divs}>

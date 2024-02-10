@@ -2,6 +2,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Roles from "../../components/rolesTable/roles";
 import Mesures from "../../components/mesures/mesures";
+import Ubications from "../../components/ubications/ubications";
 import Brands from '../../components/brands/brands';
 import Categories from "../../components/categories/categories";
 import AccountTypes from '../../components/accountTypes/accountTypes';
@@ -25,10 +26,10 @@ export default function NomenclatorsPanel() {
           </Tab>
           <Tab
             className=""
-            eventKey="mesures"
-            title={<span style={{ color: "black" }}>Medidas</span>}
+            eventKey="accountType"
+            title={<span style={{ color: "black" }}>Tipo de Cuentas</span>}
           >
-            <Mesures></Mesures>
+            <AccountTypes />
           </Tab>
           <Tab
             className=""
@@ -46,10 +47,17 @@ export default function NomenclatorsPanel() {
           </Tab>
           <Tab
             className=""
-            eventKey="accountType"
-            title={<span style={{ color: "black" }}>Tipo de Cuentas</span>}
+            eventKey="mesures"
+            title={<span style={{ color: "black" }}>Medidas</span>}
           >
-            <AccountTypes />
+            <Mesures></Mesures>
+          </Tab>
+          <Tab
+            className=""
+            eventKey="ubications"
+            title={<span style={{ color: "black" }}>Ubicaciones</span>}
+          >
+            <Ubications></Ubications>
           </Tab>
         </Tabs>
       </div>

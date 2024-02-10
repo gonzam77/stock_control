@@ -14,7 +14,7 @@ const initialState = {
   accounts: [],
   accountTypes: [],
   deposits: [],
-  ubicaciones: [],
+  ubications: [],
   brands:[],
   userTypes:[],
   categories: [],
@@ -28,6 +28,7 @@ const initialState = {
   accountTypeId: null,
   personId:null,
   brandId:null,
+  ubicationId:null,
   accountId: null,
   clientId: null,
   rolId: null,
@@ -36,6 +37,7 @@ const initialState = {
   showCreateModal: false,
   showImportModal: false,
   showModalEditMesure: false,
+  showModalEditUbication: false,
   showModalEditAccount: false,
   showModalEditCategories: false,
   showModalEditBrand: false,
@@ -78,7 +80,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case "GET_ALL_UBUCATIONS":
       return {
         ...state,
-        ubicaciones: payload
+        ubications: payload
       };
     case "GET_ALL_BRANDS":
       return {
@@ -193,6 +195,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         accountTypeId: payload,
       };
+    case "GET_UBICATION_ID":
+      return {
+        ...state,
+        ubicationId: payload,
+      };
     case "GET_PRODUCT_ID":
       return {
         ...state,
@@ -283,6 +290,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         showModalEditAccountType: true,
       };
+    case "SHOW_MODAL_EDIT_UBICATION":
+      return {
+        ...state,
+        showModalEditUbication: true,
+      };
     case "SHOW_MODAL_EDIT_BRAND":
       return {
         ...state,
@@ -324,6 +336,11 @@ export default function reducer(state = initialState, { type, payload }) {
         showModalEditAccountType: false,
       };
 
+    case "HIDE_MODAL_EDIT_UBICATION":
+      return {
+        ...state,
+        showModalEditUbication: false,
+      };
     case "HIDE_MODAL_EDIT_BRAND":
       return {
         ...state,
@@ -333,6 +350,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showModalEditUserType: false,
+      };
+    case 'CLEAN_UBICATION':
+      return {
+        ...state,
+        ubications: payload,
       };
     case 'CLEAN_MESURES':
       return {

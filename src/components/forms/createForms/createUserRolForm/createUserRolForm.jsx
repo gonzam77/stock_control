@@ -22,6 +22,19 @@ export default function CreateUserRolForm() {
         }
     };
 
+    const handlePermitsRead = (eventkey) => {
+        if (eventkey === 'Si') {
+            setNewRol({
+                ...newRol,
+                READ: 1
+            })
+        } else {
+            setNewRol({
+                ...newRol,
+                READ: 0
+            })
+        }
+    }
     const handlePermitsCreate = (eventkey) => {
         if (eventkey === 'Si') {
             setNewRol({
@@ -99,6 +112,10 @@ export default function CreateUserRolForm() {
                 </div>
                 <div className={styles.divs}></div>
                     <h5>Permisos</h5>
+                <div className={styles.divs}>
+                    <p>Ver</p>
+                    <DropdownPermits onSelect={handlePermitsRead}></DropdownPermits>
+                </div>
                 <div className={styles.divs}>
                     <p>Crear</p>
                     <DropdownPermits onSelect={handlePermitsCreate}></DropdownPermits>

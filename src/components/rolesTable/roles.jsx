@@ -48,6 +48,7 @@ export default function Roles() {
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Ver</th>
               <th>Crear</th>
               <th>Modificar</th>
               <th>Eliminar</th>
@@ -59,6 +60,7 @@ export default function Roles() {
               return (
                 <tr key={index}>
                   <td>{userType.DESCRIPCION}</td>
+                  <td>{userType.READ === 1 ? 'Si': 'No'}</td>
                   <td>{userType.CREATE === 1 ? 'Si': 'No'}</td>
                   <td>{userType.UPDATE === 1 ? 'Si': 'No'}</td>
                   <td>{userType.DELETE === 1 ? 'Si': 'No'}</td>
