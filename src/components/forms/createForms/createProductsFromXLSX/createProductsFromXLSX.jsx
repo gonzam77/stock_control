@@ -4,13 +4,31 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
 import * as XLSX from 'xlsx';
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function CreateProductsFromXLSX() {
     const dispatch = useDispatch();
     const [state, setState] = useState();
+    let hojas = [];
+
+    async function postProduct(producto){
+        try {
+            await axios.post(`${backURL}/producto/nuevo`, producto);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const closeCreateModal = async (event) => {
+        console.log('state', state);
         event.preventDefault();
+        for(let i = 0; i < state.hojas[0].data.length; i++){
+            console.log('ver',state.hojas[0].data[i]);
+            await postProduct({Producto: state.hojas[0].data[i]});
+        }
+        console.log('hola');
+        dispatch(actions.cleanProducts());
         dispatch(actions.hideImportModal());
     };
 
@@ -27,7 +45,6 @@ export default function CreateProductsFromXLSX() {
             ...state,
             [name]: value
         });
-        let hojas = [];
         if (name === 'file') {
             let reader = new FileReader();
             reader.readAsArrayBuffer(target.files[0]);
@@ -42,12 +59,10 @@ export default function CreateProductsFromXLSX() {
                         sheetName
                     })
                 })
-                console.log('hojas',hojas);
                 setState({
                     selectedFileDocument: target.files[0],
                     hojas
                 })
-                console.log('state',state);
             }
         };
     };

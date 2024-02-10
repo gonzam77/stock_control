@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
+import DropdownCategory from '../../../dropdown/dropdownCategory';
 import axios from "axios";
 import { backURL } from "../../../../App";
 
@@ -14,9 +15,9 @@ export default function EditProductForm() {
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
   const brands = useSelector(state => state.brands);
+  const categories = useSelector(state => state.categories);
   const mesures = useSelector(state => state.mesures);
   const suppliers = useSelector(state => state.suppliers);
-
   const selectedProduct = products.find(
     (element) => element.ID_PRODUCTO === productId
   );
@@ -35,9 +36,7 @@ export default function EditProductForm() {
   };
 
   const editProduct = async (data) => {
-    const response = await axios.put(`${backURL}/producto/update`,
-      data
-    );
+    await axios.put(`${backURL}/producto/update`, data);
   };
 
   function handleChange(event) {
@@ -49,6 +48,13 @@ export default function EditProductForm() {
     });
   }
 
+  const handleCategorySelect = (selectedCategory) => {
+    const categoryId = categories.find(e => e.NOMBRE === selectedCategory).ID_CATEGORIA
+    setProduct({
+      ...product,
+      ID_CATEGORIA: categoryId,
+    });
+  };
   const handleBrandSelect = (selectedBrand) => {
     const brandId = brands.find(e => e.NOMBRE === selectedBrand).ID_MARCA
     setProduct({
@@ -126,6 +132,9 @@ export default function EditProductForm() {
             onChange={handleChange}
             type="text"
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownCategory onSelect={handleCategorySelect} />
         </div>
         <div className={styles.divs}>
           <DropdownMesures onSelect={handleMesureSelect} />

@@ -37,15 +37,13 @@ export let axiosConfig = null;
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
 
-
-
-  const navigate = useNavigate();
-
   async function login(userData) {
+
     const formEncodedData = qs.stringify(userData);
     const config = {
       withCredentials: true,
@@ -60,7 +58,6 @@ function App() {
         formEncodedData,
         config
       );
-      console.log('login_response', response);
       if (response.data.Status === 'Accepted') {
         localStorage.setItem("token", response.data.Token);
         axiosConfig = {
@@ -81,7 +78,6 @@ function App() {
   const logout = async () => {
     try {
       const response = await axios.get(`${backURL}/signout`,axiosConfig);
-      console.log('logout_response',response);
       if(response.data.Status === 'OK'){
         localStorage.clear();
         setAccess(false);
@@ -109,7 +105,7 @@ function App() {
         <div className="body">
           <Routes>
             <Route path="/" element={<Inicio />} />
-            <Route path="/login" element={<Login login={login} />} />
+1            <Route path="/login" element={<Login login={login} />} />
             <Route path="/cards" element={<ProductsCard />} />
             <Route path="/productsTable" element={<ProductsTable />} />
             <Route path="/suppliers" element={<Suppliers />} />

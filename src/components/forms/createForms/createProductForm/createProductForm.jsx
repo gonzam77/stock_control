@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import Dropdown from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
+import DropdownCategory from '../../../dropdown/dropdownCategory';
 import axios from "axios";
 import { backURL } from "../../../../App";
 
@@ -13,10 +14,12 @@ export default function CreateProductForm() {
   const dispatch = useDispatch();
   const brands = useSelector((state) => state.brands);
   const mesures = useSelector((state) => state.mesures);
+  const categories = useSelector((state) => state.categories);
   const suppliers = useSelector((state) => state.suppliers);
   const [newProduct, setNewProduct] = useState({
     NOMBRE: '',
     CODIGO: '',
+    ID_CATEGORIA: '',
     ID_UNIDAD_MEDIDA: '',
     CANT_MIN: '',
     CANT_MAX: '',
@@ -57,6 +60,21 @@ export default function CreateProductForm() {
       setNewProduct({
         ...newProduct,
         ID_PROVEEDOR: null,
+      });
+    }
+  };
+
+  const handleCategorySelect = (selectedCategory) => {
+    if (selectedCategory && selectedCategory !== 'Otro') {
+      const categoryId = categories.find((e) => e.NOMBRE === selectedCategory).ID_CATEGORIA;
+      setNewProduct({
+        ...newProduct,
+        ID_CATEGORIA: categoryId,
+      });
+    } else {
+      setNewProduct({
+        ...newProduct,
+        ID_CATEGORIA: null,
       });
     }
   };
@@ -154,21 +172,17 @@ export default function CreateProductForm() {
           />
         </div>
         <div className={styles.divs}>
+          <DropdownCategory onSelect={handleCategorySelect} />
+        </div>
+        <div className={styles.divs}>
           <DropdownMesures onSelect={handleMesureSelect} />
         </div>
-        <div
-          className={styles.divs}
-          style={{ textAlign: "center", verticalAlign: "middle" }}
-        >
-          <DropdownBrands onSelect={handleBrandSelect}></DropdownBrands>
+        <div className={styles.divs}>
+          <DropdownBrands onSelect={handleBrandSelect} />
         </div>
-        <div
-          className={styles.divs}
-          style={{ textAlign: "center", verticalAlign: "middle" }}
-        >
-          <Dropdown onSelect={handleSupplierSelect}></Dropdown>
+        <div className={styles.divs}>
+          <Dropdown onSelect={handleSupplierSelect} />
         </div>
-
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>
             Cancelar
