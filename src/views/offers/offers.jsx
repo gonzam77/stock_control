@@ -54,7 +54,7 @@ export default function Offers() {
               <th>Nombre</th>
               <th>Precio Regular</th>
               <th>Descuento</th>
-              <th>Tipo de Pago</th>
+              <th>Forma de Pago</th>
               <th>Precio Final</th>
               <th>Fecha</th>
               <th>Fecha Desde</th>
