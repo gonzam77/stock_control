@@ -9,14 +9,14 @@ const initialState = {
   cart: [],
   orders: [],
   suppliers: [],
-  persons:[],
+  persons: [],
   clients: [],
   accounts: [],
   accountTypes: [],
   deposits: [],
   ubications: [],
-  brands:[],
-  userTypes:[],
+  brands: [],
+  userTypes: [],
   categories: [],
   mesures: [],
   offers: [],
@@ -26,9 +26,9 @@ const initialState = {
   purchases: compras,
   productById: null,
   accountTypeId: null,
-  personId:null,
-  brandId:null,
-  ubicationId:null,
+  personId: null,
+  brandId: null,
+  ubicationId: null,
   accountId: null,
   clientId: null,
   rolId: null,
@@ -62,21 +62,26 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         accounts: payload
       };
-      case 'GET_ALL_DEPOSITS':
-        return {
-          ...state,
-          deposits: payload,
-        };
-      case 'GET_ALL_USER_TYPES':
-        return {
-          ...state,
-          userTypes: payload,
-        };
-      case 'GET_ALL_USERS':
-        return {
-          ...state,
-          users: payload,
-        };
+    case 'GET_ALL_DEPOSITS':
+      return {
+        ...state,
+        deposits: payload,
+      };
+    case 'GET_ALL_PAY_TYPES':
+      return {
+        ...state,
+        payTypes: payload,
+      };
+    case 'GET_ALL_USER_TYPES':
+      return {
+        ...state,
+        userTypes: payload,
+      };
+    case 'GET_ALL_USERS':
+      return {
+        ...state,
+        users: payload,
+      };
     case "GET_ALL_UBUCATIONS":
       return {
         ...state,
@@ -148,43 +153,6 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         sales: [...state.sales, payload],
       };
-
-    case "CREATE_OFFER":
-      return {
-        ...state,
-        offers: [...state.offers, payload],
-      };
-    case "CREATE_MESURE":
-      return {
-        ...state,
-        mesures: [...state.mesures, payload],
-      };
-    case "CREATE_DISPATCHER":
-      return {
-        ...state,
-        dispatchers: [...state.dispatchers, payload],
-      };
-    case "CREATE_DEPOSIT":
-      return {
-        ...state,
-        deposits: [...state.deposits, payload],
-      };
-    case "CREATE_USER":
-      return {
-        ...state,
-        users: [...state.users, payload],
-      };
-    case "CREATE_ROL":
-      return {
-        ...state,
-        roles: [...state.roles, payload],
-      };
-    case "CREATE_CATEGORY":
-      return {
-        ...state,
-        categories: [...state.categories, payload],
-      };
-
     case "GET_DEPOSIT_ID":
       return {
         ...state,
@@ -255,6 +223,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         personId: payload,
       };
+    case "GET_PAY_TYPE_ID":
+      return {
+        ...state,
+        payTypeId: payload,
+      };
     case "GET_SUPPLIER_ID":
       return {
         ...state,
@@ -299,6 +272,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showModalEditBrand: true,
+      };
+    case "SHOW_MODAL_EDIT_PAY_TYPE":
+      return {
+        ...state,
+        showModalEditPayType: true,
       };
     case "SHOW_MODAL_EDIT_USER_TYPE":
       return {
@@ -345,6 +323,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         showModalEditBrand: false,
+      };
+    case "HIDE_MODAL_EDIT_PAY_TYPE":
+      return {
+        ...state,
+        showModalEditPayType: false,
       };
     case "HIDE_MODAL_EDIT_USER_TYPE":
       return {
@@ -416,6 +399,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         persons: payload,
+      };
+    case "CLEAN_PAY_TYPES":
+      return {
+        ...state,
+        payTypes: payload,
       };
     case "CLEAN_USERS":
       return {

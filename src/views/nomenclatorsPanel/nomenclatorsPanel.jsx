@@ -5,6 +5,7 @@ import Mesures from "../../components/mesures/mesures";
 import Ubications from "../../components/ubications/ubications";
 import Brands from '../../components/brands/brands';
 import Categories from "../../components/categories/categories";
+import PayTypes from "../../components/payTypes/payTypes";
 import AccountTypes from '../../components/accountTypes/accountTypes';
 import styles from "./nomenclatorsPanel.module.css";
 
@@ -51,6 +52,13 @@ export default function NomenclatorsPanel() {
             title={<span style={{ color: "black" }}>Medidas</span>}
           >
             <Mesures></Mesures>
+          </Tab>
+          <Tab
+            className=""
+            eventKey="ubications"
+            title={<span style={{ color: "black" }}>Metodos de Pago</span>}
+          >
+            <PayTypes></PayTypes>
           </Tab>
           <Tab
             className=""

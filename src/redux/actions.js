@@ -2,6 +2,21 @@ import axios from "axios";
 import { axiosConfig } from "../App";
 import { backURL } from "../App";
 
+export const getAllPayTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/pagos`, axiosConfig);
+      const data = response.data;
+      return dispatch({
+        type: 'GET_ALL_PAY_TYPES',
+        payload: data.Data,
+      });
+    } catch (error) {
+      console.log(error);      
+    }
+  };
+};
+
 export const getAllUserTypes = () => {
   return async function (dispatch) {
     try {
@@ -93,6 +108,7 @@ export const getAllSuppliers = () => {
     }
   };
 };
+
 export const getAllClients = () => {
   return async function (dispatch) {
     try {
@@ -108,6 +124,7 @@ export const getAllClients = () => {
     }
   };
 };
+
 export const getAllAccounts = () => {
   return async function (dispatch) {
     try {
@@ -123,6 +140,7 @@ export const getAllAccounts = () => {
     }
   };
 };
+
 export const getAllUbications = () => {
   return async function (dispatch) {
     try {
@@ -138,6 +156,7 @@ export const getAllUbications = () => {
     }
   };
 };
+
 export const getAllDeposits = () => {
   return async function (dispatch) {
     try {
@@ -153,6 +172,7 @@ export const getAllDeposits = () => {
     }
   };
 };
+
 export const getAllAccountTypes = () => {
   return async function (dispatch) {
     try {
@@ -168,6 +188,7 @@ export const getAllAccountTypes = () => {
     }
   };
 };
+
 export const getAllBrands = () => {
   return async function (dispatch) {
     try {
@@ -183,6 +204,7 @@ export const getAllBrands = () => {
     }
   };
 };
+
 export const getAllPersons = () => {
   return async function (dispatch) {
     try {
@@ -198,6 +220,7 @@ export const getAllPersons = () => {
     }
   };
 };
+
 export const getAllMesures = () => {
   return async function (dispatch) {
     try {
@@ -213,6 +236,7 @@ export const getAllMesures = () => {
     }
   };
 };
+
 export const getAllProducts = () => {
   return async function (dispatch) {
     try {
@@ -228,7 +252,6 @@ export const getAllProducts = () => {
     }
   };
 };
-
 
 export const cleanUbication = () => {
   return async function(dispatch){
@@ -247,6 +270,7 @@ export const cleanMesures = () => {
     });
   }
 };
+
 export const cleanCategories = () => {
   return async function(dispatch){
     return dispatch({
@@ -255,6 +279,7 @@ export const cleanCategories = () => {
     });
   }
 };
+
 export const cleanUserTypes = () => {
   return async function(dispatch){
     return dispatch({
@@ -336,6 +361,15 @@ export const cleanUsers = () => {
   }
 };
 
+export const cleanPayTypes = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_PAY_TYPES",
+      payload: [],
+    });
+  }
+};
+
 export const cleanProducts = () => {
   return async function(dispatch){
     return dispatch({
@@ -400,6 +434,14 @@ export const getBrandId = (id) => {
     payload: id,
   };
 };
+
+export const getPayTypeId = (id) => {
+  return {
+    type: "GET_PAY_TYPE_ID",
+    payload: id,
+  };
+};
+
 export const getAccountId = (id) => {
   return {
     type: "GET_ACCOUNT_ID",
@@ -497,6 +539,7 @@ export const showImportModal = () => ({
 export const showModalEditBrand = () => ({
   type: "SHOW_MODAL_EDIT_BRAND",
 });
+
 export const showModalEditUbication = () => ({
   type: "SHOW_MODAL_EDIT_UBICATION",
 });
@@ -511,6 +554,10 @@ export const showModalEditAccountType = () => ({
 
 export const showModalEditUserType = () => ({
   type: "SHOW_MODAL_EDIT_USER_TYPE",
+});
+
+export const showModalEditPayType = () => ({
+  type: "SHOW_MODAL_EDIT_PAY_TYPE",
 });
 
 export const showModalEditCategories = () => ({
@@ -537,6 +584,10 @@ export const hideModalEditAccounType = () => ({
   type: "HIDE_MODAL_EDIT_ACCOUNT_TYPE",
 });
 
+export const hideModalEditPayType = () => ({
+  type: "HIDE_MODAL_EDIT_PAY_TYPE",
+});
+
 export const hideModalEditUbication = () => ({
   type: "HIDE_MODAL_EDIT_UBICATION",
 });
@@ -548,6 +599,7 @@ export const hideModalEditCategories = () => ({
 export const hideModalEditMesure = () => ({
   type: "HIDE_MODAL_EDIT_MESURE",
 });
+
 export const hideModalEditBrand = () => ({
   type: "HIDE_MODAL_EDIT_BRAND",
 });
