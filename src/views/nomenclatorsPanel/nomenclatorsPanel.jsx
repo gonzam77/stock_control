@@ -55,7 +55,7 @@ export default function NomenclatorsPanel() {
           </Tab>
           <Tab
             className=""
-            eventKey="ubications"
+            eventKey="paytypes"
             title={<span style={{ color: "black" }}>Metodos de Pago</span>}
           >
             <PayTypes></PayTypes>

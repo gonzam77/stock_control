@@ -5,7 +5,7 @@ import ModalCreateBrandForm from '../../views/modals/createModals/modalCreatePay
 import ModalEditPayTypeForm from '../../views/modals/editModals/modalEditPayTypeForm/modalEditPayTypeForm';
 import * as actions from '../../redux/actions';
 import { useEffect } from "react";
-import styles from './payTypes.modules.css';
+import styles from './payTypes.module.css';
 
 
 
