@@ -118,7 +118,7 @@ function App() {
         <div className="body">
           <Routes>
             <Route path="/" element={<Inicio />} />
-            1            <Route path="/login" element={<Login login={login} />} />
+            <Route path="/login" element={<Login login={login} />} />
             <Route path="/cards" element={<ProductsCard />} />
             <Route path="/productsTable" element={<ProductsTable />} />
             <Route path="/suppliers" element={<Suppliers />} />
