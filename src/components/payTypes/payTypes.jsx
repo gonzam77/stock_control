@@ -3,9 +3,10 @@ import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import ModalCreateBrandForm from '../../views/modals/createModals/modalCreatePayTypeForm/modalCreatePayTypeForm';
 import ModalEditPayTypeForm from '../../views/modals/editModals/modalEditPayTypeForm/modalEditPayTypeForm';
-import styles from './brands.module.css';
 import * as actions from '../../redux/actions';
 import { useEffect } from "react";
+import styles from './payTypes.modules.css';
+
 
 
 export default function PayTypes() {

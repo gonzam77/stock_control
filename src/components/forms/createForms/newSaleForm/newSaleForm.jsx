@@ -17,92 +17,88 @@ export default function NewSaleForm() {
   const products = useSelector((state) => state.products);
   const sales = useSelector((state) => state.sales);
   const offers = useSelector((state) => state.offers);
+  const [update, setUpdate] = useState();
+  const [cart, setCart] = useState([]);
+
   const [newSale, setNewSale] = useState({
-    code: "",
-    number: "",
+    CODIGO: "",
+    NUMERO: "",
     items: [],
-    quantity: 0,
-    deposit: "",
-    mount: [],
-    payType: "",
-    total: "",
-    client: "",
+    CANTIDAD: 0,
+    DEPOSITO: "",
+    MONTO: [],
+    TIPO_PAGO: "",
+    TOTAL: "",
+    CLIENTE: "",
+  });
+  const [newItem, setNewItem] = useState({
+    CODIGO: "",
+    NOMBRE: "",
+    CANTIDAD: "",
+    PRECIO_VENTA: "",
+    DEPOSITO: "",
+    MONTO_TOTAL: "",
   });
 
+
+  useEffect(() => {
+    if (!products.length) dispatch(actions.getAllProducts());
+    if (!offers.length) dispatch(actions.getAllOffers());
+  }, [products, offers, dispatch])
+
   function getLastSale() {
-    let lastSale = sales[0].number;
-    if (sales.length) {
+    let lastSale = 0;
+    if (sales.length >= 1) {
       for (let i = 0; i < sales.length; i++) {
-        if (sales[i].number > lastSale) lastSale = sales[i].number;
+        if (sales[i].NUMERO > lastSale) lastSale = sales[i].NUMERO;
       }
       lastSale = parseInt(lastSale, 10);
       return lastSale;
     }
   }
 
-  const [cart, setCart] = useState([]);
-
-  const [update, setUpdate] = useState();
-
-  const [newItem, setNewItem] = useState({
-    code: "",
-    number: "",
-    name: "",
-    quantity: "",
-    price: "",
-    deposit: "",
-    payType: "",
-    total: "",
-    client: "",
-    totalMount: "",
-  });
-
-  useEffect(() => {
-    setNewSale({
-      ...newSale,
-      items: cart,
-      mount: cart.reduce((acc, current) => acc + current.totalMount, 0),
-    });
-  }, [cart, newSale, update]);
-
   const handleAdd = () => {
-    if (!newItem.quantity || newItem.quantity === "" || newItem.quantity < 1)
-      newItem.quantity = 1;
-    const quantity = parseInt(newItem.quantity);
-    newItem.quantity = quantity;
+
+    if (!newItem.CANTIDAD || newItem.CANTIDAD === "" || newItem.CANTIDAD < 1)
+      newItem.CANTIDAD = 1;
+    else newItem.CANTIDAD = parseInt(newItem.CANTIDAD);
+
     const lastSale = getLastSale();
-    if (newItem.code.length > 3) {
-      offerProduct = offers.find((e) => e.code === newItem.code);
-      product = products.find((element) => element.code === newItem.code);
-      if (offerProduct)
-        finalPrice = (1 - offerProduct.discount / 100) * product.price;
-      else finalPrice = product.price;
+
+    if (newItem.CODIGO.length > 3) {
+      const selectedProduct = products.find(e => e.CODIGO === newItem.CODIGO)
+      offerProduct = offers.find((e) => e.ID_PRODUCTO === selectedProduct.CODIGO);
+      if (offerProduct) {
+        const discount = parseFloat(offerProduct.DESCUENTO)
+        finalPrice = (1 - discount / 100) * selectedProduct.PRECIO_VENTA;
+      }
+      else finalPrice = product.PRECIO_VENTA;
     }
 
-    if (product) {
+    if (offerProduct) {
       const selectedProduct = cart.find(
-        (element) => element.code === product.code
+        (element) => element.CODIGO === offerProduct.CODIGO
       );
       if (selectedProduct) {
-        product["quantity"] += newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
+        product["CANTIDAD"] += newItem.CANTIDAD;
+        product["MONTO_TOTAL"] = offerProduct.CANTIDAD * finalPrice;
         setUpdate(!update);
       } else {
-        product["quantity"] = newItem.quantity;
-        product["totalMount"] = product.quantity * finalPrice;
+        product["CANTIDAD"] = newItem.CANTIDAD;
+        product["MONTO_TOTAL"] = offerProduct.CANTIDAD * finalPrice;
         setCart([...cart, product]);
       }
 
       setNewSale({
         ...newSale,
-        number: lastSale + 1,
-        quantity: (newSale.quantity += product.quantity),
+        NUMERO: lastSale + 1,
+        CANTIDAD: (newSale.CANTIDAD += offerProduct.CANTIDAD),
       });
 
       setNewItem({
-        code: "",
-        name: "",
-        quantity: "",
+        CODIGO: "",
+        NOMBRE: "",
+        CANTIDAD: "",
       });
     }
   };
@@ -111,10 +107,10 @@ export default function NewSaleForm() {
     const nuevaCantidad = parseInt(event.target.value, 10);
     if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
       const carroActualizado = [...cart];
-      carroActualizado[index].totalMount =
-        carroActualizado[index].totalMount / carroActualizado[index].quantity;
-      carroActualizado[index].quantity = nuevaCantidad;
-      carroActualizado[index].totalMount *= nuevaCantidad;
+      carroActualizado[index].MONTO_TOTAL =
+        carroActualizado[index].MONTO_TOTAL / carroActualizado[index].CANTIDAD;
+      carroActualizado[index].CANTIDAD = nuevaCantidad;
+      carroActualizado[index].MONTO_TOTAL *= nuevaCantidad;
 
       setCart(carroActualizado);
       setUpdate(!update);
@@ -127,9 +123,9 @@ export default function NewSaleForm() {
     }
   };
 
-  const deleteProduct = (code) => {
-    if (code) {
-      const index = cart.findIndex((e) => e.code === code);
+  const deleteProduct = (CODIGO) => {
+    if (CODIGO) {
+      const index = cart.findIndex((e) => e.CODIGO === CODIGO);
       cart.splice(index, 1);
       setUpdate(!update);
     }
@@ -138,21 +134,21 @@ export default function NewSaleForm() {
   const handlePayTypeSelect = (selectedPayType) => {
     setNewSale({
       ...newSale,
-      payType: selectedPayType,
+      TIPO_PAGO: selectedPayType,
     });
   };
 
   const handleClientSelect = (selectedClient) => {
     setNewSale({
       ...newSale,
-      client: selectedClient,
+      CLIENTE: selectedClient,
     });
   };
 
   const handleDepositSelect = (selectedDeposit) => {
     setNewSale({
       ...newSale,
-      deposit: selectedDeposit,
+      DEPOSITO: selectedDeposit,
     });
   };
 
@@ -195,10 +191,10 @@ export default function NewSaleForm() {
               <label>Codigo</label>
               <input
                 onKeyDown={handleKeyDown}
-                className={styles.code}
+                className={styles.CODIGO}
                 autoComplete="off"
-                name="code"
-                value={newItem.code}
+                name="CODIGO"
+                value={newItem.CODIGO}
                 onChange={handleChange}
                 placeholder="Codigo..."
                 type="text"
@@ -209,11 +205,11 @@ export default function NewSaleForm() {
               <input
                 onKeyDown={handleKeyDown}
                 autoComplete="off"
-                name="quantity"
-                value={newItem.quantity}
+                name="CANTIDAD"
+                value={newItem.CANTIDAD}
                 onChange={handleChange}
                 placeholder="Cantidad..."
-                type="number"
+                type="NUMERO"
               />
             </div>
             <Button onClick={handleAdd}>Agregar</Button>
@@ -226,7 +222,7 @@ export default function NewSaleForm() {
                 <th>Cantidad</th>
                 <th>Codigo</th>
                 <th>Producto</th>
-                <th>brand</th>
+                <th>Marca</th>
                 <th>Precio U.</th>
                 <th>Precio T.</th>
                 <th>Eliminar</th>
@@ -242,29 +238,29 @@ export default function NewSaleForm() {
                         <div>
                           <input
                             autoComplete="off"
-                            name="quantity"
-                            value={item.quantity}
+                            name="CANTIDAD"
+                            value={item.CANTIDAD}
                             onChange={(e) => handleCantidadChange(e, index)}
-                            type="number"
+                            type="NUMERO"
                           />
                         </div>
                       </td>
-                      <td>{item.code}</td>
-                      <td>{item.name}</td>
+                      <td>{item.CODIGO}</td>
+                      <td>{item.NOMBRE}</td>
                       <td>{item.brand}</td>
                       <td>
                         {"$ "}
-                        {item.price}
+                        {item.PRECIO_VENTA}
                       </td>
                       <td>
                         {"$ "}
-                        {item.totalMount}
+                        {item.MONTO_TOTAL}
                       </td>
                       <td>
                         <Button
                           variant="danger"
                           onClick={() => {
-                            deleteProduct(item.code);
+                            deleteProduct(item.CODIGO);
                           }}
                         >
                           Eliminar
@@ -288,7 +284,7 @@ export default function NewSaleForm() {
                 <td>
                   <b>
                     {"$ "}
-                    {newSale.mount}
+                    {newSale.MONTO}
                   </b>
                 </td>
               </tr>
