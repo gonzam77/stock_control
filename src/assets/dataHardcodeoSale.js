@@ -7,7 +7,7 @@ export const ventas = [
         ID_CLIENTE: 1,
         ID_BODEGA: 1,
         CANTIDAD: '10',
-        MONTO: [10000],
+        TOTAL: 10000,
 
     },
     {
@@ -18,7 +18,7 @@ export const ventas = [
         ID_CLIENTE: 1,
         ID_BODEGA: 1,
         CANTIDAD: '10',
-        MONTO: [10000],
+        TOTAL: 10000,
 
     },
     {
@@ -29,7 +29,7 @@ export const ventas = [
         ID_CLIENTE: 1,
         ID_BODEGA: 1,
         CANTIDAD: '10',
-        MONTO: [10000],
+        TOTAL: 10000,
 
     }
 

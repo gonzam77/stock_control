@@ -58,7 +58,7 @@ export default function LastSales() {
                                         {element.FECHA}
                                     </td>
                                     <td>{element.CANTIDAD}</td>
-                                    <td>{'$ '}{element.MONTO}</td>
+                                    <td>{'$ '}{element.TOTAL}</td>
                                     <td>{payType?.NOMBRE}</td>
                                     <td>{client?.CUIL}</td>
                                     <td>{deposit?.NOMBRE}</td>

@@ -29,19 +29,17 @@ export default function NewSaleForm() {
     items: [],
     CANTIDAD: 0,
     ID_BODEGA: "",
-    MONTO: [],
     TIPO_PAGO: "",
     TOTAL: "",
-    CLIENTE: "",
+    ID_CLIENTE: "",
   });
-  
+
   const [newItem, setNewItem] = useState({
     CODIGO: "",
     NOMBRE: "",
     CANTIDAD: "",
     MONTO_TOTAL: "",
   });
-
 
   useEffect(() => {
     if (!products.length) dispatch(actions.getAllProducts());
@@ -81,8 +79,6 @@ export default function NewSaleForm() {
       });
     } else {
 
-      const newTotal = newSale.TOTAL + selectedProduct?.CANTIDAD * finalPrice;
-
       //comprueba que la cantidad no sea nula
       if (!newItem.CANTIDAD || newItem.CANTIDAD === "" || newItem.CANTIDAD < 1)
         newItem.CANTIDAD = 1;
@@ -110,12 +106,10 @@ export default function NewSaleForm() {
           setUpdate(!update);
         }
       };
-
       setNewSale({
         ...newSale,
         NUMERO: lastSale + 1,
         CANTIDAD: (newSale.CANTIDAD += selectedProduct?.CANTIDAD),
-        TOTAL: parseFloat(newTotal).toFixed(2), // Update the TOTAL field
       });
 
       setNewItem({
@@ -125,6 +119,13 @@ export default function NewSaleForm() {
       });
     }
   };
+
+  useEffect(()=>{
+    setNewSale({
+      ...newSale,
+      TOTAL: calcularTotal()
+    })
+  },[cart])
 
   const handleCantidadChange = (event, index) => {
     const nuevaCantidad = parseInt(event.target.value, 10);
@@ -137,13 +138,15 @@ export default function NewSaleForm() {
 
       setCart(carroActualizado);
       setUpdate(!update);
-      const newTotal = cart.reduce((total, item) => total + item.CANTIDAD * item.PRECIO_VENTA, 0);
-
-      setNewSale({
-        ...newSale,
-        TOTAL: parseFloat(newTotal).toFixed(2),
-      })
     }
+  };
+
+  const calcularTotal = () => {
+    let total = 0;
+    for (const item of cart) {
+      total += item.MONTO_TOTAL;
+    }
+    return total.toFixed(2);
   };
 
   // const handleKeyDown = (event) => {
@@ -169,10 +172,11 @@ export default function NewSaleForm() {
   };
 
   const handleClientSelect = (selectedClient) => {
-    const clientId = clients?.find(e => e.CUIL === selectedClient).ID_CLIENTE
+    const clientId = clients?.find(e => e.CUIL === selectedClient)
+    console.log('cliente', clientId);
     setNewSale({
       ...newSale,
-      CLIENTE: clientId,
+      ID_CLIENTE: clientId.ID_CLIENTE,
     });
   };
 
@@ -186,6 +190,7 @@ export default function NewSaleForm() {
 
   const confirmSale = (event) => {
     event.preventDefault();
+    console.log('newSale', newSale);
     dispatch(actions.newSale(newSale));
     navigate("/");
   };
@@ -222,7 +227,7 @@ export default function NewSaleForm() {
             <div className={styles.divs}>
               <label>Codigo</label>
               <input
-               // onKeyDown={handleKeyDown}
+                // onKeyDown={handleKeyDown}
                 className={styles.CODIGO}
                 autoComplete="off"
                 name="CODIGO"
@@ -264,7 +269,8 @@ export default function NewSaleForm() {
             <tbody>
               {
                 cart.map((item, index) => {
-                  const brand = brands?.find(e => e.ID_MARCA === item.ID_MARCA)
+                  const brand = brands?.find(e => e.ID_MARCA === item.ID_MARCA);
+
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
@@ -317,7 +323,7 @@ export default function NewSaleForm() {
                 <td>
                   <b>
                     {"$ "}
-                    {newSale.TOTAL}
+                    {calcularTotal()}
                   </b>
                 </td>
               </tr>
