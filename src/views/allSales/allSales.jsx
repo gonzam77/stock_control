@@ -9,14 +9,16 @@ import * as actions from '../../redux/actions';
 export default function AllSales() {
     const sales = useSelector((state) => state.sales);
     const clients = useSelector((state) => state.clients);
+    const deposits = useSelector((state) => state.deposits);
     const payTypes = useSelector((state) => state.payTypes);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
     useEffect(()=>{
         if(!clients.length) dispatch(actions.getAllClients());
+        if(!deposits.length) dispatch(actions.getAllDeposits());
         if(!payTypes.length) dispatch(actions.getAllPayTypes());
-    },[clients, dispatch, payTypes])
+    },[clients, dispatch, payTypes, deposits])
 
     function redirect (id) {
         navigate(`/saleDetail/${id}`)
@@ -45,6 +47,7 @@ export default function AllSales() {
                         {sales.map((element, index) => {
                             const client = clients?.find(e => e.ID_CLIENTE === element.ID_CLIENTE);
                             const payType = payTypes?.find(e => e.ID_FORMA_PAGO === element.ID_FORMA_PAGO);
+                            const desposit = deposits?.find(e => e.ID_BODEGA === element.ID_BODEGA);
                             return (
                                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                                     <td>{element.NUMERO}</td>
@@ -55,7 +58,7 @@ export default function AllSales() {
                                     <td>{'$ '}{element.MONTO}</td>
                                     <td>{payType?.NOMBRE}</td>
                                     <td>{client?.CUIL}</td>
-                                    <td>{element.DEPOSITO}</td>
+                                    <td>{desposit?.NOMBRE}</td>
                                     <td style={{ textAlign: 'center' }}>
                                         <Button variant="primary" onClick={()=>{redirect(element.id)}}>
                                             Detalle
