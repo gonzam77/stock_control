@@ -9,12 +9,14 @@ import * as actions from '../../redux/actions';
 export default function AllSales() {
     const sales = useSelector((state) => state.sales);
     const clients = useSelector((state) => state.clients);
+    const payTypes = useSelector((state) => state.payTypes);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
     useEffect(()=>{
         if(!clients.length) dispatch(actions.getAllClients());
-    },[clients, dispatch])
+        if(!payTypes.length) dispatch(actions.getAllPayTypes());
+    },[clients, dispatch, payTypes])
 
     function redirect (id) {
         navigate(`/saleDetail/${id}`)
@@ -42,6 +44,7 @@ export default function AllSales() {
                     <tbody>
                         {sales.map((element, index) => {
                             const client = clients?.find(e => e.ID_CLIENTE === element.ID_CLIENTE);
+                            const payType = payTypes?.find(e => e.ID_FORMA_PAGO === element.ID_FORMA_PAGO);
                             return (
                                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                                     <td>{element.NUMERO}</td>
@@ -50,7 +53,7 @@ export default function AllSales() {
                                     </td>
                                     <td>{element.CANTIDAD}</td>
                                     <td>{'$ '}{element.MONTO}</td>
-                                    <td>{element.TIPO_PAGO}</td>
+                                    <td>{payType?.NOMBRE}</td>
                                     <td>{client?.CUIL}</td>
                                     <td>{element.DEPOSITO}</td>
                                     <td style={{ textAlign: 'center' }}>

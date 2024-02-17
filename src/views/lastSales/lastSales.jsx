@@ -10,6 +10,7 @@ export default function LastSales() {
     const sales = useSelector((state) => state.sales);
     const deposits = useSelector((state) => state.deposits);
     const clients = useSelector((state) => state.clients);
+    const payTypes = useSelector((state) => state.payTypes);
     const orderSales = sales.sort((a,b) =>   b.number - a.number)
     const lastTenSales = orderSales.slice(0,10);
     const navigate = useNavigate();
@@ -18,7 +19,8 @@ export default function LastSales() {
     useEffect(()=>{
         if(!deposits.length) dispatch(actions.getAllDeposits());
         if(!clients.length) dispatch(actions.getAllClients());
-    },[deposits, clients, dispatch])
+        if(!payTypes.length) dispatch(actions.getAllPayTypes());
+    },[deposits, clients, payTypes, dispatch])
 
 
     function redirect (id) {
@@ -48,6 +50,7 @@ export default function LastSales() {
                         {lastTenSales.map((element, index) => {
                             const client = clients?.find(e=> e.ID_CLIENTE === element.ID_CLIENTE)
                             const deposit = deposits?.find(e=> e.ID_BODEGA === element.ID_BODEGA)
+                            const payType = payTypes?.find(e=> e.ID_FORMA_PAGO === element.ID_FORMA_PAGO);
                             return (
                                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                                     <td>{element.NUMERO}</td>
@@ -56,7 +59,7 @@ export default function LastSales() {
                                     </td>
                                     <td>{element.CANTIDAD}</td>
                                     <td>{'$ '}{element.MONTO}</td>
-                                    <td>{element.payType}</td>
+                                    <td>{payType?.NOMBRE}</td>
                                     <td>{client?.CUIL}</td>
                                     <td>{deposit?.NOMBRE}</td>
                                     <td style={{ textAlign: 'center' }}>

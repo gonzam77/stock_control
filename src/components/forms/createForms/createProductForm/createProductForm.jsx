@@ -7,8 +7,31 @@ import Dropdown from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import DropdownCategory from '../../../dropdown/dropdownCategory';
+import Swal from 'sweetalert2'
 import axios from "axios";
 import { backURL } from "../../../../App";
+
+function validate(newProduct) {
+  if (newProduct.CODIGO === '' || newProduct.CODIGO === null || newProduct.CODIGO.length < 4)
+    return 'Codigo Incorrecto'
+  if (newProduct.NOMBRE === '' || newProduct.NOMBRE === null || newProduct.NOMBRE.length < 4)
+    return 'Nombre Incorrecto'
+  if (isNaN(newProduct.CANT_MIN))
+    return 'Cantidad Minima Incorrecta'
+  if (newProduct.ID_CATEGORIA === '' || newProduct.ID_CATEGORIA === null || isNaN(newProduct.ID_CATEGORIA))
+    return 'Categoria Maxima Incorrecta'
+  if (isNaN(newProduct.CANT_MAX))
+    return 'Cantidad Incorrecta'
+  if (newProduct.ID_UNIDAD_MEDIDA === '' || newProduct.ID_UNIDAD_MEDIDA === null || isNaN(newProduct.ID_UNIDAD_MEDIDA))
+    return 'Unidade de Medida Incorrecta'
+  if (newProduct.ID_PROVEEDOR === '' || newProduct.ID_PROVEEDOR === null || isNaN(newProduct.ID_PROVEEDOR))
+    return 'Proveedor Incorrecto'
+  if (newProduct.ID_MARCA === '' || newProduct.ID_MARCA === null || isNaN(newProduct.ID_MARCA))
+    return 'Marca Incorrecta'
+  if (newProduct.PRECIO_VENTA === '' || newProduct.PRECIO_VENTA === null || isNaN(newProduct.PRECIO_VENTA))
+    return 'Precio de venta Incorrecta'
+  return false
+};
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
@@ -36,11 +59,23 @@ export default function CreateProductForm() {
     }
   }
 
+ 
+
   const closeCreateModal = async (event) => {
     event.preventDefault();
-    await postProduct({ Producto: newProduct })
-    dispatch(actions.cleanProducts());
-    dispatch(actions.hideCreateModal());
+    const message = validate(newProduct)
+    if (message === false) {
+      await postProduct({ Producto: newProduct })
+      dispatch(actions.cleanProducts());
+      dispatch(actions.hideCreateModal());
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'Confirmar'
+      })
+    }
   };
 
   const cancelCreateModal = () => {
