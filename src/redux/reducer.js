@@ -1,5 +1,4 @@
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
-import { metodo_de_pago } from "../assets/dataHardcodeoPayType";
 import { ventas } from "../assets/dataHardcodeoSale";
 import { compras } from "../assets/dataHardcodeoCompras";
 
@@ -20,8 +19,8 @@ const initialState = {
   categories: [],
   mesures: [],
   offers: [],
+  payTypes: [],
   dispatchers: transportistas,
-  payTypes: metodo_de_pago,
   sales: ventas,
   purchases: compras,
   productById: null,

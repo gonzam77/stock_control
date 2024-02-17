@@ -1,14 +1,25 @@
 import styles from "./sales.module.css";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import * as actions from '../../redux/actions';
+import { useEffect } from "react";
 
 export default function LastSales() {
     const sales = useSelector((state) => state.sales);
+    const deposits = useSelector((state) => state.deposits);
+    const clients = useSelector((state) => state.clients);
     const orderSales = sales.sort((a,b) =>   b.number - a.number)
     const lastTenSales = orderSales.slice(0,10);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if(!deposits.length) dispatch(actions.getAllDeposits());
+        if(!clients.length) dispatch(actions.getAllClients());
+    },[deposits, clients, dispatch])
+
 
     function redirect (id) {
         navigate(`/saleDetail/${id}`)
@@ -35,17 +46,19 @@ export default function LastSales() {
                     </thead>
                     <tbody>
                         {lastTenSales.map((element, index) => {
+                            const client = clients?.find(e=> e.ID_CLIENTE === element.ID_CLIENTE)
+                            const deposit = deposits?.find(e=> e.ID_BODEGA === element.ID_BODEGA)
                             return (
                                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                                    <td>{element.number}</td>
+                                    <td>{element.NUMERO}</td>
                                     <td>
-                                        {element.date}
+                                        {element.FECHA}
                                     </td>
-                                    <td>{element.quantity}</td>
-                                    <td>{'$ '}{element.mount}</td>
+                                    <td>{element.CANTIDAD}</td>
+                                    <td>{'$ '}{element.MONTO}</td>
                                     <td>{element.payType}</td>
-                                    <td>{element.client}</td>
-                                    <td>{element.deposit}</td>
+                                    <td>{client?.CUIL}</td>
+                                    <td>{deposit?.NOMBRE}</td>
                                     <td style={{ textAlign: 'center' }}>
                                         <Button variant="primary" onClick={()=>{redirect(element.id)}}>
                                             Detalle

@@ -1,11 +1,17 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from '../../redux/actions';
 
 export default function DropdownPayType({ onSelect }) {
   
   const [select, setSelect] = useState();
   const payTypes = useSelector(state => state.payTypes);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(!payTypes.length) dispatch(actions.getAllPayTypes())
+  },[payTypes, dispatch])
   
   function handleSelect(eventKey) {
     setSelect(eventKey);

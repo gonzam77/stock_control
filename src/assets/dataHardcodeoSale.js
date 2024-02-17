@@ -5,7 +5,7 @@ export const ventas = [
         FECHA: '01/01/2024',
         TIPO_PAGO: 'Contado',
         ID_CLIENTE: 1,
-        DEPOSITO: 'Deposito 1',
+        ID_BODEGA: 1,
         CANTIDAD: '10',
         MONTO: [10000],
 
@@ -16,7 +16,7 @@ export const ventas = [
         FECHA: '01/01/2023',
         TIPO_PAGO: 'Contado',
         ID_CLIENTE: 1,
-        DEPOSITO: 'Deposito 1',
+        ID_BODEGA: 1,
         CANTIDAD: '10',
         MONTO: [10000],
 
@@ -27,7 +27,7 @@ export const ventas = [
         FECHA: '01/02/2023',
         TIPO_PAGO: 'Contado',
         ID_CLIENTE: 1,
-        DEPOSITO: 'Deposito 1',
+        ID_BODEGA: 1,
         CANTIDAD: '10',
         MONTO: [10000],
 
