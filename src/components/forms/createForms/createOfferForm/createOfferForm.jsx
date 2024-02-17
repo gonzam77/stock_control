@@ -10,9 +10,10 @@ export default function CreateProductForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const payType = useSelector(state => state.payType);
-  let code = '';
 
   const [newOffer, setNewOffer] = useState({
+    NOMBRE:'',
+    DESCRIPCION:'',
     ID_PRODUCTO: "",
     PORCENTAJE_DESCUENTO: "",
     FECHA_INICIO: "",
@@ -73,18 +74,29 @@ export default function CreateProductForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
-          <label>Codigo</label>
+          <label>Nombre</label>
           <input
             autoComplete="off"
-            name="code"
-            value={code}
+            name="NOMBRE"
+            value={newOffer.NOMBRE}
             onChange={handleChangeCode}
-            placeholder="(0001)"
+            placeholder="Nombre..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Descuento</label>
+          <label>Descripcion</label>
+          <input
+            autoComplete="off"
+            name="DESCRIPCION"
+            value={newOffer.DESCRIPCION}
+            onChange={handleChangeCode}
+            placeholder="Descripcion..."
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Descuento %</label>
           <input
             autoComplete="off"
             name="PORCENTAJE_DESCUENTO"

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
@@ -10,9 +10,12 @@ export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
   const offerId = useSelector((state) => state.offerId);
   const dispatch = useDispatch();
-  const selectedOffer = offers.find((element) => element.ID_OFERTA === offerId);
-
+  const selectedOffer = offers.find((element) => element.ID_DESCUENTO === offerId);
   const [offer, setOffer] = useState(selectedOffer);
+
+  useEffect(()=>{
+    if(!offers.length) dispatch(actions.getAllOffers());
+  },[offers, dispatch])
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
@@ -45,13 +48,35 @@ export default function EditOfferForm() {
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.divs}>
+          <label>Nombre</label>
+          <input
+            autoComplete="off"
+            name="NOMBRE"
+            value={offer.NOMBRE}
+            onChange={handleChange}
+            placeholder={selectedOffer.NOMBRE}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Descripcion</label>
+          <input
+            autoComplete="off"
+            name="DESCRIPCION"
+            value={offer.DESCRIPCION}
+            onChange={handleChange}
+            placeholder={selectedOffer.DESCRIPCION}
+            type="text"
+          />
+        </div>
+        <div className={styles.divs}>
           <label>Descuento</label>
           <input
             autoComplete="off"
-            name="DESCUENTO"
-            value={offer.DESCUENTO}
+            name="PORCENTAJE_DESCUENTO"
+            value={offer.PORCENTAJE_DESCUENTO}
             onChange={handleChange}
-            placeholder={selectedOffer.DESCUENTO}
+            placeholder={selectedOffer.PORCENTAJE_DESCUENTO}
             type="text"
           />
         </div>

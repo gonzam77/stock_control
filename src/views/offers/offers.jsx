@@ -9,18 +9,20 @@ import { formatDate } from "../../components/date/date";
 import { useEffect } from "react";
 
 export default function Offers() {
+  const dispatch = useDispatch();
+  const date = new Date();
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
-  const offers = useSelector((state) => state.offers);
-  const payTypes = useSelector((state) => state.payTypes);
-  const date = new Date();
-  const products = useSelector((state) => state.products);
-  const dispatch = useDispatch();
+  const unorderOffers = useSelector((state) => state.offers);
+  const offers = unorderOffers.sort((a,b)=> {
+    const fechaA = new Date (a.FECHA_INICIO)
+    const fechaB = new Date (b.FECHA_INICIO)
+    return fechaA - fechaB
+  })
 
   useEffect(()=>{
     if(!offers.length) dispatch(actions.getAllOffers())
-    if(!products.length) dispatch(actions.getAllProducts())
-  },[offers, products, dispatch])
+  },[offers, dispatch])
 
   const openModal = (id) => {
     dispatch(actions.showModal());
@@ -65,7 +67,6 @@ export default function Offers() {
           </thead>
           <tbody>
             {offers?.map((offer, index) => {
-              const payType = payTypes?.find(e => e.ID_TIPO_PAGO === offer.ID_TIPO_PAGO)
               const porcentaje = parseFloat(offer.PORCENTAJE_DESCUENTO);
               const precio = parseFloat(offer.PRODUCTO.PRECIO_VENTA);
               const fechaDesde = new Date(offer.FECHA_INICIO)
@@ -86,7 +87,7 @@ export default function Offers() {
                     {"%"}
                   </td>
                   <td>
-                    {payType?.NOMBRE}
+                    {offer.FORMA_PAGO.NOMBRE}
                   </td>
                   <td>
                     {"$ "}
@@ -122,7 +123,7 @@ export default function Offers() {
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
-                      onClick={() => openModal(offer.ID_OFERTA)}
+                      onClick={() => openModal(offer.ID_DESCUENTO)}
                     >
                       Modificar
                     </Button>
