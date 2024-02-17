@@ -271,6 +271,14 @@ export const cleanMesures = () => {
   }
 };
 
+export const cleanOffers = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_OFFERS",
+      payload: [],
+    });
+  }
+};
 export const cleanCategories = () => {
   return async function(dispatch){
     return dispatch({

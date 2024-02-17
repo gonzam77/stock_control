@@ -353,6 +353,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         categories: payload,
       };
+    case 'CLEAN_OFFERS':
+      return {
+        ...state,
+        offers: payload,
+      };
     case 'CLEAN_SUPPLIERS':
       return {
         ...state,

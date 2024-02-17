@@ -87,7 +87,7 @@ export default function Offers() {
                     {"%"}
                   </td>
                   <td>
-                    {offer.FORMA_PAGO.NOMBRE}
+                    {offer.FORMA_PAGO?.NOMBRE}
                   </td>
                   <td>
                     {"$ "}
