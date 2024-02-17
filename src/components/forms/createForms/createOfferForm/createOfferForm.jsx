@@ -156,6 +156,9 @@ export default function CreateProductForm() {
           <DropdownBrands onSelect={handleSelectBrand}></DropdownBrands>
         </div>
         <div className={styles.divs}>
+          <DropdownPayType onSelect={handleSelectPayType}></DropdownPayType>
+        </div>
+        <div className={styles.divs}>
           <label>Nombre</label>
           <input
             autoComplete="off"
@@ -207,9 +210,6 @@ export default function CreateProductForm() {
             onChange={handleChange}
             type="date"
           />
-        </div>
-        <div className={styles.divs}>
-          <DropdownPayType onSelect={handleSelectPayType}></DropdownPayType>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelCreateModal}>

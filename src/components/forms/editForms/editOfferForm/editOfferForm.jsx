@@ -5,25 +5,52 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import { formatDate } from "../../../date/date";
+import DropdownPayType from "../../../dropdown/dropdownPayType";
+import axios from "axios";
+import { backURL } from "../../../../App";
 
 export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
   const offerId = useSelector((state) => state.offerId);
+  const payTypes = useSelector((state) => state.payTypes);
   const dispatch = useDispatch();
   const selectedOffer = offers.find((element) => element.ID_DESCUENTO === offerId);
   const [offer, setOffer] = useState(selectedOffer);
 
   useEffect(()=>{
     if(!offers.length) dispatch(actions.getAllOffers());
-  },[offers, dispatch])
+    if(!payTypes.length) dispatch(actions.getAllPayTypes());
+  },[offers, dispatch, payTypes])
+
+  async function putOffer(oferta) {
+    console.log('offer', offer);
+    try {
+      await axios.put(`${backURL}/descuento/update`, oferta)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const cancelModal = () => {
     dispatch(actions.hideModal());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putOffer({ Descuento: offer});
+    dispatch(actions.cleanOffers());
     dispatch(actions.hideModal());
+  };
+
+  function handleSelectPayType(eventKey) {
+    const selectedPayType = payTypes.find(e => e.NOMBRE === eventKey)
+    console.log('selectedPayType', selectedPayType.ID_FORMA_PAGO);
+    if (selectedPayType) {
+      setOffer({
+        ...offer,
+        ID_FORMA_PAGO: selectedPayType.ID_FORMA_PAGO
+      })
+    }
   };
 
   function handleChange(event) {
@@ -99,6 +126,9 @@ export default function EditOfferForm() {
             onChange={handleChange}
             type="date"
           />
+        </div>
+        <div className={styles.divs}>
+          <DropdownPayType onSelect={handleSelectPayType}></DropdownPayType>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>
