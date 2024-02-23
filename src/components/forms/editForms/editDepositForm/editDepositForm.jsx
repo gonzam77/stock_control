@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import DropdownUbication from "../../../dropdown/dropdownUbication";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditDepositForm() {
   const deposits = useSelector((state) => state.deposits);
@@ -24,7 +24,7 @@ export default function EditDepositForm() {
   
   async function putDeposit(deposito){
     try {
-      await axios.put(`${backURL}/bodega/update`, deposito)
+      await axios.put(`${backURL}/bodega/update`, deposito, axiosConfig)
     } catch (error) {
       console.log(error);
     }

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import DropdownPermits from '../../../dropdown/dropdownPermits';
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditUserRolForm() {
   const roles = useSelector((state) => state.userTypes);
@@ -21,7 +21,7 @@ export default function EditUserRolForm() {
 
   async function putUserType(tipo) {
     try {
-      await axios.put(`${backURL}/tipo/update`, tipo)
+      await axios.put(`${backURL}/tipo/update`, tipo, axiosConfig)
     } catch (error) {
       console.log(error);
     }

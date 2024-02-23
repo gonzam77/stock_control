@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
 import DropdownUbication from '../../../dropdown/dropdownUbication';
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function SupplierForm() {
 
@@ -35,7 +35,7 @@ export default function SupplierForm() {
 
   async function putSupplier(proveedor) {
     try {
-      await axios.put(`${backURL}/proveedor/update`, proveedor)
+      await axios.put(`${backURL}/proveedor/update`, proveedor, axiosConfig)
     } catch (error) {
       console.log(error);
     }

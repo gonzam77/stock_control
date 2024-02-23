@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditMesureForm() {
   const mesures = useSelector((state) => state.mesures);
@@ -21,7 +21,7 @@ export default function EditMesureForm() {
 
   async function putMesure(medida){
     try {
-      await axios.put(`${backURL}/unidad/update`, medida)
+      await axios.put(`${backURL}/unidad/update`, medida, axiosConfig)
     } catch (error) {
       console.log(error);
     }

@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditUbicationForm() {
     const ubications = useSelector((state) => state.ubications);
@@ -21,7 +21,7 @@ export default function EditUbicationForm() {
 
     async function putUbication(ubicacion) {
         try {
-            await axios.put(`${backURL}/ubicacion/update`, ubicacion)
+            await axios.put(`${backURL}/ubicacion/update`, ubicacion, axiosConfig)
         } catch (error) {
             console.log(error);
         }

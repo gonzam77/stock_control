@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditAccountTypeForm() {
   const accountTypes = useSelector((state) => state.accountTypes);
@@ -21,7 +21,7 @@ export default function EditAccountTypeForm() {
 
   async function putAccountType(tipoCuenta){
     try {
-      await axios.put(`${backURL}/tipocuenta/update`,tipoCuenta)
+      await axios.put(`${backURL}/tipocuenta/update`,tipoCuenta, axiosConfig)
     } catch (error) {
       console.log(error);
     }

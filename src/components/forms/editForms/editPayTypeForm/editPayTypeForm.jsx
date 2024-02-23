@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditPayTypeForm() {
   const payTypes = useSelector((state) => state.payTypes);
@@ -21,7 +21,7 @@ export default function EditPayTypeForm() {
 
   async function putPayType(pago){
     try {
-      await axios.put(`${backURL}/pago/update`, pago)
+      await axios.put(`${backURL}/pago/update`, pago, axiosConfig)
     } catch (error) {
       console.log(error);
     }

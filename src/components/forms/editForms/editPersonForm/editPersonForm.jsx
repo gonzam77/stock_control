@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "../editForms.module.css";
@@ -21,7 +21,7 @@ export default function EditpersonForm() {
 
   async function putPerson(persona){
     try {
-        await axios.put(`${backURL}/persona/update`, persona)
+        await axios.put(`${backURL}/persona/update`, persona, axiosConfig)
     } catch (error) {
         console.log(error);
     }

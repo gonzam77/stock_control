@@ -8,7 +8,7 @@ import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import DropdownCategory from '../../../dropdown/dropdownCategory';
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditProductForm() {
   const products = useSelector((state) => state.products);
@@ -36,7 +36,7 @@ export default function EditProductForm() {
   };
 
   const editProduct = async (data) => {
-    await axios.put(`${backURL}/producto/update`, data);
+    await axios.put(`${backURL}/producto/update`, data, axiosConfig);
   };
 
   function handleChange(event) {

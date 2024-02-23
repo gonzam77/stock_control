@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditBrandForm() {
   const brands = useSelector((state) => state.brands);
@@ -18,7 +18,7 @@ export default function EditBrandForm() {
 
   async function postBrand(marca){
     try {
-      await axios.post(`${backURL}/marca/nuevo`, marca)
+      await axios.post(`${backURL}/marca/nuevo`, marca, axiosConfig)
     } catch (error) {
       console.log(error);
     }
