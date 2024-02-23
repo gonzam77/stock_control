@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "../createForms.module.css";
@@ -27,7 +27,7 @@ export default function CreateClientForm() {
 
   async function postClient(cliente) {
     try {
-      await axios.post(`${backURL}/cliente/nuevo`, cliente)
+      await axios.post(`${backURL}/cliente/nuevo`, cliente, axiosConfig)
     } catch (error) {
       console.log(error);
     }

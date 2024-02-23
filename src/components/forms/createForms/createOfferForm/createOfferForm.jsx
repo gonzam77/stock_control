@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 export default function CreateProductForm() {
@@ -48,7 +48,7 @@ export default function CreateProductForm() {
   async function postOffer(descuento) {
     console.log('descuento', descuento);
     try {
-      await axios.post(`${backURL}/descuento/nuevo`, descuento)
+      await axios.post(`${backURL}/descuento/nuevo`, descuento, axiosConfig)
     } catch (error) {
       console.log(error);
     };

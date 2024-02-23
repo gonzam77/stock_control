@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as actions from '../../../../redux/actions'
 import axios from "axios";
 import DropdownPermits from '../../../dropdown/dropdownPermits';
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateUserRolForm() {
 
@@ -16,7 +16,7 @@ export default function CreateUserRolForm() {
 
     async function postUserType(tipo) {
         try {
-            axios.post(`${backURL}/tipo/nuevo`, tipo)
+            axios.post(`${backURL}/tipo/nuevo`, tipo, axiosConfig)
         } catch (error) {
             console.log(error);
         }

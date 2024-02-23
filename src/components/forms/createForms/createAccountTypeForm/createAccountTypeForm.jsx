@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import styles from "../createForms.module.css";
 import axios from "axios";
 import * as actions from "../../../../redux/actions";
@@ -21,7 +21,7 @@ export default function CreateAccountTypeForm() {
 
   async function postAccountType(tipoCuenta){
     try {
-      await axios.post(`${backURL}/tipocuenta/nuevo`,tipoCuenta)
+      await axios.post(`${backURL}/tipocuenta/nuevo`,tipoCuenta, axiosConfig)
     } catch (error) {
       console.log(error);
     }

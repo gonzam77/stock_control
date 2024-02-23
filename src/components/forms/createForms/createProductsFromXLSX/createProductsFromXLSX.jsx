@@ -5,7 +5,7 @@ import { useState } from "react";
 import * as actions from "../../../../redux/actions";
 import * as XLSX from 'xlsx';
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateProductsFromXLSX() {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export default function CreateProductsFromXLSX() {
 
     async function postProduct(producto){
         try {
-            await axios.post(`${backURL}/producto/nuevo`, producto);
+            await axios.post(`${backURL}/producto/nuevo`, producto, axiosConfig);
         } catch (error) {
             console.log(error);
         }

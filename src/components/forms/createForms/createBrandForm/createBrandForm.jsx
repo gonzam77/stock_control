@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateBrandForm() {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function CreateBrandForm() {
 
     async function PostBrand(marca) {
         try {
-            await axios.post(`${backURL}/marca/nuevo`, marca)
+            await axios.post(`${backURL}/marca/nuevo`, marca, axiosConfig)
         } catch (error) {
             console.log(error);
         }

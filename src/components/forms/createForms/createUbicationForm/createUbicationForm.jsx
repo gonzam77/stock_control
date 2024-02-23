@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateUbicationForm() {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function CreateUbicationForm() {
 
     async function postUbication(ubicacion) {
         try {
-            await axios.post(`${backURL}/ubicacion/nuevo`, ubicacion)
+            await axios.post(`${backURL}/ubicacion/nuevo`, ubicacion, axiosConfig)
         } catch (error) {
             console.log(error);
         }

@@ -9,7 +9,7 @@ import DropdownBrands from "../../../dropdown/dropdownBrand";
 import DropdownCategory from '../../../dropdown/dropdownCategory';
 import Swal from 'sweetalert2'
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 function validate(newProduct) {
   if (newProduct.CODIGO === '' || newProduct.CODIGO === null || newProduct.CODIGO.length < 4)
@@ -53,7 +53,7 @@ export default function CreateProductForm() {
 
   async function postProduct(product) {
     try {
-      await axios.post(`${backURL}/producto/nuevo`, product)
+      await axios.post(`${backURL}/producto/nuevo`, product, axiosConfig)
     } catch (error) {
       console.log(error);
     }

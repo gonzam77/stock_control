@@ -5,7 +5,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownUbication from "../../../dropdown/dropdownUbication";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 
 export default function CreateDepositForm() {
@@ -29,7 +29,7 @@ export default function CreateDepositForm() {
   
   async function postDeposit(deposito){
     try {
-      await axios.post(`${backURL}/bodega/nuevo`, deposito)
+      await axios.post(`${backURL}/bodega/nuevo`, deposito, axiosConfig)
     } catch (error) {
       console.log(error);
     }
