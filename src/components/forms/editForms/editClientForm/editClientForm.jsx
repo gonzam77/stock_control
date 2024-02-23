@@ -40,11 +40,18 @@ export default function EditClientForm() {
   };
 
   function handlePersonSelect(selectedPerson) {
-    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-    setClient({
-      ...client,
-      ID_PERSONA: personId,
-    });
+    if(selectedPerson !=0) {
+      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+      setClient({
+        ...client,
+        ID_PERSONA: personId,
+      });
+    } else {
+      setClient({
+        ...client,
+        ID_PERSONA: selectedPerson,
+      });
+    }
   }
 
   function handleChange(event) {
