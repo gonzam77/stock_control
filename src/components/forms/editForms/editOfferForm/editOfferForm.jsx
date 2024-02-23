@@ -44,7 +44,6 @@ export default function EditOfferForm() {
 
   function handleSelectPayType(eventKey) {
     const selectedPayType = payTypes.find(e => e.NOMBRE === eventKey)
-    console.log('selectedPayType', selectedPayType.ID_FORMA_PAGO);
     if (selectedPayType) {
       setOffer({
         ...offer,

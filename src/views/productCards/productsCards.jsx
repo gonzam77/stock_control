@@ -74,7 +74,7 @@ export default function ProductsCard() {
               name={product?.NOMBRE}
               image={product.IMAGEN}
               price={product.PRECIO_VENTA}
-              stock={product.stock}
+              stock={product.STOCK}
               brand={product.ID_MARCA}
               description={product.DESCRIPCION}
               supplier={product.ID_PROVEEDOR}

@@ -21,7 +21,6 @@ export default function CreateProductsFromXLSX() {
     }
 
     const closeCreateModal = async (event) => {
-        console.log('state', state);
         event.preventDefault();
         for(let i = 0; i < state.hojas[0].data.length; i++){
             console.log('ver',state.hojas[0].data[i]);

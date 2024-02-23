@@ -5,7 +5,6 @@ import * as actions from '../../redux/actions';
 
 export default function DropdownAccount({ onSelect }) {
   const accounts = useSelector((state) => state.accounts);
-  console.log('accounts',accounts);
   const [select, setSelect] = useState();
   const dispatch = useDispatch();
 

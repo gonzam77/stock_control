@@ -12,9 +12,7 @@ export default function Deposits() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const deposits = useSelector((state) => state.deposits);
-  console.log(deposits);
   const ubications = useSelector((state) => state.ubications);
-  console.log(ubications);
   const dispatch = useDispatch();
 
   

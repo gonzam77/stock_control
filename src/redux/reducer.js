@@ -97,9 +97,13 @@ export default function reducer(state = initialState, { type, payload }) {
         accountTypes: payload
       }
     case "GET_ALL_PRODUCTS":
+      const allProducts = payload.map(e => {
+        e.PRODUCTO.STOCK = e.STOCK
+        return e.PRODUCTO
+      })
       return {
         ...state,
-        products: payload,
+        products: allProducts,
       };
     case "GET_ALL_USERS":
       return {

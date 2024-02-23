@@ -29,6 +29,8 @@ import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
 
+//const cookieParser = require('cookie-parser')
+
 const qs = require("qs");
 
 export const urlDev = "http://localhost:3000";
@@ -41,6 +43,7 @@ function App() {
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
+  const [token, setToken] = useState(null);
 
   async function login(userData) {
 
@@ -60,18 +63,29 @@ function App() {
       );
       if (response.data.Status === 'Accepted') {
         localStorage.setItem("token", response.data.Token);
+        setToken(response.data.Token);
         axiosConfig = {
           withCredentials: true,
           headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Pragma: "no-cache",
+            Authorization: `Bearer ${token}`,
+            Expires: 0,
           },
         };
+        axios.interceptors.request.use((config) => {
+          const token = localStorage.getItem("token");
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
+          return config;
+        });
         setAccess(true);
         navigate("/");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error during login:', error);
     }
   }
 
@@ -80,6 +94,7 @@ function App() {
       const response = await axios.get(`${backURL}/signout`, axiosConfig);
       if (response.data.Status === 'OK') {
         localStorage.removeItem('token');
+        setToken(null);
         setAccess(false);
       }
     } catch (error) {

@@ -173,7 +173,6 @@ export default function NewSaleForm() {
 
   const handleClientSelect = (selectedClient) => {
     const clientId = clients?.find(e => e.CUIL === selectedClient)
-    console.log('cliente', clientId);
     setNewSale({
       ...newSale,
       ID_CLIENTE: clientId.ID_CLIENTE,
@@ -190,7 +189,6 @@ export default function NewSaleForm() {
 
   const confirmSale = (event) => {
     event.preventDefault();
-    console.log('newSale', newSale);
     dispatch(actions.newSale(newSale));
     navigate("/");
   };
