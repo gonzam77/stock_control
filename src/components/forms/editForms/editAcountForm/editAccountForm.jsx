@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import DropdownAccountType from "../../../dropdown/dropdownAccountType";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditaccountForm() {
   const accounts = useSelector((state) => state.accounts);
@@ -23,7 +23,7 @@ export default function EditaccountForm() {
 
   async function putAccount(cuenta) {
     try {
-      await axios.put(`${backURL}/cuenta/update`, cuenta)
+      await axios.put(`${backURL}/cuenta/update`, cuenta, axiosConfig)
     } catch (error) {
       console.log(error);
     }

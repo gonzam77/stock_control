@@ -7,7 +7,7 @@ import styles from "../editForms.module.css";
 import { formatDate } from "../../../date/date";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditOfferForm() {
   const offers = useSelector((state) => state.offers);
@@ -25,7 +25,7 @@ export default function EditOfferForm() {
   async function putOffer(oferta) {
     console.log('offer', offer);
     try {
-      await axios.put(`${backURL}/descuento/update`, oferta)
+      await axios.put(`${backURL}/descuento/update`, oferta, axiosConfig)
     } catch (error) {
       console.log(error);
     }

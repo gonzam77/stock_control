@@ -27,11 +27,18 @@ export default function EditDispatcherForm() {
   };
 
   function handlePersonaSelect(selectedPerson) {
-    const personId = personas.find((e) => e.DNI === selectedPerson).ID_PERSONA;
-    setDispatcher({
-      ...dispatcher,
-      ID_PERSONA: personId,
-    });
+    if(selectedPerson !== '0') {
+      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+      setDispatcher({
+        ...dispatcher,
+        ID_PERSONA: personId,
+      });
+    } else {
+      setDispatcher({
+        ...dispatcher,
+        ID_PERSONA: selectedPerson,
+      });
+    }
   }
 
   return (

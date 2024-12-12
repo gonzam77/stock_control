@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "../createForms.module.css";
@@ -14,10 +14,10 @@ export default function CreateClientForm() {
   const accounts = useSelector((state) => state.accounts);
 
   const [newClient, setNewClient] = useState({
-    RAZON_SOCIAL:'',
-    CUIL:'',
-    ID_PERSONA:'',
-    ID_CUENTA:'',
+    RAZON_SOCIAL: '',
+    CUIL: '',
+    ID_PERSONA: '',
+    ID_CUENTA: '',
     ESTADO: 1
   });
 
@@ -27,7 +27,7 @@ export default function CreateClientForm() {
 
   async function postClient(cliente) {
     try {
-      await axios.post(`${backURL}/cliente/nuevo`, cliente)
+      await axios.post(`${backURL}/cliente/nuevo`, cliente, axiosConfig)
     } catch (error) {
       console.log(error);
     }
@@ -52,11 +52,18 @@ export default function CreateClientForm() {
     });
   }
   function handlePersonSelect(selectedPerson) {
-    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-    setNewClient({
-      ...newClient,
-      ID_PERSONA: personId,
-    });
+    if (selectedPerson !== '0') {
+      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+      setNewClient({
+        ...newClient,
+        ID_PERSONA: personId,
+      });
+    } else {
+      setNewClient({
+        ...newClient,
+        ID_PERSONA: selectedPerson,
+      });
+    }
   }
 
   function handleChange(event) {

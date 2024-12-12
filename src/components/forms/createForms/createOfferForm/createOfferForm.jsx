@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import Swal from "sweetalert2";
 
-export default function CreateProductForm() {
+export default function CreateOfferForm() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const brands = useSelector((state) => state.brands);
@@ -37,18 +38,18 @@ export default function CreateProductForm() {
     id: e.ID_PRODUCTO,
     name: e.NOMBRE,
   }))
-  
-  
+
+
   useEffect(() => {
     if (!products.length) dispatch(actions.getAllProducts());
     if (!payTypes.length) dispatch(actions.getAllPayTypes());
     if (!brands.length) dispatch(actions.getAllBrands());
   }, [payTypes, products, dispatch, brands]);
-  
+
   async function postOffer(descuento) {
     console.log('descuento', descuento);
     try {
-      await axios.post(`${backURL}/descuento/nuevo`, descuento)
+      await axios.post(`${backURL}/descuento/nuevo`, descuento, axiosConfig)
     } catch (error) {
       console.log(error);
     };
@@ -95,7 +96,24 @@ export default function CreateProductForm() {
     )
   }
 
-
+  function getFormattedDate(date) {
+    try {
+      return date ? date.toISOString().split('T')[0] : '';
+    } catch (error) {
+      console.error('Error al formatear la fecha:', error);
+      if (error) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Fecha Inválida!',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#0a7f02',
+          keydownListenerCapture: false
+        });
+      }
+      return ''; // o podrías devolver alguna cadena por defecto, según tus necesidades
+    }
+  }
 
   function handleSelectBrand(eventKey) {
     const selectedBrand = brands.find(e => e.NOMBRE === eventKey)
@@ -195,7 +213,7 @@ export default function CreateProductForm() {
           <input
             autoComplete="off"
             name="FECHA_INICIO"
-            value={newOffer.FECHA_INICIO ? newOffer.FECHA_INICIO.toISOString().split('T')[0] : ''}
+            value={getFormattedDate(newOffer.FECHA_INICIO)}
             onChange={handleChange}
             type="date"
           />
@@ -205,7 +223,7 @@ export default function CreateProductForm() {
           <input
             autoComplete="off"
             name="FECHA_FIN"
-            value={newOffer.FECHA_FIN ? newOffer.FECHA_FIN.toISOString().split('T')[0] : ''}
+            value={getFormattedDate(newOffer.FECHA_FIN)}
             onChange={handleChange}
             type="date"
           />

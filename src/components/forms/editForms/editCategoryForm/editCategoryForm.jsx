@@ -4,7 +4,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import axios from "axios";
 
 export default function EditcategoryForm() {
@@ -20,7 +20,7 @@ export default function EditcategoryForm() {
 
   async function putCategory(categoria) {
     try {
-      await axios.put(`${backURL}/categoria/update`, categoria)
+      await axios.put(`${backURL}/categoria/update`, categoria, axiosConfig)
     } catch (error) {
       console.log(error);
     }

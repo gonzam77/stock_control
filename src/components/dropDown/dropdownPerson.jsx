@@ -6,17 +6,17 @@ import * as actions from '../../redux/actions';
 export default function DropdownPersona({ onSelect }) {
   const [select, setSelect] = useState();
   const personas = useSelector((state) => state.persons);
-  
+
   const dispatch = useDispatch();
-  
+
   async function handleSelect(eventKey) {
     setSelect(eventKey);
     onSelect(eventKey);
   }
 
-  useEffect(()=>{
-    if(!personas.length) dispatch(actions.getAllPersons())
-  },[dispatch, personas])
+  useEffect(() => {
+    if (!personas.length) dispatch(actions.getAllPersons())
+  }, [dispatch, personas])
 
   return (
     <Dropdown onSelect={handleSelect}>
@@ -24,6 +24,9 @@ export default function DropdownPersona({ onSelect }) {
         {select ? select : "Persona"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
+        <Dropdown.Item eventKey={0}>
+          No es Persona
+        </Dropdown.Item>
         {personas?.map((element, index) => {
           return (
             <Dropdown.Item key={index} eventKey={element.NOMBRE}>

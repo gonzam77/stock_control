@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreatePersonForm() {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function CreatePersonForm() {
 
     async function postPerson(persona) {
         try {
-            await axios.post(`${backURL}/persona/nuevo`, persona)
+            await axios.post(`${backURL}/persona/nuevo`, persona, axiosConfig)
         } catch (error) {
             console.log(error);
         }

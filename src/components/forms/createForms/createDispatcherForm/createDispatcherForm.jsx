@@ -38,12 +38,22 @@ export default function CreateDispatcherForm() {
     dispatch(actions.hideCreateModal());
   }
 
+
+
   function handlePersonaSelect(selectedPerson) {
-    const personId = personas.find((e) => e.DNI === selectedPerson).ID_PERSONA;
-    setnewDispatcher({
-      ...newDispatcher,
-      ID_PERSONA: personId,
-    });
+
+    if(selectedPerson !== '0') {
+      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+      setnewDispatcher({
+        ...setnewDispatcher,
+        ID_PERSONA: personId,
+      });
+    } else {
+      setnewDispatcher({
+        ...setnewDispatcher,
+        ID_PERSONA: selectedPerson,
+      });
+    }
   }
 
   return (

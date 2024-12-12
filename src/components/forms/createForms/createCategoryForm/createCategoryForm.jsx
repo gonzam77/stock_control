@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import * as actions from "../../../../redux/actions";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateCategoryForm() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export default function CreateCategoryForm() {
 
   async function postCategory(categoria){
     try {
-      await axios.post(`${backURL}/categoria/nuevo`, categoria)
+      await axios.post(`${backURL}/categoria/nuevo`, categoria, axiosConfig)
     } catch (error) {
       console.log(error);
     }

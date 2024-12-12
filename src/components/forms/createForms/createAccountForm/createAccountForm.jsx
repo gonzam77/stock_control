@@ -5,7 +5,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownAccountType from "../../../dropdown/dropdownAccountType";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function CreateAccountForm() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function CreateAccountForm() {
 
   async function postAccount(cuenta) {
     try {
-      await axios.post(`${backURL}/cuenta/nuevo`, cuenta)
+      await axios.post(`${backURL}/cuenta/nuevo`, cuenta, axiosConfig)
     } catch (error) {
       console.log(error);
     }

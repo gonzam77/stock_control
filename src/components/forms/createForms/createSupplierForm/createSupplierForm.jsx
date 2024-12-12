@@ -4,7 +4,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 import axios from "axios";
 
 
@@ -22,7 +22,7 @@ export default function CreateProductForm() {
 
   async function postSupplier(proveedor) {
     try {
-      await axios.post(`${backURL}/proveedor/nuevo`, proveedor)
+      await axios.post(`${backURL}/proveedor/nuevo`, proveedor, axiosConfig)
     } catch (error) {
       console.log(error);
     }

@@ -5,7 +5,7 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownPersona from "../../../dropdown/dropdownPerson";
 import axios from "axios";
-import { backURL } from "../../../../App";
+import { axiosConfig, backURL } from "../../../../App";
 
 export default function EditClientForm() {
   const clients = useSelector((state) => state.clients);
@@ -25,7 +25,7 @@ export default function EditClientForm() {
   async function putClient(cliente) {
 
     try {
-      await axios.put(`${backURL}/cliente/update`, cliente)
+      await axios.put(`${backURL}/cliente/update`, cliente, axiosConfig)
     } catch (error) {
       console.log(error);
     }
@@ -40,11 +40,18 @@ export default function EditClientForm() {
   };
 
   function handlePersonSelect(selectedPerson) {
-    const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-    setClient({
-      ...client,
-      ID_PERSONA: personId,
-    });
+    if(selectedPerson !=0) {
+      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
+      setClient({
+        ...client,
+        ID_PERSONA: personId,
+      });
+    } else {
+      setClient({
+        ...client,
+        ID_PERSONA: selectedPerson,
+      });
+    }
   }
 
   function handleChange(event) {
