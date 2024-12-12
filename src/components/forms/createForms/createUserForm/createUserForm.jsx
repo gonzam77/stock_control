@@ -22,6 +22,7 @@ export default function CreateUserForm() {
     create_date: "",
     rol: "",
     status: "",
+    clave:""
   });
 
   const closeCreateModal = (event) => {
@@ -146,6 +147,17 @@ export default function CreateUserForm() {
             value={newUser.state}
             onChange={handleChange}
             placeholder="San Luis..."
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Clave</label>
+          <input
+            type="password"
+            autoComplete="off"
+            name="clave"
+            value={newUser.clave}
+            onChange={handleChange}
+            // placeholder="San Luis..."
           />
         </div>
         <div className={styles.divs}>

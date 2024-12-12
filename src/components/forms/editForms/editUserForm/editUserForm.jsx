@@ -5,21 +5,45 @@ import { Button } from "react-bootstrap";
 import styles from "../editForms.module.css";
 import DropdownRoles from "../../../dropdown/dropdownRol";
 import DropdownStatus from "../../../dropdown/dropdownStatus";
+import {backURL} from "../../../../App"
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function EditUserForm() {
+  
+  // Obtener los datos de los usuarios y el userId desde Redux
   const users = useSelector((state) => state.users);
   const userId = useSelector((state) => state.userId);
   const dispatch = useDispatch();
+  
+   // Encontrar el usuario seleccionado basado en el userId
   const selectedUser = users.find((element) => element.ID_USUARIO === userId);
 
   const [user, setUser] = useState(selectedUser);
 
+  useEffect(() => {
+    if (selectedUser) {
+      setUser(selectedUser); // Actualiza el estado local con el usuario seleccionado
+    }
+  }, [selectedUser]); // Dependencia: ejecuta cuando selectedUser cambia
+ 
+  async function putUser(user) {
+    
+    try {
+      await axios.put(`${backURL}/usuario/update`, user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const cancelModal = () => {
     dispatch(actions.hideModal());
   }
-
-  const closeModal = (event) => {
+  
+  const closeModal = async (event) => {
     event.preventDefault();
+    await putUser({ Usuario: user })
+    dispatch(actions.cleanUsers());
     dispatch(actions.hideModal());
   };
 
@@ -58,6 +82,26 @@ export default function EditUserForm() {
             onChange={handleChange}
             placeholder={user.NOMBRE}
             type="text"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>CLAVE ANTERIOR</label>
+          <input
+            autoComplete="off"
+            name="CLAVE_ANTERIOR"
+            value={user.CLAVE_ANTERIOR}
+            onChange={handleChange}
+            type="password"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>CLAVE</label>
+          <input
+            autoComplete="off"
+            name="NUEVA_CLAVE"
+            value={user.NUEVA_CLAVE}
+            onChange={handleChange}
+            type="password"
           />
         </div>
         <div className={styles.divs}>

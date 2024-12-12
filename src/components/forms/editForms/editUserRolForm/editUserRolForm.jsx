@@ -9,6 +9,7 @@ import axios from "axios";
 import { backURL } from "../../../../App";
 
 export default function EditUserRolForm() {
+
   const roles = useSelector((state) => state.userTypes);
   const rolId = useSelector((state) => state.rolId);
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ export default function EditUserRolForm() {
       })
     }
   }
+  
   const handlePermitsCreate = (eventkey) => {
     if (eventkey === 'Si') {
       setRol({
@@ -64,6 +66,7 @@ export default function EditUserRolForm() {
       })
     }
   }
+
   const handlePermitsUpdate = (eventkey) => {
     if (eventkey === 'Si') {
       setRol({
@@ -91,7 +94,6 @@ export default function EditUserRolForm() {
       })
     }
   };
-
 
   function handleChange(event) {
     const target = event.target.name;

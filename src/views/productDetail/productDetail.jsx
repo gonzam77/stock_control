@@ -50,7 +50,7 @@ export default function ProductDetail() {
           price={productById?.PRECIO_VENTA}
           cant_min={productById?.CANT_MIN}
           cant_max={productById?.CANT_MAX}
-          proveedor={productById?.PROVEEDOR.RAZON_SOCIAL}
+          proveedor={productById?.PROVEEDOR?.RAZON_SOCIAL}
           ID_UNIDAD_MEDIDA= {productById?.ID_UNIDAD_MEDIDA}
           fecha_alta={productById?.FECHA_ALTA}
           fecha_vto={productById?.FECHA_CADUCIDAD}
