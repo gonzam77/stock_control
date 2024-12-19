@@ -288,6 +288,15 @@ export const cleanCategories = () => {
   }
 };
 
+export const cleanDispatcher = () => {
+  return async function(dispatch){
+    return dispatch({
+      type: "CLEAN_DISPATCHER",
+      payload: [],
+    });
+  }
+};
+
 export const cleanUserTypes = () => {
   return async function(dispatch){
     return dispatch({

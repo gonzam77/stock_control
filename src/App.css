@@ -30,7 +30,8 @@
 .body {
   max-width: 86vw;
   min-width: 85vw;
-  background-image: url('./assets/inline_image_preview.jpg');
+  background-color: rgb(143, 213, 243);
+  /* background-image: url('./assets/inline_image_preview.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

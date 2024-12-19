@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownPersona from "../../../dropdown/dropdownPerson";
+//import { backURL } from "../../../../App";
 
 
 export default function EditDispatcherForm() {
@@ -17,12 +18,22 @@ export default function EditDispatcherForm() {
 
   const [dispatcher, setDispatcher] = useState(selectedlDispatcher);
 
+  // async function putDispatcher(dispatcher) {
+  //   try {
+  //     await axios.put(`${backURL}/tramportista/update`, dispatcher, axiosConfig)
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   const cancelModal = () => {
     dispatch(actions.hideModal());
   };
 
-  const closeModal = (event) => {
+  const closeModal = async (event) => {
     event.preventDefault();
+    //await putClient({ Tramportista: dispatcher });
+    dispatch(actions.cleanDispatcher());
     dispatch(actions.hideModal());
   };
 

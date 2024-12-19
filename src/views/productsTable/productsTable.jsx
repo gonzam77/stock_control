@@ -14,7 +14,6 @@ export default function Products() {
   const showImportModal = useSelector((state) => state.showImportModal);
   const showCreateModal = useSelector((state) => state.showCreateModal);
   const products = useSelector((state) => state.products);
-  console.log(products);
   const mesures = useSelector((state) => state.mesures);
   const marcas = useSelector((state) => state.brands);
   const categories = useSelector((state) => state.categories);

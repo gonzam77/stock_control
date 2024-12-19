@@ -352,6 +352,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         userTypes: payload,
       };
+    case 'CLEAN_DISPATCHER':
+      return {
+        ...state,
+        dispatchers: payload,
+      };
     case 'CLEAN_CATEGORIES':
       return {
         ...state,

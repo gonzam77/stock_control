@@ -6,12 +6,13 @@ import * as actions from '../../redux/actions'
 
 function DropdownSupplier({ onSelect }) {
   
-  const [select, setSelect] = useState();
+  const [select, setSelect] = useState(null);
   const suppliers = useSelector(state => state.suppliers);
   const dispatch = useDispatch();
   
   function handleSelect(eventKey) {
-    setSelect(eventKey);
+    const selectedSupplier = suppliers.find(e =>e.ID_PROVEEDOR.toString() === eventKey);
+    setSelect(selectedSupplier);
     onSelect(eventKey);
   }
 
@@ -22,13 +23,13 @@ function DropdownSupplier({ onSelect }) {
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {select ? select : "Proveedor"}
+        {select ? select.RAZON_SOCIAL : "Proveedor"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'Desconocido'}>Desconocido</Dropdown.Item>
         {suppliers?.map((element, index) => {
           return (
-            <Dropdown.Item key={index} eventKey={element.RAZON_SOCIAL}>
+            <Dropdown.Item key={index} eventKey={element.ID_PROVEEDOR}>
               {element.RAZON_SOCIAL}
             </Dropdown.Item>
           );

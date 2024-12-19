@@ -7,97 +7,130 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownSupplier from "../../../dropdown/dropdownSupplier";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
+import { backURL, axiosConfig } from "../../../../App";
+import axios from "axios";
 
 export default function NewPurchaseForm() {
-    let product = null;
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
-
-    const [newPurchase, setNewPurchase] = useState({
-        number: "",
-        items: [],
-        quantity: 0,
-        deposit: "",
-        mount: [],
-        payType: "",
-        total: "",
-        supplier: "",
-        totalMount:'',
-    });
-
-
+    const brands = useSelector((state) => state.brands);
+    const [update, setUpdate] = useState();
     const [cart, setCart] = useState([]);
 
-    const [update, setUpdate] = useState();
-
-    const [newItem, setNewItem] = useState({
-        CODIGO: "",
-        name: "",
-        quantity: "",
-        price: '',
-        totalMount: ''
+    const [newPurchase, setNewPurchase] = useState({
+        NUMERO: null,
+        PRODUCTOS: [],
+        CANTIDAD: 0,
+        ID_PROVEEDOR: null,
+        ID_FORMA_PAGO: null,
+        TOTAL_COMPRA: 0,
     });
+    
+    const [newItem, setNewItem] = useState({
+        CODIGO: '',
+        CANTIDAD: 0,
+        PRECIO_COMPRA: 0,
+        SUBTOTAL:0
+    });
+    
+    async function postPurchase(newPurchase){
+
+        console.log('Esta es la compra', newPurchase);
+        
+        try {
+            await axios.post(`${backURL}/compra/nuevo`, newPurchase, axiosConfig)
+        } catch (error) {
+            console.log(error);
+        };
+    };
+    
+    const confirmSale = async (event) => {
+        event.preventDefault();
+        await postPurchase({ Compra: newPurchase});
+        navigate('/purchases');
+    };
 
     useEffect(() => {
-        setNewPurchase({
-            ...newPurchase,
-            items: cart,
-            mount: cart.reduce((acc, current) => acc + current.totalMount, 0)
-        });
-    }, [cart, update, newPurchase]);
+        setNewPurchase(prev => ({
+            ...prev,
+            PRODUCTOS: cart,
+        }));
 
+        if (products.length === 0) dispatch(actions.getAllProducts());
+        if (brands.length === 0) dispatch(actions.getAllBrands());
+        
+    }, [cart, brands, update, products, dispatch]);
+    
 
-    const handleAdd = () => {
+    function handleAdd() {
 
-        if (!newItem.quantity || newItem.quantity === '' || newItem.quantity < 1) newItem.quantity = 1
-        const quantity = parseInt(newItem.quantity);
-        newItem.quantity = quantity;
-        product = products.find(e => e.CODIGO === newItem.CODIGO)
-
+        const product = products.find(e => e.CODIGO === newItem.CODIGO);
+        
         if (product) {
-            const productInCart = cart.find(element => element.CODIGO === product.CODIGO)
-            if (productInCart) {
-                productInCart.quantity += newItem.quantity;
-                productInCart.totalMount = productInCart.quantity * productInCart.price
-                setUpdate(!update);
+
+            const productoEnCarro = newPurchase.PRODUCTOS.find(e => e.CODIGO === newItem.CODIGO);
+            
+            if (!productoEnCarro || productoEnCarro.CANTIDAD === 0){
+                
+                //newItem.CANTIDAD = newItem.CANTIDAD;
+                newItem.SUBTOTAL = newItem.CANTIDAD * newItem.PRECIO_COMPRA;
+
             } else {
-                newItem.totalMount = newItem.quantity * newItem.price
-                setCart([...cart, newItem]);
-            }
+                
+                newItem.CANTIDAD = parseInt(productoEnCarro.CANTIDAD) + parseInt(newItem.CANTIDAD);
+                newItem.SUBTOTAL = parseInt(newItem.CANTIDAD) * parseFloat(newItem.PRECIO_COMPRA);
+                
+                setUpdate(!update);
+                
+            };
 
             setNewPurchase({
                 ...newPurchase,
-                quantity: newPurchase.quantity += newItem.quantity
-            });
+                CANTIDAD: newPurchase.CANTIDAD + newItem.CANTIDAD,
+                TOTAL_COMPRA: newPurchase.TOTAL_COMPRA + newItem.SUBTOTAL,
+                PRODUCTOS: [
+                    ...newPurchase.PRODUCTOS,
+                    newItem
+                ]
+            });   
+
+            console.log('Item a agregar: ', newItem);
+            console.log('Listado de productos: ', newPurchase.PRODUCTOS );
+            
+            
 
             setNewItem({
-                CODIGO: "",
-                name: "",
-                quantity: "",
-                price: '',
-                totalMount: ''
-            })
-        }
+                CODIGO: '',
+                CANTIDAD: 0,
+                PRECIO_COMPRA: 0
+            });
+
+        } else console.log('No se encontró el producto');
+            
     };
 
     const handleCantidadChange = (event, index) => {
+
         const nuevaCantidad = parseInt(event.target.value, 10);
+        
         if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
+            
             const carroActualizado = [...cart];
-            carroActualizado[index].totalMount = carroActualizado[index].totalMount / carroActualizado[index].quantity;
-            carroActualizado[index].quantity = nuevaCantidad;
-            carroActualizado[index].totalMount *= nuevaCantidad;
+            carroActualizado[index].PRECIO_COMPRA = carroActualizado[index].PRECIO_COMPRA / carroActualizado[index].CANTIDAD;
+            carroActualizado[index].CANTIDAD = nuevaCantidad;
+            carroActualizado[index].PRECIO_COMPRA *= nuevaCantidad;
 
             setCart(carroActualizado);
             setUpdate(!update);
-        }
+        };
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleAdd();
-        }
+        };
     };
 
     const deleteProduct = (CODIGO) => {
@@ -105,34 +138,30 @@ export default function NewPurchaseForm() {
             const index = cart.findIndex(e => e.CODIGO === CODIGO);
             cart.splice(index, 1);
             setUpdate(!update);
-        }
+        };
     };
 
     const handlePayTypeSelect = (selectedPayType) => {
+        console.log('Metodo de pago seleccionado: ', parseInt(selectedPayType));
+        
         setNewPurchase({
             ...newPurchase,
-            payType: selectedPayType,
+            ID_FORMA_PAGO: parseInt(selectedPayType),
         });
     };
 
     const handleSupplierSelect = (selectedSupplier) => {
         setNewPurchase({
             ...newPurchase,
-            supplier: selectedSupplier,
+            ID_PROVEEDOR: parseInt(selectedSupplier),
         });
     };
 
     const handleDepositSelect = (selectedDeposit) => {
         setNewPurchase({
             ...newPurchase,
-            deposit: selectedDeposit,
+            BODEGA: parseInt(selectedDeposit),
         });
-    };
-
-    const confirmSale = (event) => {
-        event.preventDefault();
-        dispatch(actions.newPurchase(newPurchase));
-        navigate('/purchases');
     };
 
     const cancelSale = () => {
@@ -142,11 +171,31 @@ export default function NewPurchaseForm() {
     function handleChange(event) {
         const target = event.target.name;
         let value = event.target.value;
+    
+        if (target === 'CANTIDAD' || target === 'PRECIO_COMPRA') {
+            value = parseFloat(value) || 0; // Asegura un valor numérico
+        }
+    
         setNewItem({
             ...newItem,
             [target]: value,
         });
     }
+    
+    function handleChangePurchase(event) {
+        const target = event.target.name;
+        let value = event.target.value;
+    
+        if (target === 'NUMERO' || target === 'TOTAL_COMPRA') {
+            value = parseFloat(value) || 0; // Asegura un valor numérico
+        }
+    
+        setNewPurchase({
+            ...newPurchase,
+            [target]: value,
+        });
+    }
+    
 
     return (
         <div className={styles.container}>
@@ -159,9 +208,9 @@ export default function NewPurchaseForm() {
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="CODIGO"
-                                value={newPurchase.number}
-                                onChange={handleChange}
+                                name="NUMERO"
+                                value={newPurchase.NUMERO}
+                                onChange={handleChangePurchase}
                                 placeholder="Codigo..."
                                 type="text"
                             />
@@ -183,8 +232,8 @@ export default function NewPurchaseForm() {
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="quantity"
-                                value={newItem.quantity}
+                                name="CANTIDAD"
+                                value={newItem.CANTIDAD}
                                 onChange={handleChange}
                                 placeholder="Cantidad..."
                                 type="number"
@@ -195,8 +244,8 @@ export default function NewPurchaseForm() {
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="price"
-                                value={newItem.price}
+                                name="PRECIO_COMPRA"
+                                value={newItem.PRECIO_COMPRA}
                                 onChange={handleChange}
                                 placeholder="Precio..."
                                 type="number"
@@ -212,7 +261,7 @@ export default function NewPurchaseForm() {
                                 <th>Cantidad</th>
                                 <th>Codigo</th>
                                 <th>Producto</th>
-                                <th>brand</th>
+                                <th>Marca</th>
                                 <th>Precio Venta.</th>
                                 <th>Precio Compra</th>
                                 <th>Subtotal Compra</th>
@@ -221,33 +270,35 @@ export default function NewPurchaseForm() {
                         </thead>
                         <tbody>
                             {
-                                newPurchase.items[0] &&
-                                newPurchase.items?.map((item, index) => {
+                                
+                                newPurchase.PRODUCTOS?.map((item, index) => {
                                    const product = products?.find(e=>e.CODIGO===item.CODIGO)
+                                   const brand = brands?.find(e=>e.id_marca === product.id_marca)
                                     return (
                                         <tr key={index} style={{ textAlign: 'center' }}>
                                             <td>
                                                 <div>
                                                     <input
                                                         autoComplete="off"
-                                                        name="quantity"
-                                                        value={item.quantity}
+                                                        name="NUEVA_CANTIDAD"
+                                                        value={item.CANTIDAD}
                                                         onChange={(e) => handleCantidadChange(e, index)}
                                                         type="number"
                                                     />
                                                 </div>
                                             </td>
                                             <td>{item.CODIGO}</td>
-                                            <td>{product.name}</td>
-                                            <td>{product.brand}</td>
-                                            <td>{'$ '}{item.price}</td>
-                                            <td>{item.price}</td>
-                                            <td>{'$ '}{item.totalMount}</td>
+                                            <td>{product.NOMBRE}</td>
+                                            <td>{brand.NOMBRE}</td>
+                                            <td>{'$ '}{item.PRECIO_COMPRA}</td>
+                                            <td>{item.PRECIO_COMPRA}</td>
+                                            <td>{'$ '}{Math.round(item.SUBTOTAL * 100) / 100}</td>
                                             <td>
                                                 <Button variant="danger" onClick={() => { deleteProduct(item.CODIGO) }}>Eliminar</Button>
                                             </td>
                                         </tr>)
-                                })}
+                                })
+                            }
                         </tbody>
                     </Table>
 
@@ -259,7 +310,7 @@ export default function NewPurchaseForm() {
                         </thead>
                         <tbody>
                             <tr style={{ textAlign: 'center' }}>
-                                <td><b>{'$ '}{newPurchase.mount}</b></td>
+                                <td><b>{'$ '}{Math.round(parseFloat(newPurchase.TOTAL_COMPRA) * 100) / 100}</b></td>
                             </tr>
                         </tbody>
                     </Table>
@@ -287,4 +338,4 @@ export default function NewPurchaseForm() {
             </form>
         </div>
     );
-}
+};
