@@ -42,13 +42,13 @@ export default function CreateProductForm() {
   const [newProduct, setNewProduct] = useState({
     NOMBRE: '',
     CODIGO: '',
-    ID_CATEGORIA: '',
-    ID_UNIDAD_MEDIDA: '',
-    CANT_MIN: '',
-    CANT_MAX: '',
-    ID_PROVEEDOR: '',
-    ID_MARCA: '',
-    PRECIO_VENTA: ''
+    ID_CATEGORIA: null,
+    ID_UNIDAD_MEDIDA: null,
+    CANT_MIN: 0,
+    CANT_MAX: 0,
+    ID_PROVEEDOR:null,
+    ID_MARCA: null,
+    PRECIO_VENTA: 0
   });
 
   async function postProduct(product) {

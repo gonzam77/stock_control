@@ -33,7 +33,7 @@ export default function Purchases() {
           </thead>
           <tbody>
             {purchases?.map((purchase, index) => {
-              const supplier = suppliers?.find(e=> e.ID_PROVEEDOR === purchase.ID_PROVEEDOR)
+              const supplier = suppliers?.find(e=> e.CUIL === purchase.CUIL)
               return (
                 <tr
                   key={index}
@@ -42,7 +42,7 @@ export default function Purchases() {
                   <td>{purchase?.NUMERO_COMPRA}</td>
                   <td>{purchase?.FECHA_COMPRA}</td>
                   <td>{'$'}{purchase?.TOTAL_COMPRA}</td>
-                  <td>{supplier?.RAZON_SOCIAL}</td>
+                  <td>{supplier?.CUIL}-{supplier?.RAZON_SOCIAL}</td>
                   <td style={{ textAlign: "center" }}>
                     <Link to={`/purchaseDetail/${purchase.id}`}>
                       <Button variant="primary">Detalle</Button>

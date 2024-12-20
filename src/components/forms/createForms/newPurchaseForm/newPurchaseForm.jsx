@@ -16,17 +16,22 @@ export default function NewPurchaseForm() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
     const brands = useSelector((state) => state.brands);
-    const [update, setUpdate] = useState();
-    const [cart, setCart] = useState([]);
-
+    //const [update, setUpdate] = useState();
+    //const [cart, setCart] = useState([]);
+    const users = useSelector((state)=> state.users);
+    const user = users.find(e => e.NOMBRE === localStorage.getItem('usuario'));
+    
     const [newPurchase, setNewPurchase] = useState({
-        NUMERO: null,
+        NUMERO_COMPRA: null,
         PRODUCTOS: [],
         CANTIDAD: 0,
         ID_PROVEEDOR: null,
         ID_FORMA_PAGO: null,
         TOTAL_COMPRA: 0,
+        USER: null
     });
+
+    newPurchase.USER = user;
     
     const [newItem, setNewItem] = useState({
         CODIGO: '',
@@ -36,8 +41,7 @@ export default function NewPurchaseForm() {
     });
     
     async function postPurchase(newPurchase){
-
-        console.log('Esta es la compra', newPurchase);
+        console.log('Nueva compra:', newPurchase);
         
         try {
             await axios.post(`${backURL}/compra/nuevo`, newPurchase, axiosConfig)
@@ -51,81 +55,91 @@ export default function NewPurchaseForm() {
         await postPurchase({ Compra: newPurchase});
         navigate('/purchases');
     };
+    
 
     useEffect(() => {
-        setNewPurchase(prev => ({
-            ...prev,
-            PRODUCTOS: cart,
-        }));
-
         if (products.length === 0) dispatch(actions.getAllProducts());
         if (brands.length === 0) dispatch(actions.getAllBrands());
+        if (users.length === 0) dispatch(actions.getAllUsers());
         
-    }, [cart, brands, update, products, dispatch]);
+    }, [users, brands, products, dispatch]);
     
 
     function handleAdd() {
-
         const product = products.find(e => e.CODIGO === newItem.CODIGO);
-        
+    
         if (product) {
-
-            const productoEnCarro = newPurchase.PRODUCTOS.find(e => e.CODIGO === newItem.CODIGO);
-            
-            if (!productoEnCarro || productoEnCarro.CANTIDAD === 0){
-                
-                //newItem.CANTIDAD = newItem.CANTIDAD;
-                newItem.SUBTOTAL = newItem.CANTIDAD * newItem.PRECIO_COMPRA;
-
+            const existingProductIndex = newPurchase.PRODUCTOS.findIndex(e => e.CODIGO === newItem.CODIGO);
+    
+            let updatedProducts = [...newPurchase.PRODUCTOS];
+            let updatedCantidad = newPurchase.CANTIDAD;
+            let updatedTotalCompra = newPurchase.TOTAL_COMPRA;
+    
+            if (existingProductIndex !== -1) {
+                // Actualiza la cantidad y subtotal si el producto ya está en el carrito
+                updatedProducts[existingProductIndex] = {
+                    ...updatedProducts[existingProductIndex],
+                    CANTIDAD: updatedProducts[existingProductIndex].CANTIDAD + newItem.CANTIDAD,
+                    SUBTOTAL: (updatedProducts[existingProductIndex].CANTIDAD + newItem.CANTIDAD) * newItem.PRECIO_COMPRA,
+                };
             } else {
-                
-                newItem.CANTIDAD = parseInt(productoEnCarro.CANTIDAD) + parseInt(newItem.CANTIDAD);
-                newItem.SUBTOTAL = parseInt(newItem.CANTIDAD) * parseFloat(newItem.PRECIO_COMPRA);
-                
-                setUpdate(!update);
-                
-            };
-
+                // Agrega el nuevo producto al carrito
+                updatedProducts.push({
+                    ...newItem,
+                    SUBTOTAL: newItem.CANTIDAD * newItem.PRECIO_COMPRA,
+                });
+            }
+    
+            updatedCantidad += newItem.CANTIDAD;
+            updatedTotalCompra += newItem.CANTIDAD * newItem.PRECIO_COMPRA;
+    
             setNewPurchase({
                 ...newPurchase,
-                CANTIDAD: newPurchase.CANTIDAD + newItem.CANTIDAD,
-                TOTAL_COMPRA: newPurchase.TOTAL_COMPRA + newItem.SUBTOTAL,
-                PRODUCTOS: [
-                    ...newPurchase.PRODUCTOS,
-                    newItem
-                ]
-            });   
-
-            console.log('Item a agregar: ', newItem);
-            console.log('Listado de productos: ', newPurchase.PRODUCTOS );
-            
-            
-
+                PRODUCTOS: updatedProducts,
+                CANTIDAD: updatedCantidad,
+                TOTAL_COMPRA: updatedTotalCompra,
+            });
+    
             setNewItem({
                 CODIGO: '',
                 CANTIDAD: 0,
-                PRECIO_COMPRA: 0
+                PRECIO_COMPRA: 0,
             });
-
-        } else console.log('No se encontró el producto');
-            
-    };
+        } else {
+            console.log('No se encontró el producto');
+        }
+    }
+    
 
     const handleCantidadChange = (event, index) => {
-
         const nuevaCantidad = parseInt(event.target.value, 10);
-        
+    
         if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
-            
-            const carroActualizado = [...cart];
-            carroActualizado[index].PRECIO_COMPRA = carroActualizado[index].PRECIO_COMPRA / carroActualizado[index].CANTIDAD;
-            carroActualizado[index].CANTIDAD = nuevaCantidad;
-            carroActualizado[index].PRECIO_COMPRA *= nuevaCantidad;
-
-            setCart(carroActualizado);
-            setUpdate(!update);
-        };
+            const productosActualizados = [...newPurchase.PRODUCTOS];
+            const producto = productosActualizados[index];
+    
+            const precioUnitario = producto.SUBTOTAL / producto.CANTIDAD; // Calcula el precio unitario
+            producto.CANTIDAD = nuevaCantidad;
+            producto.SUBTOTAL = precioUnitario * nuevaCantidad; // Actualiza el subtotal
+    
+            const totalCompraActualizado = productosActualizados.reduce(
+                (total, item) => total + item.SUBTOTAL,
+                0
+            );
+            const cantidadTotalActualizada = productosActualizados.reduce(
+                (total, item) => total + item.CANTIDAD,
+                0
+            );
+    
+            setNewPurchase({
+                ...newPurchase,
+                PRODUCTOS: productosActualizados,
+                TOTAL_COMPRA: totalCompraActualizado,
+                CANTIDAD: cantidadTotalActualizada,
+            });
+        }
     };
+    
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -135,15 +149,24 @@ export default function NewPurchaseForm() {
 
     const deleteProduct = (CODIGO) => {
         if (CODIGO) {
-            const index = cart.findIndex(e => e.CODIGO === CODIGO);
-            cart.splice(index, 1);
-            setUpdate(!update);
-        };
+            const selectedProduct = newPurchase.PRODUCTOS.find(e => e.CODIGO === CODIGO);
+            
+            if (selectedProduct) {
+                setNewPurchase({
+                    ...newPurchase,
+                    TOTAL_COMPRA: newPurchase.TOTAL_COMPRA - selectedProduct.SUBTOTAL,
+                    CANTIDAD: newPurchase.CANTIDAD - selectedProduct.CANTIDAD,
+                    PRODUCTOS: newPurchase.PRODUCTOS.filter(e => e.CODIGO !== CODIGO), // Crea un nuevo array sin el producto
+                });
+    
+                console.log('Producto eliminado:', CODIGO);
+            } else {
+                console.log('No se encontró el producto a eliminar');
+            }
+        }
     };
-
+    
     const handlePayTypeSelect = (selectedPayType) => {
-        console.log('Metodo de pago seleccionado: ', parseInt(selectedPayType));
-        
         setNewPurchase({
             ...newPurchase,
             ID_FORMA_PAGO: parseInt(selectedPayType),
@@ -186,7 +209,7 @@ export default function NewPurchaseForm() {
         const target = event.target.name;
         let value = event.target.value;
     
-        if (target === 'NUMERO' || target === 'TOTAL_COMPRA') {
+        if (target === 'TOTAL_COMPRA') {
             value = parseFloat(value) || 0; // Asegura un valor numérico
         }
     
@@ -204,12 +227,12 @@ export default function NewPurchaseForm() {
                 <div className={styles.divs}>
                     <div className={styles.subDivs}>
                         <div>
-                            <label >Numero de Compra</label>
+                            <label >Factura N°</label>
                             <input
                                 onKeyDown={handleKeyDown}
                                 autoComplete="off"
-                                name="NUMERO"
-                                value={newPurchase.NUMERO}
+                                name="NUMERO_COMPRA"
+                                value={newPurchase.NUMERO_COMPRA}
                                 onChange={handleChangePurchase}
                                 placeholder="Codigo..."
                                 type="text"
@@ -262,7 +285,6 @@ export default function NewPurchaseForm() {
                                 <th>Codigo</th>
                                 <th>Producto</th>
                                 <th>Marca</th>
-                                <th>Precio Venta.</th>
                                 <th>Precio Compra</th>
                                 <th>Subtotal Compra</th>
                                 <th>Eliminar</th>
@@ -291,7 +313,6 @@ export default function NewPurchaseForm() {
                                             <td>{product.NOMBRE}</td>
                                             <td>{brand.NOMBRE}</td>
                                             <td>{'$ '}{item.PRECIO_COMPRA}</td>
-                                            <td>{item.PRECIO_COMPRA}</td>
                                             <td>{'$ '}{Math.round(item.SUBTOTAL * 100) / 100}</td>
                                             <td>
                                                 <Button variant="danger" onClick={() => { deleteProduct(item.CODIGO) }}>Eliminar</Button>
