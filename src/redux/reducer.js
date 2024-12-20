@@ -3,6 +3,7 @@ import { ventas } from "../assets/dataHardcodeoSale";
 import { compras } from "../assets/dataHardcodeoCompras";
 
 const initialState = {
+  user: null,
   products: [],
   users: [],
   cart: [],
@@ -45,7 +46,11 @@ const initialState = {
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-
+    case "LOGIN":
+      return {
+        ...state,
+        user: payload
+      };
     case "GET_ALL_OFFERS":
       return {
         ...state,

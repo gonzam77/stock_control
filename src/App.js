@@ -43,11 +43,13 @@ function App() {
   const [access, setAccess] = useState(
     localStorage.getItem("token") ? true : false
   );
+
   const [token, setToken] = useState(null);
 
   async function login(userData) {
-
+    
     const formEncodedData = qs.stringify(userData);
+    
     const config = {
       withCredentials: true,
       headers: {
@@ -56,14 +58,20 @@ function App() {
     };
 
     try {
+      
       const response = await axios.post(
         `${backURL}/signin`,
         formEncodedData,
         config
       );
+
       if (response.data.Status === 'Accepted') {
+
         localStorage.setItem("token", response.data.Token);
+        localStorage.setItem("usuario", userData.nombre);
+
         setToken(response.data.Token);
+
         axiosConfig = {
           withCredentials: true,
           headers: {
@@ -72,8 +80,9 @@ function App() {
             Pragma: "no-cache",
             Authorization: `Bearer ${token}`,
             Expires: 0,
-          },
+          }
         };
+
         axios.interceptors.request.use((config) => {
           const token = localStorage.getItem("token");
           if (token) {
@@ -81,19 +90,22 @@ function App() {
           }
           return config;
         });
+
         setAccess(true);
         navigate("/");
-      }
+
+      };
     } catch (error) {
       console.error('Error during login:', error);
     }
-  }
+  };
 
   const logout = async () => {
     try {
       const response = await axios.get(`${backURL}/signout`, axiosConfig);
       if (response.data.Status === 'OK') {
         localStorage.removeItem('token');
+        localStorage.removeItem('usuario');
         setToken(null);
         setAccess(false);
       }
@@ -116,7 +128,7 @@ function App() {
     } else {
       setAccess(false);
       navigate("/login");
-    }
+    };
   }, [access, navigate]);
 
   return (

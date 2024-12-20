@@ -6,7 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function NavMenu({ logout }) {
   
   const navigate = useNavigate();
-  
+  const user = localStorage.getItem('usuario');
+
   function redirect() {
     navigate("/newSale");
   }
@@ -67,6 +68,7 @@ export default function NavMenu({ logout }) {
           Cerrar Sesion
         </Button>
       </div>
+      <span style={{ color: "rgb(13, 134, 209)", fontWeight: "bold" }}>{user}</span>
     </div>
   );
 }

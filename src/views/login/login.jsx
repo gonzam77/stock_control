@@ -4,9 +4,10 @@ import { useState } from "react";
 import styles from "./login.module.css";
 
 function Login({ login }) {
+
   const [userLogin, setUserLogin] = useState({
-    nombre: "",
-    clave: "",
+    nombre: '',
+    clave: '',
   });
 
   function handleChange(event) {

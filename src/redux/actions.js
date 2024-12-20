@@ -157,6 +157,13 @@ export const getAllUbications = () => {
   };
 };
 
+export const login = (data) => {
+  return {
+    type: 'LOGIN',
+    payload: data,
+  };
+};
+
 export const getAllDeposits = () => {
   return async function (dispatch) {
     try {
