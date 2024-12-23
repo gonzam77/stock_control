@@ -1,6 +1,5 @@
 import { transportistas } from "../assets/dataHardcodeoTransportistas";
 import { ventas } from "../assets/dataHardcodeoSale";
-import { compras } from "../assets/dataHardcodeoCompras";
 
 const initialState = {
   user: null,
@@ -23,7 +22,7 @@ const initialState = {
   payTypes: [],
   dispatchers: transportistas,
   sales: ventas,
-  purchases: compras,
+  purchases: [],
   productById: null,
   accountTypeId: null,
   personId: null,
@@ -55,6 +54,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         offers: payload
+      };
+    case "GET_ALL_PURCHASES":
+      return {
+        ...state,
+        purchases: payload
       };
     case "GET_ALL_CATEGORIES":
       return {

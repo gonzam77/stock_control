@@ -180,6 +180,22 @@ export const getAllDeposits = () => {
   };
 };
 
+export const getAllPurchases = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios(`${backURL}/compras`, axiosConfig);
+      const data = response?.data;
+      return dispatch({
+        type: 'GET_ALL_PURCHASES',
+        payload: data.Data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getAllAccountTypes = () => {
   return async function (dispatch) {
     try {

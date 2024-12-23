@@ -195,9 +195,8 @@ export default function NewPurchaseForm() {
         const target = event.target.name;
         let value = event.target.value;
     
-        if (target === 'CANTIDAD' || target === 'PRECIO_COMPRA') {
-            value = parseFloat(value) || 0; // Asegura un valor numérico
-        }
+        if (target === 'PRECIO_COMPRA') value = Math.round(parseFloat(value) * 100) / 100; // Asegura un valor numérico
+        if (target === 'CANTIDAD') value = parseInt(value) //Asegura entero.
     
         setNewItem({
             ...newItem,

@@ -1,12 +1,24 @@
 import styles from "./purchases.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import * as actions from '../../redux/actions';
 
-export default function Purchases() {
+export default function PurchasesDetail() {
   const purchases = useSelector((state) => state.purchases);
-  const suppliers = useSelector((state) => state.suppliers);
+  const [hasFetched, setHasFetched] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if (!hasFetched && purchases.length === 0) {
+      dispatch(actions.getAllPurchases());
+      setHasFetched(true); // Marca que ya intentaste obtener los datos evitando el loop infinito.
+    }
+    console.log('Compra', purchases);
+    
+  },[dispatch, purchases, hasFetched])
 
   return (
     <div className={styles.container}>
@@ -27,24 +39,33 @@ export default function Purchases() {
               <th>N° Compra</th>
               <th>Fecha</th>
               <th>Monto Total</th>
-              <th>Proveedor</th>
+              <th>Forma de Pago</th>
+              <th>Cuil Proveedor</th>
+              <th>Nombre Proveedor</th>
+              <th>Usuario</th>
               <th>Detalle</th>
             </tr>
           </thead>
           <tbody>
             {purchases?.map((purchase, index) => {
-              const supplier = suppliers?.find(e=> e.CUIL === purchase.CUIL)
+              const fecha = new Date(purchase.FECHA_COMPRA);
+              const total = purchase?.DETALLE_COMPRAS?.reduce((suma, producto) => {
+                return suma + producto.PRECIO_PRODUCTO * producto.CANTIDAD;
+              }, 0);
               return (
                 <tr
                   key={index}
                   style={{ textAlign: "center", verticalAlign: "middle" }}
                 >
                   <td>{purchase?.NUMERO_COMPRA}</td>
-                  <td>{purchase?.FECHA_COMPRA}</td>
-                  <td>{'$'}{purchase?.TOTAL_COMPRA}</td>
-                  <td>{supplier?.CUIL}-{supplier?.RAZON_SOCIAL}</td>
+                  <td>{fecha.toLocaleString()}</td>
+                  <td>{'$'}{Math.round(total * 100) / 100}</td>
+                  <td>{purchase?.FORMA_PAGO.NOMBRE}</td>
+                  <td>{purchase?.CUIL_PROVEEDOR}</td>
+                  <td>{purchase?.NOMBRE_PROVEEDOR}</td>
+                  <td>{purchase?.USUARIO.NOMBRE}</td>
                   <td style={{ textAlign: "center" }}>
-                    <Link to={`/purchaseDetail/${purchase.id}`}>
+                    <Link to={`/purchaseDetail/${purchase.ID_COMPRA}`}>
                       <Button variant="primary">Detalle</Button>
                     </Link>
                   </td>
