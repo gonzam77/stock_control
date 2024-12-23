@@ -16,8 +16,6 @@ export default function PurchasesDetail() {
       dispatch(actions.getAllPurchases());
       setHasFetched(true); // Marca que ya intentaste obtener los datos evitando el loop infinito.
     }
-    console.log('Compra', purchases);
-    
   },[dispatch, purchases, hasFetched])
 
   return (
