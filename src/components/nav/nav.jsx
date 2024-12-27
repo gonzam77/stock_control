@@ -31,9 +31,6 @@ export default function NavMenu({ logout }) {
               <Link to="/clients" className={styles.link}>
                 Clientes
               </Link>
-              <Link to="/dispatchers" className={styles.link}>
-                Tramportistas
-              </Link>
               <Link to="/deposits" className={styles.link}>
                 Depositos
               </Link>
@@ -42,9 +39,6 @@ export default function NavMenu({ logout }) {
               </Link>
               <Link to="/users" className={styles.link}>
                 Usuarios
-              </Link>
-              <Link to="/persons" className={styles.link}>
-                Personas
               </Link>
             </Nav>
           </Navbar.Collapse>

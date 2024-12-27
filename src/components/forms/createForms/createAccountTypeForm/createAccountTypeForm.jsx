@@ -5,6 +5,7 @@ import { axiosConfig, backURL } from "../../../../App";
 import styles from "../createForms.module.css";
 import axios from "axios";
 import * as actions from "../../../../redux/actions";
+import Swal from 'sweetalert2';
 
 export default function CreateAccountTypeForm() {
   const dispatch = useDispatch();
@@ -23,6 +24,14 @@ export default function CreateAccountTypeForm() {
     try {
       await axios.post(`${backURL}/tipocuenta/nuevo`,tipoCuenta, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   }

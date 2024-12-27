@@ -21,6 +21,7 @@
 }
 
 .nav_text {
+    font-size: 1rem !important;
     text-transform: capitalize;
     color: white !important;
     font-weight: 400;

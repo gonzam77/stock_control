@@ -9,6 +9,7 @@ import DropdownBrands from "../../../dropdown/dropdownBrand";
 import DropdownCategory from '../../../dropdown/dropdownCategory';
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 export default function EditProductForm() {
   const products = useSelector((state) => state.products);
@@ -36,7 +37,19 @@ export default function EditProductForm() {
   };
 
   const editProduct = async (data) => {
-    await axios.put(`${backURL}/producto/update`, data, axiosConfig);
+    try {
+      await axios.put(`${backURL}/producto/update`, data, axiosConfig);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
+    }
   };
 
   function handleChange(event) {

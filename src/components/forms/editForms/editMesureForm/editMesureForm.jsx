@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 export default function EditMesureForm() {
   const mesures = useSelector((state) => state.mesures);
@@ -23,6 +24,14 @@ export default function EditMesureForm() {
     try {
       await axios.put(`${backURL}/unidad/update`, medida, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   };

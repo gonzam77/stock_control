@@ -1,34 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { axiosConfig, backURL } from "../../../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
-import DropdownPersona from "../../../dropdown/dropdownPerson";
 import axios from "axios";
 import * as actions from "../../../../redux/actions";
+import Swal from 'sweetalert2';
 
 export default function CreateClientForm() {
   const dispatch = useDispatch();
-  const personas = useSelector((state) => state.persons);
   const accounts = useSelector((state) => state.accounts);
 
   const [newClient, setNewClient] = useState({
     RAZON_SOCIAL: '',
     CUIL: '',
-    ID_PERSONA: '',
     ID_CUENTA: '',
     ESTADO: 1
   });
-
-  useEffect(() => {
-    if (!personas.length) dispatch(actions.getAllPersons())
-  }, [dispatch, personas])
 
   async function postClient(cliente) {
     try {
       await axios.post(`${backURL}/cliente/nuevo`, cliente, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   };
@@ -51,20 +53,6 @@ export default function CreateClientForm() {
       ID_CUENTA: accountId,
     });
   }
-  function handlePersonSelect(selectedPerson) {
-    if (selectedPerson !== '0') {
-      const personId = personas?.find((e) => e.NOMBRE === selectedPerson).ID_PERSONA;
-      setNewClient({
-        ...newClient,
-        ID_PERSONA: personId,
-      });
-    } else {
-      setNewClient({
-        ...newClient,
-        ID_PERSONA: selectedPerson,
-      });
-    }
-  }
 
   function handleChange(event) {
     const target = event.target.name;
@@ -78,9 +66,6 @@ export default function CreateClientForm() {
   return (
     <div className={styles.container}>
       <form className={styles.form}>
-        <div className={styles.divs}>
-          <DropdownPersona onSelect={handlePersonSelect}></DropdownPersona>
-        </div>
         <div className={styles.divs}>
           <label>Razon Social</label>
           <input

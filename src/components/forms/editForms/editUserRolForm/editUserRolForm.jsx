@@ -7,6 +7,7 @@ import styles from "../editForms.module.css";
 import DropdownPermits from '../../../dropdown/dropdownPermits';
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 export default function EditUserRolForm() {
 
@@ -24,6 +25,14 @@ export default function EditUserRolForm() {
     try {
       await axios.put(`${backURL}/tipo/update`, tipo, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   }

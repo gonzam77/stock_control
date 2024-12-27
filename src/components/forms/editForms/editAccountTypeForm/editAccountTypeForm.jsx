@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2'
+
 
 export default function EditAccountTypeForm() {
   const accountTypes = useSelector((state) => state.accountTypes);
@@ -23,6 +25,14 @@ export default function EditAccountTypeForm() {
     try {
       await axios.put(`${backURL}/tipocuenta/update`,tipoCuenta, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   };

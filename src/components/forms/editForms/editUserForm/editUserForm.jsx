@@ -8,6 +8,7 @@ import DropdownStatus from "../../../dropdown/dropdownStatus";
 import {backURL} from "../../../../App"
 import axios from "axios";
 import { useEffect } from "react";
+import Swal from 'sweetalert2';
 
 export default function EditUserForm() {
   
@@ -32,6 +33,14 @@ export default function EditUserForm() {
     try {
       await axios.put(`${backURL}/usuario/update`, user);
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   }

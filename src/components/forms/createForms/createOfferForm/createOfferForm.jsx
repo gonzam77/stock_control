@@ -51,6 +51,14 @@ export default function CreateOfferForm() {
     try {
       await axios.post(`${backURL}/descuento/nuevo`, descuento, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     };
   };

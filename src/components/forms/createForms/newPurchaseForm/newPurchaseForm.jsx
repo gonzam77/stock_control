@@ -9,6 +9,7 @@ import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
 import { backURL, axiosConfig } from "../../../../App";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function NewPurchaseForm() {
 
@@ -16,8 +17,6 @@ export default function NewPurchaseForm() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
     const brands = useSelector((state) => state.brands);
-    //const [update, setUpdate] = useState();
-    //const [cart, setCart] = useState([]);
     const users = useSelector((state)=> state.users);
     const user = users.find(e => e.NOMBRE === localStorage.getItem('usuario'));
     
@@ -47,6 +46,14 @@ export default function NewPurchaseForm() {
             await axios.post(`${backURL}/compra/nuevo`, newPurchase, axiosConfig)
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: error.response.data.Message,
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#0a7f02',
+                keydownListenerCapture: false
+            });
         };
     };
     
@@ -330,7 +337,7 @@ export default function NewPurchaseForm() {
                         </thead>
                         <tbody>
                             <tr style={{ textAlign: 'center' }}>
-                                <td><b>{'$ '}{Math.round(parseFloat(newPurchase.TOTAL_COMPRA) * 100) / 100}</b></td>
+                                <td><b>{'$ '}{Math.round(newPurchase.TOTAL_COMPRA * 100) / 100}</b></td>
                             </tr>
                         </tbody>
                     </Table>

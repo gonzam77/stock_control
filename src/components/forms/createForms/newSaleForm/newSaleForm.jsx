@@ -7,38 +7,35 @@ import DropdownDeposit from "../../../dropdown/dropdownDeposit";
 import DropdownClient from "../../../dropdown/dropdownClient";
 import DropdownPayType from "../../../dropdown/dropdownPayType";
 import * as actions from "../../../../redux/actions";
-import Swal from 'sweetalert2'
+import axios from "axios";
+import { backURL, axiosConfig } from "../../../../App";
+import Swal from 'sweetalert2';
 
 
 export default function NewSaleForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  const sales = useSelector((state) => state.sales);
   const offers = useSelector((state) => state.offers);
   const deposits = useSelector((state) => state.deposits);
   const brands = useSelector((state) => state.brands);
   const clients = useSelector((state) => state.clients);
   const payTypes = useSelector((state) => state.payTypes);
-  const [update, setUpdate] = useState();
-  const [cart, setCart] = useState([]);
 
   const [newSale, setNewSale] = useState({
-    CODIGO: "",
-    NUMERO: "",
-    items: [],
+    ID_FORMA_PAGO: null,
+    ID_CLIENTE: null,
+    BODEGA: 1,
+    PRODUCTOS: [],
     CANTIDAD: 0,
-    ID_BODEGA: "",
-    TIPO_PAGO: "",
-    TOTAL: "",
-    ID_CLIENTE: "",
+    TOTAL_VENTA: 0
   });
 
   const [newItem, setNewItem] = useState({
-    CODIGO: "",
-    NOMBRE: "",
-    CANTIDAD: "",
-    MONTO_TOTAL: "",
+    CODIGO: '',
+    CANTIDAD: 0,
+    PRECIO_VENTA: 0,
+    SUBTOTAL: 0,
   });
 
   useEffect(() => {
@@ -48,105 +45,126 @@ export default function NewSaleForm() {
     if (!clients.length) dispatch(actions.getAllClients());
     if (!brands.length) dispatch(actions.getAllBrands());
     if (!deposits.length) dispatch(actions.getAllDeposits());
-  }, [products, offers, dispatch, payTypes, clients, brands, deposits])
+  }, [products, offers, dispatch, payTypes, clients, brands, deposits, newSale]);
 
-  function getLastSale() {
-    let lastSale = 0;
-    if (sales.length >= 1) {
-      for (let i = 0; i < sales.length; i++) {
-        if (sales[i].NUMERO > lastSale) lastSale = sales[i].NUMERO;
-      }
-      lastSale = parseInt(lastSale, 10);
-      return lastSale;
-    }
-  }
 
-  const handleAdd = () => {
-    let finalPrice = null;
-    let offerProduct = null;
-    let sumProduct = null;
-    const lastSale = getLastSale();
-    const selectedProduct = products.find(e => e.CODIGO === newItem?.CODIGO.toUpperCase());
-
-    if (!selectedProduct) {
+  async function postSale(newSale) {
+    try {
+      await axios.post(`${backURL}/venta/nuevo`, newSale, axiosConfig)
+    } catch (error) {
       Swal.fire({
         title: 'Error!',
-        text: 'Producto no encontrado!',
+        text: error.response.data.Message,
         icon: 'error',
         confirmButtonText: 'Cerrar',
         confirmButtonColor: '#0a7f02',
         keydownListenerCapture: false
       });
-    } else {
+      console.log(error);
+    }
+  }
+
+  const handleAdd = () => {
+    
+    const selectedProduct = products.find(e => e.CODIGO === newItem?.CODIGO.toUpperCase());
+
+    if (selectedProduct) {
 
       //comprueba que la cantidad no sea nula
-      if (!newItem.CANTIDAD || newItem.CANTIDAD === "" || newItem.CANTIDAD < 1)
+      if (!newItem.CANTIDAD || newItem.CANTIDAD === 0 || newItem.CANTIDAD === '')
         newItem.CANTIDAD = 1;
-      else newItem.CANTIDAD = parseInt(newItem.CANTIDAD);
+      else 
+        newItem.CANTIDAD = parseInt(newItem.CANTIDAD);
 
       //busca si el producto esta en oferta y calcula el precio final
-      offerProduct = offers.find((e) => e.ID_PRODUCTO === newItem.CODIGO);
+      const offerProduct = offers.find((e) => e.CODIGO === newItem.CODIGO);
+      
       if (offerProduct) {
         const discount = parseFloat(offerProduct.PORCENTAJE_DESCUENTO)
-        finalPrice = (1 - discount / 100) * selectedProduct.PRECIO_VENTA;
+        newItem.PRECIO_VENTA = (1 - discount / 100) * parseFloat(selectedProduct.PRECIO_VENTA);
       }
-      else { finalPrice = selectedProduct?.PRECIO_VENTA; }
-
-      //comprueba si el producto esta en el carro para sumar cantidad y cambiar el precio acumulado
-      if (selectedProduct) {
-        if (cart.length) sumProduct = cart.find(element => element.CODIGO === selectedProduct.CODIGO);
-        if (sumProduct) {
-          sumProduct["CANTIDAD"] += newItem.CANTIDAD;
-          sumProduct["MONTO_TOTAL"] = selectedProduct.CANTIDAD * finalPrice;
-          setUpdate(!update);
-        } else {
-          selectedProduct["CANTIDAD"] = newItem.CANTIDAD;
-          selectedProduct["MONTO_TOTAL"] = selectedProduct?.CANTIDAD * finalPrice;
-          setCart([...cart, selectedProduct]);
-          setUpdate(!update);
-        }
+      else { 
+        newItem.PRECIO_VENTA = parseFloat(selectedProduct?.PRECIO_VENTA); 
       };
+
+      //Buscamos si el producto ya fue cargado en la venta
+      const existingProductIndex = newSale.PRODUCTOS.findIndex(e => e.CODIGO === newItem.CODIGO);
+  
+      let updatedProducts = [...newSale.PRODUCTOS];
+      let updatedCantidad = newSale.CANTIDAD;
+      let updatedTotalCompra = newSale.TOTAL_VENTA;
+  
+      if (existingProductIndex !== -1) {
+        // Actualiza la cantidad y subtotal si el producto ya está en el carrito
+        updatedProducts[existingProductIndex] = {
+            ...updatedProducts[existingProductIndex],
+            CANTIDAD: updatedProducts[existingProductIndex].CANTIDAD + newItem.CANTIDAD,
+            SUBTOTAL: (updatedProducts[existingProductIndex].CANTIDAD + newItem.CANTIDAD) * newItem.PRECIO_VENTA,
+        };
+      } else {
+        // Agrega el nuevo producto al carrito
+        updatedProducts.push({
+            ...newItem,
+            SUBTOTAL: newItem.CANTIDAD * newItem.PRECIO_VENTA
+        });
+      };
+      
+      updatedCantidad += newItem.CANTIDAD;
+      updatedTotalCompra += newItem.CANTIDAD * newItem.PRECIO_VENTA;
+
       setNewSale({
         ...newSale,
-        NUMERO: lastSale + 1,
-        CANTIDAD: (newSale.CANTIDAD += selectedProduct?.CANTIDAD),
+        PRODUCTOS: updatedProducts,
+        CANTIDAD: updatedCantidad,
+        TOTAL_VENTA: Math.round(updatedTotalCompra * 100) / 100,
       });
 
       setNewItem({
-        CODIGO: "",
-        NOMBRE: "",
-        CANTIDAD: "",
+          CODIGO: '',
+          CANTIDAD: 0,
+          PRECIO_VENTA: 0
       });
-    }
+ 
+    } else {
+      Swal.fire({
+          title: 'Error!',
+          text: 'Producto no encontrado!',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#0a7f02',
+          keydownListenerCapture: false
+      });
+   }; 
+
   };
-
-  useEffect(()=>{
-    setNewSale({
-      ...newSale,
-      TOTAL: calcularTotal()
-    })
-  },[cart])
-
+  
   const handleCantidadChange = (event, index) => {
     const nuevaCantidad = parseInt(event.target.value, 10);
-    if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
-      const carroActualizado = [...cart];
-      carroActualizado[index].MONTO_TOTAL =
-        carroActualizado[index].MONTO_TOTAL / carroActualizado[index].CANTIDAD;
-      carroActualizado[index].CANTIDAD = nuevaCantidad;
-      carroActualizado[index].MONTO_TOTAL *= nuevaCantidad;
-
-      setCart(carroActualizado);
-      setUpdate(!update);
-    }
-  };
-
-  const calcularTotal = () => {
-    let total = 0;
-    for (const item of cart) {
-      total += item.MONTO_TOTAL;
-    }
-    return total.toFixed(2);
+    
+        if (!isNaN(nuevaCantidad) && nuevaCantidad > 0) {
+            const productosActualizados = [...newSale.PRODUCTOS];
+            const producto = productosActualizados[index];
+    
+            const precioUnitario = producto.SUBTOTAL / producto.CANTIDAD; // Calcula el precio unitario
+            producto.CANTIDAD = nuevaCantidad;
+            producto.SUBTOTAL = precioUnitario * nuevaCantidad; // Actualiza el subtotal
+    
+            const totalCompraActualizado = productosActualizados.reduce(
+                (total, item) => total + item.SUBTOTAL,
+                0
+            );
+            const cantidadTotalActualizada = productosActualizados.reduce(
+                (total, item) => total + item.CANTIDAD,
+                0
+            );
+    
+            setNewSale({
+                ...newSale,
+                PRODUCTOS: productosActualizados,
+                TOTAL_VENTA: totalCompraActualizado,
+                CANTIDAD: cantidadTotalActualizada,
+            });
+        }
   };
 
   // const handleKeyDown = (event) => {
@@ -157,17 +175,28 @@ export default function NewSaleForm() {
 
   const deleteProduct = (CODIGO) => {
     if (CODIGO) {
-      const index = cart.findIndex((e) => e.CODIGO === CODIGO);
-      cart.splice(index, 1);
-      setUpdate(!update);
-    }
+      
+      const selectedProduct = newSale.PRODUCTOS.find(e => e.CODIGO === CODIGO);
+      
+      if (selectedProduct) {
+          setNewSale({
+              ...newSale,
+              TOTAL_VENTA: newSale.TOTAL_VENTA - selectedProduct.SUBTOTAL,
+              CANTIDAD: newSale.CANTIDAD - selectedProduct.CANTIDAD,
+              PRODUCTOS: newSale.PRODUCTOS.filter(e => e.CODIGO !== CODIGO), // Crea un nuevo array sin el producto
+          });
+
+          console.log('Producto eliminado:', CODIGO);
+      } else {
+          console.log('No se encontró el producto a eliminar');
+      }
+  }
   };
 
   const handlePayTypeSelect = (selectedPayType) => {
-    const payTypeId = payTypes?.find(e => e.NOMBRE === selectedPayType).ID_FORMA_PAGO
     setNewSale({
       ...newSale,
-      ID_FORMA_PAGO: payTypeId,
+      ID_FORMA_PAGO: parseInt(selectedPayType),
     });
   };
 
@@ -179,17 +208,17 @@ export default function NewSaleForm() {
     });
   };
 
+
   const handleDepositSelect = (selectedDeposit) => {
-    const depositId = deposits.find(e => e.NOMBRE === selectedDeposit).ID_BODEGA
     setNewSale({
       ...newSale,
-      ID_BODEGA: depositId,
+      BODEGA: parseInt(selectedDeposit),
     });
   };
 
-  const confirmSale = (event) => {
+  const confirmSale = async (event) => {
     event.preventDefault();
-    dispatch(actions.newSale(newSale));
+    await postSale({ Venta : newSale })
     navigate("/");
   };
 
@@ -266,9 +295,11 @@ export default function NewSaleForm() {
             </thead>
             <tbody>
               {
-                cart.map((item, index) => {
-                  const brand = brands?.find(e => e.ID_MARCA === item.ID_MARCA);
-
+                newSale.PRODUCTOS?.map((item, index) => {
+                  const product = products?.find(e=>e.CODIGO===item.CODIGO)
+                  const brand = brands?.find(e => e.ID_MARCA === product.ID_MARCA);
+                  console.log('newSale', newSale);
+                  
                   return (
                     <tr key={index} style={{ textAlign: "center" }}>
                       <td>
@@ -282,38 +313,39 @@ export default function NewSaleForm() {
                           />
                         </div>
                       </td>
-                      <td>{item.CODIGO}</td>
-                      <td>{item.NOMBRE}</td>
-                      <td>{brand.NOMBRE}</td>
+                      <td>{product?.CODIGO}</td>
+                      <td>{product?.NOMBRE}</td>
+                      <td>{brand?.NOMBRE}</td>
                       <td>
                         {"$ "}
-                        {item.PRECIO_VENTA}
+                        {product?.PRECIO_VENTA}
                       </td>
                       <td>
                         {"$ "}
-                        {item.MONTO_TOTAL.toFixed(2)}
+                        {item?.SUBTOTAL.toFixed(2)}
                       </td>
                       <td>
                         <Button
                           variant="danger"
                           onClick={() => {
-                            deleteProduct(item.CODIGO);
+                            deleteProduct(item?.CODIGO);
                           }}
                         >
                           Eliminar
                         </Button>
                       </td>
-                      <td>{item.stock}</td>
+                      <td>{item?.stock}</td>
                     </tr>
                   );
-                })}
+                })
+              }
             </tbody>
           </Table>
 
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>SUBTOTAL</th>
+                <th>TOTAL</th>
               </tr>
             </thead>
             <tbody>
@@ -321,7 +353,7 @@ export default function NewSaleForm() {
                 <td>
                   <b>
                     {"$ "}
-                    {calcularTotal()}
+                    {newSale.TOTAL_VENTA}
                   </b>
                 </td>
               </tr>

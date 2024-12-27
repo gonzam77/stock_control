@@ -6,13 +6,14 @@ import styles from "../createForms.module.css";
 import DropdownAccount from "../../../dropdown/dropdownAccount";
 import { axiosConfig, backURL } from "../../../../App";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 
 export default function CreateProductForm() {
   const dispatch = useDispatch();
   const accounts = useSelector(state => state.accounts);
   const [newSupplier, setNewSupplier] = useState({
-    ID_CUENTA: '',
+    ID_CUENTA: null,
     RAZON_SOCIAL: '',
     CUIL: '',
     EMAIL: '',
@@ -24,7 +25,15 @@ export default function CreateProductForm() {
     try {
       await axios.post(`${backURL}/proveedor/nuevo`, proveedor, axiosConfig)
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+    });
+      console.log(error.response.data.Message);
     }
   }
 

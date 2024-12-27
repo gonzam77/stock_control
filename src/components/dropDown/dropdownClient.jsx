@@ -7,31 +7,31 @@ export default function DropdownClient({ onSelect }) {
   
   const [select, setSelect] = useState();
   const clients = useSelector(state => state.clients);
-  const personas = useSelector(state => state.persons);
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    if(!personas.length) dispatch(actions.getAllPersons());
     if(!clients.length) dispatch(actions.getAllClients());
-  },[clients, personas, dispatch])
+  },[clients, dispatch])
 
   function handleSelect(eventKey) {
-    setSelect(eventKey);
+    //suppliers.find(e =>e.ID_PROVEEDOR.toString() === eventKey);
+    const selectedClient = clients?.find(e=>e.ID_CLIENTE.toString() === eventKey)
+    setSelect(selectedClient);
     onSelect(eventKey);
   }
 
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {select ? select : "Cliente"}
+        {select ? select.RAZON_SOCIAL : "Cliente"}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         {clients?.map((element, index) => {
-          const persona = personas?.find(e=>e.ID_PERSONA === element.ID_PERSONA)
+          const client = clients?.find(e=>e.ID_CLIENTE === element.ID_CLIENTE)
           return (
-            <Dropdown.Item key={index} eventKey={element.CUIL}>
-              {persona?.NOMBRE}{', '}{persona?.APELLIDO}
+            <Dropdown.Item key={index} eventKey={element.ID_CLIENTE}>
+              {client?.RAZON_SOCIAL}
             </Dropdown.Item>
           );
         })}

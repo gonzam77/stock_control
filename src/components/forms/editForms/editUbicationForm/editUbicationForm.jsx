@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import styles from "../editForms.module.css";
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 export default function EditUbicationForm() {
     const ubications = useSelector((state) => state.ubications);
@@ -23,6 +24,14 @@ export default function EditUbicationForm() {
         try {
             await axios.put(`${backURL}/ubicacion/update`, ubicacion, axiosConfig)
         } catch (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: error.response.data.Message,
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#0a7f02',
+                keydownListenerCapture: false
+            });
             console.log(error);
         }
     };

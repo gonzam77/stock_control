@@ -11,7 +11,6 @@ export default function Clients() {
   const showModalState = useSelector((state) => state.showModal);
   const showCreateModal = useSelector(state => state.showCreateModal)
   const clients = useSelector((state) => state.clients);
-  const personas = useSelector(state=> state.persons);
   const dispatch = useDispatch();
 
   const openModal = (id) => {
@@ -21,8 +20,7 @@ export default function Clients() {
 
   useEffect(()=>{
     if(!clients.length) dispatch(actions.getAllClients())
-    if(!personas.length) dispatch(actions.getAllPersons())
-  },[clients, personas, dispatch])
+  },[clients, dispatch])
 
   const openCreateModal = () => {
     dispatch(actions.showCreateModal())
@@ -45,24 +43,15 @@ export default function Clients() {
             <tr>
               <th>Cuil</th>
               <th>Razon Social</th>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Telefono</th>
               <th>Modificar</th>
             </tr>
           </thead>
           <tbody>
             {clients?.map((client, index) => {
-              const persona = personas?.find(e=>e.ID_PERSONA === client.ID_PERSONA)
               return (
                 <tr key={index} style={{textAlign: 'center', verticalAlign: 'middle'}}>
                   <td>{client.CUIL}</td>
                   <td>{client.RAZON_SOCIAL}</td>
-                  <td>
-                    {persona?.NOMBRE} {persona?.APELLIDO}
-                  </td>
-                  <td>{persona?.EMAIL}</td>
-                  <td>{persona?.TELEFONO}</td>
                   <td style={{ textAlign: 'center' }}>
                     <Button variant="primary" onClick={() => openModal(client.ID_CLIENTE)}>
                       Modificar

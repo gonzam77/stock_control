@@ -53,9 +53,6 @@ export default function Users() {
           <thead>
             <tr>
               <th>Nombre Usuario</th>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Telefono</th>
               <th>Cargo</th>
               <th>Estado</th>
               <th>Modificar</th>
@@ -63,26 +60,12 @@ export default function Users() {
           </thead>
           <tbody>
             {users?.map((user, index) => {
-
               return (
-                <tr
-                  key={index}
-                  style={{ textAlign: "center", verticalAlign: "middle" }}
-                >
+                <tr key={index} style={{ textAlign: "center", verticalAlign: "middle" }}>
                   <td>{user.NOMBRE}</td>
-                  <td>{user.PERSONA.NOMBRE}{' '}{user.PERSONA.APELLIDO}</td>
-                  <td>{user.PERSONA.EMAIL}</td>
-                  <td>{user.PERSONA.TELEFONO}</td>
                   <td>{user.TIPO_USUARIO.DESCRIPCION}</td>
                   <td>{user.ESTADO === 1 ? 'Activo' : 'Inactivo'}</td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      onClick={() => openModal(user.ID_USUARIO)}
-                    >
-                      Modificar
-                    </Button>
-                  </td>
+                  <td><Button variant="primary" onClick={() => openModal(user.ID_USUARIO)}>Modificar</Button></td>
                 </tr>
               );
             })}

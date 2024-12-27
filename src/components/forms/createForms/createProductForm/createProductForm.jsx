@@ -7,9 +7,9 @@ import Dropdown from "../../../dropdown/dropdownSupplier";
 import DropdownMesures from "../../../dropdown/dropdownMesure";
 import DropdownBrands from "../../../dropdown/dropdownBrand";
 import DropdownCategory from '../../../dropdown/dropdownCategory';
-import Swal from 'sweetalert2'
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 function validate(newProduct) {
   if (newProduct.CODIGO === '' || newProduct.CODIGO === null || newProduct.CODIGO.length < 4)
@@ -55,6 +55,14 @@ export default function CreateProductForm() {
     try {
       await axios.post(`${backURL}/producto/nuevo`, product, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   }

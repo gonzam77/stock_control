@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import DropdownUbication from "../../../dropdown/dropdownUbication";
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 
 export default function CreateDepositForm() {
@@ -19,18 +20,26 @@ export default function CreateDepositForm() {
     ADMINISTRADOR:'',
     TELEFONO:'',
     DESCRIPCION:'',
-    ID_UBICACION:'',
+    ID_UBICACION:null,
     ESTADO:1
   });
 
   useEffect(()=>{
-    if(!ubicaciones.length) dispatch(actions.getAllUbications());
+    if(ubicaciones || !ubicaciones?.length) dispatch(actions.getAllUbications());
   },[ubicaciones,dispatch])
   
   async function postDeposit(deposito){
     try {
       await axios.post(`${backURL}/bodega/nuevo`, deposito, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   }

@@ -6,7 +6,6 @@ import Inicio from "./views/inicio/inicio";
 import Login from "./views/login/login";
 import Nav from "./components/nav/nav";
 import Clients from "./views/clients/clients";
-import Persons from './views/persons/persons'
 import Suppliers from "./views/suppliers/suppliers";
 import Dispatchers from "./views/dispatchers/dispatchers";
 import ProductDetail from "./views/productDetail/productDetail";
@@ -151,7 +150,6 @@ function App() {
             <Route path="/productsTable" element={<ProductsTable />} />
             <Route path="/suppliers" element={<Suppliers />} />
             <Route path="/clients" element={<Clients />} />
-            <Route path="/persons" element={<Persons />} />
             <Route path="/dispatchers" element={<Dispatchers />} />
             <Route path="/deposits" element={<Deposits />} />
             <Route path="/users" element={<Users />} />

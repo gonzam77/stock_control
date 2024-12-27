@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import DropdownAccountType from "../../../dropdown/dropdownAccountType";
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
+import Swal from 'sweetalert2';
 
 export default function CreateAccountForm() {
   const dispatch = useDispatch();
@@ -25,6 +26,14 @@ export default function CreateAccountForm() {
     try {
       await axios.post(`${backURL}/cuenta/nuevo`, cuenta, axiosConfig)
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.log(error);
     }
   };

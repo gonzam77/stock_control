@@ -5,32 +5,55 @@ import * as actions from "../../../../redux/actions";
 import { Button } from "react-bootstrap";
 import DropdownRoles from "../../../dropdown/dropdownRol";
 import DropdownStatus from "../../../dropdown/dropdownStatus";
+import Swal from "sweetalert2";
+import { backURL, axiosConfig } from "../../../../App";
+import axios from "axios";
 
 export default function CreateUserForm() {
   const dispatch = useDispatch();
 
   const [newUser, setNewUser] = useState({
-    id: "",
-    first_name: "",
-    last_name: "",
-    cuil: "",
-    state: "",
-    province: "",
-    phone: "",
-    email: "",
-    adress: "",
-    create_date: "",
-    rol: "",
-    status: "",
-    clave:""
+    ID_TIPO_USUARIO: 1,
+    NOMBRE: '',
+    CLAVE:'',
+    REPETIR_CLAVE:'',
+    CUIL: '',
+    ESTADO: 1,
   });
 
-  const closeCreateModal = (event) => {
+  async function postUser(newUser){
+    try {
+      axios.post(`${backURL}/usuario/nuevo`, newUser, axiosConfig)
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
+      
+    }
+  }
+
+  const closeCreateModal = async (event) => {
     event.preventDefault();
-    setNewUser({
-      ...newUser,
-    });
-    dispatch(actions.hideCreateModal());
+    
+    if(newUser.CLAVE !== newUser.REPETIR_CLAVE) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Las claves no coinciden.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
+    } else {
+      await postUser({ Usuario: newUser });
+      dispatch(actions.hideCreateModal());
+    };
   };
 
   const cancelCreateModal = () => {
@@ -66,21 +89,10 @@ export default function CreateUserForm() {
           <label>Nombre</label>
           <input
             autoComplete="off"
-            name="first_name"
-            value={newUser.first_name}
+            name="NOMBRE"
+            value={newUser.NOMBRE}
             onChange={handleChange}
             placeholder="Nombre..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Apellido</label>
-          <input
-            autoComplete="off"
-            name="last_name"
-            value={newUser.last_name}
-            onChange={handleChange}
-            placeholder="Apellido..."
             type="text"
           />
         </div>
@@ -88,76 +100,31 @@ export default function CreateUserForm() {
           <label>Cuil</label>
           <input
             autoComplete="off"
-            name="cuil"
-            value={newUser.cuil}
+            name="CUIL"
+            value={newUser.CUIL}
             onChange={handleChange}
             placeholder="cuil..."
             type="text"
           />
         </div>
         <div className={styles.divs}>
-          <label>Direccion</label>
-          <input
-            autoComplete="off"
-            name="adress"
-            value={newUser.adress}
-            onChange={handleChange}
-            placeholder="Barrio..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Email</label>
-          <input
-            autoComplete="off"
-            name="email"
-            value={newUser.email}
-            onChange={handleChange}
-            placeholder="example@ejem.com.ar"
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Telefono</label>
-          <input
-            autoComplete="off"
-            name="phone"
-            value={newUser.phone}
-            onChange={handleChange}
-            placeholder="266..."
-            type="text"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Provincia</label>
-          <input
-            autoComplete="off"
-            name="province"
-            value={newUser.province}
-            onChange={handleChange}
-            placeholder="San Luis..."
-            type="date"
-          />
-        </div>
-        <div className={styles.divs}>
-          <label>Localidad</label>
-          <input
-            autoComplete="off"
-            name="state"
-            value={newUser.state}
-            onChange={handleChange}
-            placeholder="San Luis..."
-          />
-        </div>
-        <div className={styles.divs}>
           <label>Clave</label>
+          <input
+            autoComplete="off"
+            name="CLAVE"
+            value={newUser.CLAVE}
+            onChange={handleChange}
+            type="password"
+          />
+        </div>
+        <div className={styles.divs}>
+          <label>Repetir Clave</label>
           <input
             type="password"
             autoComplete="off"
-            name="clave"
-            value={newUser.clave}
+            name="REPETIR_CLAVE"
+            value={newUser.REPETIR_CLAVE}
             onChange={handleChange}
-            // placeholder="San Luis..."
           />
         </div>
         <div className={styles.divs}>
