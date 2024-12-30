@@ -17,13 +17,12 @@ function DropdownRoles({ onSelect }) {
 
   useEffect(()=>{
     if(!roles || roles?.length === 0) dispatch(actions.getAllUserTypes());
-    console.log('Roles', roles);
   },[roles, dispatch]);
 
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {select ? select.NOMBRE : "Tipo de Usuario"}
+        {select ? select.DESCRIPCION : "Tipo de Usuario"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'No asignado'}>No asignado</Dropdown.Item>
