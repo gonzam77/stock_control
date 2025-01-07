@@ -19,7 +19,6 @@ export default function Users() {
     }
   }, [users, dispatch]);
 
-
   const openModal = (id) => {
     dispatch(actions.showModal());
     dispatch(actions.getUserId(id));

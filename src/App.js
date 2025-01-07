@@ -50,6 +50,7 @@ function App() {
   async function login(userData) {
     
     const formEncodedData = qs.stringify(userData);
+    console.log('userdata', formEncodedData);
     
     const config = {
       withCredentials: true,
@@ -99,7 +100,7 @@ function App() {
     } catch (error) {
       Swal.fire({
         title: 'Error!',
-        text: 'Clave o usario Incorrecto',
+        text: error.response.data.Message,
         icon: 'error',
         confirmButtonText: 'Cerrar',
         confirmButtonColor: '#0a7f02',
