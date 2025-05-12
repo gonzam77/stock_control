@@ -1,8 +1,6 @@
 .container {
-  padding-top: 7vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 15px;
 }
 .paginate {
   display: flex;

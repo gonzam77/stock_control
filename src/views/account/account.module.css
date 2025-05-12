@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 15px;
-  padding-top: 20px;
 }
 
  .title {
@@ -41,17 +40,16 @@
   margin-right: 20px;
 }
 
-  .createButton {
-    border: 2px solid white;
-    font-size: 1rem;
-  }
+.createButton {
+  font-size: 1rem;
+}
   
-  
-  .editButton {
-    color: white !important;
-    background-color: rgb(3, 124, 133) !important;
-  }
-  table th {
-    text-align: center;
-    vertical-align: middle;
-  }
+
+.editButton {
+  color: white !important;
+  background-color: rgb(3, 124, 133) !important;
+}
+table th {
+  text-align: center;
+  vertical-align: middle;
+}

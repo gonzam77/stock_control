@@ -44,21 +44,24 @@ export default function Products() {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <Button
-          className={styles.createButton}
-          variant="success"
-          onClick={openCreateModal}
-        >
-          Cargar Nuevo
-        </Button>
-        <Button
-          className={styles.createButton}
-          variant="success"
-          onClick={openImportModal}
-        >
-          Importar Excel
-        </Button>
-
+        <Link to="/cards" className={styles.link}>
+          <Button
+            className={styles.createButton}
+            variant="success"
+            onClick={openCreateModal}
+          >
+            Cargar Nuevo
+          </Button>
+        </Link>
+        <Link to="/cards" className={styles.link}>
+          <Button
+            className={styles.createButton}
+            variant="success"
+            onClick={openImportModal}
+          >
+            Importar Excel
+          </Button>
+        </Link>
         <Link to="/cards" className={styles.link}>
           <Button variant="danger">Carta</Button>
         </Link>
