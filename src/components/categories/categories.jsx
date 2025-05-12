@@ -42,7 +42,7 @@ export default function Categories() {
         <h1>Categorias</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Nombre</th>

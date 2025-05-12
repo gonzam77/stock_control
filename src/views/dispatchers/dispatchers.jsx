@@ -37,7 +37,7 @@ export default function Dispatchers() {
         <h1>Transportistas</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Modificar</th>

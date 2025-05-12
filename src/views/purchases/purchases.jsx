@@ -31,7 +31,7 @@ export default function PurchasesDetail() {
         <h1>Compras</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>N° Compra</th>

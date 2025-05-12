@@ -49,7 +49,7 @@ export default function Offers() {
         <h1>Productos en Oferta</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Codigo</th>

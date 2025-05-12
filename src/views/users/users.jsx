@@ -48,7 +48,7 @@ export default function Users() {
         <h1>Usuarios</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Nombre Usuario</th>

@@ -45,8 +45,8 @@ export default function Account() {
         <h1>Cuentas</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
-          <thead>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
+         <thead>
             <tr>
               <th>Tipo de Cuenta</th>
               <th>Descripcion</th>

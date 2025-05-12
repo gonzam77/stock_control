@@ -1,12 +1,12 @@
 .container {
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 15px;
-    padding-top: 20px;
-  }
-  
-  .title {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 20px;
+}
+
+ .title {
     background-color: white;
     display: flex;
     padding-top: 5px;
@@ -18,30 +18,29 @@
     margin-right: 20px;
     border-radius: 10px;
   }
-  
-  .titleContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
-    margin-right: 20px;
-    padding-bottom: 10px;
-    width: auto;
-    height: auto;
-    gap: 10px;
-  }
-  
-  .link {
-    margin-top: 10vh;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-  
-  .tableContainer {
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  
+
+.titleContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: 20px;
+  padding-bottom: 10px;
+  width: auto;
+  height: auto;
+  gap: 10px;
+}
+
+.link {
+  margin-top: 10vh;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.tableContainer {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
   .createButton {
     border: 2px solid white;
     font-size: 1rem;

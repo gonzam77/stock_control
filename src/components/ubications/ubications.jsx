@@ -43,7 +43,7 @@ export default function Ubications() {
         <h1>Ubicaciones</h1>
       </div>
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Provincia</th>

@@ -163,7 +163,7 @@ export default function NewTransferForm() {
           </div>
         </div>
         <div>
-          <Table striped bordered hover>
+                <Table striped bordered hover className="rounded-3 overflow-hidden">
             <thead>
               <tr>
                 <th>Cantidad</th>

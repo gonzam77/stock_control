@@ -67,7 +67,7 @@ export default function Products() {
       <h1 className={styles.title}>Productos</h1>
 
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>CODIGO</th>

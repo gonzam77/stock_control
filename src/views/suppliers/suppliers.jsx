@@ -47,7 +47,7 @@ export default function Suppliers() {
       </div>
 
       <div className={styles.tableContainer}>
-        <Table striped bordered hover>
+              <Table striped bordered hover className="rounded-3 overflow-hidden">
           <thead>
             <tr>
               <th>Razon Social</th>

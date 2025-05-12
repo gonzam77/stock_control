@@ -280,7 +280,7 @@ export default function NewSaleForm() {
           </div>
         </div>
         <div>
-          <Table striped bordered hover>
+                <Table striped bordered hover className="rounded-3 overflow-hidden">
             <thead>
               <tr>
                 <th>Cantidad</th>
@@ -342,7 +342,7 @@ export default function NewSaleForm() {
             </tbody>
           </Table>
 
-          <Table striped bordered hover>
+                <Table striped bordered hover className="rounded-3 overflow-hidden">
             <thead>
               <tr>
                 <th>TOTAL</th>
