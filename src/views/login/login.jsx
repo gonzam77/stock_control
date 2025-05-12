@@ -12,7 +12,7 @@ function Login({ login }) {
 
   function handleChange(event) {
     const target = event.target.name;
-    const value = event.target.value;
+    const value = event.target.value.toUpperCase();
     setUserLogin({
       ...userLogin,
       [target]: value,

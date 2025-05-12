@@ -1,11 +1,12 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 
-function DropdownStatus({ onSelect }) {
-  const [select, setSelect] = useState();
+function DropdownStatus({ onSelect, initialValue }) {
+
+  const [select, setSelect] = useState(initialValue);
 
   function handleSelect(eventKey) {
-    setSelect(eventKey);
+    setSelect(initialValue);
     onSelect(eventKey);
   }
 

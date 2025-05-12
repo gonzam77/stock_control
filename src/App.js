@@ -28,6 +28,7 @@ import NewPurchase from "./views/newPurchase/newPurchase";
 import NewSettingForm from "./views/newSetting/newSetting";
 import NewTransferForm from "./views/newTransfer/newTransfer";
 import Movements from "./views/movements/movements";
+import Swal from "sweetalert2";
 
 //const cookieParser = require('cookie-parser')
 
@@ -49,6 +50,7 @@ function App() {
   async function login(userData) {
     
     const formEncodedData = qs.stringify(userData);
+    console.log('userdata', formEncodedData);
     
     const config = {
       withCredentials: true,
@@ -93,9 +95,17 @@ function App() {
 
         setAccess(true);
         navigate("/");
-
       };
+      
     } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: error.response.data.Message,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
       console.error('Error during login:', error);
     }
   };

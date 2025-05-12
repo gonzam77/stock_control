@@ -31,6 +31,7 @@ export default function Products() {
   const openCreateModal = () => {
     dispatch(actions.showCreateModal());
   };
+  
   const openImportModal = () => {
     dispatch(actions.showImportModal());
   };

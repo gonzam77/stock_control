@@ -12,24 +12,23 @@ import Swal from 'sweetalert2';
 
 export default function EditUserForm() {
   
-  // Obtener los datos de los usuarios y el userId desde Redux
   const users = useSelector((state) => state.users);
   const userId = useSelector((state) => state.userId);
   const dispatch = useDispatch();
+  let status = null;
   
-   // Encontrar el usuario seleccionado basado en el userId
   const selectedUser = users.find((element) => element.ID_USUARIO === userId);
 
   const [user, setUser] = useState(selectedUser);
+  
+  if (user.ESTADO === 1) status = 'Activo'
+  else status = 'Inactivo' ;
 
   useEffect(() => {
-    if (selectedUser) {
-      setUser(selectedUser); // Actualiza el estado local con el usuario seleccionado
-    }
-  }, [selectedUser]); // Dependencia: ejecuta cuando selectedUser cambia
+    //console.log(user);
+  }, [user]);
  
   async function putUser(user) {
-    
     try {
       await axios.put(`${backURL}/usuario/update`, user);
     } catch (error) {
@@ -51,14 +50,25 @@ export default function EditUserForm() {
   
   const closeModal = async (event) => {
     event.preventDefault();
-    await putUser({ Usuario: user })
-    dispatch(actions.cleanUsers());
-    dispatch(actions.hideModal());
+    if (user.NUEVA_CLAVE === user.REPETIR_CLAVE) {
+      await putUser({ Usuario: user })
+      dispatch(actions.cleanUsers());
+      dispatch(actions.hideModal());
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Las claves no coinciden',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#0a7f02',
+        keydownListenerCapture: false
+      });
+    }
   };
 
   function handleChange(event) {
     const target = event.target.name;
-    const value = event.target.value;
+    const value = event.target.value.toUpperCase();
     setUser({
       ...user,
       [target]: value
@@ -68,15 +78,13 @@ export default function EditUserForm() {
   const handleRolesSelect = (selectedRol) => {
     setUser({
       ...user,
-      rol: selectedRol,
+      ID_TIPO_USUARIO: parseInt(selectedRol),
     });
   };
 
   const handleStatusSelect = (selectedStatus) => {
-    setUser({
-      ...user,
-      status: selectedStatus,
-    });
+    if(selectedStatus === 'Activo') user.ESTADO = 1;
+    else user.ESTADO = 0;
   };
 
   return (
@@ -93,7 +101,7 @@ export default function EditUserForm() {
             type="text"
           />
         </div>
-        <div className={styles.divs}>
+        {/* <div className={styles.divs}>
           <label>CLAVE ANTERIOR</label>
           <input
             autoComplete="off"
@@ -102,9 +110,9 @@ export default function EditUserForm() {
             onChange={handleChange}
             type="password"
           />
-        </div>
+        </div> */}
         <div className={styles.divs}>
-          <label>CLAVE</label>
+          <label>NUEVA CLAVE</label>
           <input
             autoComplete="off"
             name="NUEVA_CLAVE"
@@ -114,10 +122,20 @@ export default function EditUserForm() {
           />
         </div>
         <div className={styles.divs}>
-          <DropdownRoles onSelect={handleRolesSelect}></DropdownRoles>
+          <label>REPETIR CLAVE</label>
+          <input
+            autoComplete="off"
+            name="REPETIR_CLAVE"
+            value={user.REPETIR_CLAVE}
+            onChange={handleChange}
+            type="password"
+          />
         </div>
         <div className={styles.divs}>
-          <DropdownStatus onSelect={handleStatusSelect}></DropdownStatus>
+          <DropdownRoles onSelect={handleRolesSelect} initialValue={user.ID_TIPO_USUARIO}></DropdownRoles>
+        </div>
+        <div className={styles.divs}>
+          <DropdownStatus onSelect={handleStatusSelect} initialValue={status}></DropdownStatus>
         </div>
         <div className="modal-footer">
           <Button variant="danger" onClick={cancelModal}>

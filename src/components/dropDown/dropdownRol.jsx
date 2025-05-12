@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from '../../redux/actions';
 
-function DropdownRoles({ onSelect }) {
+function DropdownRoles({ onSelect, initialValue }) {
   
-  const [select, setSelect] = useState();
   const roles = useSelector(state => state.userTypes);
+  const selectedRol = roles.find(e => e.ID_TIPO_USUARIO === initialValue);
+  const [select, setSelect] = useState(selectedRol);
   const dispatch = useDispatch();
   
   function handleSelect(eventKey) {
@@ -17,13 +18,13 @@ function DropdownRoles({ onSelect }) {
 
   useEffect(()=>{
     if(!roles || roles?.length === 0) dispatch(actions.getAllUserTypes());
-    console.log('Roles', roles);
-  },[roles, dispatch]);
+    if(!select) setSelect(selectedRol); 
+  },[roles, dispatch, select, selectedRol]);
 
   return (
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {select ? select.NOMBRE : "Tipo de Usuario"}
+        {select ? select.DESCRIPCION : "Tipo de Usuario"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey={'No asignado'}>No asignado</Dropdown.Item>

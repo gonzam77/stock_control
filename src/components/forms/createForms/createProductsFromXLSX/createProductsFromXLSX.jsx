@@ -6,7 +6,7 @@ import * as actions from "../../../../redux/actions";
 import * as XLSX from 'xlsx';
 import axios from "axios";
 import { axiosConfig, backURL } from "../../../../App";
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 export default function CreateProductsFromXLSX() {
     const dispatch = useDispatch();
@@ -17,17 +17,17 @@ export default function CreateProductsFromXLSX() {
         try {
             await axios.post(`${backURL}/producto/nuevo`, producto, axiosConfig);
         } catch (error) {
-            // Swal.fire({
-            //     title: 'Error!',
-            //     text: error.response.data.Message,
-            //     icon: 'error',
-            //     confirmButtonText: 'Cerrar',
-            //     confirmButtonColor: '#0a7f02',
-            //     keydownListenerCapture: false
-            // });
+            Swal.fire({
+                title: 'Error!',
+                text: error.response.data.Message,
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#0a7f02',
+                keydownListenerCapture: false
+            });
             console.log(error);
         }
-    }
+    };
 
     const closeCreateModal = async (event) => {
         event.preventDefault();
@@ -100,4 +100,4 @@ export default function CreateProductsFromXLSX() {
             </form>
         </div>
     );
-}
+};
