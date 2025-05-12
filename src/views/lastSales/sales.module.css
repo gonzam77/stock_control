@@ -8,6 +8,7 @@
   .title {
     background-color: white;
     display: flex;
+    padding-top: 5px;
     color: rgb(0, 5, 1);
     justify-content: left;
     padding-left: 20vh;
