@@ -43,7 +43,6 @@ function Login({ login }) {
             type="text"
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
 
@@ -58,11 +57,8 @@ function Login({ login }) {
             type="password"
           />
         </Form.Group>
-        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group> */}
         <Button variant="success" type="submit">
-          Login
+          Ingresar
         </Button>
       </Form>
     </div>
